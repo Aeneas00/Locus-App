@@ -10,7 +10,8 @@
 const ACCESS_CODE = "STUDENT2026";           // код доступу після входу
 const SUPABASE_URL = "https://pzdeinlfpnsgnnopspjr.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_K2vSl3r85xOLi_Vvlhj3Mw_dCZYflD2";
-const DATA_TABLE = "user_data";              // таблиця: user_id (uuid), data (jsonb), updated_at (timestamptz)
+const DATA_TABLE = "user_data";              // таблиця в Supabase
+const DATA_COLUMN = "content";               // колонка з даними (jsonb); також потрібні user_id (uuid) і updated_at
 /* ===================================================================== */
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.4/dist/umd/supabase.js"></script>
@@ -1554,7 +1555,7 @@ body.locked #gate{display:grid;place-items:center;position:fixed;inset:0;z-index
         <span class="sync" id="sync"><b></b></span>
         <button class="iconbtn" data-act="customize" aria-label="Налаштувати головну" title="Налаштувати головну" id="btnLayout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="3" width="8" height="10" rx="2"></rect><rect x="13" y="3" width="8" height="6" rx="2"></rect><rect x="13" y="11" width="8" height="10" rx="2"></rect><rect x="3" y="15" width="8" height="6" rx="2"></rect></svg></button>
         <button class="iconbtn" data-act="settings" aria-label="Налаштування" title="Налаштування" id="btnSettings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"></path></svg></button>
-        <button class="iconbtn" data-act="logout" aria-label="Вийти" title="Вийти" id="btnLogout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3"/><path d="M10 17l-5-5 5-5M5 12h11"/></svg></button>
+        <button class="iconbtn" data-act="saveCloud" aria-label="Зберегти в хмару" title="Зберегти в хмару" id="btnCloud"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4.5 4.5 0 0 1-.5-9A6 6 0 0 1 18 8.5a4 4 0 0 1-.5 9.5H7z"/><path d="M12 16v-5M9.5 13.5L12 11l2.5 2.5"/></svg></button><button class="iconbtn" data-act="logout" aria-label="Вийти" title="Вийти" id="btnLogout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3"/><path d="M10 17l-5-5 5-5M5 12h11"/></svg></button>
       </header>
       <main id="view"></main>
     </div>
@@ -1715,31 +1716,51 @@ function commit(opts={}){
   if(!opts.norender) render();
   flushToasts();
 }
-let sb=null, sbUser=null;
-async function flush(){
-  if(!ref||!sb||!sbUser||writing||!dirty) return;
-  writing=true; dirty=false;
+let sb=null, sbUser=null, cloudFailShown=false;
+const errText=e=>(e&&(e.message||e.error_description||e.hint))||"невідома помилка";
+/* writes the whole app state into user_data.content for the logged-in user */
+async function saveToCloud(manual){
+  if(!sb){if(manual) toast("Не вдалося зберегти: немає підключення до Supabase"); return false}
   try{
-    const {error}=await sb.from(DATA_TABLE).upsert({user_id:sbUser.id,data:JSON.parse(JSON.stringify(S)),updated_at:new Date().toISOString()},{onConflict:"user_id"});
-    if(error) throw error; syncMode="cloud";
-  }catch(e){dirty=true; syncMode="local"; setTimeout(flush,5000+Math.random()*2000)}
-  writing=false; setSync(); if(dirty&&syncMode==="cloud") flush();
+    const {data:{user},error:ue}=await sb.auth.getUser();
+    if(ue) throw ue; if(!user) throw new Error("ти не увійшов в акаунт");
+    sbUser=user;
+    const row={user_id:user.id,updated_at:new Date().toISOString()}; row[DATA_COLUMN]=JSON.parse(JSON.stringify(S));
+    const {error}=await sb.from(DATA_TABLE).upsert(row,{onConflict:"user_id"});
+    if(error) throw error;
+    syncMode="cloud"; setSync(); cloudFailShown=false;
+    if(manual) toast("Дані збережено в хмарі!");
+    return true;
+  }catch(e){
+    syncMode="local"; setSync(); console.error("Supabase save failed",e);
+    if(manual||!cloudFailShown){toast("Не вдалося зберегти в хмару: "+errText(e)); cloudFailShown=true}
+    return false;
+  }
 }
+async function flush(){
+  if(!ref||!sb||writing||!dirty) return;
+  writing=true; dirty=false;
+  const ok=await saveToCloud(false);
+  if(!ok){dirty=true; setTimeout(flush,8000+Math.random()*2000)}
+  writing=false; if(dirty&&ok) flush();
+}
+/* SELECT the row matching auth.uid() */
 async function pullRemote(){
-  const {data,error}=await sb.from(DATA_TABLE).select("data,updated_at").eq("user_id",sbUser.id).maybeSingle();
+  const {data:{user}}=await sb.auth.getUser(); if(user) sbUser=user;
+  const {data,error}=await sb.from(DATA_TABLE).select(DATA_COLUMN+",updated_at").eq("user_id",sbUser.id).maybeSingle();
   if(error) throw error;
-  return data&&data.data&&typeof data.data==="object"&&Array.isArray(data.data.tasks)?data.data:null;
+  let c=data&&data[DATA_COLUMN]; if(typeof c==="string"){try{c=JSON.parse(c)}catch(e){c=null}}
+  return c&&typeof c==="object"&&Array.isArray(c.tasks)?c:null;
 }
 async function initCloud(){
   if(!sb||!sbUser){syncMode="local";setSync();return}
   try{
     const raw=await pullRemote(); ref={};
     if(raw){const remote=normalize(JSON.parse(JSON.stringify(raw)));
-      if((remote.updatedAt||0)>=(S.updatedAt||0)){S=remote;try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}applyLook();render()}
+      if((remote.updatedAt||0)>=(S.updatedAt||0)){S=remote;try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}applyLook();render();syncMode="cloud";setSync();toast("Дані завантажено з хмари")}
       else{dirty=true;await flush()}}
     else{dirty=true;await flush()}
-    syncMode="cloud";setSync();
-  }catch(e){ref={};dirty=true;syncMode="local";setSync();toast("Немає зв'язку з хмарою. Зберігаю на цьому пристрої й спробую ще раз.");setTimeout(flush,5000)}
+  }catch(e){ref={};dirty=true;syncMode="local";setSync();console.error("Supabase load failed",e);toast("Не вдалося завантажити з хмари: "+errText(e));setTimeout(flush,5000)}
 }
 document.addEventListener("visibilitychange",async()=>{
   if(document.visibilityState!=="visible"||!ref||!sbUser||dirty||writing) return;
@@ -2533,7 +2554,7 @@ function importData(file){
   rd.onload=()=>{
     let o; try{o=JSON.parse(rd.result)}catch(e){toast("Це не JSON-файл");return}
     if(!o||typeof o!=="object"||!Array.isArray(o.tasks)||!Array.isArray(o.courses)){toast("У файлі немає даних Study Quest");return}
-    snap(); S=normalize(o); S.updatedAt=Date.now(); applyLook(); closeSheet(); commit();
+    snap(); S=normalize(o); S.updatedAt=Date.now(); applyLook(); closeSheet(); commit(); if(typeof saveToCloud==="function"){clearTimeout(timer); dirty=false; saveToCloud(true)}
     undoToast(`Імпортовано: ${S.courses.length} ${pl(S.courses.length,"курс","курси","курсів")}, ${S.tasks.filter(t=>t.kind==="task").length} завдань`);
   };
   rd.onerror=()=>toast("Не вдалося прочитати файл");
@@ -3028,7 +3049,7 @@ function sheetSettings(keep){
     <label class="field"><span>Назва вівторкового завдання</span><input id="s-tname" maxlength="60" value="${esc(s.tueName)}"></label>
     <label class="field"><span>Інтервали повторень (дні)</span><input id="s-iv" value="${s.intervals.join(", ")}"></label>
     <label class="checkline"><input type="checkbox" id="s-fun" ${s.fun!==false?"checked":""}><span>Смішні повідомлення і смайлики при виконанні</span></label>
-    <div class="field"><span>Резервна копія</span><div class="row" style="gap:8px"><button type="button" class="btn sm" data-act="exportData">Експорт даних (.json)</button><label class="btn sm" for="importFile" style="cursor:pointer">Імпорт даних (.json)</label><input type="file" id="importFile" accept=".json,application/json" hidden></div><small>Імпорт замінює поточні дані. Одразу після нього можна натиснути «Повернути».</small></div>
+    <div class="field"><span>Резервна копія</span><div class="row" style="gap:8px"><button type="button" class="btn sm primary" data-act="saveCloud">Зберегти в хмару</button><button type="button" class="btn sm" data-act="exportData">Експорт даних (.json)</button><label class="btn sm" for="importFile" style="cursor:pointer">Імпорт даних (.json)</label><input type="file" id="importFile" accept=".json,application/json" hidden></div><small>Імпорт замінює поточні дані. Одразу після нього можна натиснути «Повернути».</small></div>
     <div class="row" style="justify-content:space-between"><button type="button" class="btn danger sm" data-act="resetAsk">Скинути все</button><div class="row"><button type="button" class="btn ghost" data-act="closeSheet">Закрити</button><button class="btn primary">Зберегти</button></div></div>
     <div id="resetZone"></div>
   </form>`,true);
@@ -3221,6 +3242,7 @@ document.addEventListener("click",e=>{
     case "customize": if(view!=="home"){view="home";openCourse=null;libZoom=null;editing=true}else editing=!editing; render(); window.scrollTo(0,0); break;
     case "lamp": toggleLamp(); break;
     case "logout": logout(); break;
+    case "saveCloud": clearTimeout(timer); dirty=false; saveToCloud(true); break;
     case "exportData": exportData(); break;
     case "dpick": openDP(b); break;
     case "newTaskOn": taskPlanDefault=b.dataset.v; closeSheet(); taskSheet(null); break;
