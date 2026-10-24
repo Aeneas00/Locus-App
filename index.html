@@ -3121,6 +3121,62 @@ html.sf-lock,html.sf-lock body{overflow:hidden}
 :root[data-skin="loft"] .sup-main b{font-family:Lora,serif}
 @media (max-width:640px){.sup-tl::before{left:71px}.sup-n{grid-template-columns:44px 30px minmax(0,1fr);gap:10px}.sup-n > .startbtn{grid-column:3;justify-self:start}.sup-d b{font-size:1.25rem}.sup-dot{width:30px;height:30px}.sup-now{margin-left:44px;padding-left:30px}}
 
+/* ===== calendar day: compact ===== */
+.kweek{gap:6px}.kweek .kday{padding:10px 6px}
+.kweek .pchip{font-size:.74rem;line-height:1.2;padding:5px 6px!important;align-items:flex-start}
+.kweek .pchip i{display:none!important}
+.kweek .pchip{box-shadow:inset 3px 0 0 var(--cc)!important;padding-left:8px!important}
+.kweek .pchip span{white-space:normal;overflow:hidden;text-overflow:clip;overflow-wrap:anywhere;hyphens:auto;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical}
+.dvrows{display:flex;flex-direction:column;gap:6px}
+.dvrows .tdr{grid-template-columns:24px 6px minmax(0,1.4fr) minmax(0,1fr) auto auto 32px}
+/* ===== supervisions page: tools ===== */
+.sup-n{grid-template-columns:64px 34px minmax(0,1fr) auto}
+.sup-tools{display:flex;align-items:center;gap:6px}
+.sup-n.cansubs .sup-c{cursor:pointer}
+.sup-main[role="button"]{cursor:pointer}
+@media (max-width:640px){.sup-n > .sup-tools{grid-column:3;justify-self:start}}
+/* ===== smoother subtask focus ===== */
+html{scrollbar-gutter:stable}
+.sf-src{visibility:hidden}
+.sf-row .sf-src{visibility:visible}
+@media (prefers-reduced-motion:no-preference){
+  .sf-dim.in{animation:sfdim .35s ease-out}
+  .subfocus.closing .sf-dim{animation:sfdimout .4s ease-in-out forwards}
+  @keyframes sfdimout{from{opacity:1}to{opacity:0}}
+  .sf-row.fly{animation:sffly .6s cubic-bezier(.22,1,.36,1) both}
+  @keyframes sffly{0%{transform:translateY(var(--fromY))}60%{transform:translateY(-4px) scale(1.02)}100%{transform:none}}
+  .subfocus.closing .sf-row{animation:sfback .42s cubic-bezier(.22,1,.36,1) forwards}
+  @keyframes sfback{from{transform:none}to{transform:translateY(var(--fromY))}}
+  .subfocus.closing .sf-item,.subfocus.closing .sf-add,.subfocus.closing .sf-head{animation:sfup .26s cubic-bezier(.4,0,1,1) forwards}
+  @keyframes sfup{to{opacity:0;transform:translateY(-18px) scale(.97)}}
+}
+
+/* ===== calendar: full width, plan drawer ===== */
+.calwrap{grid-template-columns:minmax(0,1fr)!important}
+.calhead2 > .row:last-child{flex-wrap:wrap}
+.planbtn{margin-left:auto;display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border-radius:12px;font-weight:900}
+.planbtn svg{width:18px;height:18px}
+.planbadge{min-width:22px;height:22px;padding:0 6px;border-radius:999px;display:grid;place-items:center;background:var(--accent);color:var(--frame);font-size:.75rem;font-weight:900}
+.planbtn.on{background:var(--ink);color:var(--frame)}
+.ctray{position:fixed!important;top:96px;right:24px;bottom:24px;width:min(340px,calc(100vw - 32px));max-height:none!important;z-index:70;overflow:auto;order:0!important;
+  transform:translateX(calc(100% + 40px));opacity:0;pointer-events:none;transition:transform .35s cubic-bezier(.22,1,.36,1),opacity .25s;box-shadow:0 30px 60px -20px rgba(0,0,0,.55)}
+.ctray.open{transform:none;opacity:1;pointer-events:auto}
+.ctray .trayl{flex-direction:column!important;flex-wrap:nowrap!important}
+.ctray .trow{flex:none!important}
+.ctray .head{display:flex;align-items:center;gap:8px}
+:root[data-skin="retro"] .ctray{border:3px solid var(--hard)!important;box-shadow:8px 8px 0 var(--hard)!important}
+:root[data-skin="retro"] .planbtn{border:2.5px solid var(--hard);box-shadow:3px 3px 0 var(--hard);background:#3DD9EB;color:#2B1B2E}
+:root[data-skin="retro"] .planbtn.on{background:#2B1B2E;color:#FFD23F}
+:root[data-skin="solar"] .ctray{background:rgba(255,255,255,.82)!important;-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
+:root[data-skin="solar"][data-tone="dark"] .ctray{background:rgba(18,36,26,.9)!important}
+:root[data-skin="solar"] .planbtn{background:linear-gradient(180deg,#3FB57A,#1E8656);color:#fff;border:0}
+:root[data-skin="loft"] .planbtn{background:linear-gradient(180deg,#E3B861,#B8862F);color:#2A1C0C;border:0}
+:root[data-skin="loft"] .ctray{border:1.5px solid #C9A04E!important}
+@media (max-width:760px){.ctray{top:auto;left:12px;right:12px;width:auto;bottom:calc(84px + env(safe-area-inset-bottom,0px));max-height:55vh!important;transform:translateY(calc(100% + 100px))}.planbtn{margin-left:0}}
+@media (prefers-reduced-motion:reduce){.ctray{transition:none}}
+.supbar{gap:12px}
+@media (min-width:1101px){.calwrap.trayopen{padding-right:350px;transition:padding .35s cubic-bezier(.22,1,.36,1)}}
+
 .savebtn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border:0;border-radius:12px;background:linear-gradient(180deg,#F3C766,#D99A2B);color:#241606;font:inherit;font-weight:800;font-size:.95rem;cursor:pointer;box-shadow:0 8px 18px -8px rgba(217,154,43,.8),inset 0 1px 0 rgba(255,255,255,.45);transition:transform .15s,filter .15s}
 .savebtn svg{width:18px;height:18px}
 .savebtn:hover{filter:brightness(1.07);transform:translateY(-1px)}
@@ -4327,7 +4383,7 @@ function gsearch(q){
 
 
 /* ---------- planning calendar ---------- */
-let calView="month", calMon=today().slice(0,7), calWeek=mondayOf(today()), calDate=today(), taskPlanDefault="";
+let trayOpen=false, calView="week", calMon=today().slice(0,7), calWeek=mondayOf(today()), calDate=today(), taskPlanDefault="";
 const plannedOn=d=>S.tasks.filter(t=>t.kind==="task"&&t.plan===d&&course(t.courseId)&&!course(t.courseId).archived).sort((a,b)=>(a.done-b.done)||((a.createdAt||0)-(b.createdAt||0)));
 const dueOn=d=>openTasksAll().filter(t=>t.due===d);
 function inModule(d){return S.settings.modules.includes(d)}
@@ -4338,7 +4394,7 @@ function dayCell(d,opts={}){
   const tue=S.tueDates.includes(d), mod=inModule(d);
   return `<div class="kday${opts.out?" out":""}${d===t?" today":""}${d<t?" past":""}${mod?" mod":""}" data-day="${d}">
     <button type="button" class="cdnum" data-act="calDay" data-v="${d}" aria-label="${fmtL(d)}: ${pl.length} заплановано">${opts.week?`<small>${WD[(parse(d).getDay()+6)%7]}</small>`:""}<b>${+d.slice(8)}</b>${opts.week?`<small>${MONTHS_N[+d.slice(5,7)-1].slice(0,3)}</small>`:""}</button>
-    ${mod&&(d===[...S.settings.modules].find(m=>m===d)||opts.week)?'<span class="ctag mod">модуль</span>':""}${tue?`<span class="ctag tue">${esc(S.settings.tueName)}</span>`:""}
+    ${mod&&(d===[...S.settings.modules].find(m=>m===d)||opts.week)?'<span class="ctag mod">модуль</span>':""}${tue?`<span class="ctag tue">Супервізія</span>`:""}
     <div class="citems">${items.slice(0,MAX).join("")}${more>0?`<button type="button" class="cmore" data-act="calDay" data-v="${d}">ще ${more}</button>`:""}</div>
     <button type="button" class="cadd" data-act="calDay" data-v="${d}" aria-label="Запланувати на ${fmtD(d)}">${ICON.plus}</button>
   </div>`;
@@ -4349,14 +4405,14 @@ function planView(){
   const title=calView==="day"?`${fmtL(calDate)}${calDate===today()?" · сьогодні":""}`:calView==="week"?`${fmtS(calWeek)} – ${fmtS(addDays(calWeek,6))} ${addDays(calWeek,6).slice(0,4)}`:`${MONTHS_N[m-1][0].toUpperCase()+MONTHS_N[m-1].slice(1)} ${y}`;
   const head=`<div class="pagehead glass calhead2"><div class="row" style="gap:12px"><h1>Календар</h1><span class="caltitle">${title}</span></div>
     <div class="row" style="gap:8px"><div class="seg" role="group" aria-label="Вигляд"><button data-act="calView" data-v="day" aria-pressed="${calView==="day"}">День</button><button data-act="calView" data-v="week" aria-pressed="${calView==="week"}">Тиждень</button><button data-act="calView" data-v="month" aria-pressed="${calView==="month"}">Місяць</button></div>
-      <button class="iconbtn" data-act="kalNav" data-d="-1" aria-label="Назад">${ICON.back}</button><button class="btn sm" data-act="kalToday">Сьогодні</button><button class="btn sm primary addev" data-act="evNew">${ICON.plus}Додати подію</button><button class="iconbtn" data-act="kalNav" data-d="1" aria-label="Вперед" style="transform:scaleX(-1)">${ICON.back}</button></div></div>`;
+      <button class="iconbtn" data-act="kalNav" data-d="-1" aria-label="Назад">${ICON.back}</button><button class="btn sm" data-act="kalToday">Сьогодні</button><button class="btn sm primary addev" data-act="evNew">${ICON.plus}Додати подію</button><button class="iconbtn" data-act="kalNav" data-d="1" aria-label="Вперед" style="transform:scaleX(-1)">${ICON.back}</button><button type="button" class="btn planbtn${trayOpen?" on":""}" data-act="trayToggle" aria-expanded="${trayOpen}">${ICON.plan}Запланувати${unpl.length?`<span class="planbadge">${unpl.length}</span>`:""}</button></div></div>`;
   const grid=calView==="day"?dayViewHTML(calDate):calView==="week"
     ?`<div class="kweek">${Array.from({length:7},(_,i)=>dayCell(addDays(calWeek,i),{week:true})).join("")}</div>`
     :`<div class="kmonth"><div class="kwds">${WD.map(w=>`<span>${w}</span>`).join("")}</div><div class="kgrid">${monthCells(calMon).map(d=>dayCell(d,{out:d.slice(0,7)!==calMon})).join("")}</div></div>`;
-  const tray=`<aside class="ctray glass" data-day="" aria-label="Ще не заплановано"><div class="head" style="margin-bottom:8px"><h3>Не заплановано</h3><span class="mono muted">${unpl.length}</span></div>
+  const tray=`<aside class="ctray glass${trayOpen?" open":""}" data-day="" aria-label="Ще не заплановано" ${trayOpen?"":"inert"}><div class="head" style="margin-bottom:8px"><h3>Не заплановано</h3><span class="mono muted">${unpl.length}</span><button type="button" class="mini-btn" data-act="trayToggle" aria-label="Закрити" style="margin-left:auto">${ICON.x}</button></div>
     <div class="muted" style="font-size:.8rem;margin-bottom:10px">Перетягни завдання на день. Або натисни на день, щоб обрати зі списку.</div>
     <div class="trayl">${unpl.map(x=>{const c=course(x.courseId);return `<div class="trow"><div role="button" tabindex="0" class="pchip" draggable="true" data-plan-task="${x.id}" data-act="editTask" data-id="${x.id}" style="--cc:${CC(c.color)}"><i></i><span>${esc(x.title)}</span></div><small>${x.plan&&x.plan<t?`<b class="late">пропущено ${fmtS(x.plan)}</b> · `:""}${esc(c.name)}${x.due?" · до "+fmtS(x.due):""}</small></div>`}).join("")||'<div class="empty" style="margin:0">Усе заплановано.</div>'}</div></aside>`;
-  return `${head}<div class="calwrap ${calView}"><section class="calmain glass">${grid}<div class="calleg"><span><i class="lg-ev"></i>подія (колір тегу)</span><span><i class="lg-task"></i>завдання</span><span><i class="lg-due"></i>дедлайн</span>${S.tags.map(t=>`<span><i class="lg-dot" style="background:${t.color}"></i>${esc(t.name)}</span>`).join("")}</div></section>${tray}</div>`;
+  return `${head}<div class="calwrap ${calView}${trayOpen?" trayopen":""}"><section class="calmain glass">${grid}<div class="calleg"><span><i class="lg-ev"></i>подія (колір тегу)</span><span><i class="lg-task"></i>завдання</span><span><i class="lg-due"></i>дедлайн</span>${S.tags.map(t=>`<span><i class="lg-dot" style="background:${t.color}"></i>${esc(t.name)}</span>`).join("")}</div></section>${tray}</div>`;
 }
 function sheetDay(d){
   const pl=plannedOn(d), du=dueOn(d), t=today();
@@ -4648,10 +4704,10 @@ function dayViewHTML(d){
     <div class="dvhead"><div><div class="dvdate">${+d.slice(8)}</div><div class="dvwd">${fmtL(d).split(",")[0]}</div></div>
       <div class="dvnums"><span><b>${pl0.length}</b> заплановано</span><span><b>${pl0.length-open.length}</b> виконано</span>${open.length?`<span><b>~${fmtMin(rem)}</b> роботи</span>`:""}</div>
       <div class="row" style="gap:6px"><button class="btn sm" data-act="calDayAdd" data-v="${d}">${ICON.plus}Завдання</button><button class="btn sm" data-act="evNewOn" data-v="${d}">${ICON.plus}Подія</button></div></div>
-    ${inModule(d)?'<span class="ctag mod">модульний тиждень</span>':""}${S.tueDates.includes(d)?`<span class="ctag tue">${esc(S.settings.tueName)}</span>`:""}
+    ${inModule(d)?'<span class="ctag mod">модульний тиждень</span>':""}${S.tueDates.includes(d)?`<span class="ctag tue">Супервізія</span>`:""}
     ${evOn(d).length?`<div class="label" style="margin:4px 0 2px">Події</div><div class="evlist">${evOn(d).map(evRow).join("")}</div><div class="label" style="margin:8px 0 2px">Завдання</div>`:""}
-    <div class="tasklist">${pl0.map(t=>taskRow(t,{course:true})).join("")||`<div class="empty">На цей день нічого не заплановано. Перетягни завдання з панелі праворуч або натисни «Запланувати».</div>`}</div>
-    ${du.length?`<div class="label" style="margin:16px 0 6px">Дедлайни цього дня</div><div class="tasklist">${du.map(t=>taskRow(t,{course:true})).join("")}</div>`:""}
+    <div class="tdrows dvrows">${pl0.map(t=>todayRow(t,true)).join("")||`<div class="empty">На цей день нічого не заплановано. Перетягни завдання з панелі праворуч або натисни «Запланувати».</div>`}</div>
+    ${du.length?`<div class="label" style="margin:16px 0 6px">Дедлайни цього дня</div><div class="tdrows dvrows">${du.map(t=>todayRow(t,true)).join("")}</div>`:""}
   </div>`;
 }
 
@@ -4764,7 +4820,7 @@ document.addEventListener("click",e=>{if(document.getElementById("fabmenu")&&!e.
 document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest("#fabmenu [data-act]")) setTimeout(closeFab,0)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("fabmenu")){closeFab(); const f=document.getElementById("fab"); if(f) f.focus()}});
 
-const LOCUS_BUILD="1.0.33";
+const LOCUS_BUILD="1.0.35";
 
 /* ---------- alive: entrance on view change, ring fill, count-up, completion burst ---------- */
 let aliveKey=null, aliveFirst=true;
@@ -5054,38 +5110,40 @@ function openSubFocus(id){
   setTimeout(()=>{const el=document.querySelector("#subFocus .sf-add input"); const t=S.tasks.find(x=>x.id===id); if(el&&t&&!subsOf(t).length) el.focus()},350);
 }
 function closeSubFocus(){
-  const L=document.getElementById("subFocus"), id=subFocus; subFocus=null; document.documentElement.classList.remove("sf-lock");
-  if(!L) return; if(RMQ.matches){L.remove();return}
+  const L=document.getElementById("subFocus"), id=subFocus; subFocus=null;
+  if(!L||RMQ.matches){if(L) L.remove(); document.documentElement.classList.remove("sf-lock"); document.querySelectorAll(".sf-src").forEach(x=>x.classList.remove("sf-src")); return}
   const row=id&&sfRow(id), sr=L.querySelector(".sf-row"); if(row&&sr) sr.style.setProperty("--fromY",(row.getBoundingClientRect().top-sfTop)+"px");
-  L.classList.add("closing"); setTimeout(()=>L.remove(),380);
+  L.classList.add("closing"); clearTimeout(closeSubFocus.t); closeSubFocus.t=setTimeout(()=>{L.remove(); if(!subFocus){document.documentElement.classList.remove("sf-lock"); document.querySelectorAll(".sf-src").forEach(x=>x.classList.remove("sf-src"))}},420);
 }
 function buildSubFocus(anim){
   const id=subFocus, t=S.tasks.find(x=>x.id===id), row=sfRow(id);
   if(!t||!row||view!==sfView){closeSubFocus();return}
-  let L=document.getElementById("subFocus"); const fresh=!L;
+  let L=document.getElementById("subFocus"); if(L&&L.classList.contains("closing")){L.remove(); L=null} const fresh=!L;
+  document.querySelectorAll(".sf-src").forEach(x=>{if(x!==row) x.classList.remove("sf-src")});
   if(!L){L=document.createElement("div"); L.id="subFocus"; L.className="subfocus"; L.setAttribute("role","dialog"); L.setAttribute("aria-label","Підпункти: "+t.title); document.body.appendChild(L)}
   L.classList.remove("closing");
   const r=row.getBoundingClientRect(), ss=subsOf(t), d=ss.filter(x=>x.done).length, p=ss.length?Math.round(d/ss.length*100):0;
   const top=sfTop+r.height+10, maxH=Math.max(160,innerHeight-top-16), fromY=r.top-sfTop;
   const keep=L.querySelector(".sf-list"), sc=keep?keep.scrollTop:0;
   L.innerHTML=`<div class="sf-dim${fresh&&anim?" in":""}" data-act="sfClose"></div>
-    <div class="sf-row${fresh&&anim?" fly":""}" style="top:${sfTop}px;left:${r.left}px;width:${r.width}px;height:${r.height}px;--fromY:${fromY}px">${row.outerHTML.replace(/ id="[^"]*"/g,"")}</div>
+    <div class="sf-row${fresh&&anim?" fly":""}" data-src="1" style="top:${sfTop}px;left:${r.left}px;width:${r.width}px;height:${r.height}px;--fromY:${fromY}px">${row.outerHTML.replace(/ id="[^"]*"/g,"")}</div>
     <div class="sf-panel${anim?" anim":""}${anim&&Math.abs(fromY)>8?" late":""}" style="top:${top}px;left:${r.left+Math.min(28,r.width*.04)}px;width:${Math.max(240,r.width-Math.min(56,r.width*.08))}px;max-height:${maxH}px">
       <div class="sf-head"><span class="sf-ttl">${ss.length?`${d} з ${ss.length} ${pl(ss.length,"підпункту","підпунктів","підпунктів")}`:"Підпунктів ще немає. Розбий завдання на маленькі кроки"}</span><b class="sf-pct">${p}%</b><i class="sf-bar"><i style="width:${p}%"></i></i></div>
       <div class="sf-list">${ss.map((x,i)=>`<div class="sf-item${x.done?" done":""}" data-s="${x.id}" style="--i:${i};--rot:${((i%3)-1)*4}deg"><button type="button" class="sf-grip" data-s="${x.id}" aria-label="Перемістити «${esc(x.t)}». Стрілки вгору або вниз" title="Тягни, щоб переставити">${GRIP}</button><button type="button" class="sf-check${x.done?" on":""}" data-act="sub" data-id="${t.id}" data-s="${x.id}" aria-label="${x.done?"Зняти позначку":"Виконано"}: ${esc(x.t)}">${x.done?ICON.check:""}</button><span class="sf-t">${esc(x.t)}</span><span class="sf-xp${x.xpGot?" got":""}">+${x.xpGot||SUBXP[x.diff||0]} XP</span><button type="button" class="sf-diff sd${x.diff||0}" data-act="subDiff" data-id="${t.id}" data-s="${x.id}" title="Змінити складність">${x.diff?DIFF[x.diff]:"складність"}</button><button type="button" class="sf-del" data-act="delSub" data-id="${t.id}" data-s="${x.id}" aria-label="Видалити підпункт">${ICON.x}</button></div>`).join("")}</div>
       <form class="sf-add" data-form="sub" data-id="${t.id}" style="--i:${ss.length}"><label class="sr" for="sub-${t.id}">Новий підпункт</label><input class="inp" id="sub-${t.id}" placeholder="Новий підпункт…" maxlength="120" autocomplete="off"><button class="btn sm">Додати</button></form>
     </div>`;
   const nl=L.querySelector(".sf-list"); if(nl&&sc) nl.scrollTop=sc;
+  row.classList.add("sf-src");
 }
 document.addEventListener("click",e=>{
   const fl=document.getElementById("subFocus");
   if(fl&&fl.contains(e.target)){
     const a=e.target.closest("[data-act]"), act=a&&a.dataset.act;
-    if(act&&["editTask","delTask","diff","dpick","trkStart"].includes(act)&&act!=="dpick"&&act!=="trkStart"){closeSubFocus(); return}
+    if(act&&["editTask","delTask","diff","tueDot"].includes(act)){closeSubFocus(); return}
     if(!a&&e.target.closest(".sf-row")&&!e.target.closest("input,label,select,textarea")){closeSubFocus(); e.stopPropagation(); return}
     return}
   if(e.target.closest("button,a,input,label,select,textarea,[data-act],.dh,.tplan,form")) return;
-  const row=e.target.closest("#view .task.cansubs, #view .tdr.cansubs"); if(!row) return;
+  const row=e.target.closest("#view .task.cansubs, #view .tdr.cansubs, #view .sup-n.cansubs"); if(!row) return;
   openSubFocus(row.dataset.tid);
 });
 document.addEventListener("keydown",e=>{if(subFocus&&e.key==="Escape"&&!document.querySelector(".sheet")){closeSubFocus()}});
@@ -5184,9 +5242,10 @@ function ensureSup(){
       if(e.made){S.tueDates=S.tueDates.filter(x=>x!==d); delete S.tue[d]; continue}
       if(!def) continue;
       const done=e.s==="done";
-      S.tasks.push({id:"sup_"+d,sup:d,kind:"task",title:(S.settings.tueName||"Супервізія")+" · "+fmtS(d),courseId:def.id,due:d,plan:"",diff:0,ttype:"task",subs:[],done,doneAt:done?new Date(d+"T18:00:00").getTime():null,xpGot:done?XP.tue:0,createdAt:Date.now()});
+      S.tasks.push({id:"sup_"+d,sup:d,kind:"task",title:"Супервізія",courseId:def.id,due:d,plan:"",diff:0,ttype:"task",subs:[],done,doneAt:done?new Date(d+"T18:00:00").getTime():null,xpGot:done?XP.tue:0,createdAt:Date.now()});
       e.made=true; continue}
     if(!course(t.courseId)&&def) t.courseId=def.id;
+    if(!t.titleSet&&t.title!=="Супервізія") t.title="Супервізія";
     t.due=d; e.made=true; e.s=t.done?"done":"";
   }
 }
@@ -5201,20 +5260,19 @@ function supView(){
     let pre=""; if(!nowPut&&d>=t0){nowPut=true; pre=`<div class="sup-now"><span>сьогодні · ${fmtS(t0)}</span></div>`}
     const ss=t?subsOf(t):[], sd=ss.filter(x=>x.done).length;
     const rel=n===0?"сьогодні":n===1?"завтра":n>0?`через ${n} ${pl(n,"день","дні","днів")}`:st==="miss"?"не позначено":"";
-    return pre+`<div class="sup-n st-${st}${d===next?" nx":""}" data-d="${d}">
+    return pre+`<div class="sup-n st-${st}${d===next?" nx":""}${t&&st!=="off"?" cansubs":""}" data-d="${d}" ${t?`data-tid="${t.id}"`:""}>
       <div class="sup-d"><b>${dt.getDate()}</b><small>${dt.toLocaleDateString("uk-UA",{month:"short"})}</small><span>${dt.toLocaleDateString("uk-UA",{weekday:"short"})}</span></div>
       <button type="button" class="sup-dot" ${t&&st!=="off"?`data-act="supDone" data-d="${d}" aria-label="${st==="done"?"Скасувати виконання":"Позначити виконаною"}"`:`data-act="tueDot" data-d="${d}" aria-label="Відкрити"`}>${st==="done"?ICON.check:st==="off"?"–":""}</button>
       <div class="sup-c">
-        <button type="button" class="sup-main" data-act="tueDot" data-d="${d}"><b>${t?esc(t.title):esc(name)}</b>
-          <small>${st==="off"?"не відбулася":`${c?`<i class="dot" style="background:${CC(c.color)}"></i>${esc(c.name)}`:""}${rel?` · ${rel}`:""}${t&&t.plan&&!t.done?` · готуюсь ${t.plan===t0?"сьогодні":fmtS(t.plan)}`:""}${ss.length?` · ${sd}/${ss.length}`:""}${e.note?" · є нотатка":""}`}</small></button>
+        <div class="sup-main"${!t||st==="off"?` data-act="tueDot" data-d="${d}" role="button" tabindex="0"`:""}><b>${t?esc(t.title):esc(name)}</b>
+          <small>${st==="off"?"не відбулася":`${c?`<i class="dot" style="background:${CC(c.color)}"></i>${esc(c.name)}`:""}${rel?` · ${rel}`:""}${t&&t.plan&&!t.done?` · готуюсь ${t.plan===t0?"сьогодні":fmtS(t.plan)}`:""}${ss.length?` · ${sd}/${ss.length}`:""}${e.note?" · є нотатка":""}`}</small></div>
         ${t&&ss.length&&st!=="off"?subBar(t,true):""}
       </div>
-      ${t&&st!=="done"&&st!=="off"?startBtn("task",t):""}
+      <div class="sup-tools">${t&&st!=="done"&&st!=="off"?startBtn("task",t):""}<button type="button" class="mini-btn" data-act="tueDot" data-d="${d}" aria-label="Редагувати супервізію" title="Редагувати">${ICON.edit}</button></div>
     </div>`}).join("")+(nowPut?"":`<div class="sup-now"><span>сьогодні · ${fmtS(t0)}</span></div>`);
-  return `<div class="pagehead glass suphead"><h1>${esc(name)}</h1><span class="muted" style="font-size:.88rem">виконано <b>${doneN}</b> з ${past.length+ (next&&next>t0?0:0)}${next?` · наступна ${next===t0?"сьогодні":fmtS(next)}`:""}</span></div>
+  return `<div class="pagehead glass suphead"><h1>${esc(name)}</h1></div>
     <div class="supbar card glass">
       <div class="supadd"><span class="tq-sec">Нова дата</span>${dateField("sup-new","","Обрати дату")}<button type="button" class="btn sm primary" data-act="supAdd">${ICON.plus}Додати</button></div>
-      ${cs.length?`<label class="supdef"><span class="tq-sec">Курс за замовчуванням</span><select class="inp sm" data-supcourse="1">${cs.map(c=>`<option value="${c.id}" ${c.id===defc?"selected":""}>${esc(c.name)}</option>`).join("")}</select></label>`:""}
     </div>
     ${dates.length?`<div class="sup-tl">${nodes}</div>`:`<div class="card glass empty" style="padding:24px">Додай першу дату супервізії вище. Кожна стане завданням: можна запланувати підготовку, додати підпункти й позначити виконаною.</div>`}`;
 }
@@ -6064,7 +6122,7 @@ function sheetTue(d){
   ensureSup(); const t=supTask(d), e=S.tue[d]||{}, n=diffDays(d,today()), off=e.s==="off", cs=activeCourses(), t0=today();
   const rel=n===0?"сьогодні":n===1?"завтра":n>0?`через ${n} ${pl(n,"день","дні","днів")}`:`${-n} ${pl(-n,"день","дні","днів")} тому`;
   openSheet(`<div class="supsheet tqsheet" data-mod="" data-d="${d}">
-    <div class="tq-top"><span class="tq-kicker">${esc(S.settings.tueName)}</span><button type="button" class="tq-close" data-act="closeSheet" aria-label="Закрити">×</button></div>
+    <div class="tq-top"><span class="tq-kicker">Супервізія</span><button type="button" class="tq-close" data-act="closeSheet" aria-label="Закрити">×</button></div>
     <div class="sup-when"><b>${fmtL(d)}</b><span>${rel}</span></div>
     ${off||!t?`<div class="sup-off"><p>${off?"Позначено, що ця супервізія не відбулася.":"Спершу додай курс, щоб супервізія стала завданням."}</p>${off?`<button type="button" class="btn" data-act="tueSet" data-d="${d}" data-s="off">Повернути супервізію</button>`:""}</div>
       <div class="tq-foot"><button type="button" class="btn sm danger" data-act="tueRemove" data-d="${d}">Прибрати дату</button><button type="button" class="btn ghost" data-act="closeSheet">Закрити</button></div>`
@@ -6266,9 +6324,10 @@ document.addEventListener("click",e=>{
     case "nav": view=b.dataset.v; openCourse=null; libZoom=null; showDone=false; try{history.replaceState(null,"","#"+view)}catch(_){} render(); window.scrollTo(0,0); break;
     case "settings": sheetSettings(); break;
     case "locoPet": lcOpen(2); break;
+    case "trayToggle": trayOpen=!trayOpen; render(); break;
     case "supDone": {const d=b.dataset.d, inSheet=!!b.closest(".supsheet"); setTue(d,"done"); if(inSheet) sheetTue(d); break}
     case "supAdd": {const v=(document.getElementById("sup-new")||{}).value; if(!v){toast("Обери дату");break} if(!S.tueDates.includes(v)) S.tueDates.push(v); if(S.tue[v]&&S.tue[v].s==="off") S.tue[v].s=""; commit(); toast(`Супервізія: ${fmtL(v)}`); break}
-    case "supSave": {const d=b.dataset.d, t=supTask(d), e=S.tue[d]||(S.tue[d]={s:"",note:""}); if(t){const ti=(document.getElementById("sup-title")||{}).value; if(ti&&ti.trim()) t.title=ti.trim(); const c=document.querySelector('input[name="sup-course"]:checked'); if(c) t.courseId=c.value; t.plan=(document.getElementById("t-plan")||{}).value||""} e.note=(document.getElementById("tue-note")||{}).value||""; closeSheet(); commit(); toast("Збережено"); break}
+    case "supSave": {const d=b.dataset.d, t=supTask(d), e=S.tue[d]||(S.tue[d]={s:"",note:""}); if(t){const ti=(document.getElementById("sup-title")||{}).value; if(ti&&ti.trim()&&ti.trim()!==t.title){t.title=ti.trim(); t.titleSet=true} const c=document.querySelector('input[name="sup-course"]:checked'); if(c) t.courseId=c.value; t.plan=(document.getElementById("t-plan")||{}).value||""} e.note=(document.getElementById("tue-note")||{}).value||""; closeSheet(); commit(); toast("Збережено"); break}
     case "reqToggle": {const bk=S.books.find(x=>x.id===id); if(bk){bk.req=!bk.req; commit(); if(document.querySelector(".sheet .reqtog")) sheetBook(bk); toast(bk.req?`«${bk.title}» обов'язкова до модуля`:`«${bk.title}» більше не обов'язкова`)} break}
     case "tqDate": {const inp=document.getElementById(b.dataset.f); if(inp){inp.value=b.dataset.v; tqUpdate()} break}
     case "helpMenu": helpMenu(); break;
@@ -6299,7 +6358,7 @@ document.addEventListener("click",e=>{
     case "done": completeTask(id,b.dataset.q); break;
     case "undone": uncompleteTask(id); break;
     case "delTask": snap(); S.tasks=S.tasks.filter(t=>t.id!==id); commit(); undoToast("Завдання видалено"); break;
-    case "editTask": taskSheet(S.tasks.find(t=>t.id===id)); break;
+    case "editTask": {const tk=S.tasks.find(t=>t.id===id); if(tk&&tk.sup) sheetTue(tk.sup); else taskSheet(tk); break}
     case "addTask": taskSheet(null,b.dataset.course); break;
     case "toggleDone": showDone=!showDone; render(); break;
     case "subs": subFocus===id?closeSubFocus():openSubFocus(id); break;
