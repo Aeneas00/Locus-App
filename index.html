@@ -18,7 +18,7 @@ const DATA_COLUMN = "content";               // колонка з даними (
 <title>Locus</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Philosopher:ital,wght@0,400;0,700;1,700&family=Rubik:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600;1,9..144,800&family=Space+Mono:wght@400;700&family=Philosopher:ital,wght@0,400;0,700;1,700&family=Rubik:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
 <style>
 /* Layout: a window onto a drawn solarpunk horizon (fixed canvas) with frosted-glass panes over it.
    Home = reorderable widget grid (module ring, course rings, Tuesday line, tasks, reading, focus). Library = rooms → shelves → spines. */
@@ -1816,6 +1816,163 @@ input[type="color"]::-webkit-color-swatch-wrapper{padding:3px}input[type="color"
   .tdrm{grid-column:3/4;grid-row:2}.tdrd{grid-column:3/5;grid-row:3;text-align:left}
   .tdr .check{grid-row:1/3}.tdr .dmark{grid-row:1/3}.tdr .mini-btn{grid-column:4;grid-row:1}}
 
+/* ===================== SOLARPUNK: course cards + header blend into the glass ===================== */
+:root[data-skin="solar"] .frame .ccard2.glass,:root[data-skin="solar"] .frame .coursehead.glass{
+  background-color:color-mix(in srgb,var(--c) 36%,var(--glass));background-image:linear-gradient(135deg,rgba(255,255,255,.35),transparent 55%);color:var(--ink);
+  border:1px solid color-mix(in srgb,var(--c) 40%,var(--glass-edge));box-shadow:inset 0 1px 0 var(--glass-hi),0 14px 34px -12px var(--shadow-c)}
+:root[data-skin="solar"][data-tone="dark"] .frame .ccard2.glass,:root[data-skin="solar"][data-tone="dark"] .frame .coursehead.glass{background-color:color-mix(in srgb,var(--c) 30%,var(--glass));background-image:linear-gradient(135deg,rgba(210,255,235,.08),transparent 55%)}
+:root[data-skin="solar"] .ccard2 .cname,:root[data-skin="solar"] .cbig b,:root[data-skin="solar"] .cfoot .pct,:root[data-skin="solar"] .coursehead h1{color:var(--ink)}
+:root[data-skin="solar"] .cbig small,:root[data-skin="solar"] .cfoot,:root[data-skin="solar"] .coursehead .info .muted{color:var(--ink-2)!important}
+:root[data-skin="solar"] .cbar{background:var(--track)}
+:root[data-skin="solar"] .cbar i{background:var(--c);box-shadow:none}
+:root[data-skin="solar"] .ccard2 .chip,:root[data-skin="solar"] .cards2 .dh-corner{background:var(--glass-2);color:var(--ink)}
+:root[data-skin="solar"] .coursehead .mini svg circle:first-child{stroke:var(--track)}
+:root[data-skin="solar"] .coursehead .mini svg circle:last-child{stroke:var(--c)}
+:root[data-skin="solar"] .coursehead .mini b{color:var(--ink)}
+:root[data-skin="solar"] .coursehead .iconbtn,:root[data-skin="solar"] .coursehead .btn,:root[data-skin="solar"] .coursehead .mini-btn{color:var(--ink);border-color:var(--line)}
+:root[data-skin="solar"] .coursehead::after{border-color:color-mix(in srgb,var(--c) 18%,transparent)}
+:root[data-skin="solar"] .cprop{filter:drop-shadow(0 8px 8px rgba(24,70,58,.22))}
+
+/* ===================== RETRO 80s: maximalist windows on grid paper ===================== */
+.retrodeco{display:none}
+:root[data-skin="retro"]{--lamp:0;
+  --f-display:"Fraunces","DM Serif Display",Georgia,serif; --f-mono:"Space Mono",ui-monospace,monospace;
+  --rx-ink:#2B1B2E; --rx-pink:#FFB3C7; --rx-red:#D9483B; --rx-butter:#FFD86B; --rx-sky:#A7CBE0; --rx-lav:#C9B8F2; --rx-mint:#9EDDBE; --rx-cream:#FFF6E8;
+  --bg:#E9DDFB; --frame:#FBF1E1; --rail:#FFF6E8; --hero:#FFB3C7; --card:#FFF9EF;
+  --glass:#FFF9EF; --glass-2:#F6E8F0; --glass-strong:#FFF9EF; --glass-edge:#2B1B2E; --glass-hi:transparent;
+  --ink:#2B1B2E; --ink-2:#6E5770; --line:rgba(43,27,46,.16);
+  --accent:#D9483B; --accent-ink:#FFF6E8; --accent-soft:rgba(217,72,59,.14);
+  --sun:#FFC93C; --sun-2:#FFE08A; --sun-ink:#2B1B2E; --xp:#B5501F; --xp-soft:rgba(255,201,60,.3);
+  --good:#2F8F5B; --good-soft:rgba(47,143,91,.16); --warn:#D9483B; --warn-soft:rgba(217,72,59,.14);
+  --track:rgba(43,27,46,.12); --shadow-c:rgba(43,27,46,.3); --toast:#2B1B2E; --toast-ink:#FFF6E8;
+  --navact:#D9483B; --navact-ink:#FFF6E8; --hard:#2B1B2E; --wood:#7A3A2E; color-scheme:light}
+:root[data-skin="retro"][data-tone="dark"]{
+  --bg:#1E1530; --frame:#2A1F40; --rail:#33264D; --hero:#4A2B52; --card:#33264D;
+  --glass:#33264D; --glass-2:#40305C; --glass-strong:#33264D; --glass-edge:#F6D9FF;
+  --ink:#FFF0FA; --ink-2:#CDB7DA; --line:rgba(246,217,255,.18);
+  --accent:#FF6F91; --accent-ink:#1E1530; --accent-soft:rgba(255,111,145,.18);
+  --sun:#FFD86B; --sun-2:#FFE9A8; --xp:#FFD86B; --xp-soft:rgba(255,216,107,.18);
+  --good:#7FE0B0; --good-soft:rgba(127,224,176,.16); --warn:#FF7A6B; --warn-soft:rgba(255,122,107,.16);
+  --track:rgba(246,217,255,.14); --toast:#FFF0FA; --toast-ink:#1E1530; --navact:#FF6F91; --navact-ink:#1E1530; --hard:#FF6F91; color-scheme:dark}
+:root[data-skin="retro"] body{background-color:var(--bg);background-image:linear-gradient(rgba(43,27,46,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(43,27,46,.07) 1px,transparent 1px);background-size:28px 28px}
+:root[data-skin="retro"][data-tone="dark"] body{background-image:linear-gradient(rgba(246,217,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(246,217,255,.07) 1px,transparent 1px)}
+:root[data-skin="retro"] .wallshade,:root[data-skin="retro"] .lampfix,:root[data-skin="retro"] .lamphalo,:root[data-skin="retro"] .hide-solar,:root[data-skin="retro"] .outdecor,:root[data-skin="retro"] .heroscene{display:none!important}
+:root[data-skin="retro"] .retrodeco{display:block;position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.rs{position:absolute;filter:drop-shadow(4px 4px 0 rgba(43,27,46,.9))}
+.rs.s1{width:58px;left:1.2%;top:9%;transform:rotate(-8deg)}.rs.s2{width:96px;right:-18px;top:30%}.rs.s3{width:74px;left:-12px;top:52%;transform:rotate(-14deg)}
+.rs.s4{width:44px;right:3%;top:5%}.rs.s5{width:120px;left:2%;bottom:6%}.rs.s6{width:96px;right:1%;bottom:12%;transform:rotate(12deg)}
+.rs.s7{width:70px;left:46%;top:1%;transform:rotate(6deg)}.rs.s8{width:36px;left:30%;bottom:3%}.rs.s9{width:60px;right:22%;bottom:-14px;transform:rotate(10deg)}
+:root[data-skin="retro"] .frame{background:var(--frame);border:2.5px solid var(--hard);box-shadow:10px 10px 0 var(--hard)}
+:root[data-skin="retro"] h1,:root[data-skin="retro"] h2,:root[data-skin="retro"] h3{font-family:var(--f-display);font-style:italic;font-weight:800;letter-spacing:-.01em}
+:root[data-skin="retro"] .hello h1{color:var(--ink);font-style:normal;font-weight:600}
+:root[data-skin="retro"] .hello h1 b{color:var(--accent);font-style:italic;font-weight:800}
+:root[data-skin="retro"] .label,:root[data-skin="retro"] .slabel,:root[data-skin="retro"] .tdt small,:root[data-skin="retro"] .hchip{font-family:var(--f-mono);letter-spacing:.04em}
+:root[data-skin="retro"] .logo{background:var(--rx-red);color:var(--rx-cream);border:2px solid var(--hard);box-shadow:3px 3px 0 var(--hard);font-style:italic}
+/* every content card becomes a little retro window: thick outline, hard shadow, coloured title bar with three dots */
+:root[data-skin="retro"] .glass:not(.scenemenu):not(.bottomnav):not(.coursehead):not(.ccard2):not(.hero),:root[data-skin="retro"] .shelfcard{
+  --bar:var(--rx-pink);background-color:var(--card)!important;border:2px solid var(--hard)!important;border-radius:18px;
+  background-image:radial-gradient(circle at calc(100% - 18px) 12px,#FF6F91 0 4px,var(--hard) 4.5px 5.5px,transparent 6px),radial-gradient(circle at calc(100% - 34px) 12px,#FFD86B 0 4px,var(--hard) 4.5px 5.5px,transparent 6px),radial-gradient(circle at calc(100% - 50px) 12px,#9EDDBE 0 4px,var(--hard) 4.5px 5.5px,transparent 6px),linear-gradient(var(--bar) 0 24px,var(--hard) 24px 26px,transparent 26px)!important;
+  box-shadow:5px 5px 0 var(--hard)!important;padding-top:38px!important;-webkit-backdrop-filter:none;backdrop-filter:none}
+:root[data-skin="retro"] .homegrid > .widget:nth-child(4n+2),:root[data-skin="retro"] .sgrid > .sb:nth-child(4n+2),:root[data-skin="retro"] .shelfgrid > :nth-child(4n+2){--bar:var(--rx-butter)}
+:root[data-skin="retro"] .homegrid > .widget:nth-child(4n+3),:root[data-skin="retro"] .sgrid > .sb:nth-child(4n+3),:root[data-skin="retro"] .shelfgrid > :nth-child(4n+3){--bar:var(--rx-sky)}
+:root[data-skin="retro"] .homegrid > .widget:nth-child(4n+4),:root[data-skin="retro"] .sgrid > .sb:nth-child(4n+4),:root[data-skin="retro"] .shelfgrid > :nth-child(4n+4){--bar:var(--rx-lav)}
+:root[data-skin="retro"] .pagehead.glass{--bar:var(--rx-butter)}
+:root[data-skin="retro"] .tdhero.glass{--bar:var(--rx-sky)}
+:root[data-skin="retro"] .calmain.glass{--bar:var(--rx-lav)}
+:root[data-skin="retro"] .taskcard.glass{--bar:color-mix(in srgb,var(--c) 70%,#fff)}
+:root[data-skin="retro"] .s-tiles{padding:0!important;background:none!important;border:0!important;box-shadow:none!important}
+:root[data-skin="retro"] .stile,:root[data-skin="retro"] .upcard,:root[data-skin="retro"] .rail-l,:root[data-skin="retro"] .rblock,:root[data-skin="retro"] .rmini,:root[data-skin="retro"] .tdt,:root[data-skin="retro"] .kday,:root[data-skin="retro"] .tdtomorrow,:root[data-skin="retro"] .ppace > div,:root[data-skin="retro"] .trow2,:root[data-skin="retro"] .ubar{
+  background:var(--card)!important;background-image:none!important;border:2px solid var(--hard)!important;box-shadow:3px 3px 0 var(--hard)!important}
+:root[data-skin="retro"] .tdtomorrow{opacity:.8;border-style:dashed!important}
+:root[data-skin="retro"] .kday.today{background:var(--rx-butter)!important}
+:root[data-skin="retro"][data-tone="dark"] .kday.today{background:#5A4520!important}
+:root[data-skin="retro"] .kday.out{opacity:.5}
+/* hero = big pink block like the shop banner */
+:root[data-skin="retro"] .hero{background:var(--rx-pink)!important;background-image:none!important;border:2.5px solid var(--hard);box-shadow:7px 7px 0 var(--hard)!important}
+:root[data-skin="retro"][data-tone="dark"] .hero{background:#5B2E57!important}
+:root[data-skin="retro"] .hero::after{content:none}
+:root[data-skin="retro"] .herobig{grid-template-columns:minmax(0,1fr) minmax(280px,420px);min-height:0}
+:root[data-skin="retro"] .htitle{font-family:var(--f-display);font-style:italic;font-weight:800;font-size:3rem;color:var(--rx-red)}
+:root[data-skin="retro"][data-tone="dark"] .htitle{color:#FFB3C7}
+:root[data-skin="retro"] .hchip{background:var(--rx-cream);border:2px solid var(--hard);color:var(--rx-ink)}
+/* buttons: chunky pills with hard shadow */
+:root[data-skin="retro"] .btn{border:2px solid var(--hard);color:var(--ink);background:var(--card);box-shadow:2px 2px 0 var(--hard)}
+:root[data-skin="retro"] .btn:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--hard);background:var(--card)}
+:root[data-skin="retro"] .btn.primary,:root[data-skin="retro"] .sheet .btn.primary,:root[data-skin="retro"] .gbtns .btn.primary{background:var(--rx-red);color:var(--rx-cream);border-color:var(--hard)}
+:root[data-skin="retro"] .btn.sun,:root[data-skin="retro"] .focusbtn{background:var(--rx-butter);color:var(--rx-ink);border:2px solid var(--hard);box-shadow:2px 2px 0 var(--hard);background-image:none}
+:root[data-skin="retro"] .iconbtn,:root[data-skin="retro"] .topbar .iconbtn,:root[data-skin="retro"] .topbar .lvl{border:2px solid var(--hard);background:var(--card);box-shadow:2px 2px 0 var(--hard)}
+:root[data-skin="retro"] .gsearch input{background:var(--card);border:2px solid var(--hard);box-shadow:3px 3px 0 var(--hard)}
+:root[data-skin="retro"] .vtabs .tab[aria-current="page"],:root[data-skin="retro"] .tab[aria-current="page"],:root[data-skin="retro"] .seg button[aria-pressed="true"],:root[data-skin="retro"] .setnav button[aria-current="page"]{background:var(--rx-red);color:var(--rx-cream);box-shadow:2px 2px 0 var(--hard)}
+:root[data-skin="retro"] .seg{border:2px solid var(--hard);background:var(--card)}
+:root[data-skin="retro"] .chip{border:1.5px solid var(--hard);background:var(--card)}
+:root[data-skin="retro"] .fab{background:var(--rx-butter);color:var(--rx-ink);border:2.5px solid var(--hard);box-shadow:4px 4px 0 var(--hard)}
+:root[data-skin="retro"] .savebtn{background:var(--rx-red);color:var(--rx-cream);border:2px solid var(--hard);box-shadow:3px 3px 0 var(--hard)}
+:root[data-skin="retro"] .fabmenu,:root[data-skin="retro"] .sheet,:root[data-skin="retro"] .dpop,:root[data-skin="retro"] .fmenu,:root[data-skin="retro"] .scenemenu,:root[data-skin="retro"] .gres{background:var(--card);border:2.5px solid var(--hard);box-shadow:6px 6px 0 var(--hard)}
+:root[data-skin="retro"] .scrim{background:rgba(43,27,46,.35)}
+:root[data-skin="retro"] .fpill{border:2px solid var(--hard);box-shadow:4px 4px 0 var(--hard)}
+:root[data-skin="retro"] .toast{border:2px solid var(--hard);box-shadow:4px 4px 0 var(--hard)}
+/* course cards: solid colour blocks with outline + sticker */
+:root[data-skin="retro"] .frame .ccard2.glass,:root[data-skin="retro"] .frame .coursehead.glass{background-color:var(--c);background-image:radial-gradient(circle at calc(100% - 18px) 12px,#FF6F91 0 4px,var(--hard) 4.5px 5.5px,transparent 6px),radial-gradient(circle at calc(100% - 34px) 12px,#FFD86B 0 4px,var(--hard) 4.5px 5.5px,transparent 6px),linear-gradient(var(--rx-cream) 0 24px,var(--hard) 24px 26px,transparent 26px);border:2.5px solid var(--hard);box-shadow:6px 6px 0 var(--hard);padding-top:40px}
+:root[data-skin="retro"] .cname,:root[data-skin="retro"] .coursehead h1{font-family:var(--f-display);font-style:italic;font-weight:800}
+:root[data-skin="retro"] .cards2 .dh-corner{top:30px}
+:root[data-skin="retro"] .cbig b{font-family:var(--f-display);font-style:italic}
+:root[data-skin="retro"] .cbar{border:2px solid var(--hard);background:rgba(255,246,232,.35);height:14px}
+:root[data-skin="retro"] .cbar i{background:var(--rx-butter);box-shadow:none}
+:root[data-skin="retro"] .cghost{border:2.5px dashed var(--hard)}
+:root[data-skin="retro"] .ccard2 .chip{background:rgba(43,27,46,.28);color:#FFF8EC;border:1.5px solid rgba(43,27,46,.6)}
+:root[data-skin="retro"] .coursehead .iconbtn,:root[data-skin="retro"] .coursehead .btn{background:rgba(43,27,46,.2);color:#FFF8EC;box-shadow:2px 2px 0 var(--hard)}
+/* tasks: urgency stays readable on cream */
+:root[data-skin="retro"] .task.urg-y,:root[data-skin="retro"] .tdr.urg-y{background:#FFE8A3!important;box-shadow:inset 0 0 0 2px var(--hard)!important}
+:root[data-skin="retro"] .task.urg-r,:root[data-skin="retro"] .tdr.urg-r{background:#FFC2B8!important;box-shadow:inset 0 0 0 2px var(--hard)!important}
+:root[data-skin="retro"][data-tone="dark"] .task.urg-y,:root[data-skin="retro"][data-tone="dark"] .tdr.urg-y{background:#5A4520!important}
+:root[data-skin="retro"][data-tone="dark"] .task.urg-r,:root[data-skin="retro"][data-tone="dark"] .tdr.urg-r{background:#5E2630!important}
+:root[data-skin="retro"] .dmark{box-shadow:0 0 0 1.5px var(--hard)}
+:root[data-skin="retro"] .evchip,:root[data-skin="retro"] .evrow{border:1.5px solid var(--hard);box-shadow:2px 2px 0 var(--hard)}
+:root[data-skin="retro"] .ring-task{stroke:var(--rx-red)}
+:root[data-skin="retro"] .tdbar i{background:repeating-linear-gradient(45deg,var(--rx-red) 0 8px,#E8665A 8px 16px)}
+:root[data-skin="retro"] .tdbar,:root[data-skin="retro"] .bar{border:1.5px solid var(--hard)}
+@media (max-width:760px){:root[data-skin="retro"] .herobig{grid-template-columns:minmax(0,1fr)}:root[data-skin="retro"] .frame{box-shadow:5px 5px 0 var(--hard)}:root[data-skin="retro"] .htitle{font-size:2.2rem}.rs{opacity:.5}}
+
+/* ===== Today v3: every task is its own small card ===== */
+.tdpanel{padding:0;background:none;border:0;box-shadow:none;display:flex;flex-direction:column;gap:6px}
+.tdg + .tdg{border-top:0;margin-top:10px}
+.tdh{padding:6px 4px 10px}
+.tdg.col .tdh{padding-bottom:6px}
+.tdpips{display:flex;gap:4px;align-items:center}
+.tdpips i{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--ink-2);opacity:.7}
+.tdpips i.on{background:var(--accent);border-color:var(--accent);opacity:1}
+.tdrows{gap:8px;padding:0 0 4px}
+.tdr{background:var(--card);border:1px solid var(--glass-edge);border-radius:16px;padding:11px 14px;box-shadow:0 8px 18px -12px var(--shadow-c),0 1px 0 rgba(255,255,255,.25) inset;border-bottom:1px solid var(--glass-edge);transition:transform .15s,box-shadow .15s}
+.tdr:last-child{border-bottom:1px solid var(--glass-edge)}
+.tdr:hover{transform:translateY(-1px);box-shadow:0 12px 22px -12px var(--shadow-c)}
+.tdr.done{background:color-mix(in srgb,var(--card) 55%,transparent);box-shadow:none;opacity:.6}
+.tdr.urg-y,.tdr.urg-r{margin:0}
+:root[data-skin="solar"] .tdr{background:var(--glass);-webkit-backdrop-filter:blur(14px) saturate(150%);backdrop-filter:blur(14px) saturate(150%);box-shadow:inset 0 1px 0 var(--glass-hi),0 10px 24px -14px var(--shadow-c)}
+:root[data-skin="retro"] .tdr{border:2px solid var(--hard);box-shadow:3px 3px 0 var(--hard);border-radius:14px}
+:root[data-skin="retro"] .tdr.done{box-shadow:none;border-style:dashed}
+:root[data-skin="retro"] .tdpips i{border-color:var(--hard)}
+:root[data-skin="retro"] .tdpips i.on{background:var(--rx-red)}
+@media (max-width:760px){.tdpips{display:none}.tdr{padding:10px 12px}}
+
+.setfoot{margin-top:auto;display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:.74rem;padding-top:10px}
+.buildno{font-family:var(--f-mono);font-size:.68rem;color:var(--ink-2);opacity:.75;white-space:nowrap}
+/* ===== Today task cards: own colour, slimmer ===== */
+:root{--tdc:#E7EEDD;--tdc-edge:#C6D3B6}
+:root[data-tone="dark"]{--tdc:#2E3A2D;--tdc-edge:#46573F}
+:root[data-skin="solar"]{--tdc:rgba(220,247,236,.84);--tdc-edge:rgba(30,134,86,.35)}
+:root[data-skin="solar"][data-tone="dark"]{--tdc:rgba(26,72,58,.66);--tdc-edge:rgba(95,211,154,.35)}
+:root[data-skin="retro"]{--tdc:#D6E9F5;--tdc-edge:#2B1B2E}
+:root[data-skin="retro"][data-tone="dark"]{--tdc:#2C3D55;--tdc-edge:#FF6F91}
+.tdr{background:var(--tdc);border-color:var(--tdc-edge);padding:7px 12px;border-radius:13px;gap:9px}
+:root[data-skin="solar"] .tdr{background:var(--tdc)}
+.tdrows{gap:6px}
+.tdr .check{width:20px;height:20px}
+.tdr .dmark{height:15px}
+.tdrt{font-size:.95rem}
+.tdr .mini-btn{width:26px;height:26px}
+.tdr.done{background:color-mix(in srgb,var(--tdc) 45%,transparent)}
+@media (max-width:760px){.tdr{padding:7px 10px}}
+
 .savebtn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border:0;border-radius:12px;background:linear-gradient(180deg,#F3C766,#D99A2B);color:#241606;font:inherit;font-weight:800;font-size:.95rem;cursor:pointer;box-shadow:0 8px 18px -8px rgba(217,154,43,.8),inset 0 1px 0 rgba(255,255,255,.45);transition:transform .15s,filter .15s}
 .savebtn svg{width:18px;height:18px}
 .savebtn:hover{filter:brightness(1.07);transform:translateY(-1px)}
@@ -2044,6 +2201,17 @@ setup();
 })();
 </script>
 
+<div class="retrodeco" aria-hidden="true">
+<svg class="rs s1" viewBox="0 0 100 100"><path d="M50 0 C55 38 62 45 100 50 C62 55 55 62 50 100 C45 62 38 55 0 50 C38 45 45 38 50 0Z" fill="#C9B8F2" stroke="#2B1B2E" stroke-width="3"/></svg>
+<svg class="rs s2" viewBox="0 0 120 120"><path d="M60 4l9 22 21-12-3 24 24 2-17 17 17 17-24 2 3 24-21-12-9 22-9-22-21 12 3-24-24-2 17-17-17-17 24-2-3-24 21 12z" fill="#A7CBE0" stroke="#2B1B2E" stroke-width="3"/></svg>
+<svg class="rs s3" viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="#FFD86B" stroke="#2B1B2E" stroke-width="4"/><ellipse cx="36" cy="42" rx="5" ry="8" fill="#2B1B2E"/><ellipse cx="64" cy="42" rx="5" ry="8" fill="#2B1B2E"/><path d="M28 60 Q50 82 72 60" fill="none" stroke="#2B1B2E" stroke-width="5" stroke-linecap="round"/></svg>
+<svg class="rs s4" viewBox="0 0 100 100"><path d="M50 0 C55 38 62 45 100 50 C62 55 55 62 50 100 C45 62 38 55 0 50 C38 45 45 38 50 0Z" fill="#FF8FAB" stroke="#2B1B2E" stroke-width="3"/></svg>
+<svg class="rs s5" viewBox="0 0 140 90"><path d="M30 80 a24 24 0 0 1 4-48 a32 32 0 0 1 60-6 a26 26 0 0 1 16 54z" fill="#FFF" stroke="#2B1B2E" stroke-width="3"/></svg>
+<svg class="rs s6" viewBox="0 0 120 120"><circle cx="60" cy="60" r="30" fill="#FFB3C7" stroke="#2B1B2E" stroke-width="3"/><ellipse cx="60" cy="60" rx="56" ry="14" fill="none" stroke="#2B1B2E" stroke-width="3" transform="rotate(-18 60 60)"/></svg>
+<svg class="rs s7" viewBox="0 0 120 84"><rect x="4" y="4" width="112" height="76" rx="6" fill="#FFB3C7" stroke="#2B1B2E" stroke-width="3"/><path d="M4 8 L60 48 L116 8" fill="none" stroke="#2B1B2E" stroke-width="3"/></svg>
+<svg class="rs s8" viewBox="0 0 100 100"><path d="M50 0 C55 38 62 45 100 50 C62 55 55 62 50 100 C45 62 38 55 0 50 C38 45 45 38 50 0Z" fill="#FFD86B" stroke="#2B1B2E" stroke-width="3"/></svg>
+<svg class="rs s9" viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="#C9B8F2" stroke="#2B1B2E" stroke-width="4"/><circle cx="36" cy="42" r="6" fill="#2B1B2E"/><path d="M58 42 h14" stroke="#2B1B2E" stroke-width="5" stroke-linecap="round"/><path d="M30 62 Q50 78 70 62" fill="none" stroke="#2B1B2E" stroke-width="5" stroke-linecap="round"/></svg>
+</div>
 <div class="wallshade" aria-hidden="true"></div>
 <div class="lampfix" id="lampFix"><svg viewBox="0 0 240 130" aria-hidden="true"><defs>
 <linearGradient id="domeG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#22362A"/><stop offset=".38" stop-color="#3E5C46"/><stop offset=".55" stop-color="#2F4636"/><stop offset="1" stop-color="#18261D"/></linearGradient>
@@ -2382,7 +2550,7 @@ function applyLook(){
   root.dataset.scene=scene; root.dataset.tone=tone;
   root.dataset.frost=S.settings.frost||"mid";
   root.dataset.lamp=S.settings.lampOff?"off":"on";
-  root.dataset.skin=S.settings.skin==="solar"?"solar":"loft";
+  root.dataset.skin=["loft","solar","retro"].includes(S.settings.skin)?S.settings.skin:"loft";
   light();
 }
 new MutationObserver(m=>{if(m.some(x=>x.attributeName==="data-theme")&&S.settings.scene==="theme")applyLook()}).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
@@ -3170,8 +3338,8 @@ function todayView(){
   if(grp==="course") groups=activeCourses().map(c=>({key:c.id,name:c.name,color:c.color,items:list.filter(x=>x.courseId===c.id)})).filter(g=>g.items.length);
   else groups=[3,2,1,0].map(k=>({key:"d"+k,name:DIFFN[k],dk:k,items:list.filter(x=>(x.diff||0)===k)})).filter(g=>g.items.length);
   const ord=l=>l.slice().sort((a,b)=>(a.done-b.done)||((b.diff||0)-(a.diff||0)));
-  const body=list.length?`<section class="tdpanel glass">${groups.map(g=>{const o=g.items.filter(x=>!x.done), col=tdCollapsed.has(g.key);return `<div class="tdg${col?" col":""}">
-      <button type="button" class="tdh" data-act="tdToggle" data-k="${g.key}" aria-expanded="${!col}"><svg class="tdchev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg><i class="${g.color?"dot":"dmark d"+g.dk}" ${g.color?`style="background:${g.color}"`:""}></i><h3>${esc(g.name)}</h3><span class="tdgc">${g.items.length-o.length}/${g.items.length}</span>${o.length?`<span class="tdgm">~${fmtMin(o.reduce((s,x)=>s+remMinsOf(x),0))}</span>`:'<span class="tdgm ok">готово</span>'}</button>
+  const body=list.length?`<section class="tdpanel">${groups.map(g=>{const o=g.items.filter(x=>!x.done), col=tdCollapsed.has(g.key);return `<div class="tdg${col?" col":""}">
+      <button type="button" class="tdh" data-act="tdToggle" data-k="${g.key}" aria-expanded="${!col}"><svg class="tdchev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg><i class="${g.color?"dot":"dmark d"+g.dk}" ${g.color?`style="background:${g.color}"`:""}></i><h3>${esc(g.name)}</h3><span class="tdgc">${g.items.length-o.length}/${g.items.length}</span><span class="tdpips" aria-hidden="true">${ord(g.items).map(x=>`<i class="${x.done?"on":""}"></i>`).join("")}</span>${o.length?`<span class="tdgm">~${fmtMin(o.reduce((s,x)=>s+remMinsOf(x),0))}</span>`:'<span class="tdgm ok">готово</span>'}</button>
       ${col?"":`<div class="tdrows">${ord(g.items).map(x=>todayRow(x,grp==="diff")).join("")}</div>`}</div>`}).join("")}</section>`
     :`<section class="tdempty glass"><h3>Що зробити сьогодні?</h3><p>Обери кілька завдань або перетягни їх сюди із «Завтра».</p>
        <div class="tdsug">${openTasksAll().filter(x=>!x.plan||x.plan>tm).sort((a,b)=>critScore(b)-critScore(a)).slice(0,4).map(x=>{const c=course(x.courseId);return `<div class="tdsr"><i class="dot" style="background:${c.color}"></i><span>${esc(x.title)}</span><small>${esc(c.name)}</small><button class="btn sm" data-act="planToday" data-id="${x.id}">${ICON.plus}На сьогодні</button></div>`}).join("")||'<div class="muted">Відкритих завдань немає.</div>'}</div>
@@ -3182,9 +3350,9 @@ function todayView(){
       ${tomorrow.map(x=>{const c=course(x.courseId);return `<div class="tdsr tmr" draggable="true" data-plan-task="${x.id}"><span class="fgrip" aria-hidden="true">${GRIP}</span><i class="dot" style="background:${c.color}"></i><span>${esc(x.title)}</span><small>${esc(c.name)}${x.diff?" · "+DIFF[x.diff]:""} · ~${fmtMin(minsOf(x))}</small><button class="btn sm" data-act="planToday" data-id="${x.id}">↑ На сьогодні</button></div>`}).join("")}</section>`;
   return `<div class="todaywrap">
     <div class="tdtop"><div class="seg" role="group" aria-label="Групувати"><button data-act="todayGroup" data-v="course" aria-pressed="${grp==="course"}">За предметами</button><button data-act="todayGroup" data-v="diff" aria-pressed="${grp==="diff"}">За складністю</button></div></div>
-    ${hero}${evOn(t).length?`<section class="tdevents glass"><header><h3>Події сьогодні</h3><span class="tdgc">${evOn(t).length}</span></header><div class="evlist">${evOn(t).map(evRow).join("")}</div></section>`:""}${missedB}
+    ${hero}${evOn(t).length?`<section class="tdevents glass"><header><h3>Події сьогодні</h3><span class="tdgc">${evOn(t).length}</span></header><div class="evlist">${evOn(t).map(evRow).join("")}</div></section>`:""}
+    <div class="tdlist" data-day="${t}">${body}</div>${missedB}
     ${S.books.some(b=>b.status==="reading")?`<section class="tdbooks glass">${wReading().replace("<h2>Зараз читаю</h2>","<h2>Читаю сьогодні</h2>")}</section>`:""}
-    <div class="tdlist" data-day="${t}">${body}</div>
     ${tmB}</div>`;
 }
 
@@ -3235,6 +3403,7 @@ document.addEventListener("click",e=>{if(document.getElementById("fabmenu")&&!e.
 document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest("#fabmenu [data-act]")) setTimeout(closeFab,0)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("fabmenu")){closeFab(); const f=document.getElementById("fab"); if(f) f.focus()}});
 
+const LOCUS_BUILD="11 · 24.10.2026";
 /* ---------- views ---------- */
 let view="home", openCourse=null, editing=false, showDone=false, showLater=false, libRoom="main", libQ="";
 function tabsHTML(){return TABS.map(([k,l])=>`<button class="tab" data-act="nav" data-v="${k}" title="${l}" ${view===k?'aria-current="page"':""}>${ICON[k]}<span>${l}</span></button>`).join("")}
@@ -3407,8 +3576,8 @@ const WRENDER={ring:wRing,courses:wCourses,tasks:wTasks,tue:wTue,reading:wReadin
 const SPANS=[2,3,4,6], SPAN_LBL={2:"1/3",3:"1/2",4:"2/3",6:"на всю ширину"};
 const spanOf=w=>{const z=(S.settings.home.size||{})[w];return SPANS.includes(z)?z:(WIDGETS[w].full?6:3)};
 const SCENE_SW={theme:"linear-gradient(135deg,#F3E9D6 50%,#1F1A15 50%)",time:"conic-gradient(#F3E9D6,#D9C29C,#5C2A22,#1F1A15,#F3E9D6)",day:"radial-gradient(circle at 25% 25%,#FFE3AE,transparent 60%),linear-gradient(150deg,#F3E9D6,#D9C29C)",night:"radial-gradient(circle at 25% 25%,#F5B35A,transparent 55%),linear-gradient(150deg,#2C4634,#1F1A15 55%,#5C2222)"};
-const SKINS=[["loft","Лофт-кабінет","linear-gradient(135deg,#C99F66 0 25%,#E7D8BC 25% 30%,#BF935A 30% 55%,#2F4636 55%)"],["solar","Solarpunk","linear-gradient(#7FC8E2,#C4E8E4 55%,#79B06C 56%,#4C8D55)"]];
-function sceneMenuHTML(){const sc={dawn:"day",sunset:"night"}[S.settings.scene]||S.settings.scene, sk=S.settings.skin==="solar"?"solar":"loft";return `<div class="label" style="padding:2px 10px 6px">Дизайн</div>${SKINS.map(([k,l,sw])=>`<button type="button" class="sceneopt" data-act="skin" data-v="${k}" aria-pressed="${sk===k}"><i style="background:${sw}"></i>${l}</button>`).join("")}<div style="height:1px;background:var(--line);margin:6px 8px"></div><div class="label" style="padding:2px 10px 6px">Режим</div>${SCENES.map(([k,l])=>`<button type="button" class="sceneopt" data-act="scene" data-v="${k}" aria-pressed="${sc===k}"><i style="background:${SCENE_SW[k]}"></i>${l}</button>`).join("")}<div style="height:1px;background:var(--line);margin:6px 8px"></div><button type="button" class="sceneopt${sk==="solar"?" hide-solar":""}" data-act="lamp" aria-pressed="${!S.settings.lampOff}"><i style="background:${S.settings.lampOff?"radial-gradient(circle,#8C7A66 0 35%,#3B3129 40%)":"radial-gradient(circle,#FFF4C8 0 30%,#F5A647 55%,#3B2A1E 75%)"}"></i>Лампа ${S.settings.lampOff?"вимкнена":"світить"}</button>`}
+const SKINS=[["loft","Лофт-кабінет","linear-gradient(135deg,#C99F66 0 25%,#E7D8BC 25% 30%,#BF935A 30% 55%,#2F4636 55%)"],["solar","Solarpunk","linear-gradient(#7FC8E2,#C4E8E4 55%,#79B06C 56%,#4C8D55)"],["retro","Ретро 80-х","conic-gradient(from 45deg,#FFB3C7 0 25%,#FFD86B 0 50%,#A7CBE0 0 75%,#D9483B 0)"]];
+function sceneMenuHTML(){const sc={dawn:"day",sunset:"night"}[S.settings.scene]||S.settings.scene, sk=["loft","solar","retro"].includes(S.settings.skin)?S.settings.skin:"loft";return `<div class="label" style="padding:2px 10px 6px">Дизайн</div>${SKINS.map(([k,l,sw])=>`<button type="button" class="sceneopt" data-act="skin" data-v="${k}" aria-pressed="${sk===k}"><i style="background:${sw}"></i>${l}</button>`).join("")}<div style="height:1px;background:var(--line);margin:6px 8px"></div><div class="label" style="padding:2px 10px 6px">Режим</div>${SCENES.map(([k,l])=>`<button type="button" class="sceneopt" data-act="scene" data-v="${k}" aria-pressed="${sc===k}"><i style="background:${SCENE_SW[k]}"></i>${l}</button>`).join("")}<div style="height:1px;background:var(--line);margin:6px 8px"></div><button type="button" class="sceneopt${sk!=="loft"?" hide-solar":""}" data-act="lamp" aria-pressed="${!S.settings.lampOff}"><i style="background:${S.settings.lampOff?"radial-gradient(circle,#8C7A66 0 35%,#3B3129 40%)":"radial-gradient(circle,#FFF4C8 0 30%,#F5A647 55%,#3B2A1E 75%)"}"></i>Лампа ${S.settings.lampOff?"вимкнена":"світить"}</button>`}
 function homeView(){
   const h=S.settings.home, vis=h.order.filter(w=>!h.hidden.includes(w)&&WIDGETS[w]);
   const cust=editing?`<div class="custom glass">
@@ -3728,10 +3897,10 @@ function sheetSettings(keep){
   else body=`<h3>Дані</h3>
     <div class="field"><span>Резервна копія</span><div class="row" style="gap:8px;flex-wrap:wrap"><button type="button" class="btn sm primary" data-act="saveCloud">Зберегти в хмару</button><button type="button" class="btn sm" data-act="exportData">Експорт даних (.json)</button><label class="btn sm" for="importFile" style="cursor:pointer">Імпорт даних (.json)</label><input type="file" id="importFile" accept=".json,application/json" hidden></div><small>Імпорт замінює поточні дані. Одразу після нього можна натиснути «Повернути».</small></div>
     <div class="field"><span>Небезпечна зона</span><div><button type="button" class="btn danger sm" data-act="resetAsk">Скинути все</button></div><div id="resetZone"></div></div>
-    <div class="muted" style="font-size:.72rem">Locus · версія 24.10.2026 · 8</div>`;
+    `;
   openSheet(`<div class="setwrap"><div class="sethead"><h2>Налаштування</h2><button type="button" class="iconbtn" data-act="closeSheet" aria-label="Закрити">${ICON.x}</button></div>
     <nav class="setnav" aria-label="Розділи налаштувань">${SETTABS.map(([k,l])=>`<button type="button" data-act="setTab" data-v="${k}" aria-current="${setTab===k?"page":"false"}">${l}</button>`).join("")}</nav>
-    <div class="setbody form">${body}<div class="setsaved muted">Зміни зберігаються одразу.</div></div></div>`,true);
+    <div class="setbody form">${body}<div class="setfoot"><span class="muted">Зміни зберігаються одразу.</span><span class="buildno" title="Номер збірки">Locus build ${LOCUS_BUILD}</span></div></div></div>`,true);
   if(keep){const el=document.querySelector(".setbody"); if(el) el.scrollTop=sc}
 }
 document.addEventListener("change",e=>{const el=e.target, k=el&&el.dataset&&el.dataset.set; if(!k) return; const s=S.settings;
@@ -3982,7 +4151,7 @@ document.addEventListener("click",e=>{
     case "fab": openFab(); break;
     case "fabTask": closeFab(); taskSheet(null,view==="courses"&&openCourse?openCourse:""); break;
     case "fabFocus": {closeFab(); openFMenu(document.getElementById("fab")); break}
-    case "skin": {S.settings.skin=b.dataset.v==="solar"?"solar":"loft"; applyLook(); commit(); const m=document.getElementById("sceneMenu"); if(m&&!m.hidden) m.innerHTML=sceneMenuHTML(); break}
+    case "skin": {S.settings.skin=["solar","retro"].includes(b.dataset.v)?b.dataset.v:"loft"; applyLook(); commit(); const m=document.getElementById("sceneMenu"); if(m&&!m.hidden) m.innerHTML=sceneMenuHTML(); break}
     case "exportData": exportData(); break;
     case "dpick": openDP(b); break;
     case "newTaskOn": taskPlanDefault=b.dataset.v; closeSheet(); taskSheet(null); break;
