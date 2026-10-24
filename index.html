@@ -3177,6 +3177,27 @@ html{scrollbar-gutter:stable}
 .supbar{gap:12px}
 @media (min-width:1101px){.calwrap.trayopen{padding-right:350px;transition:padding .35s cubic-bezier(.22,1,.36,1)}}
 
+/* ===== less helper text ===== */
+.sf-head{display:none!important}
+.hdesc,.tdline,.tdtiles,.gmeta,.tdtw-tip,.tama-hint,.lcs-cta{display:none!important}
+.cbookcard > .muted,.libsec > .muted,.sfoot > span:not(.chip),.ctray > .muted,.pagehead > .muted,.pagehead > span.muted,.head > span.muted,.coursehead .info .muted,.tdtomorrow header .muted,.shead2 .snote{display:none!important}
+.sb .snote:not(:has(button)){display:none!important}
+.sb .snote:has(button){font-size:0}
+.sb .snote:has(button) .btn{font-size:.85rem}
+#lib-q,label[for="lib-q"],#libres{display:none!important}
+.tdtop + .tdtoprow .tdhero{min-height:0}
+/* long task titles use the whole row */
+.task .tdue.none,.task .tspc{display:none!important}
+.task > .body{flex:1 1 0;min-width:0}
+.task.longt{flex-wrap:wrap!important;row-gap:6px}
+.task.longt > .body{flex:1 1 calc(100% - 90px)!important;max-width:none!important}
+.task.longt > .tdue{margin-left:auto}
+.task.longt > .tplan{margin-left:auto}
+.task.longt > .tdue:not(.none) ~ .tplan{margin-left:12px}
+.task.longt > .tdue.none + .tspc + .tplan,.task.longt > .tdue.none + .tspc + .startbtn{margin-left:auto}
+.task .title{overflow-wrap:anywhere}
+.tdrt{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;overflow-wrap:anywhere}
+
 .savebtn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border:0;border-radius:12px;background:linear-gradient(180deg,#F3C766,#D99A2B);color:#241606;font:inherit;font-weight:800;font-size:.95rem;cursor:pointer;box-shadow:0 8px 18px -8px rgba(217,154,43,.8),inset 0 1px 0 rgba(255,255,255,.45);transition:transform .15s,filter .15s}
 .savebtn svg{width:18px;height:18px}
 .savebtn:hover{filter:brightness(1.07);transform:translateY(-1px)}
@@ -3614,7 +3635,7 @@ setup();
         <div class="hellocol">
           <div class="brandrow" aria-label="Locus"><svg class="brsvg" aria-hidden="true" focusable="false" viewBox="0 0 300 300"><rect width="300" height="300" rx="68" fill="#FFD23F"/><rect x="58" y="70" width="214" height="196" rx="16" fill="#111"/><rect x="44" y="56" width="214" height="196" rx="16" fill="#fff" stroke="#111" stroke-width="8"/><path d="M44 72 A16 16 0 0 1 60 56 H242 A16 16 0 0 1 258 72 V100 H44 Z" fill="#FF6FB5" stroke="#111" stroke-width="8"/><circle cx="70" cy="78" r="7" fill="#111"/><circle cx="92" cy="78" r="7" fill="#111"/><circle cx="114" cy="78" r="7" fill="#111"/><path transform="translate(104 232) scale(0.075 -0.075)" d="M716 0H81Q35 0 19.5 18.0Q4 36 4 63Q4 89 19.5 108.5Q35 128 60 138L106 152Q128 160 137.5 177.0Q147 194 159 231Q167 254 183.0 312.5Q199 371 221.0 451.5Q243 532 267.0 624.0Q291 716 315.0 807.5Q339 899 359.5 978.5Q380 1058 394.5 1114.5Q409 1171 412 1192Q417 1217 410.5 1231.0Q404 1245 386 1251L343 1266Q325 1275 312.0 1289.0Q299 1303 299 1325Q299 1358 322.0 1379.0Q345 1400 389 1400H924Q970 1400 985.5 1382.0Q1001 1364 1001 1337Q1001 1309 985.0 1290.5Q969 1272 947 1262L900 1248Q882 1241 871.5 1228.0Q861 1215 850 1180Q834 1135 814.0 1066.5Q794 998 772.5 916.5Q751 835 729.0 749.0Q707 663 687.0 580.5Q667 498 650.5 429.0Q634 360 623.0 312.5Q612 265 609 248Q595 179 617.0 151.0Q639 123 691 123H736Q795 123 841.5 151.0Q888 179 937.0 245.5Q986 312 1050 428Q1075 474 1098.5 491.5Q1122 509 1146 509Q1184 509 1199.0 485.0Q1214 461 1213 421Q1209 315 1187.0 231.0Q1165 147 1127.0 89.0Q1089 31 1036.5 0.5Q984 -30 916 -30Q885 -30 858.0 -22.5Q831 -15 799.0 -7.5Q767 0 716 0Z" fill="#111"/><path d="M222 128 L228 144 L244 150 L228 156 L222 172 L216 156 L200 150 L216 144 Z" fill="#3DD9EB" stroke="#111" stroke-width="5" stroke-linejoin="round"/></svg><span class="brword">Locus</span></div>
           <div class="hello"><button type="button" class="sunbtn" data-act="sunMenu" id="sunBtn" aria-label="Режим: світлий чи темний" aria-haspopup="true" aria-expanded="false" title="Світлий чи темний режим"><i aria-hidden="true"></i></button><h1 id="greet">Добрий день</h1><div class="scenemenu glass" id="sceneMenu" hidden></div></div>
-          <div class="gsearch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><label class="sr" for="gq">Пошук завдань і книг</label><input id="gq" type="search" placeholder="Пошук завдань і книг" autocomplete="off"><div class="gres" id="gres" hidden></div></div>
+          <div class="gsearch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><label class="sr" for="gq">Пошук завдань і книг</label><input id="gq" type="search" placeholder="Пошук" autocomplete="off"><div class="gres" id="gres" hidden></div></div>
         </div>
         <button class="btn sm sun focusbtn" data-act="focus" data-t="0" id="focusBtn" title="Почати фокус-сесію"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg><span>Фокус</span></button>
         <button class="lvl" id="lvl" data-act="lvlInfo"></button>
@@ -4144,7 +4165,7 @@ function wLoans(){
   const ls=activeLoans();
   return `<div class="head"><h2>Позичені книги</h2><span class="mono muted">${ls.length}</span></div>
     ${ls.length?ls.map(b=>`<div class="loanrow"><button class="lcov" style="--bc:${bookColor(b)}" data-act="book" data-id="${b.id}" aria-label="${esc(b.title)}"></button><div style="flex:1;min-width:0"><div style="font-weight:800;overflow-wrap:anywhere">${esc(b.title)}</div><div class="meta" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px"><span class="chip">${esc(b.loan.lib||"Бібліотека")}</span>${loanChip(b)}</div></div><button class="btn sm" data-act="returnBook" data-id="${b.id}">Повернув</button></div>`).join("")
-    :`<div class="empty">Позичених книг немає. Познач книгу як позичену в її картці в бібліотеці.</div>`}`;
+    :`<div class="empty">Позичених книг немає.</div>`}`;
 }
 
 /* --- randomizer: what am I doing today --- */
@@ -4497,7 +4518,7 @@ function sGauge(p){
   return `<svg viewBox="0 0 120 70" class="gauge" role="img" aria-label="Ймовірність ${Math.round(p*100)}%"><path d="M10 62 A50 50 0 0 1 110 62" class="g-track"/>${p>0?`<path d="M10 62 A50 50 0 0 1 ${x.toFixed(1)} ${y.toFixed(1)}" class="g-fill ${st}"/>`:""}<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5" class="g-dot ${st}"/></svg>`;
 }
 function burndown(M){
-  const cy=M.cy; if(!cy.next) return `<div class="empty" style="margin:0">Познач дату модульного тижня в налаштуваннях, і тут з'явиться графік.</div>`;
+  const cy=M.cy; if(!cy.next) return `<div class="empty" style="margin:0">Немає дати модуля.</div>`;
   const start=cy.start, end=cy.next, tasks=M.cyc, N=diffDays(end,start);
   const remAt=d=>{const e=new Date(parse(d).getTime()+864e5-1).getTime();return tasks.filter(x=>(x.createdAt||0)<=e).filter(x=>!(x.done&&x.doneAt&&x.doneAt<=e)).reduce((s,x)=>s+unitsFull(x),0)};
   const lastD=M.t<end?M.t:end, days=[]; for(let d=start;d<=lastD;d=addDays(d,1)) days.push(d);
@@ -4640,7 +4661,7 @@ function statsView(){
     ${SS.length?`<div class="rnums"><div><b>${r1(wkMs/36e5)}</b><small>год цього тижня</small></div><div><b>${r1(ms30/36e5)}</b><small>год за 30 днів</small></div><div><b>${m30.length}</b><small>${pl(m30.length,"сесія","сесії","сесій")} за 30 днів</small></div><div><b>${avgR?r1(avgR):"—"}</b><small>середня оцінка з 5</small></div></div>
     <div class="spark wide" role="img" aria-label="Години роботи за 14 днів">${d14.map((d,i)=>`<i style="height:${Math.max(v14[i]?8:2,Math.round(v14[i]/m14*100))}%" class="${v14[i]?"on":""}${d===t?" cur":""}" data-tip="${fmtD(d)}: ${fmtDur(v14[i])}"></i>`).join("")}</div>
     ${cRows.length?`<div class="wrows">${cRows.map(([k,v])=>{const c=course(k);return `<div class="wrow"><span><i class="dot" style="background:${k==="__book"?"var(--sun)":c?CC(c.color):"var(--ink-2)"}"></i>${k==="__book"?"Читання":c?esc(c.name):"Без курсу"}</span><i class="wbar"><i style="width:${Math.round(v/cMax*100)}%"></i></i><b>${fmtDur(v)}</b></div>`}).join("")}</div>`:""}`
-    :`<div class="empty" style="margin:6px 0 0">Ще немає сесій. Натисни «Почати» на завданні або «Читати» на книзі, а потім «Завершити».</div>`}</section>`;
+    :`<div class="empty" style="margin:6px 0 0">Ще немає сесій.</div>`}</section>`;
   const lastS=[...SS].sort((a,b)=>b.e-a.e).slice(0,5);
   const sessB=`<section class="sb glass" style="--sp:4"><div class="slabel">Останні сесії</div>
     ${lastS.length?`<div class="slist">${lastS.map(x=>`<div class="srow2"><div><b>${esc(x.title)}</b><small>${fmtS(dayOf(x.s))} · ${fmtDur(x.ms)}${x.n?` · ${esc(x.n)}`:""}</small></div>${x.r?`<span class="srate r${x.r}" title="Оцінка ${x.r} з 5">${x.r}</span>`:""}</div>`).join("")}</div>`:'<div class="empty" style="margin:6px 0 0">Тут з\'являться твої сесії.</div>'}</section>`;
@@ -4706,7 +4727,7 @@ function dayViewHTML(d){
       <div class="row" style="gap:6px"><button class="btn sm" data-act="calDayAdd" data-v="${d}">${ICON.plus}Завдання</button><button class="btn sm" data-act="evNewOn" data-v="${d}">${ICON.plus}Подія</button></div></div>
     ${inModule(d)?'<span class="ctag mod">модульний тиждень</span>':""}${S.tueDates.includes(d)?`<span class="ctag tue">Супервізія</span>`:""}
     ${evOn(d).length?`<div class="label" style="margin:4px 0 2px">Події</div><div class="evlist">${evOn(d).map(evRow).join("")}</div><div class="label" style="margin:8px 0 2px">Завдання</div>`:""}
-    <div class="tdrows dvrows">${pl0.map(t=>todayRow(t,true)).join("")||`<div class="empty">На цей день нічого не заплановано. Перетягни завдання з панелі праворуч або натисни «Запланувати».</div>`}</div>
+    <div class="tdrows dvrows">${pl0.map(t=>todayRow(t,true)).join("")||`<div class="empty">Нічого не заплановано.</div>`}</div>
     ${du.length?`<div class="label" style="margin:16px 0 6px">Дедлайни цього дня</div><div class="tdrows dvrows">${du.map(t=>todayRow(t,true)).join("")}</div>`:""}
   </div>`;
 }
@@ -4820,7 +4841,7 @@ document.addEventListener("click",e=>{if(document.getElementById("fabmenu")&&!e.
 document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest("#fabmenu [data-act]")) setTimeout(closeFab,0)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("fabmenu")){closeFab(); const f=document.getElementById("fab"); if(f) f.focus()}});
 
-const LOCUS_BUILD="1.0.35";
+const LOCUS_BUILD="1.0.36";
 
 /* ---------- alive: entrance on view change, ring fill, count-up, completion burst ---------- */
 let aliveKey=null, aliveFirst=true;
@@ -5128,7 +5149,7 @@ function buildSubFocus(anim){
   L.innerHTML=`<div class="sf-dim${fresh&&anim?" in":""}" data-act="sfClose"></div>
     <div class="sf-row${fresh&&anim?" fly":""}" data-src="1" style="top:${sfTop}px;left:${r.left}px;width:${r.width}px;height:${r.height}px;--fromY:${fromY}px">${row.outerHTML.replace(/ id="[^"]*"/g,"")}</div>
     <div class="sf-panel${anim?" anim":""}${anim&&Math.abs(fromY)>8?" late":""}" style="top:${top}px;left:${r.left+Math.min(28,r.width*.04)}px;width:${Math.max(240,r.width-Math.min(56,r.width*.08))}px;max-height:${maxH}px">
-      <div class="sf-head"><span class="sf-ttl">${ss.length?`${d} з ${ss.length} ${pl(ss.length,"підпункту","підпунктів","підпунктів")}`:"Підпунктів ще немає. Розбий завдання на маленькі кроки"}</span><b class="sf-pct">${p}%</b><i class="sf-bar"><i style="width:${p}%"></i></i></div>
+      <div class="sf-head" hidden><span class="sf-ttl">${ss.length?`${d} з ${ss.length} ${pl(ss.length,"підпункту","підпунктів","підпунктів")}`:"Підпунктів ще немає. Розбий завдання на маленькі кроки"}</span><b class="sf-pct">${p}%</b><i class="sf-bar"><i style="width:${p}%"></i></i></div>
       <div class="sf-list">${ss.map((x,i)=>`<div class="sf-item${x.done?" done":""}" data-s="${x.id}" style="--i:${i};--rot:${((i%3)-1)*4}deg"><button type="button" class="sf-grip" data-s="${x.id}" aria-label="Перемістити «${esc(x.t)}». Стрілки вгору або вниз" title="Тягни, щоб переставити">${GRIP}</button><button type="button" class="sf-check${x.done?" on":""}" data-act="sub" data-id="${t.id}" data-s="${x.id}" aria-label="${x.done?"Зняти позначку":"Виконано"}: ${esc(x.t)}">${x.done?ICON.check:""}</button><span class="sf-t">${esc(x.t)}</span><span class="sf-xp${x.xpGot?" got":""}">+${x.xpGot||SUBXP[x.diff||0]} XP</span><button type="button" class="sf-diff sd${x.diff||0}" data-act="subDiff" data-id="${t.id}" data-s="${x.id}" title="Змінити складність">${x.diff?DIFF[x.diff]:"складність"}</button><button type="button" class="sf-del" data-act="delSub" data-id="${t.id}" data-s="${x.id}" aria-label="Видалити підпункт">${ICON.x}</button></div>`).join("")}</div>
       <form class="sf-add" data-form="sub" data-id="${t.id}" style="--i:${ss.length}"><label class="sr" for="sub-${t.id}">Новий підпункт</label><input class="inp" id="sub-${t.id}" placeholder="Новий підпункт…" maxlength="120" autocomplete="off"><button class="btn sm">Додати</button></form>
     </div>`;
@@ -5221,7 +5242,7 @@ function reqRow(c){
   return `<div class="reqrow card glass"><div class="reqhead"><h3>Книги до модуля</h3>${bs.length?`<span class="tbadge">${bs.filter(b=>b.status==="done").length} з ${bs.length}</span>`:""}<span class="grow"></span>
     ${others.length?`<label class="sr" for="rq-add-${c.id}">Зробити книгу обов'язковою</label><select class="inp sm" id="rq-add-${c.id}" data-reqadd="1"><option value="">+ обов'язкова книга…</option>${others.map(b=>`<option value="${b.id}">${esc(b.title)}</option>`).join("")}</select>`:""}</div>
     ${bs.length?`<div class="reqlist">${bs.map(b=>{const p=Math.round(bookFrac(b)*100);return `<div class="reqb${b.status==="done"?" done":""}${isActive("book",b.id)?" active":""}"><button type="button" class="reqcov" style="--bc:${bookColor(b)}" data-act="book" data-id="${b.id}" aria-label="${esc(b.title)}"></button><div class="reqtx"><b>${esc(b.title)}</b><span>${b.status==="done"?"прочитано":`${p}% · ${b.page||0} з ${b.total||"?"} стор.`}</span><i class="reqbar"><i style="width:${p}%"></i></i></div>${b.status==="done"?"":startBtn("book",b)}<button type="button" class="mini-btn" data-act="reqToggle" data-id="${b.id}" aria-label="Прибрати з обов'язкових" title="Прибрати з обов'язкових">${ICON.x}</button></div>`}).join("")}</div>`
-      :`<div class="reqempty">${others.length?"Обери книгу вище: її прогрес рахуватиметься у відсоток до модуля.":"Додай книгу в «Книги курсу» і познач її обов'язковою."}</div>`}</div>`;
+      :`<div class="reqempty">${others.length?"Немає обов\'язкових книг.":"Немає обов'язкових книг."}</div>`}</div>`;
 }
 document.addEventListener("change",e=>{const el=e.target; if(!el||!el.dataset||!el.dataset.reqadd||!el.value) return; const b=S.books.find(x=>x.id===el.value); if(b){b.req=true; commit(); toast(`«${b.title}» тепер обов'язкова до модуля`)}});
 
@@ -5301,7 +5322,7 @@ function render(){
 }
 function exampleBanner(){
   const has=S.courses.some(c=>c.example)||S.books.some(b=>b.example);
-  return has?`<div class="banner glass"><span>Елементи з позначкою <span class="chip ex">Приклад</span> показують, як усе працює. Прибери їх, коли додаси свої курси.</span><button class="btn sm" data-act="clearEx">Прибрати приклади</button></div>`:"";
+  return has?`<div class="banner glass"><span>Це приклади.</span><button class="btn sm" data-act="clearEx">Прибрати приклади</button></div>`:"";
 }
 function miniRing(frac,color,label,size){
   const r=24, C=2*Math.PI*r;
@@ -5327,7 +5348,7 @@ function taskRow(t,opts={}){
   const rec=t.kind==="review"&&!t.done;
   const later=!t.done&&t.kind==="task"&&t.due&&cycle().next&&t.due>cycle().next;
   const ued=t.kind==="task"&&!t.done?effDue(t):"", udl=ued?diffDays(ued,today()):99, urg=udl<7?" urg-r":udl<=14?" urg-y":"";
-  return `<div data-tid="${t.id}" class="task ${t.done?"done":""}${isActive("task",t.id)?" active":""}${t.kind==="task"?" cansubs":""}${subsOf(t).length?" hassubs":""}${later?" later":""}${urg} dl${t.kind==="task"?t.diff||0:0}" ${opts.drag?`data-sid="${t.id}"`:""}>${opts.drag?`<button type="button" class="dh" aria-label="Перемістити «${esc(t.title)}» (стрілки)">${GRIP}</button>`:""}
+  return `<div data-tid="${t.id}" class="task${t.title.length>46?" longt":""} ${t.done?"done":""}${isActive("task",t.id)?" active":""}${t.kind==="task"?" cansubs":""}${subsOf(t).length?" hassubs":""}${later?" later":""}${urg} dl${t.kind==="task"?t.diff||0:0}" ${opts.drag?`data-sid="${t.id}"`:""}>${opts.drag?`<button type="button" class="dh" aria-label="Перемістити «${esc(t.title)}» (стрілки)">${GRIP}</button>`:""}
     ${t.kind==="task"?`<span class="dmark d${t.diff||0}" title="Складність: ${t.diff?DIFF[t.diff]:"не вказано"}" aria-hidden="true"></span>`:""}${rec?"":`<button class="check ${t.done?"on":""} d${t.diff||0}" data-act="${t.done?"undone":"done"}" data-id="${t.id}" aria-label="${t.done?"Позначити невиконаним":"Позначити виконаним"}">${t.done?ICON.check:""}</button>`}
     <div class="body">
       <div class="title">${esc(t.title)}</div>
@@ -5448,7 +5469,7 @@ function wReading(){
       <div class="rdinfo"><b>${pct}%</b><span>${b.page} з ${b.total||"?"} стор.</span>${b.spent?`<span class="tspent">${CLOCK}${fmtDur(b.spent)}</span>`:""}</div>
       <div class="bar"><i style="width:${pct}%;--c:var(--sun)"></i></div></div>${startBtn("book",b)}</div>`}).join("");
   return `<div class="head"><h2>Зараз читаю</h2><button class="btn sm ghost" data-act="nav" data-v="library">Бібліотека</button></div>
-    ${rows||`<div class="empty">Нічого не читаєш зараз. Візьми книгу з полиці в бібліотеці.</div>`}`;
+    ${rows||`<div class="empty">Нічого не читаєш.</div>`}`;
 }
 function wFocus(){
   const m=S.focus[mondayOf(today())]||0;
@@ -5477,7 +5498,7 @@ function homeView(){
       ${editing?`<div class="wtools"><span>${WIDGETS[w].n}</span><button class="mini-btn" data-act="wmove" data-w="${w}" data-d="-1" ${i===0?"disabled":""} aria-label="Вище">${ICON.up}</button><button class="mini-btn" data-act="wmove" data-w="${w}" data-d="1" ${i===vis.length-1?"disabled":""} aria-label="Нижче">${ICON.down}</button><button class="mini-btn" data-act="whide" data-w="${w}" aria-label="Сховати">${ICON.eye}</button></div>`:""}
       ${WRENDER[w]()}</section>`}).join("");
   return `${exampleBanner()}${cust}${heroRow()}
-    <div class="homegrid" data-sort="widgets" data-axis="grid">${ws||`<div class="empty" style="grid-column:1 / -1">Усі блоки сховані. Кнопка з квадратиками в шапці поверне їх.</div>`}</div>`;
+    <div class="homegrid" data-sort="widgets" data-axis="grid">${ws||`<div class="empty" style="grid-column:1 / -1">Усі блоки сховані.</div>`}</div>`;
 }
 let wRO=null;
 function layoutHome(){
@@ -5497,7 +5518,7 @@ function coursesView(){
   const act=activeCourses(), arch=S.courses.filter(c=>c.archived);
   const cards=act.map((c,i)=>courseCard(c,i)).join("");
   return `${exampleBanner()}<div class="pagehead glass"><h1>Курси</h1><button class="btn primary" data-act="addCourse">${ICON.plus}Курс</button></div>
-    ${act.length?`<div class="cgrid cards2" data-sort="courses" data-axis="grid">${cards}<button class="cghost" data-act="addCourse">${ICON.plus}<span>Новий курс</span></button></div>`:`<div class="empty">Курсів поки немає. Кожен новий курс отримує своє кільце на головній і полицю в бібліотеці.</div>`}
+    ${act.length?`<div class="cgrid cards2" data-sort="courses" data-axis="grid">${cards}<button class="cghost" data-act="addCourse">${ICON.plus}<span>Новий курс</span></button></div>`:`<div class="empty">Курсів поки немає.</div>`}
     ${arch.length?`<div class="archived card glass"><h2 style="margin-bottom:6px">Архів</h2><div class="muted" style="font-size:.84rem;margin-bottom:6px">Архівні курси не показуються на головній. Їхні полиці лежать в архіві внизу бібліотеки.</div>
       ${arch.map(c=>`<div class="arow"><i class="dot" style="background:${CC(c.color)}"></i><b>${esc(c.name)}</b><button class="btn sm" data-act="unarchive" data-id="${c.id}">Повернути</button><button class="btn sm danger" data-act="delCourse" data-id="${c.id}">Видалити</button></div>`).join("")}</div>`:""}`;
 }
@@ -5862,7 +5883,7 @@ function courseBooksCard(c){
       <button class="btn sm primary" data-act="addBook" data-course="${c.id}">${ICON.plus}Нова книга</button></div></div>
     ${books.length?`<div class="muted" style="font-size:.82rem;margin:-4px 0 6px">${books.length} ${pl(books.length,"книга","книги","книг")}${reading?` · читаю ${reading}`:""}${done?` · прочитано ${done}`:""} · та сама полиця, що й у бібліотеці</div>
     <div class="board"><div class="books cbooks" data-sort="books" data-shelf="${c.id}" data-axis="x">${books.map(b=>`<div class="spw" data-sid="${b.id}"><button type="button" class="dh dh-book" aria-label="Перемістити «${esc(b.title)}» (стрілки)">${GRIP}</button>${spine(b)}</div>`).join("")}${PLANTS[hash(c.id)%2]}</div></div>`
-    :`<div class="empty">Для цього курсу ще немає книг. Додай нову або перенеси з бібліотеки, і вона з'явиться і тут, і на полиці курсу в бібліотеці.</div>`}
+    :`<div class="empty">Книг ще немає.</div>`}
   </div>`;
 }
 function gradeOf(c){const g=c.grading||{type:"",parts:[]};const parts=g.parts||[];
@@ -5989,7 +6010,7 @@ function shelfCard(sh,i,opts={}){
 function libraryView(){
   const arch=S.courses.filter(c=>c.archived);
   const AL=activeLoans(), lw=AL.some(b=>loanState(b)==="over")?"over":AL.some(b=>loanState(b)==="soon")?"soon":"";
-  const head=`<div class="pagehead glass"><div class="row" style="gap:10px"><h1>Бібліотека</h1>${AL.length?`<span class="chip ${lw}" title="Книги з білою етикеткою на корінці позичені">позичено ${AL.length}${AL[0].loan.due?" · найближче "+fmtS(AL[0].loan.due):""}</span>`:""}</div>
+  const head=`<div class="pagehead glass"><div class="row" style="gap:10px"><h1>Бібліотека</h1>${AL.length?`<span class="chip ${lw}" title="Книги з білою етикеткою на корінці позичені">позичено ${AL.length}</span>`:""}</div>
       <div class="libtop" style="flex:1 1 320px;justify-content:flex-end"><label class="sr" for="lib-q">Пошук книг</label><input class="inp" id="lib-q" type="search" placeholder="Шукати назву або автора…" value="${esc(libQ)}" autocomplete="off"><button class="btn primary" data-act="addBook" data-course="${libZoom&&libZoom!=="_personal"?libZoom:""}">${ICON.plus}Книга</button></div></div><div id="libres"></div>`;
   if(libZoom) return head+zoomView();
   const cs=activeCourses(), so=S.shelfOrder||[];
@@ -5999,7 +6020,7 @@ function libraryView(){
   return `${head}
     <div class="libtop2"><section class="libw glass" aria-label="Зараз читаю">${wReading()}</section><section class="libw glass" aria-label="Позичені книги">${wLoans()}</section></div>
     <div class="libsec"><h2>Полиці</h2><span class="muted" style="font-size:.85rem;font-weight:600">${all} ${pl(all,"книга","книги","книг")} · прочитано ${done} · полицю тягни за крапки</span></div>
-    <div class="shelfgrid" data-sort="shelves" data-axis="grid">${shelves.map((sh,i)=>shelfCard(sh,i,{drag:true})).join("")}<button class="shelfghost" data-act="addCourse">${ICON.plus}<span>Нова полиця</span><small>створюється разом з курсом</small></button></div>
+    <div class="shelfgrid" data-sort="shelves" data-axis="grid">${shelves.map((sh,i)=>shelfCard(sh,i,{drag:true})).join("")}<button class="shelfghost" data-act="addCourse">${ICON.plus}<span>Нова полиця</span></button></div>
     ${arch.length?`<details class="archdet"><summary>${ICON.box}Архів · ${arch.length} ${pl(arch.length,"полиця","полиці","полиць")}</summary><div class="shelfgrid">${arch.map((c,i)=>shelfCard({id:c.id,name:c.name,color:c.color},i+2,{dusty:true})).join("")}</div></details>`:""}`;
 }
 function zoomView(){
@@ -6099,7 +6120,7 @@ function calToggle(d){
 /* --- Tuesday line --- */
 function wTue(){
   const name=S.settings.tueName, dates=[...new Set(S.tueDates)].sort(), t=today();
-  if(!dates.length) return `<div class="head"><h2>${esc(name)}</h2></div><div class="empty">Познач у календарі дні, коли будуть завдання. Вони з'являться тут лінією: минулі, найближче і майбутні.<div style="margin-top:10px"><button class="btn sm primary" data-act="settingsTue">Відкрити календар</button></div></div>`;
+  if(!dates.length) return `<div class="head"><h2>${esc(name)}</h2></div><div class="empty">Дат ще немає.<div style="margin-top:10px"><button class="btn sm primary" data-act="settingsTue">Відкрити календар</button></div></div>`;
   const past=dates.filter(d=>d<=t), fut=dates.filter(d=>d>t), win=[...past.slice(-7),...fut.slice(0,6)];
   const nextD=fut[0]||null, last=past[past.length-1]||null, focusD=past.includes(t)?t:nextD;
   const doneN=past.filter(d=>S.tue[d]&&S.tue[d].s==="done").length, offN=past.filter(d=>S.tue[d]&&S.tue[d].s==="off").length;
