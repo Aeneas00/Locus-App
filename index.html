@@ -2947,6 +2947,69 @@ html.sf-lock,html.sf-lock body{overflow:hidden}
 :root[data-skin="loft"] .sf-pct{font-family:Lora,serif;font-style:italic;color:#8A6A3E}:root[data-skin="loft"] .sf-bar i{background:#C9A04E}
 :root[data-skin="loft"] .sf-check.on{background:#2F4636;border-color:#2F4636}
 
+/* ===== subtask reorder ===== */
+.sf-grip{flex:none;width:22px;height:30px;margin:-4px -4px -4px -6px;border:0;background:none;color:var(--ink-2);display:grid;place-items:center;cursor:grab;touch-action:none;border-radius:8px;opacity:.6}
+.sf-grip svg{width:10px;height:16px;fill:currentColor}
+.sf-grip:hover,.sf-grip:focus-visible{opacity:1;background:var(--glass-2)}
+.sf-list.dragging{cursor:grabbing;user-select:none;-webkit-user-select:none}
+.sf-item.drag{position:relative;z-index:3;cursor:grabbing;transition:none!important;box-shadow:0 22px 40px -14px rgba(0,0,0,.65)!important;animation:none!important}
+.sf-item.drag .sf-grip{cursor:grabbing;opacity:1}
+:root[data-skin="retro"] .sf-item.drag{box-shadow:8px 8px 0 #2B1B2E!important;outline:3px solid #FF6FB5}
+:root[data-skin="solar"] .sf-item.drag{outline:2px solid #8EDC9A}
+:root[data-skin="loft"] .sf-item.drag{outline:2px solid #C9A04E}
+
+/* ===== home: planned list with start + last worked ===== */
+.upcard{position:relative;padding:8px 10px 8px 8px;gap:10px}
+.upmain{flex:1;min-width:0;display:flex;align-items:center;gap:14px;border:0;background:none;color:inherit;font:inherit;text-align:left;padding:4px;cursor:pointer;border-radius:14px}
+.upmain:focus-visible{outline:2px solid var(--accent)}
+.upcard .upgo{flex:none}
+.upnext{container-type:inline-size}
+.upcard .uptxt b{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
+@container (max-width:380px){.upcard .upgo span:not([data-since]){display:none}.upcard .upgo:not(.run){width:36px;padding:0;justify-content:center}.upcard.last .upgo:not(.run){width:42px}.upcard.last .upic{width:42px;height:42px}.upmain{gap:10px}}
+.upcard.last{padding:16px 14px 14px 12px;margin:6px 0 4px;border-width:2px;border-color:var(--accent);background:linear-gradient(120deg,color-mix(in srgb,var(--accent) 18%,var(--card)),var(--card) 70%);box-shadow:0 14px 30px -14px color-mix(in srgb,var(--accent) 70%,transparent)}
+.upcard.last .upic{width:52px;height:52px;font-size:1.15rem}
+.upcard.last .uptxt b{font-size:1.2rem}
+.upcard.last .upgo{height:38px;padding:0 16px 0 12px;font-size:.88rem;background:var(--accent);color:var(--frame);border-color:transparent}
+.uplast{position:absolute;top:-11px;left:14px;padding:3px 10px;border-radius:999px;background:var(--accent);color:var(--frame);font:700 .66rem "Space Mono",ui-monospace,monospace;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
+.upcard.running .uplast{background:#E8454F;color:#fff}
+@media (prefers-reduced-motion:no-preference){.upcard.last{animation:uplastglow 2.6s ease-in-out infinite}@keyframes uplastglow{50%{box-shadow:0 18px 38px -12px color-mix(in srgb,var(--accent) 90%,transparent)}}}
+:root[data-skin="retro"] .upcard.last{background:#FFF1B8;border:3px solid var(--hard);box-shadow:6px 6px 0 #FF6FB5!important;animation:none}
+:root[data-skin="retro"][data-tone="dark"] .upcard.last{background:#4A2F55}
+:root[data-skin="retro"] .uplast{background:#FF6FB5;color:#2B1B2E;border:2px solid var(--hard);font-family:"Press Start 2P",monospace;font-size:.5rem;padding:5px 8px}
+:root[data-skin="retro"] .upcard.last .upgo{background:#FFD23F;color:#2B1B2E;border:2px solid var(--hard)}
+:root[data-skin="solar"] .upcard.last{background:linear-gradient(120deg,rgba(143,220,154,.55),rgba(255,236,170,.45));border:1px solid rgba(255,255,255,.95)}
+:root[data-skin="solar"] .uplast,:root[data-skin="solar"] .upcard.last .upgo{background:linear-gradient(180deg,#3FB57A,#1E8656);color:#fff}
+:root[data-skin="loft"] .upcard.last{background:linear-gradient(120deg,rgba(201,160,78,.22),var(--card) 75%);border:1.5px solid #C9A04E}
+:root[data-skin="loft"] .uplast{background:#2F4636;color:#F3C766;border:1px solid #C9A04E}
+:root[data-skin="loft"] .upcard.last .upgo{background:linear-gradient(180deg,#E3B861,#B8862F);color:#2A1C0C}
+:root[data-skin="loft"] .upcard.last .uptxt b{font-family:Lora,serif;font-style:italic}
+
+/* ===== subtask focus: fly-up ===== */
+@media (prefers-reduced-motion:no-preference){
+  .sf-row.fly{animation:sffly .55s cubic-bezier(.25,1.25,.4,1) both}
+  @keyframes sffly{0%{transform:translateY(var(--fromY)) scale(1)}55%{transform:translateY(-6px) scale(1.035)}100%{transform:none}}
+  .sf-panel.anim.late .sf-head{animation-delay:.32s}
+  .sf-panel.anim.late .sf-item,.sf-panel.anim.late .sf-add{animation-delay:calc(var(--i) * 75ms + .42s)}
+  .subfocus.closing .sf-row{animation:sfback .34s cubic-bezier(.4,0,.6,1) forwards}
+  @keyframes sfback{to{transform:translateY(var(--fromY))}}
+}
+/* ===== search flash ===== */
+.flash{position:relative;z-index:5;animation:flashpulse 1.7s ease-out;outline:4px solid transparent;outline-offset:4px}
+@keyframes flashpulse{0%,100%{outline-color:transparent;filter:none;scale:1}12%{outline-color:#FFD23F;filter:drop-shadow(0 0 16px rgba(255,111,181,.95)) brightness(1.08);scale:1.03}35%{outline-color:#FF6FB5;filter:drop-shadow(0 0 14px rgba(255,210,63,.9)) brightness(1.05);scale:1.01}60%{outline-color:#FFD23F;filter:drop-shadow(0 0 14px rgba(255,111,181,.8))}}
+.spine.flash{animation:flashspine 1.7s ease-out;outline-offset:2px}
+@keyframes flashspine{0%,100%{outline-color:transparent;filter:none;translate:0 0}15%,60%{outline-color:#FFD23F;filter:drop-shadow(0 0 12px rgba(255,111,181,1)) brightness(1.15);translate:0 -16px}}
+:root[data-skin="solar"] .flash:not(.spine){animation-name:flashsolar}
+@keyframes flashsolar{0%,100%{outline-color:transparent;filter:none;scale:1}15%,55%{outline-color:#8EDC9A;filter:drop-shadow(0 0 18px rgba(243,199,102,.95));scale:1.03}}
+:root[data-skin="loft"] .flash:not(.spine){animation-name:flashloft}
+@keyframes flashloft{0%,100%{outline-color:transparent;filter:none;scale:1}15%,55%{outline-color:#C9A04E;filter:drop-shadow(0 0 18px rgba(243,199,102,.9));scale:1.03}}
+@media (prefers-reduced-motion:reduce){.flash,.spine.flash{animation:none;outline-color:#FFD23F}}
+
+.sf-xp{flex:none;font:700 .7rem "Space Mono",ui-monospace,monospace;color:var(--ink-2);opacity:.75;white-space:nowrap}
+.sf-xp.got{color:var(--accent);opacity:1}
+:root[data-skin="retro"] .sf-xp.got{color:#FF6FB5;font-family:"Press Start 2P",monospace;font-size:.5rem}
+:root[data-skin="solar"] .sf-xp.got{color:#1E8656}:root[data-skin="loft"] .sf-xp.got{color:#8A6A3E}
+@media (max-width:420px){.sf-xp{display:none}}
+
 .savebtn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border:0;border-radius:12px;background:linear-gradient(180deg,#F3C766,#D99A2B);color:#241606;font:inherit;font-weight:800;font-size:.95rem;cursor:pointer;box-shadow:0 8px 18px -8px rgba(217,154,43,.8),inset 0 1px 0 rgba(255,255,255,.45);transition:transform .15s,filter .15s}
 .savebtn svg{width:18px;height:18px}
 .savebtn:hover{filter:brightness(1.07);transform:translateY(-1px)}
@@ -3411,6 +3474,7 @@ const KEY="studyquest.v1", FKEY="studyquest.focus";
 const COLORS=["#6F7F62","#B07C63","#71878E","#B8964F","#86758F","#5D7486","#9E6F69","#848A57"];
 const OLDC={"#1E8656":0,"#E07A3F":1,"#1B8C8C":2,"#D9A21B":3,"#7A5CC2":4,"#3A86C8":5,"#C2456B":6,"#6B8E23":7,"#3342E8":5,"#E0457B":6,"#12A39A":2,"#E88A1A":1,"#8A4FE0":4,"#2E9BE6":5,"#5C8A1E":7,"#C2410C":1};
 const BOOKC=["#6B5847","#8C6E57","#5E6B5B","#7D8A79","#9B7B63","#5D6670","#8A7A68","#A08C73","#6E5F6F","#7A6650","#566158","#8F7F6B"];
+const SUBXP={0:3,1:3,2:5,3:8};
 const XP={book:100,project:70,presentation:50,d3:35,d2:25,d1:15,none:10,essay:8,review:5,tue:10,task:10};
 const TTYPE={task:{n:"Звичайне",ic:""},project:{n:"Проєкт",ic:"🛠️"},presentation:{n:"Презентація",ic:"🎤"},essay:{n:"Есе",ic:"✍️"}};
 function taskXP(t){if(t.kind==="review")return XP.review;if(t.ttype&&XP[t.ttype])return XP[t.ttype];return t.diff===3?XP.d3:t.diff===2?XP.d2:t.diff===1?XP.d1:XP.none}
@@ -3812,6 +3876,8 @@ let expanded=new Set();
 function toggleSub(tid,sid){
   const t=S.tasks.find(x=>x.id===tid); if(!t) return; const sb=subsOf(t).find(x=>x.id===sid); if(!sb) return;
   sb.done=!sb.done; sb.doneAt=sb.done?Date.now():null;
+  if(sb.done&&!sb.xpGot){const g=SUBXP[sb.diff||0]; sb.xpGot=g; addXP(g,true,"Підпункт: "+sb.t); locoYay=Date.now()+1100}
+  else if(!sb.done&&sb.xpGot){takeXP(sb.xpGot,"підпункт "+sb.t); sb.xpGot=0}
   if(subsOf(t).every(x=>x.done)&&!t.done){completeTask(tid);return}
   if(!sb.done&&t.done) reopen(t);
   if(sb.done) fun("sub",0);
@@ -4123,7 +4189,8 @@ function heroRow(){
     desc=`<p class="hdesc">${cy.next?`${left} ${pl(left,"завдання","завдання","завдань")} до модульного тижня, ${days} ${pl(days,"день","дні","днів")}.`:`${left} ${pl(left,"відкрите завдання","відкриті завдання","відкритих завдань")}.`} Обери категорію, а конкретне я витягну навмання.</p>`;
     actions=`<button class="btn sun" data-act="rand">Обрати навмання</button>`;
   }
-  const up=openTasksAll().filter(x=>x.plan).sort((a,b)=>a.plan<b.plan?-1:a.plan>b.plan?1:((a.createdAt||0)-(b.createdAt||0))).slice(0,3);
+  const lastT=lastWorkedTask(); let up=openTasksAll().filter(x=>x.plan).sort((a,b)=>a.plan<b.plan?-1:a.plan>b.plan?1:((a.createdAt||0)-(b.createdAt||0))).slice(0,3);
+  if(lastT){up=[lastT,...up.filter(x=>x.id!==lastT.id)].slice(0,3)}
   const planWhen=d=>{const n=diffDays(d,today());return n===0?"сьогодні":n===1?"завтра":n<0?`пропущено ${fmtS(d)}`:`${fmtL(d)}`};
   return `<div class="herorow one">
     <section class="hero herobig" aria-label="Сьогодні і найближчі дедлайни">
@@ -4131,7 +4198,7 @@ function heroRow(){
       <div class="heroscene" aria-hidden="true"><div class="heroart">${ART.office}</div></div>
     <div class="upnext" role="group" aria-label="Найближчі заплановані завдання">
       <div class="label" style="padding:0 4px">Заплановано</div>
-      ${up.map(t=>{const c=course(t.courseId),n=diffDays(t.plan,today());return `<button class="upcard${n<0?" late":n===0?" today":""}" data-act="editTask" data-id="${t.id}" title="Заплановано на ${fmtD(t.plan)}"><span class="upic" style="background:${c?CC(c.color):"var(--ink-2)"}">${esc(initials(c?c.name:"?"))}</span><span class="uptxt"><b>${esc(t.title)}</b><small><em>${planWhen(t.plan)}</em>${c?" · "+esc(c.name):""}</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>`}).join("")||`<div class="upempty"><span>Нічого не заплановано.</span><button class="btn sm" data-act="nav" data-v="plan">${ICON.plan}Запланувати в календарі</button></div>`}
+      ${up.map(t=>{const c=course(t.courseId),n=t.plan?diffDays(t.plan,today()):null, L=lastT&&lastT.id===t.id, act=isActive("task",t.id);return `<div class="upcard${n!=null&&n<0?" late":n===0?" today":""}${L?" last":""}${act?" running":""}">${L?`<span class="uplast">${act?"зараз у роботі":"ти над цим працював"}</span>`:""}<button type="button" class="upmain" data-act="editTask" data-id="${t.id}" title="${t.plan?"Заплановано на "+fmtD(t.plan):"Відкрити"}"><span class="upic" style="background:${c?CC(c.color):"var(--ink-2)"}">${esc(initials(c?c.name:"?"))}</span><span class="uptxt"><b>${esc(t.title)}</b><small>${t.plan?`<em>${planWhen(t.plan)}</em>`:""}${c?(t.plan?" · ":"")+esc(c.name):""}${L&&t.spent?` · ${fmtDur(t.spent)} в роботі`:""}</small></span></button>${startBtn("task",t,"upgo")}</div>`}).join("")||`<div class="upempty"><span>Нічого не заплановано.</span><button class="btn sm" data-act="nav" data-v="plan">${ICON.plan}Запланувати в календарі</button></div>`}
     </div></section>
   </div>`;
 }
@@ -4585,7 +4652,7 @@ document.addEventListener("click",e=>{if(document.getElementById("fabmenu")&&!e.
 document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest("#fabmenu [data-act]")) setTimeout(closeFab,0)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("fabmenu")){closeFab(); const f=document.getElementById("fab"); if(f) f.focus()}});
 
-const LOCUS_BUILD="1.0.27";
+const LOCUS_BUILD="1.0.31";
 
 /* ---------- alive: entrance on view change, ring fill, count-up, completion burst ---------- */
 let aliveKey=null, aliveFirst=true;
@@ -4864,17 +4931,21 @@ document.addEventListener("keydown",e=>{if(!tourOn) return; if(e.key==="Escape")
 
 /* ---------- subtasks: focus mode ---------- */
 const spct=(d,n)=>{const p=n?Math.round(d/n*100):0; return `<i class="spring" style="--p:${p}" aria-hidden="true"></i><b>${p}%</b>`};
-let subFocus=null, sfView=null;
+let subFocus=null, sfView=null, sfTop=80;
 function sfRow(id){return [...document.querySelectorAll(`#view [data-tid="${id}"]`)].find(e=>{const r=e.getBoundingClientRect(); return r.width>0&&r.height>0})||null}
 function openSubFocus(id){
   const row=sfRow(id); if(!row) return; subFocus=id; sfView=view;
-  const r=row.getBoundingClientRect(), want=Math.min(innerHeight*.18,110); if(Math.abs(r.top-want)>24) window.scrollBy(0,r.top-want);
+  const r=row.getBoundingClientRect(), t=S.tasks.find(x=>x.id===id), n=t?subsOf(t).length:0;
+  const panelH=74+n*62+66, want=(innerHeight-(r.height+10+panelH))/2;
+  sfTop=Math.round(Math.max(16,Math.min(innerHeight*.28,want)));
   document.documentElement.classList.add("sf-lock"); buildSubFocus(true);
   setTimeout(()=>{const el=document.querySelector("#subFocus .sf-add input"); const t=S.tasks.find(x=>x.id===id); if(el&&t&&!subsOf(t).length) el.focus()},350);
 }
 function closeSubFocus(){
-  const L=document.getElementById("subFocus"); subFocus=null; document.documentElement.classList.remove("sf-lock");
-  if(!L) return; if(RMQ.matches){L.remove();return} L.classList.add("closing"); setTimeout(()=>L.remove(),260);
+  const L=document.getElementById("subFocus"), id=subFocus; subFocus=null; document.documentElement.classList.remove("sf-lock");
+  if(!L) return; if(RMQ.matches){L.remove();return}
+  const row=id&&sfRow(id), sr=L.querySelector(".sf-row"); if(row&&sr) sr.style.setProperty("--fromY",(row.getBoundingClientRect().top-sfTop)+"px");
+  L.classList.add("closing"); setTimeout(()=>L.remove(),380);
 }
 function buildSubFocus(anim){
   const id=subFocus, t=S.tasks.find(x=>x.id===id), row=sfRow(id);
@@ -4883,13 +4954,13 @@ function buildSubFocus(anim){
   if(!L){L=document.createElement("div"); L.id="subFocus"; L.className="subfocus"; L.setAttribute("role","dialog"); L.setAttribute("aria-label","Підпункти: "+t.title); document.body.appendChild(L)}
   L.classList.remove("closing");
   const r=row.getBoundingClientRect(), ss=subsOf(t), d=ss.filter(x=>x.done).length, p=ss.length?Math.round(d/ss.length*100):0;
-  const top=r.bottom+10, maxH=Math.max(160,innerHeight-top-16);
+  const top=sfTop+r.height+10, maxH=Math.max(160,innerHeight-top-16), fromY=r.top-sfTop;
   const keep=L.querySelector(".sf-list"), sc=keep?keep.scrollTop:0;
   L.innerHTML=`<div class="sf-dim${fresh&&anim?" in":""}" data-act="sfClose"></div>
-    <div class="sf-row" style="top:${r.top}px;left:${r.left}px;width:${r.width}px;height:${r.height}px">${row.outerHTML.replace(/ id="[^"]*"/g,"")}</div>
-    <div class="sf-panel${anim?" anim":""}" style="top:${top}px;left:${r.left+Math.min(28,r.width*.04)}px;width:${Math.max(240,r.width-Math.min(56,r.width*.08))}px;max-height:${maxH}px">
+    <div class="sf-row${fresh&&anim?" fly":""}" style="top:${sfTop}px;left:${r.left}px;width:${r.width}px;height:${r.height}px;--fromY:${fromY}px">${row.outerHTML.replace(/ id="[^"]*"/g,"")}</div>
+    <div class="sf-panel${anim?" anim":""}${anim&&Math.abs(fromY)>8?" late":""}" style="top:${top}px;left:${r.left+Math.min(28,r.width*.04)}px;width:${Math.max(240,r.width-Math.min(56,r.width*.08))}px;max-height:${maxH}px">
       <div class="sf-head"><span class="sf-ttl">${ss.length?`${d} з ${ss.length} ${pl(ss.length,"підпункту","підпунктів","підпунктів")}`:"Підпунктів ще немає. Розбий завдання на маленькі кроки"}</span><b class="sf-pct">${p}%</b><i class="sf-bar"><i style="width:${p}%"></i></i></div>
-      <div class="sf-list">${ss.map((x,i)=>`<div class="sf-item${x.done?" done":""}" style="--i:${i};--rot:${((i%3)-1)*4}deg"><button type="button" class="sf-check${x.done?" on":""}" data-act="sub" data-id="${t.id}" data-s="${x.id}" aria-label="${x.done?"Зняти позначку":"Виконано"}: ${esc(x.t)}">${x.done?ICON.check:""}</button><span class="sf-t">${esc(x.t)}</span><button type="button" class="sf-diff sd${x.diff||0}" data-act="subDiff" data-id="${t.id}" data-s="${x.id}" title="Змінити складність">${x.diff?DIFF[x.diff]:"складність"}</button><button type="button" class="sf-del" data-act="delSub" data-id="${t.id}" data-s="${x.id}" aria-label="Видалити підпункт">${ICON.x}</button></div>`).join("")}</div>
+      <div class="sf-list">${ss.map((x,i)=>`<div class="sf-item${x.done?" done":""}" data-s="${x.id}" style="--i:${i};--rot:${((i%3)-1)*4}deg"><button type="button" class="sf-grip" data-s="${x.id}" aria-label="Перемістити «${esc(x.t)}». Стрілки вгору або вниз" title="Тягни, щоб переставити">${GRIP}</button><button type="button" class="sf-check${x.done?" on":""}" data-act="sub" data-id="${t.id}" data-s="${x.id}" aria-label="${x.done?"Зняти позначку":"Виконано"}: ${esc(x.t)}">${x.done?ICON.check:""}</button><span class="sf-t">${esc(x.t)}</span><span class="sf-xp${x.xpGot?" got":""}">+${x.xpGot||SUBXP[x.diff||0]} XP</span><button type="button" class="sf-diff sd${x.diff||0}" data-act="subDiff" data-id="${t.id}" data-s="${x.id}" title="Змінити складність">${x.diff?DIFF[x.diff]:"складність"}</button><button type="button" class="sf-del" data-act="delSub" data-id="${t.id}" data-s="${x.id}" aria-label="Видалити підпункт">${ICON.x}</button></div>`).join("")}</div>
       <form class="sf-add" data-form="sub" data-id="${t.id}" style="--i:${ss.length}"><label class="sr" for="sub-${t.id}">Новий підпункт</label><input class="inp" id="sub-${t.id}" placeholder="Новий підпункт…" maxlength="120" autocomplete="off"><button class="btn sm">Додати</button></form>
     </div>`;
   const nl=L.querySelector(".sf-list"); if(nl&&sc) nl.scrollTop=sc;
@@ -4907,6 +4978,61 @@ document.addEventListener("click",e=>{
 });
 document.addEventListener("keydown",e=>{if(subFocus&&e.key==="Escape"&&!document.querySelector(".sheet")){closeSubFocus()}});
 addEventListener("resize",()=>{if(subFocus) buildSubFocus(false)});
+
+
+/* ---------- subtasks: drag to reorder ---------- */
+function sfSave(ids,focusId){const t=S.tasks.find(x=>x.id===subFocus); if(!t) return; const m=new Map(subsOf(t).map(x=>[x.id,x])); const next=ids.map(i=>m.get(i)).filter(Boolean); subsOf(t).forEach(x=>{if(!ids.includes(x.id)) next.push(x)}); t.subs=next; commit();
+  if(focusId){const g=document.querySelector(`#subFocus .sf-grip[data-s="${focusId}"]`); if(g) g.focus()}}
+let sfDrag=null;
+document.addEventListener("pointerdown",e=>{
+  const g=e.target.closest&&e.target.closest("#subFocus .sf-grip"); if(!g||e.button>0) return;
+  e.preventDefault(); const item=g.closest(".sf-item"), list=item.parentElement;
+  sfDrag={item,list,startY:e.clientY,pid:e.pointerId,moved:false}; item.classList.add("drag"); list.classList.add("dragging");
+  try{g.setPointerCapture(e.pointerId)}catch(_){}
+});
+document.addEventListener("pointermove",e=>{
+  if(!sfDrag||e.pointerId!==sfDrag.pid) return; const {item,list}=sfDrag;
+  let dy=e.clientY-sfDrag.startY; if(Math.abs(dy)>3) sfDrag.moved=true;
+  item.style.transform=`translateY(${dy}px) scale(1.03) rotate(${Math.max(-2,Math.min(2,dy/40))}deg)`;
+  const sibs=[...list.children].filter(x=>x!==item), y=e.clientY;
+  const before=sibs.find(s=>{const r=s.getBoundingClientRect(); return y<r.top+r.height/2});
+  const target=before||null, cur=item.nextElementSibling===target||(!target&&item===list.lastElementChild);
+  if(!cur){
+    const rects=new Map(sibs.map(s=>[s,s.getBoundingClientRect().top])), oldTop=item.offsetTop;
+    list.insertBefore(item,target);
+    const nt=item.offsetTop; sfDrag.startY+=nt-oldTop; dy=e.clientY-sfDrag.startY; item.style.transform=`translateY(${dy}px) scale(1.03)`;
+    if(!RMQ.matches) sibs.forEach(s=>{const d=rects.get(s)-s.getBoundingClientRect().top; if(d) s.animate([{transform:`translateY(${d}px)`},{transform:"none"}],{duration:180,easing:"cubic-bezier(.2,.8,.2,1)"})});
+  }
+  const lr=list.getBoundingClientRect(); if(y<lr.top+30) list.scrollTop-=8; else if(y>lr.bottom-30) list.scrollTop+=8;
+});
+function sfDrop(e){
+  if(!sfDrag||(e&&e.pointerId!==sfDrag.pid)) return; const {item,list,moved}=sfDrag; sfDrag=null;
+  item.classList.remove("drag"); list.classList.remove("dragging"); item.style.transform="";
+  if(moved) sfSave([...list.querySelectorAll(".sf-item")].map(x=>x.dataset.s));
+}
+document.addEventListener("pointerup",sfDrop); document.addEventListener("pointercancel",sfDrop);
+document.addEventListener("keydown",e=>{
+  const g=e.target.closest&&e.target.closest("#subFocus .sf-grip"); if(!g||(e.key!=="ArrowUp"&&e.key!=="ArrowDown")) return;
+  e.preventDefault(); const ids=[...document.querySelectorAll("#subFocus .sf-item")].map(x=>x.dataset.s), i=ids.indexOf(g.dataset.s), j=i+(e.key==="ArrowUp"?-1:1);
+  if(i<0||j<0||j>=ids.length) return; [ids[i],ids[j]]=[ids[j],ids[i]]; sfSave(ids,g.dataset.s);
+});
+
+
+function lastWorkedTask(){
+  if(S.active&&S.active.kind==="task"){const t=S.tasks.find(x=>x.id===S.active.id); if(t&&!t.done) return t}
+  const ss=(S.sessions||[]).filter(x=>x.k!=="book").sort((a,b)=>b.e-a.e);
+  for(const s of ss){const t=S.tasks.find(x=>x.id===s.ref); if(t&&!t.done&&t.kind==="task") return t}
+  return null;
+}
+
+
+/* ---------- jump to an element and make it glow ---------- */
+function flashTo(sel){
+  const el=[...document.querySelectorAll(sel)].find(e=>{const r=e.getBoundingClientRect(); return r.width>0&&r.height>0}); if(!el) return false;
+  setTimeout(()=>{el.scrollIntoView({behavior:RMQ.matches?"auto":"smooth",block:"center"});
+    setTimeout(()=>{el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash"); setTimeout(()=>el.classList.remove("flash"),1800)},RMQ.matches?0:420)},120);
+  return true;
+}
 
 /* ---------- views ---------- */
 let view="home", openCourse=null, editing=false, showDone=false, showLater=false, libRoom="main", libQ="";
@@ -5001,8 +5127,8 @@ function wRing(){
   let pace="";
   if(!total) pace=`<span class="chip">Завдань поки немає</span>`;
   else if(!left) pace=`<span class="chip good">Усе виконано</span>`;
-  else if(tf!==null&&pm){const gap=Math.round((tf-frac)*100); pace=gap<=2?`<span class="chip good">Встигаєш</span>`:`<span class="chip over">Відставання: ${gap}%</span>`}
-  else if(tf!==null){const behind=Math.ceil(total*tf)-done; pace=behind<=0?`<span class="chip good">Встигаєш</span>`:`<span class="chip over">Відставання: ${behind} ${pl(behind,"завдання","завдання","завдань")}</span>`}
+  else if(tf!==null&&pm){const gap=Math.round((tf-frac)*100); pace=gap<=2?`<span class="chip good">Встигаєш</span>`:""}
+  else if(tf!==null){const behind=Math.ceil(total*tf)-done; pace=behind<=0?`<span class="chip good">Встигаєш</span>`:""}
   const days=cy.next?diffDays(cy.next,cy.t):null;
   let mod;
   if(cy.next) mod=`<div class="modline">${cy.inMod?'<span class="chip soon">Зараз модульний тиждень</span>':""}<span>Модульний тиждень: <b>${fmtL(cy.next)}</b></span><span class="chip">через ${days} ${pl(days,"день","дні","днів")}</span><button class="mini-btn" data-act="settingsMod" aria-label="Змінити дати">${ICON.edit}</button></div>`;
@@ -5178,11 +5304,12 @@ function locoState(){
   const inVac=d=>(lo.vacs||[]).some(v=>d>=v.f&&(!v.t||d<=v.t));
   const info=d=>{const Pl=byPlan[d]||[], p=Math.max(Pl.length,(lo.pmax||{})[d]||0);
     const onTime=Pl.filter(x=>x.done&&x.doneAt&&d2s(new Date(x.doneAt))<=d).length, extra=(doneDay[d]||[]).filter(x=>x.plan!==d).length;
-    return {d,p,dn:Math.min(p,onTime+extra),extra,vac:inVac(d)}};
+    const part=Pl.filter(x=>!(x.done&&x.doneAt&&d2s(new Date(x.doneAt))<=d)).reduce((s,x)=>{const ss=subsOf(x); if(!ss.length) return s; return s+.5*ss.filter(y=>y.done&&y.doneAt&&d2s(new Date(y.doneAt))<=d).length/ss.length},0);
+    return {d,p,dn:Math.min(p,onTime+extra),part,extra,vac:inVac(d)}};
   let hp=70, miss=0; const start=lo.born>addDays(t,-60)?lo.born:addDays(t,-60), hist={};
   for(let d=start; d<t; d=addDays(d,1)){const i=info(d); let st="none";
     if(i.vac) st="vac";
-    else if(i.p>0){const r=i.dn/i.p; if(r>=1){hp+=10;st="full";miss=0} else if(r>=.5){hp+=4;st="half";miss=0} else if(r>0){hp-=4;st="low";miss=0} else {miss++;hp-=7+Math.min(2,miss-1)*2;st="miss"}}
+    else if(i.p>0){const r=Math.min(1,(i.dn+(i.part||0))/i.p); if(r>=1){hp+=10;st="full";miss=0} else if(r>=.5){hp+=4;st="half";miss=0} else if(r>0){hp-=4;st="low";miss=0} else {miss++;hp-=7+Math.min(2,miss-1)*2;st="miss"}}
     else if(i.extra>0){hp+=3;st="bonus"}
     hp=Math.max(5,Math.min(100,hp)); hist[d]=Object.assign(i,{st})}
   const T=info(t), vac=T.vac, hr=new Date().getHours(), form=locoFormIdx(L);
@@ -5360,11 +5487,11 @@ function lcScreenHTML(){
       <div class="lcs-leg"><span><i class="d-full"></i>закрито</span><span><i class="d-half"></i>половина</span><span><i class="d-miss"></i>пропуск</span><span><i class="d-none"></i>без плану</span><span><i class="d-vac"></i>відпустка</span></div></div>`}
   if(m==="forms"){const i=((lcUI.form%6)+6)%6, x=F[i], got=i<=st.form;
     return `<div class="lcs-page lcs-forms"><h4>Форма ${i+1}/6</h4><canvas id="lcFormCanvas" width="288" height="160"></canvas><div class="lcs-row c"><b>${got?x.name:"???"}</b><span>LV${x.lv}</span></div><small>${got?x.ability:"Відкриється на рівні "+x.lv}</small><div class="lcs-cta">A: наступна</div></div>`}
-  if(m==="xp"){const L=[["Книга",XP.book],["Проєкт",XP.project],["Презентація",XP.presentation],["Складне",XP.d3],["Середнє",XP.d2],["Легке",XP.d1],["Без складності",XP.none],["Вівторкове",XP.tue],["Есе",XP.essay],["Повторення",XP.review]];
+  if(m==="xp"){const L=[["Книга",XP.book],["Проєкт",XP.project],["Презентація",XP.presentation],["Складне",XP.d3],["Середнє",XP.d2],["Легке",XP.d1],["Без складності",XP.none],["Вівторкове",XP.tue],["Есе",XP.essay],["Повторення",XP.review],["Підпункт",SUBXP[1]+"–"+SUBXP[3]]];
     const P2=pg(L,5); return `<div class="lcs-page"><h4>Сила · ${P2.p}/${P2.pages}</h4><ul class="lcs-xp">${P2.list.map(([n,v])=>`<li><span>${n}</span><b>+${v}</b></li>`).join("")}</ul><div class="lcs-cta">A: далі</div></div>`}
   if(m==="vac"){const on=(S.loco.vacs||[]).some(v=>!v.t||v.t>=today());
     return `<div class="lcs-page"><h4>Відпустка</h4><div class="lcs-big">${on?"УВІМК":"ВИМК"}</div><small>${on?"Дні не рахуються. Loco відпочиває.":"Хворієш чи їдеш? Увімкни, і пропущені дні не шкодитимуть."}</small><div class="lcs-cta">B: ${on?"завершити":"увімкнути"}</div></div>`}
-  if(m==="help"){const H=[["Їжа","Loco їсть виконані завдання. Кожне дає силу (XP), і з часом він змінює форму."],["План","Якщо на день були заплановані завдання, а ти не закрив жодного, здоров'я падає."],["Вихідні","Дні без плану не рахуються. Loco просто відпочиває."],["Відпустка","Хворієш чи їдеш? Увімкни відпустку в меню з місяцем."],["Без фанатизму","Гладити приємно, але на здоров'я не впливає. Найкращий догляд: закрити завдання і піти відпочивати."]];
+  if(m==="help"){const H=[["Їжа","Loco їсть виконані завдання. Кожне дає силу (XP), і з часом він змінює форму."],["Перекус","Підпункти теж годують: +3–8 XP кожен. А в день з планом закриті підпункти трохи рахуються як з'їдене."],["План","Якщо на день були заплановані завдання, а ти не закрив жодного, здоров'я падає."],["Вихідні","Дні без плану не рахуються. Loco просто відпочиває."],["Відпустка","Хворієш чи їдеш? Увімкни відпустку в меню з місяцем."],["Без фанатизму","Гладити приємно, але на здоров'я не впливає. Найкращий догляд: закрити завдання і піти відпочивати."]];
     const p=lcUI.page%H.length; return `<div class="lcs-page"><h4>Довідка ${p+1}/${H.length}</h4><div class="lcs-row"><b>${H[p][0]}</b></div><p class="lcs-p">${H[p][1]}</p><div class="lcs-cta">A: далі</div></div>`}
   return "";
 }
@@ -5970,8 +6097,8 @@ document.addEventListener("click",e=>{
     case "subDiff": {const t=S.tasks.find(x=>x.id===id), x=t&&subsOf(t).find(y=>y.id===b.dataset.s); if(x){x.diff=((x.diff||0)+1)%4; commit()} break}
     case "delSub": {const t=S.tasks.find(x=>x.id===id); if(t){t.subs=subsOf(t).filter(x=>x.id!==b.dataset.s); if(t.subs.length&&!t.done&&t.subs.every(x=>x.done)){completeTask(id);break}} commit(); break}
     case "gsel": {const q=document.getElementById("gq"); if(q) q.value=""; document.getElementById("gres").hidden=true;
-      if(b.dataset.k==="task"){const t=S.tasks.find(x=>x.id===id); if(t){view="courses";openCourse=t.courseId;libZoom=null;editing=false;showDone=!!t.done;expanded.add(t.id);render();window.scrollTo(0,0)}}
-      else {const bk=S.books.find(x=>x.id===id); if(bk) sheetBook(bk)} break}
+      if(b.dataset.k==="task"){const t=S.tasks.find(x=>x.id===id); if(t){view="courses";openCourse=t.courseId;libZoom=null;editing=false;showDone=!!t.done;render();window.scrollTo(0,0);flashTo(`#view [data-tid="${t.id}"]`)}}
+      else {const bk=S.books.find(x=>x.id===id); if(bk){view="library";openCourse=null;libZoom=null;libQ="";render();window.scrollTo(0,0);if(!flashTo(`#view .spine[data-id="${bk.id}"]`)) sheetBook(bk)}} break}
     case "ringMode": S.settings.ringMode=b.dataset.v; commit(); break;
     case "taskView": S.settings.taskView=b.dataset.v; commit(); break;
     case "gtype": {const c=course(id); c.grading=c.grading||{type:"",parts:[]}; c.grading.type=c.grading.type===b.dataset.v?"":b.dataset.v; commit(); break}
