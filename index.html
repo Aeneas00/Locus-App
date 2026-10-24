@@ -1710,6 +1710,46 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
   .setnav{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line);padding:8px 12px}
   .setnav button{white-space:nowrap;padding:8px 12px}}
 
+/* ===== events vs tasks in the calendar ===== */
+.evchip{display:flex;align-items:center;gap:5px;width:100%;min-width:0;border-radius:7px;padding:4px 7px;background:var(--ec);color:var(--ei);font-size:.75rem;font-weight:800;cursor:pointer;box-shadow:0 1px 0 rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.18)}
+.evchip b{font-family:var(--f-mono);font-size:.68rem;font-weight:700;opacity:.85;flex:none}
+.evchip span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.evchip:hover{filter:brightness(1.08)}
+.kweek .evchip{flex-direction:column;align-items:flex-start;gap:1px;text-align:left}.kweek .evchip span{white-space:normal;overflow-wrap:anywhere;text-align:left;width:100%}
+/* tasks: outlined with a ring, so they never look like events */
+.pchip{background:transparent!important;border:1.5px solid color-mix(in srgb,var(--cc) 60%,transparent)!important;box-shadow:none!important;padding:3px 7px!important;font-weight:700}
+.pchip i{display:inline-block!important;width:9px;height:9px;border-radius:50%;border:2px solid var(--cc);flex:none}
+.pchip:hover{background:color-mix(in srgb,var(--cc) 12%,transparent)!important}
+.pchip.done i{background:var(--cc)}
+.calleg{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:12px;font-size:.74rem;font-weight:700;color:var(--ink-2)}
+.calleg span{display:inline-flex;align-items:center;gap:6px}
+.calleg i{display:inline-block}
+.lg-ev{width:16px;height:10px;border-radius:3px;background:linear-gradient(90deg,#5F9447,#4F7FB0)}
+.lg-task{width:14px;height:10px;border-radius:3px;border:1.5px solid var(--ink-2)}
+.lg-due{width:14px;height:10px;border-radius:3px;border:1.5px dashed var(--warn)}
+.lg-dot{width:9px;height:9px;border-radius:50%}
+.evlist{display:flex;flex-direction:column;gap:6px}
+.evrow{display:grid;grid-template-columns:80px minmax(0,1fr) auto;align-items:center;gap:10px;width:100%;border:0;text-align:left;padding:9px 12px;border-radius:12px;background:var(--ec);color:var(--ei);cursor:pointer}
+.evrow:hover{filter:brightness(1.06)}
+.evtime{font-family:var(--f-mono);font-weight:700;font-size:.82rem}
+.evbody{display:flex;flex-direction:column;min-width:0}.evbody b{font-weight:800;overflow-wrap:anywhere}.evbody small{opacity:.85;font-weight:600}
+.evtag{font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.22)}
+.tagpick{display:flex;flex-wrap:wrap;gap:6px}
+.tagopt{position:relative;cursor:pointer}
+.tagopt input{position:absolute;opacity:0;pointer-events:none}
+.tagopt span{display:inline-flex;align-items:center;padding:6px 12px;border-radius:999px;font-weight:800;font-size:.84rem;border:2px solid var(--ec);color:var(--ink);background:transparent}
+.tagopt input:checked + span{background:var(--ec);color:var(--ei)}
+.tagopt input:focus-visible + span{outline:2px solid var(--ink);outline-offset:2px}
+.tagnew{display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.tagnew .inp{flex:1 1 140px;min-width:0}
+input[type="color"]{width:38px;height:38px;padding:0;border:1px solid var(--line);border-radius:10px;background:none;cursor:pointer;flex:none}
+input[type="color"]::-webkit-color-swatch-wrapper{padding:3px}input[type="color"]::-webkit-color-swatch{border:0;border-radius:7px}
+.taglist{display:flex;flex-direction:column;gap:6px}
+.tagrow{display:grid;grid-template-columns:38px minmax(0,1fr) auto 30px;gap:8px;align-items:center}
+.tdevents{border-radius:24px;padding:16px 18px}
+.tdevents header{display:flex;align-items:center;gap:10px;margin-bottom:8px}.tdevents h3{margin:0;font-size:1.15rem}
+@media (max-width:640px){.evrow{grid-template-columns:minmax(0,1fr) auto}.evtime{grid-column:1/-1;font-size:.74rem}.kgrid .evchip span,.kmonth .evchip span{display:none}.kmonth .evchip{height:8px;padding:0}.kmonth .pchip{padding:0!important;height:8px}.kmonth .pchip i{display:none!important}.kmonth .evchip b{display:none}}
+
 .savebtn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border:0;border-radius:12px;background:linear-gradient(180deg,#F3C766,#D99A2B);color:#241606;font:inherit;font-weight:800;font-size:.95rem;cursor:pointer;box-shadow:0 8px 18px -8px rgba(217,154,43,.8),inset 0 1px 0 rgba(255,255,255,.45);transition:transform .15s,filter .15s}
 .savebtn svg{width:18px;height:18px}
 .savebtn:hover{filter:brightness(1.07);transform:translateY(-1px)}
@@ -2102,6 +2142,8 @@ function normalize(s){
    for(const k of Object.keys(s.focusDay)) if(k<cut) delete s.focusDay[k];
    if(s.focus) for(const k of Object.keys(s.focus)) if(k<mondayOf(cut)) delete s.focus[k];}
   if(!s.settings.nameV2){if(!s.settings.name||s.settings.name==="Ігор") s.settings.name="Ігор-Еней"; s.settings.nameV2=1}
+  if(!Array.isArray(s.events)) s.events=[];
+  if(!Array.isArray(s.tags)||!s.tags.length) s.tags=[{id:"sup",name:"Супервізія",color:"#5F9447"},{id:"mod",name:"Модуль",color:"#C98F25"},{id:"evt",name:"Подія",color:"#4F7FB0"}];
   return s;
 }
 function toV5(o){
@@ -2717,7 +2759,7 @@ function inModule(d){return S.settings.modules.includes(d)}
 function planChip(t){const c=course(t.courseId);return `<div role="button" tabindex="0" class="pchip${t.done?" done":""}" draggable="${t.done?"false":"true"}" data-plan-task="${t.id}" data-act="editTask" data-id="${t.id}" style="--cc:${c?c.color:"var(--ink-2)"}" title="${esc(t.title)}${c?" · "+esc(c.name):""}"><i></i><span>${esc(t.title)}</span></div>`}
 function dueChipCal(t){return `<button type="button" class="dchip" data-act="editTask" data-id="${t.id}" title="Дедлайн: ${esc(t.title)}">${ICON.flag}<span>${esc(t.title)}</span></button>`}
 function dayCell(d,opts={}){
-  const t=today(), pl=plannedOn(d), du=dueOn(d), MAX=opts.week?99:3, items=pl.map(planChip).concat(du.map(dueChipCal)), more=items.length-MAX;
+  const t=today(), pl=plannedOn(d), du=dueOn(d), MAX=opts.week?99:3, items=evOn(d).map(evChip).concat(pl.map(planChip),du.map(dueChipCal)), more=items.length-MAX;
   const tue=S.tueDates.includes(d), mod=inModule(d);
   return `<div class="kday${opts.out?" out":""}${d===t?" today":""}${d<t?" past":""}${mod?" mod":""}" data-day="${d}">
     <button type="button" class="cdnum" data-act="calDay" data-v="${d}" aria-label="${fmtL(d)}: ${pl.length} заплановано">${opts.week?`<small>${WD[(parse(d).getDay()+6)%7]}</small>`:""}<b>${+d.slice(8)}</b>${opts.week?`<small>${MONTHS_N[+d.slice(5,7)-1].slice(0,3)}</small>`:""}</button>
@@ -2732,32 +2774,35 @@ function planView(){
   const title=calView==="day"?`${fmtL(calDate)}${calDate===today()?" · сьогодні":""}`:calView==="week"?`${fmtS(calWeek)} – ${fmtS(addDays(calWeek,6))} ${addDays(calWeek,6).slice(0,4)}`:`${MONTHS_N[m-1][0].toUpperCase()+MONTHS_N[m-1].slice(1)} ${y}`;
   const head=`<div class="pagehead glass calhead2"><div class="row" style="gap:12px"><h1>Календар</h1><span class="caltitle">${title}</span></div>
     <div class="row" style="gap:8px"><div class="seg" role="group" aria-label="Вигляд"><button data-act="calView" data-v="day" aria-pressed="${calView==="day"}">День</button><button data-act="calView" data-v="week" aria-pressed="${calView==="week"}">Тиждень</button><button data-act="calView" data-v="month" aria-pressed="${calView==="month"}">Місяць</button></div>
-      <button class="iconbtn" data-act="kalNav" data-d="-1" aria-label="Назад">${ICON.back}</button><button class="btn sm" data-act="kalToday">Сьогодні</button><button class="iconbtn" data-act="kalNav" data-d="1" aria-label="Вперед" style="transform:scaleX(-1)">${ICON.back}</button></div></div>`;
+      <button class="iconbtn" data-act="kalNav" data-d="-1" aria-label="Назад">${ICON.back}</button><button class="btn sm" data-act="kalToday">Сьогодні</button><button class="btn sm primary" data-act="evNew">${ICON.plus}Подія</button><button class="iconbtn" data-act="kalNav" data-d="1" aria-label="Вперед" style="transform:scaleX(-1)">${ICON.back}</button></div></div>`;
   const grid=calView==="day"?dayViewHTML(calDate):calView==="week"
     ?`<div class="kweek">${Array.from({length:7},(_,i)=>dayCell(addDays(calWeek,i),{week:true})).join("")}</div>`
     :`<div class="kmonth"><div class="kwds">${WD.map(w=>`<span>${w}</span>`).join("")}</div><div class="kgrid">${monthCells(calMon).map(d=>dayCell(d,{out:d.slice(0,7)!==calMon})).join("")}</div></div>`;
   const tray=`<aside class="ctray glass" data-day="" aria-label="Ще не заплановано"><div class="head" style="margin-bottom:8px"><h3>Не заплановано</h3><span class="mono muted">${unpl.length}</span></div>
     <div class="muted" style="font-size:.8rem;margin-bottom:10px">Перетягни завдання на день. Або натисни на день, щоб обрати зі списку.</div>
     <div class="trayl">${unpl.map(x=>{const c=course(x.courseId);return `<div class="trow"><div role="button" tabindex="0" class="pchip" draggable="true" data-plan-task="${x.id}" data-act="editTask" data-id="${x.id}" style="--cc:${c.color}"><i></i><span>${esc(x.title)}</span></div><small>${x.plan&&x.plan<t?`<b class="late">пропущено ${fmtS(x.plan)}</b> · `:""}${esc(c.name)}${x.due?" · до "+fmtS(x.due):""}</small></div>`}).join("")||'<div class="empty" style="margin:0">Усе заплановано.</div>'}</div></aside>`;
-  return `${head}<div class="calwrap ${calView}"><section class="calmain glass">${grid}</section>${tray}</div>`;
+  return `${head}<div class="calwrap ${calView}"><section class="calmain glass">${grid}<div class="calleg"><span><i class="lg-ev"></i>подія (колір тегу)</span><span><i class="lg-task"></i>завдання</span><span><i class="lg-due"></i>дедлайн</span>${S.tags.map(t=>`<span><i class="lg-dot" style="background:${t.color}"></i>${esc(t.name)}</span>`).join("")}</div></section>${tray}</div>`;
 }
 function sheetDay(d){
   const pl=plannedOn(d), du=dueOn(d), t=today();
   const pool=openTasksAll().filter(x=>x.plan!==d).sort((a,b)=>((a.plan?1:0)-(b.plan?1:0))||((effDue(a)||"9999")<(effDue(b)||"9999")?-1:1));
   openSheet(`<h2 style="text-transform:none">${fmtL(d)}</h2><div class="muted" style="font-size:.86rem;margin:-4px 0 12px">${fmtD(d)}${inModule(d)?" · модульний тиждень":""}${S.tueDates.includes(d)?" · "+esc(S.settings.tueName):""}</div>
-    <div class="label" style="margin-bottom:6px">Заплановано</div>
+    ${evOn(d).length?`<div class="label" style="margin-bottom:6px">Події</div><div class="evlist" style="margin-bottom:14px">${evOn(d).map(evRow).join("")}</div>`:""}
+    <div class="label" style="margin-bottom:6px">Завдання</div>
     <div class="dlist">${pl.map(x=>{const c=course(x.courseId);return `<div class="drow${x.done?" done":""}"><i class="dot" style="background:${c.color}"></i><button type="button" class="dtitle" data-act="editTask" data-id="${x.id}">${esc(x.title)}</button><small class="muted">${esc(c.name)}</small><button type="button" class="mini-btn xs" data-act="unplan" data-id="${x.id}" data-day="${d}" aria-label="Прибрати з цього дня">${ICON.x}</button></div>`}).join("")||'<div class="muted" style="font-size:.88rem;padding:6px 0">Нічого не заплановано.</div>'}</div>
     ${du.length?`<div class="label" style="margin:14px 0 6px">Дедлайни цього дня</div><div class="dlist">${du.map(x=>`<div class="drow"><span class="flagic">${ICON.flag}</span><button type="button" class="dtitle" data-act="editTask" data-id="${x.id}">${esc(x.title)}</button><small class="muted">${esc(course(x.courseId).name)}</small></div>`).join("")}</div>`:""}
     <form class="form" data-form="planday" data-day="${d}" style="margin-top:16px">
       ${pool.length?`<label class="field"><span>Запланувати на цей день</span><select id="pd-task">${pool.map(x=>`<option value="${x.id}">${esc(x.title)} · ${esc(course(x.courseId).name)}${x.plan?` (зараз ${fmtD(x.plan)})`:""}</option>`).join("")}</select></label>`:""}
-      <div class="row" style="justify-content:space-between"><button type="button" class="btn ghost" data-act="newTaskOn" data-v="${d}">${ICON.plus}Нове завдання</button><div class="row">${pool.length?`<button class="btn primary">Запланувати</button>`:""}<button type="button" class="btn ghost" data-act="closeSheet">Готово</button></div></div>
+      <div class="row" style="justify-content:space-between"><div class="row" style="gap:6px"><button type="button" class="btn ghost" data-act="newTaskOn" data-v="${d}">${ICON.plus}Завдання</button><button type="button" class="btn ghost" data-act="evNewOn" data-v="${d}">${ICON.plus}Подія</button></div><div class="row">${pool.length?`<button class="btn primary">Запланувати</button>`:""}<button type="button" class="btn ghost" data-act="closeSheet">Готово</button></div></div>
     </form>`,true);
 }
 document.addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.matches&&e.target.matches('[role="button"][data-act]')){e.preventDefault();e.target.click()}});
-document.addEventListener("dragstart",e=>{const el=e.target.closest&&e.target.closest("[data-plan-task]"); if(!el) return; e.dataTransfer.setData("text/plain",el.dataset.planTask); e.dataTransfer.effectAllowed="move"; el.classList.add("dragging-chip")});
+document.addEventListener("dragstart",e=>{const el=e.target.closest&&e.target.closest("[data-plan-task],[data-plan-ev]"); if(!el) return; e.dataTransfer.setData("text/plain",el.dataset.planEv?"ev:"+el.dataset.planEv:el.dataset.planTask); e.dataTransfer.effectAllowed="move"; el.classList.add("dragging-chip")});
 document.addEventListener("dragend",e=>{document.querySelectorAll(".dragging-chip,.dropon").forEach(x=>x.classList.remove("dragging-chip","dropon"))});
 document.addEventListener("dragover",e=>{const z=e.target.closest&&e.target.closest("[data-day]"); if(!z||!document.querySelector(".calwrap,.todaywrap")) return; e.preventDefault(); document.querySelectorAll(".dropon").forEach(x=>x!==z&&x.classList.remove("dropon")); z.classList.add("dropon")});
-document.addEventListener("drop",e=>{const z=e.target.closest&&e.target.closest("[data-day]"); if(!z||!document.querySelector(".calwrap,.todaywrap")) return; e.preventDefault(); const id=e.dataTransfer.getData("text/plain"), t=S.tasks.find(x=>x.id===id); if(!t) return; const d=z.dataset.day; if((t.plan||"")===d) return; t.plan=d; commit(); if(d) toast(`«${t.title}» — ${fmtS(d)}`)});
+document.addEventListener("drop",e=>{const z=e.target.closest&&e.target.closest("[data-day]"); if(!z||!document.querySelector(".calwrap,.todaywrap")) return; e.preventDefault(); const id=e.dataTransfer.getData("text/plain");
+  if(id.startsWith("ev:")){const ev=(S.events||[]).find(x=>x.id===id.slice(3)), d=z.dataset.day; if(ev&&d&&ev.date!==d){ev.date=d; commit(); toast(`«${ev.title}» — ${fmtS(d)}`)} return}
+  const t=S.tasks.find(x=>x.id===id); if(!t) return; const d=z.dataset.day; if((t.plan||"")===d) return; t.plan=d; commit(); if(d) toast(`«${t.title}» — ${fmtS(d)}`)});
 
 
 /* ---------- course cards: big coloured cards with a silly prop each ---------- */
@@ -3006,8 +3051,9 @@ function dayViewHTML(d){
   return `<div class="dayview" data-day="${d}">
     <div class="dvhead"><div><div class="dvdate">${+d.slice(8)}</div><div class="dvwd">${fmtL(d).split(",")[0]}</div></div>
       <div class="dvnums"><span><b>${pl0.length}</b> заплановано</span><span><b>${pl0.length-open.length}</b> виконано</span>${open.length?`<span><b>~${fmtMin(rem)}</b> роботи</span>`:""}</div>
-      <button class="btn sm" data-act="calDayAdd" data-v="${d}">${ICON.plus}Запланувати</button></div>
+      <div class="row" style="gap:6px"><button class="btn sm" data-act="calDayAdd" data-v="${d}">${ICON.plus}Завдання</button><button class="btn sm" data-act="evNewOn" data-v="${d}">${ICON.plus}Подія</button></div></div>
     ${inModule(d)?'<span class="ctag mod">модульний тиждень</span>':""}${S.tueDates.includes(d)?`<span class="ctag tue">${esc(S.settings.tueName)}</span>`:""}
+    ${evOn(d).length?`<div class="label" style="margin:4px 0 2px">Події</div><div class="evlist">${evOn(d).map(evRow).join("")}</div><div class="label" style="margin:8px 0 2px">Завдання</div>`:""}
     <div class="tasklist">${pl0.map(t=>taskRow(t,{course:true})).join("")||`<div class="empty">На цей день нічого не заплановано. Перетягни завдання з панелі праворуч або натисни «Запланувати».</div>`}</div>
     ${du.length?`<div class="label" style="margin:16px 0 6px">Дедлайни цього дня</div><div class="tasklist">${du.map(t=>taskRow(t,{course:true})).join("")}</div>`:""}
   </div>`;
@@ -3054,10 +3100,42 @@ function todayView(){
       ${tomorrow.map(x=>{const c=course(x.courseId);return `<div class="tdsr tmr" draggable="true" data-plan-task="${x.id}"><span class="fgrip" aria-hidden="true">${GRIP}</span><i class="dot" style="background:${c.color}"></i><span>${esc(x.title)}</span><small>${esc(c.name)}${x.diff?" · "+DIFF[x.diff]:""} · ~${fmtMin(minsOf(x))}</small><button class="btn sm" data-act="planToday" data-id="${x.id}">↑ На сьогодні</button></div>`}).join("")}</section>`;
   return `<div class="todaywrap">
     <div class="tdtop"><div class="seg" role="group" aria-label="Групувати"><button data-act="todayGroup" data-v="course" aria-pressed="${grp==="course"}">За предметами</button><button data-act="todayGroup" data-v="diff" aria-pressed="${grp==="diff"}">За складністю</button></div></div>
-    ${hero}${missedB}
+    ${hero}${evOn(t).length?`<section class="tdevents glass"><header><h3>Події сьогодні</h3><span class="tdgc">${evOn(t).length}</span></header><div class="evlist">${evOn(t).map(evRow).join("")}</div></section>`:""}${missedB}
     <div class="tdlist" data-day="${t}">${body}</div>
     ${tmB}</div>`;
 }
+
+
+/* ---------- calendar events + tags ---------- */
+const tagOf=id=>(S.tags||[]).find(x=>x.id===id)||{id:"",name:"Без тегу",color:"#8A7F72"};
+const inkFor=hex=>{const m=/^#?([0-9a-f]{6})$/i.exec(hex||""); if(!m) return "#fff"; const n=parseInt(m[1],16), r=n>>16&255, g=n>>8&255, b=n&255; return (0.299*r+0.587*g+0.114*b)>165?"#1E1A16":"#FFFFFF"};
+const evOn=d=>(S.events||[]).filter(e=>e.date===d).sort((a,b)=>(a.time||"99")<(b.time||"99")?-1:1);
+function evChip(e){const tg=tagOf(e.tag);return `<div role="button" tabindex="0" class="evchip" draggable="true" data-plan-ev="${e.id}" data-act="evEdit" data-id="${e.id}" style="--ec:${tg.color};--ei:${inkFor(tg.color)}" title="${esc(tg.name)}: ${esc(e.title)}${e.time?" · "+e.time:""}">${e.time?`<b>${e.time}</b>`:""}<span>${esc(e.title)}</span></div>`}
+function evRow(e){const tg=tagOf(e.tag);return `<button type="button" class="evrow" data-act="evEdit" data-id="${e.id}" style="--ec:${tg.color};--ei:${inkFor(tg.color)}"><span class="evtime">${e.time||"весь день"}</span><span class="evbody"><b>${esc(e.title)}</b>${e.note?`<small>${esc(e.note)}</small>`:""}</span><span class="evtag">${esc(tg.name)}</span></button>`}
+let evDraft=null;
+function sheetEvent(e,date){
+  const isNew=!e; e=evDraft||e||{title:"",date:date||(view==="plan"&&calView==="day"?calDate:today()),time:"",tag:(S.tags[0]||{}).id||"",note:""}; evDraft=null;
+  openSheet(`<h2>${isNew&&!e.id?"Нова подія":"Подія"}</h2>
+  <form class="form" data-form="event"><input type="hidden" id="ev-id" value="${e.id||""}">
+    <label class="field"><span>Назва</span><input id="ev-title" required maxlength="120" value="${esc(e.title)}" placeholder="Напр. Супервізія з Оксаною"></label>
+    <div class="two"><label class="field"><span>Дата</span>${dateField("ev-date",e.date)}</label><label class="field"><span>Час <span style="font-weight:500">(можна без)</span></span><input id="ev-time" type="time" value="${e.time||""}"></label></div>
+    <div class="field"><span>Тег</span><div class="tagpick">${S.tags.map(t=>`<label class="tagopt" style="--ec:${t.color};--ei:${inkFor(t.color)}"><input type="radio" name="ev-tag" value="${t.id}" ${e.tag===t.id?"checked":""}><span>${esc(t.name)}</span></label>`).join("")}</div>
+      <div class="tagnew"><input class="inp" id="ev-newtag" maxlength="30" placeholder="Новий тег"><input type="color" id="ev-newcolor" value="#8E5FB0" aria-label="Колір нового тегу"><button type="button" class="btn sm" data-act="evTagAdd">${ICON.plus}Додати тег</button></div></div>
+    <label class="field"><span>Нотатка</span><textarea id="ev-note" rows="2" maxlength="400">${esc(e.note||"")}</textarea></label>
+    <div class="row" style="justify-content:space-between">${e.id?`<button type="button" class="btn sm danger" data-act="evDel" data-id="${e.id}">Видалити</button>`:"<span></span>"}<div class="row"><button type="button" class="btn ghost" data-act="closeSheet">Скасувати</button><button class="btn primary">${e.id?"Зберегти":"Додати"}</button></div></div>
+  </form>`, !isNew);
+}
+function evFormDraft(){const v=id=>((document.getElementById(id)||{}).value||""), r=document.querySelector('input[name="ev-tag"]:checked');
+  return {id:v("ev-id"),title:v("ev-title"),date:v("ev-date")||today(),time:v("ev-time"),tag:r?r.value:"",note:v("ev-note")}}
+function tagSettingsHTML(){
+  return `<h3 style="margin-top:8px">Теги подій</h3><small class="muted">Колір тегу зафарбовує події в календарі. Завдання показуються окремо, контуром.</small>
+    <div class="taglist">${S.tags.map(t=>`<div class="tagrow"><input type="color" value="${t.color}" data-tag-color="${t.id}" aria-label="Колір тегу ${esc(t.name)}"><input class="inp" value="${esc(t.name)}" maxlength="30" data-tag-name="${t.id}" aria-label="Назва тегу"><span class="muted" style="font-size:.78rem">${(S.events||[]).filter(e=>e.tag===t.id).length} под.</span><button type="button" class="mini-btn xs" data-act="tagDel" data-id="${t.id}" aria-label="Видалити тег ${esc(t.name)}">${ICON.x}</button></div>`).join("")}</div>
+    <div class="tagnew"><input class="inp" id="tg-new" maxlength="30" placeholder="Новий тег"><input type="color" id="tg-color" value="#8E5FB0" aria-label="Колір"><button type="button" class="btn sm" data-act="tagAdd">${ICON.plus}Додати</button></div>`;
+}
+document.addEventListener("change",e=>{const el=e.target; if(!el||!el.dataset) return;
+  if(el.dataset.tagColor){const t=S.tags.find(x=>x.id===el.dataset.tagColor); if(t){t.color=el.value; commit({norender:true}); render()}}
+  else if(el.dataset.tagName){const t=S.tags.find(x=>x.id===el.dataset.tagName); if(t&&el.value.trim()){t.name=el.value.trim(); commit({norender:true}); render(); toast("Тег збережено")}}
+});
 
 /* ---------- views ---------- */
 let view="home", openCourse=null, editing=false, showDone=false, showLater=false, libRoom="main", libQ="";
@@ -3542,7 +3620,8 @@ function sheetSettings(keep){
   else if(setTab==="calendar") body=`<h3>Календар</h3>
     <div class="seg" role="group" aria-label="Що позначати"><button type="button" data-act="calMode" data-v="mod" aria-pressed="${calMode==="mod"}">Модульні тижні</button><button type="button" data-act="calMode" data-v="tue" aria-pressed="${calMode==="tue"}">${esc(s.tueName)}</button></div>
     <small class="muted">${calMode==="mod"?"Торкнись днів модульного тижня. Коло на головній рахує завдання до найближчого.":"Торкнись дня, коли буде завдання. Повторний дотик прибирає дату."}</small>
-    ${calendarHTML()}`;
+    ${calendarHTML()}
+    ${tagSettingsHTML()}`;
   else if(setTab==="time") body=`<h3>Час на завдання</h3>
     <p class="muted" style="margin:0">Скільки часу в тебе зазвичай іде на завдання кожної складності. З цього рахуються статистика, сторінка «Сьогодні» і «Закінчиш приблизно».</p>
     <div class="minsgrid">${[[1,"Легке"],[2,"Середнє"],[3,"Складне"],[0,"Без складності"]].map(([k,l])=>`<label class="minsrow"><i class="sw d${k}"></i><span>${l}</span><input class="inp" type="number" min="5" max="1440" step="5" inputmode="numeric" data-set="mins.${k}" value="${mn(k)}"><small>хв</small></label>`).join("")}</div>
@@ -3550,7 +3629,7 @@ function sheetSettings(keep){
   else body=`<h3>Дані</h3>
     <div class="field"><span>Резервна копія</span><div class="row" style="gap:8px;flex-wrap:wrap"><button type="button" class="btn sm primary" data-act="saveCloud">Зберегти в хмару</button><button type="button" class="btn sm" data-act="exportData">Експорт даних (.json)</button><label class="btn sm" for="importFile" style="cursor:pointer">Імпорт даних (.json)</label><input type="file" id="importFile" accept=".json,application/json" hidden></div><small>Імпорт замінює поточні дані. Одразу після нього можна натиснути «Повернути».</small></div>
     <div class="field"><span>Небезпечна зона</span><div><button type="button" class="btn danger sm" data-act="resetAsk">Скинути все</button></div><div id="resetZone"></div></div>
-    <div class="muted" style="font-size:.72rem">Locus · версія 24.10.2026 · 5</div>`;
+    <div class="muted" style="font-size:.72rem">Locus · версія 24.10.2026 · 6</div>`;
   openSheet(`<div class="setwrap"><div class="sethead"><h2>Налаштування</h2><button type="button" class="iconbtn" data-act="closeSheet" aria-label="Закрити">${ICON.x}</button></div>
     <nav class="setnav" aria-label="Розділи налаштувань">${SETTABS.map(([k,l])=>`<button type="button" data-act="setTab" data-v="${k}" aria-current="${setTab===k?"page":"false"}">${l}</button>`).join("")}</nav>
     <div class="setbody form">${body}<div class="setsaved muted">Зміни зберігаються одразу.</div></div></div>`,true);
@@ -3809,6 +3888,13 @@ document.addEventListener("click",e=>{
     case "dpset": setDP(b.dataset.v); break;
     case "calView": calView=b.dataset.v; render(); break;
     case "calDayAdd": sheetDay(b.dataset.v); break;
+    case "evNew": sheetEvent(null); break;
+    case "evNewOn": closeSheet(); sheetEvent(null,b.dataset.v); break;
+    case "evEdit": sheetEvent((S.events||[]).find(x=>x.id===id)); break;
+    case "evDel": {snap(); S.events=S.events.filter(x=>x.id!==id); closeSheet(); commit(); undoToast("Подію видалено"); break}
+    case "evTagAdd": {const n=(document.getElementById("ev-newtag")||{}).value.trim(); if(!n){toast("Впиши назву тегу");break} const tg={id:uid(),name:n,color:document.getElementById("ev-newcolor").value}; S.tags.push(tg); const d=evFormDraft(); d.tag=tg.id; evDraft=d; commit({norender:true}); sheetEvent(d.id?d:null,d.date); break}
+    case "tagAdd": {const n=(document.getElementById("tg-new")||{}).value.trim(); if(!n){toast("Впиши назву тегу");break} S.tags.push({id:uid(),name:n,color:document.getElementById("tg-color").value}); commit(); sheetSettings(true); break}
+    case "tagDel": {if(S.tags.length<=1){toast("Має лишитися хоча б один тег");break} snap(); S.tags=S.tags.filter(x=>x.id!==id); const f=S.tags[0].id; (S.events||[]).forEach(e=>{if(e.tag===id) e.tag=f}); commit(); sheetSettings(true); undoToast("Тег видалено"); break}
     case "kalNav": {const n=+b.dataset.d; if(calView==="day") calDate=addDays(calDate,n); else if(calView==="week") calWeek=addDays(calWeek,7*n); else {const [y,m]=calMon.split("-").map(Number), d=new Date(y,m-1+n,1); calMon=d.getFullYear()+"-"+pad(d.getMonth()+1)} render(); break}
     case "kalToday": calDate=today(); calWeek=mondayOf(today()); calMon=today().slice(0,7); render(); break;
     case "calDay": if(view==="plan"&&b.classList.contains("cdnum")){calDate=b.dataset.v; calView="day"; render()} else sheetDay(b.dataset.v); break;
@@ -3891,6 +3977,9 @@ document.addEventListener("submit",e=>{
       const t=S.tasks.find(x=>x.id===f.dataset.id), inp=f.querySelector("input"), txt=inp.value.trim(); if(!t||!txt) return;
       t.subs=[...subsOf(t),{id:uid(),t:txt,done:false}]; if(t.done) reopen(t);
       commit(); const el=document.getElementById("sub-"+t.id); if(el) el.focus(); break}
+    case "event":{const d=evFormDraft(); if(!d.title.trim()) return; d.title=d.title.trim(); S.events=S.events||[];
+      if(d.id){const ev=S.events.find(x=>x.id===d.id); if(ev) Object.assign(ev,d)} else {d.id=uid(); d.createdAt=Date.now(); S.events.push(d)}
+      closeSheet(); commit(); toast(`Подія: ${d.title} · ${fmtS(d.date)}${d.time?" "+d.time:""}`); break}
     case "planday":{const t=S.tasks.find(x=>x.id===v("pd-task")), d=f.dataset.day; if(!t) return; t.plan=d; commit(); sheetDay(d); break}
     case "fcustom":{const m=clamp(parseInt(v("fm-min"),10)||0,0,600); if(m>0) fmGo(m); break}
     case "gscore":{
