@@ -3226,6 +3226,84 @@ html{scrollbar-gutter:stable}
 .sup-n.nx .sup-c{opacity:1}
 .sup-n:not(.nx):hover .sup-c{opacity:.85}
 
+/* ===== today: progress block stands out ===== */
+#view .tdhero{position:relative;background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 30%,var(--card)),var(--card) 75%)!important;border:2px solid color-mix(in srgb,var(--accent) 55%,transparent)!important;box-shadow:0 22px 44px -22px color-mix(in srgb,var(--accent) 80%,transparent)!important}
+.tdhero .tdring{width:150px!important;height:150px!important}
+.tdhero .tdring b{font-size:3rem}
+.tdhero h1{font-size:2.1rem}
+:root[data-skin="retro"] #view .tdhero{background-color:#FFE6F1!important;border:3px solid var(--hard)!important;box-shadow:8px 8px 0 #FF6FB5!important}
+:root[data-skin="retro"][data-tone="dark"] #view .tdhero{background-color:#5A3366!important}
+:root[data-skin="solar"] #view .tdhero{background:linear-gradient(135deg,rgba(143,220,154,.45),rgba(255,236,170,.35))!important;border:1px solid rgba(255,255,255,.8)!important}
+:root[data-skin="solar"][data-tone="dark"] #view .tdhero{background:linear-gradient(135deg,rgba(47,165,107,.45),rgba(20,50,35,.75))!important}
+:root[data-skin="loft"] #view .tdhero{background:linear-gradient(135deg,rgba(201,160,78,.3),var(--card) 75%)!important;border:1.5px solid #C9A04E!important}
+/* ===== library: reading now stands out ===== */
+#view .libread{background:linear-gradient(135deg,color-mix(in srgb,var(--sun) 32%,var(--card)),var(--card) 80%)!important;border:2px solid color-mix(in srgb,var(--sun) 65%,transparent)!important;box-shadow:0 22px 44px -22px color-mix(in srgb,var(--sun) 80%,transparent)!important}
+.libread h2{font-size:1.5rem}
+.libread .rd .cov{width:56px;height:76px}
+.libread .rd.rd2{grid-template-columns:56px minmax(0,1fr) auto}
+.libtop2{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)!important}
+@media (max-width:760px){.libtop2{grid-template-columns:minmax(0,1fr)!important}}
+:root[data-skin="retro"] #view .libread{background-color:#FFF1B8!important;border:3px solid var(--hard)!important;box-shadow:8px 8px 0 #FF6FB5!important}
+:root[data-skin="retro"][data-tone="dark"] #view .libread{background-color:#5A4A22!important}
+:root[data-skin="solar"] #view .libread{background:linear-gradient(135deg,rgba(255,226,140,.55),rgba(143,220,154,.3))!important;border:1px solid rgba(255,255,255,.85)!important}
+:root[data-skin="solar"][data-tone="dark"] #view .libread{background:linear-gradient(135deg,rgba(243,199,102,.35),rgba(20,50,35,.75))!important}
+:root[data-skin="loft"] #view .libread{border:1.5px solid #C9A04E!important}
+/* ===== calendar plan drawer: hugs the calendar ===== */
+.calwrap.trayopen{grid-template-columns:minmax(0,1fr) 320px!important;gap:10px!important;padding-right:0!important}
+.ctray{position:sticky!important;top:16px!important;right:auto!important;bottom:auto!important;width:auto!important;max-height:calc(100vh - 32px)!important;transform:none!important;opacity:1!important;display:none}
+.ctray.open{display:block;pointer-events:auto;animation:trayin .35s cubic-bezier(.22,1,.36,1)}
+@keyframes trayin{from{opacity:0;transform:translateX(24px)}}
+@media (max-width:1100px){.calwrap.trayopen{grid-template-columns:minmax(0,1fr)!important}.ctray.open{order:-1;position:static!important;max-height:50vh!important}}
+@media (prefers-reduced-motion:reduce){.ctray.open{animation:none}}
+/* ===== supervisions: equal cards, tools inside ===== */
+.sup-n{grid-template-columns:64px 34px minmax(0,1fr)!important}
+.sup-c{display:grid!important;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:6px 12px}
+.sup-c > .tprog{grid-column:1}
+.sup-c > .sup-tools{grid-column:2;grid-row:1/span 2}
+.sup-n.st-future .sup-c{border-style:solid!important}
+@media (max-width:640px){.sup-n{grid-template-columns:44px 30px minmax(0,1fr)!important}.sup-c .startbtn span:not([data-since]){display:none}.sup-c .startbtn:not(.run){width:32px;padding:0;justify-content:center}}
+:root[data-skin="solar"] #view .tdhero,:root[data-skin="solar"] #view .libread,:root[data-skin="loft"] #view .tdhero,:root[data-skin="loft"] #view .libread{opacity:1}
+:root[data-skin="solar"] .planbadge{background:#fff;color:#1E8656}:root[data-skin="loft"] .planbadge{background:#2A1C0C;color:#F3C766}
+/* ===== tamagotchi buttons ===== */
+.tama-btn{flex:none!important;padding:0!important;min-height:0!important;line-height:1!important;aspect-ratio:1/1;width:54px!important;height:54px!important;display:grid;place-items:center;box-sizing:border-box}
+.tama-lbl span{width:54px!important}
+@media (max-width:480px){.tama-btn{width:46px!important;height:46px!important}.tama-lbl span{width:46px!important}}
+
+/* ===== points on course cards ===== */
+.cpts{background:linear-gradient(180deg,#FFE79A,#F2BE45)!important;color:#3A2506!important;border:0;box-shadow:0 8px 18px -8px rgba(160,100,10,.8),inset 0 1px 0 rgba(255,255,255,.6)!important}
+.cpts b{color:#3A2506}.cpts small{color:#5A3E10;opacity:1}
+:root[data-skin="retro"] .cpts{background:#FFD23F!important;border:2.5px solid var(--hard)!important;box-shadow:3px 3px 0 var(--hard)!important;color:#2B1B2E!important}
+:root[data-skin="loft"] .cpts{background:linear-gradient(180deg,#F0CF84,#C9A04E)!important}
+:root[data-skin="solar"] .cpts{background:linear-gradient(180deg,#FFF0B8,#F3C766)!important}
+/* ===== no focus timer ===== */
+#focusBtn,.focusbtn,[data-act="focus"],[data-act="fabFocus"],.fpill{display:none!important}
+#btnLayout[hidden]{display:none!important}
+/* ===== header tamagotchi ===== */
+.lvl{overflow:visible!important}
+.lvl .lcmini.tamamini{width:50px!important;height:56px!important;margin:-18px 4px -16px -16px!important;position:relative;z-index:2}
+.lvl .lcmini.tamamini svg{border-radius:0!important;background:none!important}
+.tamamini svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 3px 4px rgba(0,0,0,.25))}
+@media (prefers-reduced-motion:no-preference){
+  .tamamini svg{transform-origin:50% 90%;animation:mtwig 2.4s ease-in-out infinite}
+  @keyframes mtwig{0%,60%,100%{transform:rotate(0)}66%{transform:rotate(-9deg)}72%{transform:rotate(8deg)}78%{transform:rotate(-5deg)}84%{transform:rotate(3deg)}}
+  .tamamini .mt-pet{animation:mtpet 1.2s steps(2) infinite}
+  @keyframes mtpet{50%{transform:translateX(1px) translateY(-1px)}}
+  .lvl:hover .tamamini svg{animation-duration:.6s}
+}
+/* ===== menu settings ===== */
+.mlist{display:flex;flex-direction:column;gap:6px}
+.mrow{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:12px;background:var(--glass-2)}
+.mrow.off{opacity:.5}
+.mrow .grow{flex:1}
+.mic{width:22px;height:22px;display:grid;place-items:center}.mic svg{width:18px;height:18px}
+.mrow .mini-btn{width:30px;height:30px;font-weight:900}
+.mrow .mini-btn:disabled{opacity:.25;cursor:default}
+.mtog{width:42px;height:24px;border-radius:999px;border:0;background:var(--track);position:relative;cursor:pointer;flex:none}
+.mtog i{position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:left .2s}
+.mtog.on{background:var(--accent)}.mtog.on i{left:21px}
+:root[data-skin="retro"] .mrow{background:var(--card);border:2px solid var(--hard)}
+:root[data-skin="retro"] .mtog{border:2px solid var(--hard)}
+
 .savebtn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border:0;border-radius:12px;background:linear-gradient(180deg,#F3C766,#D99A2B);color:#241606;font:inherit;font-weight:800;font-size:.95rem;cursor:pointer;box-shadow:0 8px 18px -8px rgba(217,154,43,.8),inset 0 1px 0 rgba(255,255,255,.45);transition:transform .15s,filter .15s}
 .savebtn svg{width:18px;height:18px}
 .savebtn:hover{filter:brightness(1.07);transform:translateY(-1px)}
@@ -3246,7 +3324,7 @@ body.locked > *:not(#gate):not(.gconf){display:none!important}
 body.locked #gate{display:block;position:fixed;inset:0;z-index:200;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch;--gi:#2B1B2E;--gc:#FFF8EC;--mx:0;--my:0;
   background-color:#EADFFD;background-image:linear-gradient(rgba(43,27,46,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(43,27,46,.07) 1px,transparent 1px);background-size:28px 28px;color:var(--gi);font-family:Manrope,system-ui,sans-serif}
 .gbg{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
-.gblob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;animation:gblob 16s ease-in-out infinite alternate}
+.gblob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.38;animation:gblob 16s ease-in-out infinite alternate}
 .gblob.b1{width:46vmax;height:46vmax;left:-12vmax;top:-14vmax;background:#FF8FB1}
 .gblob.b2{width:40vmax;height:40vmax;right:-14vmax;top:20vh;background:#FFD23F;animation-duration:19s;animation-delay:-6s}
 .gblob.b3{width:36vmax;height:36vmax;left:30vw;bottom:-22vmax;background:#6FD0E0;animation-duration:22s;animation-delay:-11s}
@@ -3380,33 +3458,25 @@ body.locked #gate{display:block;position:fixed;inset:0;z-index:200;overflow-x:hi
     <i class="gblob b1"></i><i class="gblob b2"></i><i class="gblob b3"></i>
     <div class="gst s1" style="--x:5%;--y:13%;--d:18;--pd:.5s"><div class="gpop"><div class="gfl" style="--t:5.5s;--r:-10deg"><svg viewBox="0 0 60 60" width="58" height="58"><path d="M30 3 L37.5 22.5 L57 30 L37.5 37.5 L30 57 L22.5 37.5 L3 30 L22.5 22.5 Z" fill="#3DD9EB" stroke="#2B1B2E" stroke-width="3.5" stroke-linejoin="round"/></svg></div></div></div>
     <div class="gst s2" style="--x:31%;--y:4%;--d:10;--pd:.65s"><div class="gpop"><div class="gfl" style="--t:7s;--r:8deg"><svg viewBox="0 0 100 100" width="84" height="84"><g stroke="#2B1B2E" stroke-width="4" stroke-linecap="round"><path d="M50 4v12M50 84v12M4 50h12M84 50h12M17 17l9 9M74 74l9 9M83 17l-9 9M26 74l-9 9"/></g><circle cx="50" cy="50" r="27" fill="#FFD23F" stroke="#2B1B2E" stroke-width="4"/><circle cx="41" cy="46" r="3.5" fill="#2B1B2E"/><circle cx="59" cy="46" r="3.5" fill="#2B1B2E"/><path d="M40 57q10 9 20 0" fill="none" stroke="#2B1B2E" stroke-width="4" stroke-linecap="round"/></svg></div></div></div>
-    <div class="gst" style="--x:53%;--y:9%;--d:-12;--pd:.8s"><div class="gpop"><div class="gfl" style="--t:4.8s;--r:14deg"><svg viewBox="0 0 60 60" width="40" height="40"><path d="M30 3 L37.5 22.5 L57 30 L37.5 37.5 L30 57 L22.5 37.5 L3 30 L22.5 22.5 Z" fill="#FF6FB5" stroke="#2B1B2E" stroke-width="4" stroke-linejoin="round"/></svg></div></div></div>
-    <div class="gst hm" style="--x:66%;--y:5%;--d:16;--pd:.9s"><div class="gpop"><div class="gfl" style="--t:6.4s;--r:-9deg"><svg viewBox="0 0 96 66" width="88" height="60"><rect x="8" y="8" width="84" height="54" rx="6" fill="#2B1B2E"/><rect x="3" y="3" width="84" height="54" rx="6" fill="#FFB3C7" stroke="#2B1B2E" stroke-width="3.5"/><path d="M5 6 L45 34 L85 6" fill="none" stroke="#2B1B2E" stroke-width="3.5" stroke-linejoin="round"/></svg></div></div></div>
     <div class="gst" style="--x:85%;--y:3%;--d:22;--pd:1s"><div class="gpop"><div class="gfl" style="--t:6s;--r:6deg"><svg viewBox="0 0 92 96" width="80" height="84"><g stroke="#2B1B2E" stroke-width="3.5" stroke-linejoin="round"><rect x="10" y="12" width="20" height="78" rx="3" fill="#FF9A62"/><rect x="31" y="22" width="18" height="68" rx="3" fill="#7ED9AE"/><rect x="52" y="6" width="22" height="84" rx="3" fill="#C3A8F5" transform="rotate(8 63 48)"/></g><path d="M14 30h12M35 38h10M14 76h12" stroke="#2B1B2E" stroke-width="3" stroke-linecap="round"/></svg></div></div></div>
-    <div class="gst hm" style="--x:3%;--y:77%;--d:26;--pd:1.1s"><div class="gpop"><div class="gfl" style="--t:7.2s;--r:-6deg"><div class="gsk gwin"><b class="gwbar"><i></i><i></i><i></i></b><small>дедлайн</small><strong>30 жовт.</strong><em>ще 6 днів</em></div></div></div></div>
-    <div class="gst hm" style="--x:26%;--y:85%;--d:-18;--pd:1.2s"><div class="gpop"><div class="gfl" style="--t:5.2s;--r:5deg"><div class="gsk gpill"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 4l13 8-13 8z" fill="currentColor"/></svg>фокус 25:00</div></div></div></div>
-    <div class="gst hm" style="--x:48%;--y:79%;--d:-24;--pd:1.3s"><div class="gpop"><div class="gfl" style="--t:6.6s;--r:-8deg"><svg viewBox="0 0 80 80" width="76" height="76"><circle cx="40" cy="40" r="36" fill="#FFF8EC" stroke="#2B1B2E" stroke-width="3.5"/><circle cx="40" cy="40" r="25" fill="none" stroke="#EADFFD" stroke-width="9"/><circle cx="40" cy="40" r="25" fill="none" stroke="#FF6FB5" stroke-width="9" stroke-dasharray="107 157" stroke-linecap="round" transform="rotate(-90 40 40)"/><text x="40" y="45" text-anchor="middle" font-family="Space Mono,monospace" font-weight="700" font-size="14" fill="#2B1B2E">68%</text></svg></div></div></div>
-    <div class="gst hm s8" style="--x:2.5%;--y:47%;--d:14;--pd:1.4s"><div class="gpop"><div class="gfl" style="--t:5.8s;--r:10deg"><div class="gsk gstamp">95<small>балів</small></div></div></div></div>
-    <div class="gst hm" style="--x:93%;--y:60%;--d:-20;--pd:1.5s"><div class="gpop"><div class="gfl" style="--t:5s;--r:-12deg"><svg viewBox="0 0 70 70" width="62" height="62"><circle cx="35" cy="35" r="31" fill="#7ED9AE" stroke="#2B1B2E" stroke-width="3.5"/><path d="M21 36l9 9 19-20" fill="none" stroke="#2B1B2E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div>
+    <div class="gst" style="--x:93%;--y:60%;--d:-20;--pd:1.5s"><div class="gpop"><div class="gfl" style="--t:5s;--r:-12deg"><svg viewBox="0 0 70 70" width="62" height="62"><circle cx="35" cy="35" r="31" fill="#7ED9AE" stroke="#2B1B2E" stroke-width="3.5"/><path d="M21 36l9 9 19-20" fill="none" stroke="#2B1B2E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div>
   </div>
   <div class="gwrap">
     <section class="ghero">
       <div class="glogo glimg" aria-hidden="true"><svg viewBox="0 0 300 300"><rect width="300" height="300" rx="68" fill="#FFD23F"/><rect x="58" y="70" width="214" height="196" rx="16" fill="#111"/><rect x="44" y="56" width="214" height="196" rx="16" fill="#fff" stroke="#111" stroke-width="8"/><path d="M44 72 A16 16 0 0 1 60 56 H242 A16 16 0 0 1 258 72 V100 H44 Z" fill="#FF6FB5" stroke="#111" stroke-width="8"/><circle cx="70" cy="78" r="7" fill="#111"/><circle cx="92" cy="78" r="7" fill="#111"/><circle cx="114" cy="78" r="7" fill="#111"/><path transform="translate(104 232) scale(0.075 -0.075)" d="M716 0H81Q35 0 19.5 18.0Q4 36 4 63Q4 89 19.5 108.5Q35 128 60 138L106 152Q128 160 137.5 177.0Q147 194 159 231Q167 254 183.0 312.5Q199 371 221.0 451.5Q243 532 267.0 624.0Q291 716 315.0 807.5Q339 899 359.5 978.5Q380 1058 394.5 1114.5Q409 1171 412 1192Q417 1217 410.5 1231.0Q404 1245 386 1251L343 1266Q325 1275 312.0 1289.0Q299 1303 299 1325Q299 1358 322.0 1379.0Q345 1400 389 1400H924Q970 1400 985.5 1382.0Q1001 1364 1001 1337Q1001 1309 985.0 1290.5Q969 1272 947 1262L900 1248Q882 1241 871.5 1228.0Q861 1215 850 1180Q834 1135 814.0 1066.5Q794 998 772.5 916.5Q751 835 729.0 749.0Q707 663 687.0 580.5Q667 498 650.5 429.0Q634 360 623.0 312.5Q612 265 609 248Q595 179 617.0 151.0Q639 123 691 123H736Q795 123 841.5 151.0Q888 179 937.0 245.5Q986 312 1050 428Q1075 474 1098.5 491.5Q1122 509 1146 509Q1184 509 1199.0 485.0Q1214 461 1213 421Q1209 315 1187.0 231.0Q1165 147 1127.0 89.0Q1089 31 1036.5 0.5Q984 -30 916 -30Q885 -30 858.0 -22.5Q831 -15 799.0 -7.5Q767 0 716 0Z" fill="#111"/><path d="M222 128 L228 144 L244 150 L228 156 L222 172 L216 156 L200 150 L216 144 Z" fill="#3DD9EB" stroke="#111" stroke-width="5" stroke-linejoin="round"/></svg></div>
       <h1 id="gateTitle" class="gword" aria-label="Locus"><span style="--i:0">L</span><span style="--i:1">o</span><span style="--i:2">c</span><span style="--i:3">u</span><span style="--i:4">s</span></h1>
       <p class="gtag">Тут живуть твої <span class="sr">курси, дедлайни, книги й плани</span><span class="grot" id="gRot" aria-hidden="true">курси</span></p>
-      <ul class="gfeat"><li style="--i:0;--c:#FF6FB5">курси й модулі</li><li style="--i:1;--c:#FFD23F">дедлайни</li><li style="--i:2;--c:#3DD9EB">полиці книг</li><li style="--i:3;--c:#7ED9AE">фокус-таймер</li><li style="--i:4;--c:#C3A8F5">бали</li></ul>
       <div class="gabout">
-        <p><b>Locus</b> — навчальний трекер для студентів. В одному місці: курси й модульні тижні, завдання з дедлайнами, план на кожен день, полиці з книгами, таймер роботи і Loco, тамагочі, який росте від виконаних завдань.</p>
+        <p><b>Locus</b> — трекер навчання: курси, завдання й дедлайни до модульного тижня, план на день і книги в одному місці.</p>
         <ol class="gsteps">
-          <li><b>Створи акаунт</b><span>пошта й пароль, потім код доступу від автора</span></li>
-          <li><b>Додай курси</b><span>і дату модульного тижня в налаштуваннях</span></li>
-          <li><b>Плануй і роби</b><span>розклади завдання по днях, вмикай таймер, закривай</span></li>
+          <li><b>Зареєструйся</b><span>пошта, пароль і код доступу</span></li>
+          <li><b>Додай курси</b><span>і дату модульного тижня</span></li>
+          <li><b>Плануй і роби</b><span>завдання по днях, таймер, галочки</span></li>
         </ol>
-        <small>Дані зберігаються в хмарі твого акаунта і доступні з телефона й комп'ютера. Після входу короткий екскурс покаже, що де.</small>
+        <small>Дані зберігаються в хмарі і доступні з телефона й комп'ютера.</small>
       </div>
     </section>
     <div class="gcardw">
-      <div class="gseal" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><path id="gsealp" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0"/></defs><circle cx="60" cy="60" r="57" fill="#FFD23F" stroke="#2B1B2E" stroke-width="4"/><text font-family="Space Mono,monospace" font-weight="700" font-size="13.2" letter-spacing="2" fill="#2B1B2E"><textPath href="#gsealp">ЛОКУС ★ ЦЕНТР УВАГИ ★ ЛОКУС ★ </textPath></text><path d="M60 42 L64.5 55.5 L78 60 L64.5 64.5 L60 78 L55.5 64.5 L42 60 L55.5 55.5 Z" fill="#FF6FB5" stroke="#2B1B2E" stroke-width="3" stroke-linejoin="round"/></svg></div>
       <div class="gcard">
         <div class="gbar"><i></i><i></i><i></i><span id="gBarT">locus / вхід</span></div>
         <div class="gbody">
@@ -3430,7 +3500,6 @@ body.locked #gate{display:block;position:fixed;inset:0;z-index:200;overflow-x:hi
       </div>
     </div>
   </div>
-  <div class="gmarq" aria-hidden="true"><div><span>КУРСИ</span><b>★</b><span>ДЕДЛАЙНИ</span><b>★</b><span>КНИГИ</span><b>★</b><span>ФОКУС</span><b>★</b><span>МОДУЛЬНИЙ ТИЖДЕНЬ</span><b>★</b><span>БАЛИ</span><b>★</b><span>КУРСИ</span><b>★</b><span>ДЕДЛАЙНИ</span><b>★</b><span>КНИГИ</span><b>★</b><span>ФОКУС</span><b>★</b><span>МОДУЛЬНИЙ ТИЖДЕНЬ</span><b>★</b><span>БАЛИ</span><b>★</b></div></div>
 </div>
 <script>
 (function(){
@@ -3704,7 +3773,7 @@ const ICON={
   plan:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M8 14h3M8 17h6"/></svg>',
   flag:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg>',
   sup:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="16.5" cy="9.5" r="2.5"/><path d="M3 19c.6-3.2 2.7-5 5-5s4.4 1.8 5 5M13.5 18.5c.4-2.3 1.7-3.6 3.2-3.6s2.8 1.3 3.3 3.6"/></svg>',
-  home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg>',
+  home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/></svg>',
   courses:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4z"/><path d="M7 9.5V15c0 1.5 2.2 3 5 3s5-1.5 5-3V9.5"/></svg>',
   library:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16M8 4v16M12 6l4 14M18 4v16M3 20h18"/></svg>',
   check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>',
@@ -4383,12 +4452,12 @@ function railHTML(){
   const cs=activeCourses(), t=today();
   const nextTue=[...new Set(S.tueDates)].sort().find(d=>d>=t), loans=activeLoans(), lw=loans.some(b=>loanState(b)==="over")?"over":loans.some(b=>loanState(b)==="soon")?"soon":"";
   const ring=c=>{const R=ringData(null,c.id), C=2*Math.PI*21;return `<button class="ravatar" data-act="openCourse" data-id="${c.id}" title="${esc(c.name)} · ${R.label}" aria-label="${esc(c.name)}, ${R.label}"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="none" stroke="var(--track)" stroke-width="4"/><circle cx="24" cy="24" r="21" fill="none" stroke="${CC(c.color)}" stroke-width="4" stroke-linecap="round" stroke-dasharray="${(C*R.f).toFixed(1)} ${C.toFixed(1)}"/></svg><span style="background:${CC(c.color)}">${esc(initials(c.name))}</span></button>`};
-  return `<div class="rblock">${cs.map(ring).join("")}<button class="ravatar add" data-act="addCourse" title="Новий курс" aria-label="Новий курс">${ICON.plus}</button></div>
-    <div class="rblock">
+  const RB={rings:`<div class="rblock">${cs.map(ring).join("")}<button class="ravatar add" data-act="addCourse" title="Новий курс" aria-label="Новий курс">${ICON.plus}</button></div>`,mini:`<div class="rblock">
       <button class="rmini" data-act="settingsTue" title="${nextTue?esc(S.settings.tueName)+": "+fmtL(nextTue):"Позначити вівторкові завдання"}" aria-label="${nextTue?esc(S.settings.tueName)+", наступне "+fmtL(nextTue):"Календар вівторкових завдань"}"><small>${nextTue?parse(nextTue).toLocaleDateString("uk-UA",{month:"short"}).replace(".",""):"вт"}</small><b>${nextTue?parse(nextTue).getDate():"—"}</b></button>
       <button class="rmini ${lw}" data-act="nav" data-v="library" title="Позичені книги: ${loans.length}" aria-label="Позичені книги: ${loans.length}">${ICON.library}${loans.length?`<i>${loans.length}</i>`:""}</button>
       <button class="rmini" data-act="rand" title="Що сьогодні?" aria-label="Що сьогодні? Обрати навмання"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="9" cy="9" r="1.3" fill="currentColor"/><circle cx="15" cy="15" r="1.3" fill="currentColor"/><circle cx="15" cy="9" r="1.3" fill="currentColor"/><circle cx="9" cy="15" r="1.3" fill="currentColor"/></svg></button>
-    </div>`;
+    </div>`};
+  return railOrder().map(k=>RB[k]||"").join("");
 }
 function heroRow(){
   const tp=todayPick(), cy=cycle(), P=modProgress(), left=P.n-P.d, days=cy.next?diffDays(cy.next,cy.t):null;
@@ -4411,7 +4480,7 @@ function heroRow(){
   const planWhen=d=>{const n=diffDays(d,today());return n===0?"сьогодні":n===1?"завтра":n<0?`пропущено ${fmtS(d)}`:`${fmtL(d)}`};
   return `<div class="herorow one">
     <section class="hero herobig" aria-label="Сьогодні і найближчі дедлайни">
-      <div class="herotext"><span class="hchip">${chip}</span><h2 class="htitle">${title}</h2>${desc}<div class="row" style="gap:10px;margin-top:4px">${actions}<button class="btn ghost" data-act="focus" data-t="0">${ICON.play}Фокус</button></div></div>
+      <div class="herotext"><span class="hchip">${chip}</span><h2 class="htitle">${title}</h2>${desc}<div class="row" style="gap:10px;margin-top:4px">${actions}</div></div>
       <div class="heroscene" aria-hidden="true"><div class="heroart">${ART.office}</div></div>
     <div class="upnext" role="group" aria-label="Найближчі заплановані завдання">
       <div class="label" style="padding:0 4px">Заплановано</div>
@@ -4694,7 +4763,7 @@ function statsView(){
   const sessB=`<section class="sb glass" style="--sp:4"><div class="slabel">Останні сесії</div>
     ${lastS.length?`<div class="slist">${lastS.map(x=>`<div class="srow2"><div><b>${esc(x.title)}</b><small>${fmtS(dayOf(x.s))} · ${fmtDur(x.ms)}${x.n?` · ${esc(x.n)}`:""}</small></div>${x.r?`<span class="srate r${x.r}" title="Оцінка ${x.r} з 5">${x.r}</span>`:""}</div>`).join("")}</div>`:'<div class="empty" style="margin:6px 0 0">Тут з\'являться твої сесії.</div>'}</section>`;
   return `<div class="pagehead glass"><h1>Статистика</h1><span class="muted" style="font-size:.86rem;font-weight:600">дані за останні пів року · одиниця = легке завдання</span></div>
-    <div class="sgrid">${missionB(M)}${bd}${tiles}${workB}${sessB}${wkB}${mixB}${heatB}${timeB}${crsB}${readB}${wdB}${planB}${focB}${xpB}</div>`;
+    <div class="sgrid">${missionB(M)}${bd}${tiles}${workB}${sessB}${wkB}${mixB}${heatB}${timeB}${crsB}${readB}${wdB}${planB}${xpB}</div>`;
 }
 /* hover tooltip for any [data-tip] */
 (function(){let tip=null;
@@ -4861,7 +4930,7 @@ function openFab(){
   if(document.getElementById("fabmenu")){closeFab();return}
   const f=document.getElementById("fab"), m=document.createElement("div"); m.id="fabmenu"; m.className="fabmenu"; m.setAttribute("role","menu");
   const it=(act,ic,l,sub,extra="")=>`<button type="button" role="menuitem" data-act="${act}" ${extra}><span class="fic">${ic}</span><span><b>${l}</b><small>${sub}</small></span></button>`;
-  m.innerHTML=it("fabTask",ICON.check,"Завдання","до курсу, з дедлайном")+it("evNew",ICON.plan,"Подія","у календар, з тегом")+it("addBook",ICON.library,"Книга","на полицю курсу",'data-course=""')+it("addCourse",ICON.courses,"Курс","нова картка й полиця")+it("fabFocus",ICON.play,"Фокус-таймер","маленьке віконце");
+  m.innerHTML=it("fabTask",ICON.check,"Завдання","до курсу, з дедлайном")+it("evNew",ICON.plan,"Подія","у календар, з тегом")+it("addBook",ICON.library,"Книга","на полицю курсу",'data-course=""')+it("addCourse",ICON.courses,"Курс","нова картка й полиця")+"";
   document.body.appendChild(m); f.classList.add("open"); f.setAttribute("aria-expanded","true");
   const b=m.querySelector("button"); if(b) b.focus();
 }
@@ -4869,7 +4938,7 @@ document.addEventListener("click",e=>{if(document.getElementById("fabmenu")&&!e.
 document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest("#fabmenu [data-act]")) setTimeout(closeFab,0)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("fabmenu")){closeFab(); const f=document.getElementById("fab"); if(f) f.focus()}});
 
-const LOCUS_BUILD="1.0.38";
+const LOCUS_BUILD="1.0.40";
 
 /* ---------- alive: entrance on view change, ring fill, count-up, completion burst ---------- */
 let aliveKey=null, aliveFirst=true;
@@ -5316,8 +5385,8 @@ function supView(){
         <div class="sup-main"${!t||st==="off"?` data-act="tueDot" data-d="${d}" role="button" tabindex="0"`:""}><b>${t?esc(t.title):esc(name)}</b>
           <small>${st==="off"?"не відбулася":`${c?`<i class="dot" style="background:${CC(c.color)}"></i>${esc(c.name)}`:""}${rel?` · ${rel}`:""}${t&&t.plan&&!t.done?` · готуюсь ${t.plan===t0?"сьогодні":fmtS(t.plan)}`:""}${ss.length?` · ${sd}/${ss.length}`:""}${e.note?" · є нотатка":""}`}</small></div>
         ${t&&ss.length&&st!=="off"?subBar(t,true):""}
-      </div>
       <div class="sup-tools">${t&&st!=="done"&&st!=="off"?startBtn("task",t):""}<button type="button" class="mini-btn" data-act="tueDot" data-d="${d}" aria-label="Редагувати супервізію" title="Редагувати">${ICON.edit}</button></div>
+      </div>
     </div>`}).join("")+(nowPut?"":`<div class="sup-now"><span>сьогодні · ${fmtS(t0)}</span></div>`);
   return `<div class="pagehead glass suphead"><h1>Супервізії</h1></div>
     </div>
@@ -5331,9 +5400,38 @@ document.addEventListener("change",e=>{const el=e.target; if(el&&el.dataset&&el.
 function supAddDate(v){if(!v) return; if(!S.tueDates.includes(v)) S.tueDates.push(v); if(S.tue[v]&&S.tue[v].s==="off") S.tue[v].s=""; commit(); toast(`Супервізія: ${fmtL(v)}`)}
 document.addEventListener("change",e=>{if(e.target&&e.target.id==="sup-new"&&e.target.value) supAddDate(e.target.value)});
 
+
+/* ---------- menu & rail settings ---------- */
+function navOrderAll(){const o=((S.settings.nav||{}).order||[]).filter(k=>TABS.some(t=>t[0]===k)); TABS.forEach(([k])=>{if(!o.includes(k)) o.push(k)}); return o}
+function navTabs(){const hid=(S.settings.nav||{}).hidden||[]; return navOrderAll().filter(k=>!hid.includes(k)).map(k=>TABS.find(t=>t[0]===k))}
+function railOrderAll(){const o=((S.settings.rail||{}).order||[]).filter(k=>k==="rings"||k==="mini"); ["rings","mini"].forEach(k=>{if(!o.includes(k)) o.push(k)}); return o}
+function railOrder(){const hid=(S.settings.rail||{}).hidden||[]; return railOrderAll().filter(k=>!hid.includes(k))}
+function menuSettingsHTML(){
+  const hid=(S.settings.nav||{}).hidden||[], o=navOrderAll(), rh=(S.settings.rail||{}).hidden||[], ro=railOrderAll(), RN={rings:"Кільця курсів",mini:"Міні-панель (супервізія, книги, навмання)"};
+  const row=(k,name,i,n,hidden,act,mv)=>`<div class="mrow${hidden?" off":""}"><span class="mic">${ICON[k]||""}</span><b>${name}</b><span class="grow"></span>
+    <button type="button" class="mini-btn" data-act="${mv}" data-k="${k}" data-d="-1" ${i===0?"disabled":""} aria-label="Вище">↑</button><button type="button" class="mini-btn" data-act="${mv}" data-k="${k}" data-d="1" ${i===n-1?"disabled":""} aria-label="Нижче">↓</button>
+    <button type="button" class="mtog${hidden?"":" on"}" data-act="${act}" data-k="${k}" aria-pressed="${!hidden}" aria-label="${hidden?"Показати":"Сховати"} ${name}"><i></i></button></div>`;
+  return `<h3>Меню</h3><div class="mlist">${o.map((k,i)=>row(k,TABS.find(t=>t[0]===k)[1],i,o.length,hid.includes(k),"navHide","navMove")).join("")}</div>
+    <h3 style="margin-top:18px">Права панель</h3><div class="mlist">${ro.map((k,i)=>row(k,RN[k],i,ro.length,rh.includes(k),"railHide","railMove")).join("")}</div>`;
+}
+/* ---------- tiny tamagotchi in the header ---------- */
+function miniTama(LS){
+  const K={retro:["#FF9BD0","#A98BF0","#FFD23F","#2B1B2E"],solar:["#A9E8B4","#3FA36E","#FFFFFF","#1E4D36"],loft:["#B08560","#5A3E28","#E3B861","#2A1C10"]}[curSkin()]||["#FF9BD0","#A98BF0","#FFD23F","#2B1B2E"];
+  const sad=LS.health<35, sleep=LS.mood==="sleep";
+  const face=sleep?'<rect x="16" y="20" width="3" height="1"/><rect x="22" y="20" width="3" height="1"/>':'<rect x="16" y="19" width="2" height="2"/><rect x="23" y="19" width="2" height="2"/>';
+  const mouth=sad?'<rect x="18" y="24" width="1" height="1"/><rect x="19" y="23" width="3" height="1"/><rect x="22" y="24" width="1" height="1"/>':'<rect x="18" y="23" width="1" height="1"/><rect x="19" y="24" width="3" height="1"/><rect x="22" y="23" width="1" height="1"/>';
+  return `<svg viewBox="0 0 41 46" aria-hidden="true"><defs><linearGradient id="mtg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${K[0]}"/><stop offset="1" stop-color="${K[1]}"/></linearGradient></defs>
+    <circle cx="20.5" cy="3" r="2.4" fill="none" stroke="${K[3]}" stroke-width="1.6"/>
+    <path d="M20.5 5C31 5 38.5 15 38.5 27C38.5 37 30.5 44 20.5 44C10.5 44 2.5 37 2.5 27C2.5 15 10 5 20.5 5Z" fill="url(#mtg)" stroke="${K[3]}" stroke-width="1.8"/>
+    <rect x="9" y="13" width="23" height="17" rx="3.5" fill="${K[2]}" stroke="${K[3]}" stroke-width="1.5"/>
+    <rect x="11.5" y="15" width="18" height="13" rx="1.5" fill="#CFE7B0"/>
+    <g class="mt-pet" fill="#1E2B1A" shape-rendering="crispEdges"><rect x="17" y="16" width="7" height="1"/><rect x="15" y="17" width="11" height="9" rx="0"/><g fill="#CFE7B0">${face}${mouth}</g></g>
+    <g fill="#FFF6E4" stroke="${K[3]}" stroke-width="1.2"><circle cx="14" cy="36" r="2.4"/><circle cx="20.5" cy="38" r="2.4"/><circle cx="27" cy="36" r="2.4"/></g></svg>`;
+}
+
 /* ---------- views ---------- */
 let view="home", openCourse=null, editing=false, showDone=false, showLater=false, libRoom="main", libQ="";
-function tabsHTML(){return TABS.map(([k,l])=>`<button class="tab" data-act="nav" data-v="${k}" title="${l}" ${view===k?'aria-current="page"':""}>${ICON[k]}<span>${l}</span></button>`).join("")}
+function tabsHTML(){return navTabs().map(([k,l])=>`<button class="tab" data-act="nav" data-v="${k}" title="${l}" ${view===k?'aria-current="page"':""}>${ICON[k]}<span>${l}</span></button>`).join("")}
 function render(){
   try{ensureSup()}catch(e){}
   document.getElementById("tabsTop").innerHTML=tabsHTML();
@@ -5341,7 +5439,7 @@ function render(){
   {const g=document.getElementById("greet"); if(g) g.innerHTML=`${greeting()}, <b>${esc(S.settings.name||"Ігор-Еней")}</b>`;
    const rr=document.getElementById("railR"); if(rr) rr.innerHTML=railHTML();}
   const L=level(S.xp), p=(S.xp-xpFor(L))/(xpFor(L+1)-xpFor(L));
-  LOCO_C=null; {const LS=locoState(), lv=document.getElementById("lvl"); lv.innerHTML=`<span class="lcmini">${locoSVG({form:LS.vform,health:LS.health,mood:LS.mood,mini:true})}</span><span class="lcml">Loco</span><i style="--p:${LS.health/100}"></i>${LS.justEvolved?'<b class="lcnew">!</b>':""}`; lv.classList.toggle("sick",LS.health<35);}
+  LOCO_C=null; {const LS=locoState(), lv=document.getElementById("lvl"); lv.innerHTML=`<span class="lcmini tamamini">${miniTama(LS)}</span><span class="lcml">Loco</span><i style="--p:${LS.health/100}"></i>${LS.justEvolved?'<b class="lcnew">!</b>':""}`; lv.classList.toggle("sick",LS.health<35);}
   {const LS=locoState(); document.getElementById("lvl").title=`Loco · здоров'я ${LS.health}% · рівень ${LS.L}`;}
   const v=document.getElementById("view");
   v.innerHTML=view==="courses"?(openCourse&&course(openCourse)?courseDetail(course(openCourse)):coursesView()):view==="library"?libraryView():view==="plan"?planView():view==="today"?todayView():view==="stats"?statsView():view==="xp"?xpView():view==="sup"?supView():homeView();
@@ -5349,7 +5447,7 @@ function render(){
   appearId=null;
   if(view==="home") watchHome(); else if(wRO){wRO.disconnect();wRO=null}
   document.getElementById("btnLayout").classList.toggle("on",editing&&view==="home");
-  setSync(); light(); renderNow(); aliveEnter(); afterRenderHelp(); if(subFocus) buildSubFocus(false);
+  setSync(); light(); renderNow(); aliveEnter(); afterRenderHelp(); {const bl=document.getElementById("btnLayout"); if(bl) bl.hidden=view!=="home"} if(subFocus) buildSubFocus(false);
   {const ss=document.querySelector(".supsheet"); if(ss){const t=supTask(ss.dataset.d), box=document.getElementById("supSubs"); if(t&&box) box.innerHTML=supSubsHTML(t)}}
 }
 function exampleBanner(){
@@ -6050,7 +6148,7 @@ function libraryView(){
   shelves.sort((a,b)=>{const ia=so.indexOf(a.id),ib=so.indexOf(b.id);return (ia<0?1e6:ia)-(ib<0?1e6:ib)});
   const all=S.books.length, done=S.books.filter(b=>b.status==="done").length;
   return `${head}
-    <div class="libtop2"><section class="libw glass" aria-label="Зараз читаю">${wReading()}</section><section class="libw glass" aria-label="Позичені книги">${wLoans()}</section></div>
+    <div class="libtop2"><section class="libw libread glass" aria-label="Зараз читаю">${wReading()}</section><section class="libw glass" aria-label="Позичені книги">${wLoans()}</section></div>
     <div class="libsec"><h2>Полиці</h2><span class="muted" style="font-size:.85rem;font-weight:600">${all} ${pl(all,"книга","книги","книг")} · прочитано ${done} · полицю тягни за крапки</span></div>
     <div class="shelfgrid" data-sort="shelves" data-axis="grid">${shelves.map((sh,i)=>shelfCard(sh,i,{drag:true})).join("")}<button class="shelfghost" data-act="addCourse">${ICON.plus}<span>Нова полиця</span></button></div>
     ${arch.length?`<details class="archdet"><summary>${ICON.box}Архів · ${arch.length} ${pl(arch.length,"полиця","полиці","полиць")}</summary><div class="shelfgrid">${arch.map((c,i)=>shelfCard({id:c.id,name:c.name,color:c.color},i+2,{dusty:true})).join("")}</div></details>`:""}`;
@@ -6104,7 +6202,7 @@ function calendarHTML(){
     ${pastN?`<small class="muted">Минулих дат: ${pastN}</small>`:""}</div>`;
 }
 let setTab="general";
-const SETTABS=[["general","Загальне"],["calendar","Календар"],["time","Час на завдання"],["data","Дані"]];
+const SETTABS=[["general","Загальне"],["menu","Меню"],["calendar","Календар"],["time","Час на завдання"],["data","Дані"]];
 function sheetSettings(keep){
   const s=S.settings, sc=keep&&document.querySelector(".setbody")?document.querySelector(".setbody").scrollTop:0, mn=k=>minsOf({diff:k});
   let body="";
@@ -6118,6 +6216,7 @@ function sheetSettings(keep){
     <small class="muted">${calMode==="mod"?"Торкнись днів модульного тижня. Коло на головній рахує завдання до найближчого.":"Торкнись дня, коли буде завдання. Повторний дотик прибирає дату."}</small>
     ${calendarHTML()}
     ${tagSettingsHTML()}`;
+  else if(setTab==="menu") body=menuSettingsHTML();
   else if(setTab==="time") body=`<h3>Час на завдання</h3>
     <p class="muted" style="margin:0">Скільки часу в тебе зазвичай іде на завдання кожної складності. З цього рахуються статистика, сторінка «Сьогодні» і «Закінчиш приблизно».</p>
     <div class="minsgrid">${[[1,"Легке"],[2,"Середнє"],[3,"Складне"],[0,"Без складності"]].map(([k,l])=>`<label class="minsrow"><i class="sw d${k}"></i><span>${l}</span><input class="inp" type="number" min="5" max="1440" step="5" inputmode="numeric" data-set="mins.${k}" value="${mn(k)}"><small>хв</small></label>`).join("")}</div>
@@ -6377,6 +6476,10 @@ document.addEventListener("click",e=>{
     case "nav": view=b.dataset.v; openCourse=null; libZoom=null; showDone=false; try{history.replaceState(null,"","#"+view)}catch(_){} render(); window.scrollTo(0,0); break;
     case "settings": sheetSettings(); break;
     case "locoPet": lcOpen(2); break;
+    case "navMove": {const o=navOrderAll(), i=o.indexOf(b.dataset.k), j=i+(+b.dataset.d); if(j>=0&&j<o.length){[o[i],o[j]]=[o[j],o[i]]; S.settings.nav=Object.assign(S.settings.nav||{},{order:o}); commit(); sheetSettings(true)} break}
+    case "navHide": {const k=b.dataset.k, n=S.settings.nav=S.settings.nav||{}; n.hidden=n.hidden||[]; if(n.hidden.includes(k)) n.hidden=n.hidden.filter(x=>x!==k); else {if(navTabs().length<=1){toast("Має лишитись хоча б один розділ");break} n.hidden.push(k); if(view===k){view="home"}} commit(); sheetSettings(true); break}
+    case "railMove": {const o=railOrderAll(); o.reverse(); S.settings.rail=Object.assign(S.settings.rail||{},{order:o}); commit(); sheetSettings(true); break}
+    case "railHide": {const k=b.dataset.k, r=S.settings.rail=S.settings.rail||{}; r.hidden=r.hidden||[]; r.hidden=r.hidden.includes(k)?r.hidden.filter(x=>x!==k):[...r.hidden,k]; commit(); sheetSettings(true); break}
     case "trayToggle": trayOpen=!trayOpen; render(); break;
     case "supDone": {const d=b.dataset.d, inSheet=!!b.closest(".supsheet"); setTue(d,"done"); if(inSheet) sheetTue(d); break}
     case "supAddD": supAddDate(b.dataset.v); break;
