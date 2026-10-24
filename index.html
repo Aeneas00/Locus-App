@@ -1750,6 +1750,72 @@ input[type="color"]::-webkit-color-swatch-wrapper{padding:3px}input[type="color"
 .tdevents header{display:flex;align-items:center;gap:10px;margin-bottom:8px}.tdevents h3{margin:0;font-size:1.15rem}
 @media (max-width:640px){.evrow{grid-template-columns:minmax(0,1fr) auto}.evtime{grid-column:1/-1;font-size:.74rem}.kgrid .evchip span,.kmonth .evchip span{display:none}.kmonth .evchip{height:8px;padding:0}.kmonth .pchip{padding:0!important;height:8px}.kmonth .pchip i{display:none!important}.kmonth .evchip b{display:none}}
 
+/* ===== difficulty = small marker; urgency = row colour ===== */
+.task.dl1,.task.dl2,.task.dl3{background:none;box-shadow:none;padding-left:6px}
+.check.d1,.check.d2,.check.d3{border-color:var(--ink-2);border-width:2px}
+.dmark{flex:none;align-self:flex-start;width:5px;height:22px;margin-top:1px;border-radius:3px;background:transparent;box-shadow:inset 0 0 0 1.5px var(--line)}
+.dmark.d1{background:var(--d1);box-shadow:none}.dmark.d2{background:var(--d2);box-shadow:none}.dmark.d3{background:var(--d3);box-shadow:none}
+.task.done .dmark{opacity:.4}
+.task.urg-y{background:color-mix(in srgb,var(--sun) 28%,transparent)!important;box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--sun) 65%,transparent)!important;border-radius:12px}
+.task.urg-r{background:color-mix(in srgb,var(--warn) 28%,transparent)!important;box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--warn) 75%,transparent)!important;border-radius:12px}
+.task.urg-r .title{color:var(--ink)}
+.task.urg-r > .tdue b,.task.urg-r > .tdue span,.task.urg-r > .tdue small{color:var(--warn)!important}
+.task.urg-y > .tdue b{color:var(--xp)}
+.task.urg-y,.task.urg-r{margin:3px 0}
+.tdbooks{border-radius:24px;padding:14px 18px}
+.tdbooks .head{margin-bottom:4px}.tdbooks h2{font-size:1.15rem}
+.btn.addev{font-weight:800}
+.task .chip.dch.d1,.task .chip.dch.d2,.task .chip.dch.d3{background:transparent;color:var(--ink-2);border:1px solid var(--line)}
+
+/* ===== floating create button ===== */
+.fab{position:fixed;right:max(20px,env(safe-area-inset-right,0px));bottom:max(22px,env(safe-area-inset-bottom,0px));z-index:92;width:60px;height:60px;border-radius:50%;border:0;display:grid;place-items:center;cursor:pointer;
+  background:linear-gradient(180deg,#F3C766,#D99A2B);color:#241606;box-shadow:0 14px 30px -10px rgba(120,70,10,.75),inset 0 1px 0 rgba(255,255,255,.45);transition:transform .2s cubic-bezier(.3,1.5,.5,1)}
+.fab svg{width:26px;height:26px;transition:transform .2s}
+.fab:hover{transform:scale(1.06)}
+.fab.open svg{transform:rotate(45deg)}
+:root[data-skin="solar"] .fab{background:linear-gradient(180deg,#3FB57A,#1E8656);color:#fff}
+.fabmenu{position:fixed;right:max(20px,env(safe-area-inset-right,0px));bottom:calc(max(22px,env(safe-area-inset-bottom,0px)) + 72px);z-index:93;width:260px;padding:8px;border-radius:20px;background:var(--card);border:1px solid var(--glass-edge);box-shadow:0 24px 50px -18px rgba(0,0,0,.55);display:flex;flex-direction:column;gap:2px;animation:fabin .18s ease-out}
+:root[data-skin="solar"] .fabmenu{background:var(--glass-strong);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)}
+@keyframes fabin{from{opacity:0;transform:translateY(8px) scale(.98)}}
+.fabmenu button{display:flex;align-items:center;gap:12px;border:0;background:none;border-radius:14px;padding:9px 10px;text-align:left;color:var(--ink)}
+.fabmenu button:hover,.fabmenu button:focus-visible{background:var(--glass-2)}
+.fic{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:var(--glass-2);flex:none}
+.fic svg{width:18px;height:18px}
+.fabmenu b{display:block;font-weight:800}.fabmenu small{display:block;color:var(--ink-2);font-weight:600;font-size:.76rem}
+@media (max-width:760px){.fab{bottom:calc(84px + env(safe-area-inset-bottom,0px));width:54px;height:54px}.fabmenu{bottom:calc(146px + env(safe-area-inset-bottom,0px))}}
+@media (prefers-reduced-motion:reduce){.fabmenu{animation:none}.fab,.fab svg{transition:none}}
+
+/* ===== Today: compact list grouped under collapsible subject headers ===== */
+.tdlist{display:block}
+.tdpanel{border-radius:24px;padding:8px 18px 12px}
+.tdg + .tdg{border-top:1px solid var(--line)}
+.tdh{display:flex;align-items:center;gap:10px;width:100%;border:0;background:none;padding:14px 2px 8px;text-align:left;color:var(--ink);cursor:pointer}
+.tdh h3{margin:0;font-size:1.12rem;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tdh .dot{width:10px;height:10px;flex:none}
+.tdh .dmark{height:16px;margin:0}
+.tdchev{width:18px;height:18px;flex:none;color:var(--ink-2);transition:transform .2s}
+.tdg.col .tdchev{transform:rotate(-90deg)}
+.tdg.col .tdh{padding-bottom:14px}
+.tdrows{display:flex;flex-direction:column;padding-bottom:6px}
+.tdr{display:grid;grid-template-columns:24px 6px minmax(0,1.4fr) minmax(0,1.2fr) auto 32px;align-items:center;gap:10px;padding:7px 8px;border-bottom:1px solid var(--line);border-radius:10px}
+.tdr:last-child{border-bottom:0}
+.tdr .check{width:22px;height:22px;margin:0}
+.tdr .dmark{height:18px;margin:0;align-self:center}
+.tdrt{font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tdrm{color:var(--ink-2);font-weight:600;font-size:.78rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tdrd{font-size:.8rem;font-weight:800;color:var(--ink-2);white-space:nowrap;text-align:right}
+.tdr.urg-y{background:color-mix(in srgb,var(--sun) 26%,transparent);box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--sun) 60%,transparent);margin:2px 0;border-bottom-color:transparent}
+.tdr.urg-y .tdrd{color:var(--xp)}
+.tdr.urg-r{background:color-mix(in srgb,var(--warn) 26%,transparent);box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--warn) 70%,transparent);margin:2px 0;border-bottom-color:transparent}
+.tdr.urg-r .tdrd{color:var(--warn)}
+.tdr.done .tdrt{text-decoration:line-through;color:var(--ink-2)}
+.tdr.done{opacity:.7}
+.tdr .mini-btn{width:30px;height:30px}
+@media (max-width:760px){.tdpanel{padding:6px 12px 10px}
+  .tdr{grid-template-columns:24px 6px minmax(0,1fr) 30px;row-gap:2px}
+  .tdrm{grid-column:3/4;grid-row:2}.tdrd{grid-column:3/5;grid-row:3;text-align:left}
+  .tdr .check{grid-row:1/3}.tdr .dmark{grid-row:1/3}.tdr .mini-btn{grid-column:4;grid-row:1}}
+
 .savebtn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border:0;border-radius:12px;background:linear-gradient(180deg,#F3C766,#D99A2B);color:#241606;font:inherit;font-weight:800;font-size:.95rem;cursor:pointer;box-shadow:0 8px 18px -8px rgba(217,154,43,.8),inset 0 1px 0 rgba(255,255,255,.45);transition:transform .15s,filter .15s}
 .savebtn svg{width:18px;height:18px}
 .savebtn:hover{filter:brightness(1.07);transform:translateY(-1px)}
@@ -2022,6 +2088,7 @@ setup();
 <div id="sheetRoot"></div>
 <div id="focusRoot"></div>
 <div class="toasts" id="toasts" aria-live="polite"></div>
+<button type="button" class="fab" id="fab" data-act="fab" aria-label="Створити нове" aria-haspopup="menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
 <script>
 (function(){
 "use strict";
@@ -2774,7 +2841,7 @@ function planView(){
   const title=calView==="day"?`${fmtL(calDate)}${calDate===today()?" · сьогодні":""}`:calView==="week"?`${fmtS(calWeek)} – ${fmtS(addDays(calWeek,6))} ${addDays(calWeek,6).slice(0,4)}`:`${MONTHS_N[m-1][0].toUpperCase()+MONTHS_N[m-1].slice(1)} ${y}`;
   const head=`<div class="pagehead glass calhead2"><div class="row" style="gap:12px"><h1>Календар</h1><span class="caltitle">${title}</span></div>
     <div class="row" style="gap:8px"><div class="seg" role="group" aria-label="Вигляд"><button data-act="calView" data-v="day" aria-pressed="${calView==="day"}">День</button><button data-act="calView" data-v="week" aria-pressed="${calView==="week"}">Тиждень</button><button data-act="calView" data-v="month" aria-pressed="${calView==="month"}">Місяць</button></div>
-      <button class="iconbtn" data-act="kalNav" data-d="-1" aria-label="Назад">${ICON.back}</button><button class="btn sm" data-act="kalToday">Сьогодні</button><button class="btn sm primary" data-act="evNew">${ICON.plus}Подія</button><button class="iconbtn" data-act="kalNav" data-d="1" aria-label="Вперед" style="transform:scaleX(-1)">${ICON.back}</button></div></div>`;
+      <button class="iconbtn" data-act="kalNav" data-d="-1" aria-label="Назад">${ICON.back}</button><button class="btn sm" data-act="kalToday">Сьогодні</button><button class="btn sm primary addev" data-act="evNew">${ICON.plus}Додати подію</button><button class="iconbtn" data-act="kalNav" data-d="1" aria-label="Вперед" style="transform:scaleX(-1)">${ICON.back}</button></div></div>`;
   const grid=calView==="day"?dayViewHTML(calDate):calView==="week"
     ?`<div class="kweek">${Array.from({length:7},(_,i)=>dayCell(addDays(calWeek,i),{week:true})).join("")}</div>`
     :`<div class="kmonth"><div class="kwds">${WD.map(w=>`<span>${w}</span>`).join("")}</div><div class="kgrid">${monthCells(calMon).map(d=>dayCell(d,{out:d.slice(0,7)!==calMon})).join("")}</div></div>`;
@@ -3060,6 +3127,21 @@ function dayViewHTML(d){
 }
 
 /* ---------- Today page ---------- */
+let tdCollapsed=new Set(); try{tdCollapsed=new Set(JSON.parse(localStorage.getItem("studyquest.tdcol")||"[]"))}catch(e){}
+function todayRow(t,showCourse){
+  const c=course(t.courseId), ed=effDue(t), n=ed?diffDays(ed,today()):null, urg=!t.done&&n!=null?(n<7?" urg-r":n<=14?" urg-y":""):"";
+  const dueTxt=t.done?"виконано":ed?`${t.due?"дедлайн":"до модуля"} ${fmtS(ed)} · ${n<0?`прострочено ${-n} дн.`:n===0?"сьогодні":n===1?"завтра":`за ${n} дн.`}`:"";
+  const ss=subsOf(t), sd=ss.filter(x=>x.done).length;
+  return `<div class="tdr${t.done?" done":""}${urg}">
+    <button type="button" class="check ${t.done?"on":""}" data-act="${t.done?"undone":"done"}" data-id="${t.id}" aria-label="${t.done?"Позначити невиконаним":"Позначити виконаним"}: ${esc(t.title)}">${t.done?ICON.check:""}</button>
+    <span class="dmark d${t.diff||0}" title="Складність: ${t.diff?DIFF[t.diff]:"не вказано"}" aria-hidden="true"></span>
+    <span class="tdrt">${esc(t.title)}</span>
+    <small class="tdrm">${showCourse&&c?esc(c.name)+" · ":""}${t.diff?DIFF[t.diff]:"без складності"} · ~${fmtMin(t.done?minsOf(t):remMinsOf(t))}${ss.length?` · підпункти ${sd}/${ss.length}`:""}</small>
+    <span class="tdrd">${dueTxt}</span>
+    <button type="button" class="mini-btn" data-act="editTask" data-id="${t.id}" aria-label="Редагувати «${esc(t.title)}»">${ICON.edit}</button>
+  </div>`;
+}
+
 function todayView(){
   const t=today(), tm=addDays(t,1), grp=S.settings.todayGroup==="diff"?"diff":"course";
   const all=S.tasks.filter(x=>x.kind==="task"&&course(x.courseId)&&!course(x.courseId).archived);
@@ -3088,9 +3170,9 @@ function todayView(){
   if(grp==="course") groups=activeCourses().map(c=>({key:c.id,name:c.name,color:c.color,items:list.filter(x=>x.courseId===c.id)})).filter(g=>g.items.length);
   else groups=[3,2,1,0].map(k=>({key:"d"+k,name:DIFFN[k],dk:k,items:list.filter(x=>(x.diff||0)===k)})).filter(g=>g.items.length);
   const ord=l=>l.slice().sort((a,b)=>(a.done-b.done)||((b.diff||0)-(a.diff||0)));
-  const body=list.length?groups.map(g=>{const o=g.items.filter(x=>!x.done);return `<section class="tdgroup glass" style="${g.color?`--c:${g.color}`:""}">
-      <header><i class="${g.color?"dot":"sw d"+g.dk}" ${g.color?`style="background:${g.color}"`:""}></i><h3>${esc(g.name)}</h3><span class="tdgc">${g.items.length-o.length}/${g.items.length}</span>${o.length?`<span class="tdgm">~${fmtMin(o.reduce((s,x)=>s+remMinsOf(x),0))}</span>`:'<span class="tdgm ok">готово</span>'}</header>
-      <div class="tasklist">${ord(g.items).map(x=>taskRow(x,{course:grp==="diff"})).join("")}</div></section>`}).join("")
+  const body=list.length?`<section class="tdpanel glass">${groups.map(g=>{const o=g.items.filter(x=>!x.done), col=tdCollapsed.has(g.key);return `<div class="tdg${col?" col":""}">
+      <button type="button" class="tdh" data-act="tdToggle" data-k="${g.key}" aria-expanded="${!col}"><svg class="tdchev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg><i class="${g.color?"dot":"dmark d"+g.dk}" ${g.color?`style="background:${g.color}"`:""}></i><h3>${esc(g.name)}</h3><span class="tdgc">${g.items.length-o.length}/${g.items.length}</span>${o.length?`<span class="tdgm">~${fmtMin(o.reduce((s,x)=>s+remMinsOf(x),0))}</span>`:'<span class="tdgm ok">готово</span>'}</button>
+      ${col?"":`<div class="tdrows">${ord(g.items).map(x=>todayRow(x,grp==="diff")).join("")}</div>`}</div>`}).join("")}</section>`
     :`<section class="tdempty glass"><h3>Що зробити сьогодні?</h3><p>Обери кілька завдань або перетягни їх сюди із «Завтра».</p>
        <div class="tdsug">${openTasksAll().filter(x=>!x.plan||x.plan>tm).sort((a,b)=>critScore(b)-critScore(a)).slice(0,4).map(x=>{const c=course(x.courseId);return `<div class="tdsr"><i class="dot" style="background:${c.color}"></i><span>${esc(x.title)}</span><small>${esc(c.name)}</small><button class="btn sm" data-act="planToday" data-id="${x.id}">${ICON.plus}На сьогодні</button></div>`}).join("")||'<div class="muted">Відкритих завдань немає.</div>'}</div>
        <button class="btn sm ghost" data-act="nav" data-v="plan">${ICON.plan}Відкрити календар</button></section>`;
@@ -3101,6 +3183,7 @@ function todayView(){
   return `<div class="todaywrap">
     <div class="tdtop"><div class="seg" role="group" aria-label="Групувати"><button data-act="todayGroup" data-v="course" aria-pressed="${grp==="course"}">За предметами</button><button data-act="todayGroup" data-v="diff" aria-pressed="${grp==="diff"}">За складністю</button></div></div>
     ${hero}${evOn(t).length?`<section class="tdevents glass"><header><h3>Події сьогодні</h3><span class="tdgc">${evOn(t).length}</span></header><div class="evlist">${evOn(t).map(evRow).join("")}</div></section>`:""}${missedB}
+    ${S.books.some(b=>b.status==="reading")?`<section class="tdbooks glass">${wReading().replace("<h2>Зараз читаю</h2>","<h2>Читаю сьогодні</h2>")}</section>`:""}
     <div class="tdlist" data-day="${t}">${body}</div>
     ${tmB}</div>`;
 }
@@ -3136,6 +3219,21 @@ document.addEventListener("change",e=>{const el=e.target; if(!el||!el.dataset) r
   if(el.dataset.tagColor){const t=S.tags.find(x=>x.id===el.dataset.tagColor); if(t){t.color=el.value; commit({norender:true}); render()}}
   else if(el.dataset.tagName){const t=S.tags.find(x=>x.id===el.dataset.tagName); if(t&&el.value.trim()){t.name=el.value.trim(); commit({norender:true}); render(); toast("Тег збережено")}}
 });
+
+
+/* ---------- global "+" menu ---------- */
+function closeFab(){const m=document.getElementById("fabmenu"); if(m) m.remove(); const f=document.getElementById("fab"); if(f){f.classList.remove("open"); f.setAttribute("aria-expanded","false")}}
+function openFab(){
+  if(document.getElementById("fabmenu")){closeFab();return}
+  const f=document.getElementById("fab"), m=document.createElement("div"); m.id="fabmenu"; m.className="fabmenu"; m.setAttribute("role","menu");
+  const it=(act,ic,l,sub,extra="")=>`<button type="button" role="menuitem" data-act="${act}" ${extra}><span class="fic">${ic}</span><span><b>${l}</b><small>${sub}</small></span></button>`;
+  m.innerHTML=it("fabTask",ICON.check,"Завдання","до курсу, з дедлайном")+it("evNew",ICON.plan,"Подія","у календар, з тегом")+it("addBook",ICON.library,"Книга","на полицю курсу",'data-course=""')+it("addCourse",ICON.courses,"Курс","нова картка й полиця")+it("fabFocus",ICON.play,"Фокус-таймер","маленьке віконце");
+  document.body.appendChild(m); f.classList.add("open"); f.setAttribute("aria-expanded","true");
+  const b=m.querySelector("button"); if(b) b.focus();
+}
+document.addEventListener("click",e=>{if(document.getElementById("fabmenu")&&!e.target.closest("#fabmenu,#fab")) closeFab()},true);
+document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest("#fabmenu [data-act]")) setTimeout(closeFab,0)});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("fabmenu")){closeFab(); const f=document.getElementById("fab"); if(f) f.focus()}});
 
 /* ---------- views ---------- */
 let view="home", openCourse=null, editing=false, showDone=false, showLater=false, libRoom="main", libQ="";
@@ -3184,8 +3282,9 @@ function taskRow(t,opts={}){
   const c=course(t.courseId);
   const rec=t.kind==="review"&&!t.done;
   const later=!t.done&&t.kind==="task"&&t.due&&cycle().next&&t.due>cycle().next;
-  return `<div class="task ${t.done?"done":""}${later?" later":""} dl${t.kind==="task"?t.diff||0:0}" ${opts.drag?`data-sid="${t.id}"`:""}>${opts.drag?`<button type="button" class="dh" aria-label="Перемістити «${esc(t.title)}» (стрілки)">${GRIP}</button>`:""}
-    ${rec?"":`<button class="check ${t.done?"on":""} d${t.diff||0}" data-act="${t.done?"undone":"done"}" data-id="${t.id}" aria-label="${t.done?"Позначити невиконаним":"Позначити виконаним"}">${t.done?ICON.check:""}</button>`}
+  const ued=t.kind==="task"&&!t.done?effDue(t):"", udl=ued?diffDays(ued,today()):99, urg=udl<7?" urg-r":udl<=14?" urg-y":"";
+  return `<div class="task ${t.done?"done":""}${later?" later":""}${urg} dl${t.kind==="task"?t.diff||0:0}" ${opts.drag?`data-sid="${t.id}"`:""}>${opts.drag?`<button type="button" class="dh" aria-label="Перемістити «${esc(t.title)}» (стрілки)">${GRIP}</button>`:""}
+    ${t.kind==="task"?`<span class="dmark d${t.diff||0}" title="Складність: ${t.diff?DIFF[t.diff]:"не вказано"}" aria-hidden="true"></span>`:""}${rec?"":`<button class="check ${t.done?"on":""} d${t.diff||0}" data-act="${t.done?"undone":"done"}" data-id="${t.id}" aria-label="${t.done?"Позначити невиконаним":"Позначити виконаним"}">${t.done?ICON.check:""}</button>`}
     <div class="body">
       <div class="title">${esc(t.title)}</div>
       <div class="meta">
@@ -3629,7 +3728,7 @@ function sheetSettings(keep){
   else body=`<h3>Дані</h3>
     <div class="field"><span>Резервна копія</span><div class="row" style="gap:8px;flex-wrap:wrap"><button type="button" class="btn sm primary" data-act="saveCloud">Зберегти в хмару</button><button type="button" class="btn sm" data-act="exportData">Експорт даних (.json)</button><label class="btn sm" for="importFile" style="cursor:pointer">Імпорт даних (.json)</label><input type="file" id="importFile" accept=".json,application/json" hidden></div><small>Імпорт замінює поточні дані. Одразу після нього можна натиснути «Повернути».</small></div>
     <div class="field"><span>Небезпечна зона</span><div><button type="button" class="btn danger sm" data-act="resetAsk">Скинути все</button></div><div id="resetZone"></div></div>
-    <div class="muted" style="font-size:.72rem">Locus · версія 24.10.2026 · 6</div>`;
+    <div class="muted" style="font-size:.72rem">Locus · версія 24.10.2026 · 8</div>`;
   openSheet(`<div class="setwrap"><div class="sethead"><h2>Налаштування</h2><button type="button" class="iconbtn" data-act="closeSheet" aria-label="Закрити">${ICON.x}</button></div>
     <nav class="setnav" aria-label="Розділи налаштувань">${SETTABS.map(([k,l])=>`<button type="button" data-act="setTab" data-v="${k}" aria-current="${setTab===k?"page":"false"}">${l}</button>`).join("")}</nav>
     <div class="setbody form">${body}<div class="setsaved muted">Зміни зберігаються одразу.</div></div></div>`,true);
@@ -3778,7 +3877,7 @@ function openFMenu(btn){
 function fmGo(min){const c=(document.getElementById("fm-course")||{}).value||""; try{localStorage.setItem("studyquest.flast",String(min))}catch(e){} startFocus(min,c)}
 function pillPos(el){let p=null; try{p=JSON.parse(localStorage.getItem(PILLKEY)||"null")}catch(e){}
   const w=el.offsetWidth||220, hh=el.offsetHeight||48;
-  const x=p?clamp(p.x,8,innerWidth-w-8):innerWidth-w-16, y=p?clamp(p.y,8,innerHeight-hh-8):innerHeight-hh-(innerWidth<760?96:24);
+  const x=p?clamp(p.x,8,innerWidth-w-8):innerWidth-w-92, y=p?clamp(p.y,8,innerHeight-hh-8):innerHeight-hh-(innerWidth<760?96:24);
   el.style.left=x+"px"; el.style.top=y+"px"}
 const fmt2=ms=>{const s=Math.ceil(ms/1000), m=Math.floor(s/60); return (m>=60?Math.floor(m/60)+":"+pad(m%60):m)+":"+pad(s%60)};
 function showFocus(){
@@ -3880,6 +3979,9 @@ document.addEventListener("click",e=>{
     case "lamp": toggleLamp(); break;
     case "logout": logout(); break;
     case "saveCloud": clearTimeout(timer); dirty=false; saveToCloud(true); break;
+    case "fab": openFab(); break;
+    case "fabTask": closeFab(); taskSheet(null,view==="courses"&&openCourse?openCourse:""); break;
+    case "fabFocus": {closeFab(); openFMenu(document.getElementById("fab")); break}
     case "skin": {S.settings.skin=b.dataset.v==="solar"?"solar":"loft"; applyLook(); commit(); const m=document.getElementById("sceneMenu"); if(m&&!m.hidden) m.innerHTML=sceneMenuHTML(); break}
     case "exportData": exportData(); break;
     case "dpick": openDP(b); break;
@@ -3933,6 +4035,7 @@ document.addEventListener("click",e=>{
     case "focus": if(+b.dataset.t>0) startFocus(+b.dataset.t); else openFMenu(b); break;
     case "planToday": {const t=S.tasks.find(x=>x.id===id); if(t){t.plan=today(); commit(); toast(`«${t.title}» — на сьогодні`)} break}
     case "planAllMissed": {const td=today(); let n=0; S.tasks.forEach(x=>{if(x.kind==="task"&&!x.done&&x.plan&&x.plan<td){x.plan=td;n++}}); commit(); toast(`${n} ${pl(n,"завдання","завдання","завдань")} перенесено на сьогодні`); break}
+    case "tdToggle": {const k=b.dataset.k; tdCollapsed.has(k)?tdCollapsed.delete(k):tdCollapsed.add(k); try{localStorage.setItem("studyquest.tdcol",JSON.stringify([...tdCollapsed]))}catch(e){} render(); break}
     case "todayGroup": S.settings.todayGroup=b.dataset.v; commit(); break;
     case "setTab": setTab=b.dataset.v; sheetSettings(); break;
     case "fgo": fmGo(+b.dataset.v); break;
