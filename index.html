@@ -2136,6 +2136,239 @@ input[type="color"]::-webkit-color-swatch-wrapper{padding:3px}input[type="color"
   :root[data-skin="loft"] .tdr:hover{translate:2px 0}
 }
 
+/* ===== Loco ===== */
+.lvl .lcmini{width:30px;height:30px;margin:-6px -2px -6px -8px;display:block;flex:none}
+.lvl .lcmini svg{width:100%;height:100%;display:block;overflow:visible}
+.lvl{position:relative}
+.lvl i{background:linear-gradient(90deg,#4FB98A calc(var(--p)*100%),var(--track) 0)!important}
+.lvl.sick i{background:linear-gradient(90deg,#E8454F calc(var(--p)*100%),var(--track) 0)!important}
+.lcnew{position:absolute;top:-6px;left:-4px;width:16px;height:16px;border-radius:50%;background:#FF6FB5;color:#fff;font-size:11px;display:grid;place-items:center;border:2px solid var(--card)}
+@media (max-width:520px){.lvl .lcml{display:none}}
+.lcgrid{display:grid;grid-template-columns:minmax(0,390px) minmax(0,1fr);gap:24px;align-items:start;margin-bottom:18px}
+.lcard{position:relative;display:flex;flex-direction:column;gap:12px;padding:14px;border-radius:24px;background:linear-gradient(165deg,#FFF9EF,#FFEFD8);border:3px solid #2B1B2E;box-shadow:8px 8px 0 #2B1B2E;color:#2B1B2E;overflow:hidden;isolation:isolate}
+.lcard.f4::after,.lcard.f5::after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.55) 45%,rgba(160,220,255,.35) 50%,transparent 62%);background-size:250% 100%;animation:lcholo 5s ease-in-out infinite;mix-blend-mode:soft-light}
+@keyframes lcholo{from{background-position:120% 0}to{background-position:-120% 0}}
+:root[data-skin="solar"] .lcard{box-shadow:0 24px 48px -20px rgba(20,70,40,.55);border-color:rgba(43,27,46,.85)}
+:root[data-skin="loft"] .lcard{box-shadow:0 24px 48px -22px rgba(40,25,10,.6)}
+.lchead{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.lcname{display:block;font-family:Fraunces,var(--f-display),serif;font-style:italic;font-weight:800;font-size:2rem;line-height:1;text-shadow:3px 3px 0 #FF6FB5}
+.lcform{display:inline-block;margin-top:6px;font:700 .72rem "Space Mono",ui-monospace,monospace;text-transform:uppercase;letter-spacing:.08em;padding:3px 8px;border:2px solid #2B1B2E;border-radius:999px;background:#fff}
+.lclv{width:50px;height:50px;flex:none;border-radius:50%;display:grid;place-items:center;background:#FFD23F;border:3px solid #2B1B2E;box-shadow:3px 3px 0 #2B1B2E;font:italic 800 1.4rem Fraunces,serif}
+.lcstage{position:relative;display:block;width:100%;aspect-ratio:1/1;padding:0;border:3px solid #2B1B2E;border-radius:16px;cursor:pointer;overflow:hidden;
+  background-color:var(--lbg);background-image:radial-gradient(rgba(43,27,46,.12) 1.4px,transparent 1.8px),radial-gradient(circle at 50% 120%,rgba(255,255,255,.75),transparent 60%);background-size:16px 16px,100% 100%}
+.lcstage svg{position:absolute;inset:6% 4% 0;width:92%;height:94%}
+.lcstage:focus-visible{outline:3px solid #FF6FB5;outline-offset:3px}
+.lchearts{position:absolute;inset:0;pointer-events:none}
+.lchearts i{position:absolute;bottom:45%;width:26px;height:26px;animation:lcheart 1.4s ease-out forwards}
+.lchearts i svg{position:static;width:100%;height:100%}
+@keyframes lcheart{0%{translate:0 0;scale:.4;opacity:0}20%{opacity:1;scale:1}100%{translate:0 -140px;scale:.8;opacity:0;rotate:20deg}}
+.lctype{display:flex;justify-content:space-between;font:700 .7rem "Space Mono",ui-monospace,monospace;text-transform:uppercase;letter-spacing:.08em;padding-bottom:8px;border-bottom:2px dashed rgba(43,27,46,.3)}
+.lcstats{display:flex;flex-direction:column;gap:10px}
+.lcsl{display:flex;justify-content:space-between;align-items:baseline;font-size:.86rem}
+.lcsl b{font-weight:800}.lcsl span{font:700 .8rem "Space Mono",ui-monospace,monospace}
+.lcbar{height:13px;margin-top:4px;border:2.5px solid #2B1B2E;border-radius:999px;background:#fff;overflow:hidden}
+.lcbar i{display:block;height:100%;border-right:2.5px solid #2B1B2E;transition:width .6s}
+.lcbar i[style*="width:0%"]{border-right:0}
+.lcstat small{display:block;margin-top:3px;font-size:.74rem;font-weight:600;color:rgba(43,27,46,.7)}
+.lcability{margin:0;padding:10px 12px;border:2px solid #2B1B2E;border-radius:12px;background:#fff;font:italic 600 .95rem/1.35 Fraunces,var(--f-display),serif}
+.lcfoot{display:flex;justify-content:space-between;align-items:center;font-size:.75rem}
+.lcstars{color:#E8A317;font-size:1.05rem;letter-spacing:2px;-webkit-text-stroke:1px #2B1B2E}.lcstars span{color:transparent}
+.lcside{display:flex;flex-direction:column;gap:16px;min-width:0}
+.lcsay{position:relative;padding:18px 20px;border-radius:20px;font-weight:800;font-size:1.15rem;line-height:1.35;background:var(--card);border:1px solid var(--glass-edge);box-shadow:0 14px 30px -18px var(--shadow-c,rgba(0,0,0,.4))}
+.lcsay::before{content:"";position:absolute;left:-10px;top:22px;width:18px;height:18px;background:var(--card);border-left:inherit;border-bottom:inherit;transform:rotate(45deg)}
+:root[data-skin="retro"] .lcsay{border:2.5px solid var(--hard);box-shadow:5px 5px 0 var(--hard)}
+:root[data-skin="solar"] .lcsay{background:var(--glass-strong);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}:root[data-skin="solar"] .lcsay::before{background:var(--glass-strong)}
+.lcacts{display:flex;flex-wrap:wrap;gap:10px}
+.lcacts .btn.on{background:var(--sun);color:#241606}
+.lcdays h3,.lccare h3{margin:0 0 10px}
+.lcstrip{display:grid;grid-template-columns:repeat(14,minmax(0,1fr));gap:5px}
+.lcd{position:relative;aspect-ratio:1;border-radius:7px;border:2px solid var(--ink);display:grid;place-items:center;background:transparent}
+.lcd small{font-size:.62rem;font-weight:800;opacity:.75}
+.lcd.full{background:#7ED9AE}.lcd.half{background:#FFD34D}.lcd.low{background:#FF9A62}.lcd.miss{background:#FF6F61}.lcd.bonus{background:#8FA9FF}
+.lcd.none{border-style:dashed;opacity:.55}
+.lcd.vac{background:repeating-linear-gradient(45deg,#CDE8F7 0 4px,#fff 4px 8px)}
+.lcd.pre{opacity:.18;border-style:dotted}
+.lcd.today{background:linear-gradient(0deg,#FFD23F var(--f,0%),transparent 0);border-width:3px;box-shadow:0 0 0 2px var(--accent)}
+.lcd.full small,.lcd.half small,.lcd.miss small,.lcd.low small,.lcd.bonus small,.lcd.today small{color:#2B1B2E}
+.lclegend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-size:.76rem;font-weight:700;color:var(--ink-2)}
+.lclegend span{display:inline-flex;align-items:center;gap:6px}.lclegend .lcd{width:14px;height:14px;border-radius:4px}
+.lccare ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px;font-size:.9rem;line-height:1.4}
+.lccare b{font-weight:800}
+.lcforms{margin-bottom:16px}.lcforms h2{margin-bottom:12px}
+.lcfgrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.lcf{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 6px;border-radius:16px;border:2px solid var(--line);text-align:center}
+.lcf svg{width:100%;max-width:110px;aspect-ratio:200/220;height:auto}
+.lcf b{font-size:.85rem}.lcf small{font-size:.72rem;color:var(--ink-2);font-weight:700}
+.lcf.locked svg{filter:brightness(0);opacity:.16}
+.lcf.cur{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+:root[data-skin="retro"] .lcf{border:2px solid var(--hard)}:root[data-skin="retro"] .lcf.cur{background:#FFF1B8;box-shadow:3px 3px 0 var(--hard)}
+.lcxp summary{cursor:pointer;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;list-style:none}
+.lcxp summary::-webkit-details-marker{display:none}
+.lcxp summary::before{content:"+";font-weight:900;width:14px}
+.lcxp[open] summary::before{content:"−"}
+.lcxpgrid{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+@media (max-width:880px){.lcgrid{grid-template-columns:minmax(0,1fr)}.lcard{max-width:420px;width:100%;justify-self:center}.lcsay::before{left:40px;top:-10px;border-bottom:0;border-top:inherit}.lcfgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* creature motion */
+.loco{display:block;overflow:visible}
+.loco .lc-heye{display:none}
+.loco.lc-happy .lc-heye{display:inline}.loco.lc-happy .lc-eyes{display:none}
+.loco .lc-lid{transform-box:fill-box;transform-origin:50% 0;transform:scaleY(0)}
+.loco.m-sad .lc-lid{transform:scaleY(.45)}
+.loco.m-sick .lc-lid{transform:scaleY(.55)}
+.loco.m-sleep .lc-lid{transform:scaleY(1)}
+.loco.m-sad .lc-ant,.loco.m-sick .lc-ant{transform-box:view-box;transform-origin:100px 70px;transform:rotate(38deg)}
+.loco .lc-pup{transition:transform .35s cubic-bezier(.3,1.4,.5,1)}
+@media (prefers-reduced-motion:no-preference){
+  .loco .lc-bob{transform-box:view-box;transform-origin:100px 200px;animation:lcbob 2.8s ease-in-out infinite}
+  .loco.m-joy .lc-bob{animation-duration:1.5s}
+  .loco.m-sleep .lc-bob{animation-duration:4.6s}
+  .loco.m-sick .lc-bob{animation:lcshiver 3.2s ease-in-out infinite}
+  @keyframes lcbob{0%,100%{transform:translateY(0) scale(1,1)}50%{transform:translateY(-6px) scale(.985,1.025)}}
+  @keyframes lcshiver{0%,100%{transform:translateY(0)}10%{transform:translate(-1.5px,1px)}20%{transform:translate(1.5px,0)}30%{transform:translate(-1px,1px)}40%,90%{transform:translateY(2px)}}
+  .loco .lc-shadow{transform-box:fill-box;transform-origin:center;animation:lcshadow 2.8s ease-in-out infinite}
+  .loco.m-joy .lc-shadow{animation-duration:1.5s}.loco.m-sleep .lc-shadow{animation-duration:4.6s}
+  @keyframes lcshadow{50%{transform:scale(.86);opacity:.7}}
+  .loco:not(.m-sad):not(.m-sick):not(.m-sleep) .lc-lid{animation:lcblink 5.2s infinite}
+  .loco.m-sick .lc-lid{animation:lcblinks 7s infinite}
+  @keyframes lcblink{0%,91%,97%,100%{transform:scaleY(0)}94%{transform:scaleY(1)}}
+  @keyframes lcblinks{0%,85%,100%{transform:scaleY(.55)}90%{transform:scaleY(1)}}
+  .loco:not(.m-sad):not(.m-sick) .lc-ant{transform-box:view-box;transform-origin:100px 70px;animation:lcsway 3.4s ease-in-out infinite alternate}
+  .loco.m-sleep .lc-ant{animation-duration:6s}
+  @keyframes lcsway{from{transform:rotate(-10deg)}to{transform:rotate(10deg)}}
+  .loco .lc-armL{transform-box:view-box;transform-origin:52px 126px;animation:lcarmL 2.8s ease-in-out infinite}
+  .loco .lc-armR{transform-box:view-box;transform-origin:148px 126px;animation:lcarmR 2.8s ease-in-out infinite}
+  @keyframes lcarmL{50%{transform:rotate(6deg)}}
+  @keyframes lcarmR{50%{transform:rotate(-6deg)}}
+  .loco .lc-wave{animation:lcwave 1.4s ease-in-out infinite}
+  @keyframes lcwave{0%,100%{transform:rotate(-16deg)}50%{transform:rotate(12deg)}}
+  .loco .lc-flex{animation:lcflexL 3.6s ease-in-out infinite}.loco .lc-armR.lc-flex{animation-name:lcflexR}
+  @keyframes lcflexL{0%,60%,100%{transform:rotate(0)}70%,85%{transform:rotate(-10deg)}}
+  @keyframes lcflexR{0%,60%,100%{transform:rotate(0)}70%,85%{transform:rotate(10deg)}}
+  .loco .lc-bi{transform-box:fill-box;transform-origin:50% 100%;animation:lcbi 3.6s ease-in-out infinite}
+  @keyframes lcbi{0%,60%,100%{transform:scale(1)}72%,85%{transform:scale(1.22)}}
+  .loco.m-sleep .lc-armL,.loco.m-sleep .lc-armR,.loco.m-sick .lc-armL,.loco.m-sick .lc-armR,.loco.m-sad .lc-armL,.loco.m-sad .lc-armR,.loco.m-sad .lc-bi,.loco.m-sick .lc-bi,.loco.m-sleep .lc-bi{animation:none}
+  .loco .lc-spark{transform-box:fill-box;transform-origin:center;animation:lcspark 2.4s ease-in-out infinite}
+  @keyframes lcspark{0%,100%{transform:scale(0) rotate(0);opacity:0}50%{transform:scale(1) rotate(45deg);opacity:1}}
+  .loco .lc-z{animation:lcz 3s linear infinite;opacity:0}
+  @keyframes lcz{0%{opacity:0;transform:translate(0,0)}20%{opacity:1}100%{opacity:0;transform:translate(10px,-18px)}}
+  .loco .lc-tear{animation:lctear 2.6s ease-in infinite}
+  @keyframes lctear{0%{transform:translateY(0);opacity:0}20%{opacity:1}100%{transform:translateY(16px);opacity:0}}
+  .loco .lc-rays{transform-box:view-box;transform-origin:100px 128px;animation:lcrays 24s linear infinite}
+  @keyframes lcrays{to{transform:rotate(360deg)}}
+  .loco.lc-jump .lc-bob{animation:lcjump .85s cubic-bezier(.3,1.5,.5,1)}
+  @keyframes lcjump{0%{transform:translateY(0) scale(1.12,.88)}35%{transform:translateY(-34px) scale(.92,1.1)}70%{transform:translateY(0) scale(1.1,.9)}100%{transform:translateY(0) scale(1,1)}}
+  .loco.mini .lc-bob{animation-duration:3.2s}
+  .loco.still *{animation:none!important}
+}
+
+/* ===== stats fixes ===== */
+.gauge{width:min(150px,100%);height:auto;aspect-ratio:120/70}
+.gwrap{flex-wrap:wrap}
+.s-prob .gnum b{font-size:clamp(2.1rem,3.2vw,3rem)}
+.sb > *{flex-shrink:0}
+.tsrc{display:block;font-style:normal;font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-2)}
+.wrows{display:flex;flex-direction:column;gap:6px}
+.wrow{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,2fr) auto;gap:10px;align-items:center;font-size:.84rem;font-weight:700}
+.wrow span{display:flex;align-items:center;gap:7px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.wbar{display:block;height:8px;border-radius:9px;background:var(--track);overflow:hidden}.wbar i{display:block;height:100%;background:var(--accent);border-radius:9px}
+.wrow b{font-variant-numeric:tabular-nums;font-size:.8rem}
+.slist{display:flex;flex-direction:column;gap:8px}
+.srow2{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:8px 10px;border-radius:12px;background:var(--glass-2)}
+.srow2 div{min-width:0}.srow2 b{display:block;font-size:.86rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.srow2 small{display:block;font-size:.74rem;color:var(--ink-2);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.srate{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:.85rem;color:#2B1B2E}
+.srate.r1{background:#FF8A7A}.srate.r2{background:#FFB38A}.srate.r3{background:#FFD86B}.srate.r4{background:#B9E58C}.srate.r5{background:#7ED9AE}
+:root[data-skin="retro"] .srow2{background:var(--card);border:2px solid var(--hard)}
+:root[data-skin="retro"] .srate{border:2px solid var(--hard)}
+
+/* ===== spent + start buttons ===== */
+.clk{width:13px;height:13px;vertical-align:-2px;margin-right:3px}
+.tspent{color:var(--ink-2);font-weight:700}
+.startbtn{flex:none;display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 13px 0 10px;border-radius:999px;border:1.5px solid var(--glass-edge);background:var(--card);color:var(--ink);font:inherit;font-size:.8rem;font-weight:800;cursor:pointer;white-space:nowrap}
+.startbtn svg{width:14px;height:14px}
+.startbtn:hover{background:var(--accent);color:var(--frame);border-color:transparent}
+.startbtn.run{background:#E8454F;color:#fff;border-color:transparent;font-variant-numeric:tabular-nums;box-shadow:0 0 0 0 rgba(232,69,79,.5);animation:runpulse 1.6s ease-out infinite}
+.recdot{width:9px;height:9px;border-radius:50%;background:#fff;animation:recblink 1s steps(2) infinite}
+@keyframes recblink{50%{opacity:.25}}
+@keyframes runpulse{0%{box-shadow:0 0 0 0 rgba(232,69,79,.55)}80%,100%{box-shadow:0 0 0 10px rgba(232,69,79,0)}}
+:root[data-skin="retro"] .startbtn{border:2px solid var(--hard);box-shadow:2px 2px 0 var(--hard)}
+:root[data-skin="retro"] .startbtn:hover{background:#FFD23F;color:#2B1B2E}
+:root[data-skin="retro"] .startbtn.run{background:#FF6FB5;color:#2B1B2E;border:2px solid var(--hard)}
+:root[data-skin="retro"] .startbtn.run .recdot{background:#2B1B2E}
+:root[data-skin="solar"] .startbtn:hover{background:#3FA36E;color:#fff}
+.task > .startbtn{align-self:center}
+.tdr{grid-template-columns:24px 6px minmax(0,1.4fr) minmax(0,1.2fr) auto auto 32px}
+.tdr .startbtn{height:28px;padding:0 11px 0 8px;font-size:.76rem}
+.tdr > .subs{grid-column:1/-1;margin:4px 0 2px 30px}
+.task.active,.tdr.active,.rd2.active{position:relative;outline:3px solid #FF6FB5;outline-offset:2px;animation:actglow 2s ease-in-out infinite}
+@keyframes actglow{50%{outline-color:#FFD23F}}
+.chip.subchip{cursor:pointer;font:inherit;font-size:.74rem;font-weight:700}.chip.subchip.on{outline:2px solid var(--accent)}
+.subtog{display:inline-flex;align-items:center;gap:3px;margin-right:8px;padding:1px 8px 1px 4px;border-radius:999px;border:1.5px solid var(--glass-edge);background:var(--card);color:var(--ink);font:inherit;font-size:.74rem;font-weight:800;cursor:pointer;vertical-align:1px}
+.subtog svg{width:12px;height:12px;transition:rotate .2s}
+.subtog.on svg{rotate:90deg}
+:root[data-skin="retro"] .subtog{border:1.5px solid var(--hard)}
+@media (max-width:760px){
+  .tdr{grid-template-columns:24px 6px minmax(0,1fr) auto}
+  .tdrm{grid-column:3/4;grid-row:2}.tdrd{grid-column:3/4;grid-row:3}
+  .tdr .tdrgo{grid-column:4;grid-row:2/4;align-self:center;justify-self:end}
+  .tdr .startbtn span:not([data-since]){display:none}.tdr .startbtn:not(.run){padding:0;width:30px;justify-content:center}
+  .tdr > .subs{margin-left:0}
+}
+/* reading rows */
+.rd.rd2{grid-template-columns:44px minmax(0,1fr) auto}
+.rdinfo{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin:3px 0 5px;font-size:.8rem;font-weight:700;color:var(--ink-2)}
+.rdinfo b{font-size:1.15rem;color:var(--ink);font-variant-numeric:tabular-nums}
+@media (max-width:420px){.rd.rd2 .startbtn span:not([data-since]){display:none}.rd.rd2 .startbtn:not(.run){padding:0;width:32px;justify-content:center}}
+
+/* ===== now-working bar ===== */
+.nowbar{position:sticky;top:10px;z-index:60;display:flex;align-items:center;gap:14px;margin:0 0 14px;padding:10px 12px 10px 16px;border-radius:20px;color:#2B1B2E;
+  background:linear-gradient(110deg,#FFD23F,#FF8FB1,#7ED9F0,#FFD23F);background-size:300% 100%;animation:nowflow 6s linear infinite;box-shadow:0 14px 32px -14px rgba(232,69,79,.7),0 0 0 3px rgba(255,255,255,.6) inset}
+.nowbar[hidden]{display:none}
+@keyframes nowflow{to{background-position:300% 0}}
+.nowbar.k-book{background-image:linear-gradient(110deg,#B9F0D2,#FFD23F,#C3A8F5,#B9F0D2)}
+.nowdot{width:14px;height:14px;flex:none;border-radius:50%;background:#E8454F;box-shadow:0 0 0 0 rgba(232,69,79,.6);animation:runpulse 1.4s ease-out infinite}
+.nowtxt{flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start;border:0;background:none;padding:0;color:inherit;font:inherit;text-align:left;cursor:pointer}
+.nowtxt small{font:700 .68rem "Space Mono",ui-monospace,monospace;text-transform:uppercase;letter-spacing:.1em;opacity:.8}
+.nowtxt b{max-width:100%;font-size:1.12rem;font-weight:900;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nowc{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:700;opacity:.85}
+.nowclock{flex:none;font:700 1.7rem/1 "Space Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums;padding:6px 12px;border-radius:12px;background:rgba(255,255,255,.75)}
+.nowstop{flex:none;display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 16px;border:0;border-radius:14px;background:#2B1B2E;color:#FFD23F;font:inherit;font-weight:900;cursor:pointer}
+.nowstop i{width:11px;height:11px;border-radius:2px;background:currentColor}
+.nowstop:hover{filter:brightness(1.2)}
+:root[data-skin="retro"] .nowbar{border:3px solid var(--hard);box-shadow:6px 6px 0 var(--hard)}
+:root[data-skin="retro"] .nowclock{border:2px solid var(--hard)}
+:root[data-skin="retro"] .nowstop{box-shadow:3px 3px 0 #FF6FB5}
+.nowbar.shake{animation:nowflow 6s linear infinite,gshake2 .45s}
+@keyframes gshake2{20%{translate:-10px 0}40%{translate:9px 0}60%{translate:-6px 0}80%{translate:4px 0}}
+@media (max-width:760px){
+  .nowbar{position:fixed;top:calc(env(safe-area-inset-top,0px) + 8px);left:10px;right:10px;z-index:95;gap:8px;padding:8px 8px 8px 12px;margin:0;border-radius:18px}
+  body.tracking .center{padding-top:70px}
+  .nowtxt small{font-size:.6rem}.nowtxt b{font-size:.95rem}.nowc{display:none}
+  .nowclock{font-size:1.15rem;padding:6px 8px}
+  .nowstop{height:40px;width:40px;padding:0;justify-content:center;font-size:0;gap:0}.nowstop i{width:13px;height:13px}}
+@media (prefers-reduced-motion:reduce){.nowbar,.nowdot,.startbtn.run,.recdot,.task.active,.tdr.active,.rd2.active{animation:none!important}}
+
+/* ===== session sheet ===== */
+.trksheet{display:flex;flex-direction:column;gap:14px}
+.trkhead h2{margin:4px 0 0;font-size:1.4rem;overflow-wrap:anywhere}
+.trkk{font:700 .7rem "Space Mono",ui-monospace,monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-2)}
+.trkbig{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding:12px 16px;border-radius:16px;background:linear-gradient(110deg,#FFF1B8,#FFD9E6)}
+.trkbig b{font-size:2rem;font-weight:900;color:#2B1B2E}.trkbig small{font-weight:700;color:#5a4a5e}
+.trksheet .field{display:flex;flex-direction:column;gap:6px}
+.trksheet .field > span{font-size:.82rem;font-weight:800;color:var(--ink-2)}
+.trkrate{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.trkrate button{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 4px;border-radius:12px;border:1.5px solid var(--glass-edge);background:var(--card);color:var(--ink);font:inherit;cursor:pointer}
+.trkrate b{font-size:1.2rem;font-weight:900}.trkrate small{font-size:.66rem;font-weight:700;color:var(--ink-2);text-align:center}
+.trkrate button[aria-pressed="true"]{background:#FFD23F;border-color:#2B1B2E;color:#2B1B2E;transform:translateY(-2px)}
+.trkrate button[aria-pressed="true"] small{color:#2B1B2E}
+.trkrate button[data-v="1"][aria-pressed="true"]{background:#FF8A7A}.trkrate button[data-v="2"][aria-pressed="true"]{background:#FFB38A}.trkrate button[data-v="4"][aria-pressed="true"]{background:#B9E58C}.trkrate button[data-v="5"][aria-pressed="true"]{background:#7ED9AE}
+.trksubs{display:flex;flex-direction:column;gap:6px;padding:10px 12px;border-radius:12px;background:var(--glass-2)}
+.trksubs label,.trkdone{display:flex;align-items:center;gap:9px;font-weight:700;font-size:.9rem;cursor:pointer}
+.trksubs input,.trkdone input{width:18px;height:18px;accent-color:#E8454F}
+.trkbtns{display:flex;flex-wrap:wrap;gap:8px}
+.trksheet textarea{resize:vertical;font:inherit}
+:root[data-skin="retro"] .trkrate button{border:2px solid var(--hard)}:root[data-skin="retro"] .trkbig{border:2px solid var(--hard)}
+
 .savebtn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border:0;border-radius:12px;background:linear-gradient(180deg,#F3C766,#D99A2B);color:#241606;font:inherit;font-weight:800;font-size:.95rem;cursor:pointer;box-shadow:0 8px 18px -8px rgba(217,154,43,.8),inset 0 1px 0 rgba(255,255,255,.45);transition:transform .15s,filter .15s}
 .savebtn svg{width:18px;height:18px}
 .savebtn:hover{filter:brightness(1.07);transform:translateY(-1px)}
@@ -2544,6 +2777,7 @@ setup();
       <button class="addbtn" type="button" data-act="addTask" aria-label="Нове завдання" title="Нове завдання"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
     </aside>
     <div class="center">
+      <div class="nowbar" id="nowbar" hidden></div>
       <header class="topbar">
         <div class="hellocol">
           <div class="brandrow" aria-label="Locus"><svg class="brsvg" aria-hidden="true" focusable="false" viewBox="0 0 300 300"><rect width="300" height="300" rx="68" fill="#FFD23F"/><rect x="58" y="70" width="214" height="196" rx="16" fill="#111"/><rect x="44" y="56" width="214" height="196" rx="16" fill="#fff" stroke="#111" stroke-width="8"/><path d="M44 72 A16 16 0 0 1 60 56 H242 A16 16 0 0 1 258 72 V100 H44 Z" fill="#FF6FB5" stroke="#111" stroke-width="8"/><circle cx="70" cy="78" r="7" fill="#111"/><circle cx="92" cy="78" r="7" fill="#111"/><circle cx="114" cy="78" r="7" fill="#111"/><path transform="translate(104 232) scale(0.075 -0.075)" d="M716 0H81Q35 0 19.5 18.0Q4 36 4 63Q4 89 19.5 108.5Q35 128 60 138L106 152Q128 160 137.5 177.0Q147 194 159 231Q167 254 183.0 312.5Q199 371 221.0 451.5Q243 532 267.0 624.0Q291 716 315.0 807.5Q339 899 359.5 978.5Q380 1058 394.5 1114.5Q409 1171 412 1192Q417 1217 410.5 1231.0Q404 1245 386 1251L343 1266Q325 1275 312.0 1289.0Q299 1303 299 1325Q299 1358 322.0 1379.0Q345 1400 389 1400H924Q970 1400 985.5 1382.0Q1001 1364 1001 1337Q1001 1309 985.0 1290.5Q969 1272 947 1262L900 1248Q882 1241 871.5 1228.0Q861 1215 850 1180Q834 1135 814.0 1066.5Q794 998 772.5 916.5Q751 835 729.0 749.0Q707 663 687.0 580.5Q667 498 650.5 429.0Q634 360 623.0 312.5Q612 265 609 248Q595 179 617.0 151.0Q639 123 691 123H736Q795 123 841.5 151.0Q888 179 937.0 245.5Q986 312 1050 428Q1075 474 1098.5 491.5Q1122 509 1146 509Q1184 509 1199.0 485.0Q1214 461 1213 421Q1209 315 1187.0 231.0Q1165 147 1127.0 89.0Q1089 31 1036.5 0.5Q984 -30 916 -30Q885 -30 858.0 -22.5Q831 -15 799.0 -7.5Q767 0 716 0Z" fill="#111"/><path d="M222 128 L228 144 L244 150 L228 156 L222 172 L216 156 L200 150 L216 144 Z" fill="#3DD9EB" stroke="#111" stroke-width="5" stroke-linejoin="round"/></svg><span class="brword">Locus</span></div>
@@ -2580,7 +2814,7 @@ function taskXP(t){if(t.kind==="review")return XP.review;if(t.ttype&&XP[t.ttype]
 const WIDGETS={ring:{n:"Модульне коло",full:false},courses:{n:"Кільця курсів",full:true},tasks:{n:"Завдання до модуля",full:false},tue:{n:"Вівторки",full:true},reading:{n:"Зараз читаю",full:false},loans:{n:"Позичені книги",full:false}};
 const SCENES=[["theme","Як у системі"],["time","За часом доби"],["day","Світлий"],["night","Темний"]];
 const FROST=[["clear","Прозоре"],["mid","Звичайне"],["matte","Матове"]];
-const TABS=[["home","Головна"],["today","Сьогодні"],["courses","Курси"],["plan","Календар"],["stats","Статистика"],["library","Бібліотека"],["xp","XP"]];
+const TABS=[["home","Головна"],["today","Сьогодні"],["courses","Курси"],["plan","Календар"],["stats","Статистика"],["library","Бібліотека"],["xp","Loco"]];
 const ICON={
   today:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
   stats:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>',
@@ -2600,7 +2834,7 @@ const ICON={
   up:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg>',
   down:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>',
   eye:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18M10.6 10.6a2 2 0 0 0 2.8 2.8M9.9 5.1A10 10 0 0 1 12 5c5 0 9 5 9 7a8 8 0 0 1-2.2 3.3M6.6 6.6C4.4 8 3 10.4 3 12c0 2 4 7 9 7a9 9 0 0 0 4.4-1.1"/></svg>',
-  xp:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg>',
+  xp:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5c4.3 0 7.5 3 7.5 7.2S16.3 20.5 12 20.5s-7.5-2.6-7.5-6.8S7.7 6.5 12 6.5z"/><path d="M12 6.5c0-2 1-3.4 2.8-4"/><circle cx="9.4" cy="12.6" r=".9" fill="currentColor"/><circle cx="14.6" cy="12.6" r=".9" fill="currentColor"/><path d="M10.2 16.1c1.1.8 2.5.8 3.6 0"/></svg>',
   box:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18v13H3zM2 3h20v4H2zM10 11h4"/></svg>',
   gear:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>'
 };
@@ -2628,7 +2862,7 @@ const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 
 /* ---------- state ---------- */
 function fresh(){
-  return {v:5,updatedAt:0,xpLog:[],
+  return {v:5,updatedAt:0,xpLog:[],loco:{born:today(),pmax:{},vacs:[],seenForm:null},sessions:[],active:null,
     settings:{skin:"retro",modules:[],tueName:"Вівторкове завдання",intervals:[1,3,7,14],scene:"theme",frost:"mid",
       home:{order:["ring","courses","tasks","tue","reading","loans","focus"],hidden:[]},fun:true},
     rooms:[{id:"main",name:"Головна зала"}],
@@ -2688,6 +2922,8 @@ function normalize(s){
    if(s.focus) for(const k of Object.keys(s.focus)) if(k<mondayOf(cut)) delete s.focus[k];}
   if(!s.settings.nameV2){if(!s.settings.name||s.settings.name==="Ігор") s.settings.name="Ігор-Еней"; s.settings.nameV2=1}
   if(!Array.isArray(s.events)) s.events=[];
+  if(!Array.isArray(s.sessions)) s.sessions=[]; {const cut=Date.now()-183*864e5; s.sessions=s.sessions.filter(x=>x&&x.e>=cut).slice(-800)}
+  if(s.active&&!(s.active.kind&&s.active.id&&s.active.start)) s.active=null;
   if(!Array.isArray(s.tags)||!s.tags.length) s.tags=[{id:"sup",name:"Супервізія",color:"#5F9447"},{id:"mod",name:"Модуль",color:"#C98F25"},{id:"evt",name:"Подія",color:"#4F7FB0"}];
   return s;
 }
@@ -2707,7 +2943,7 @@ const xpFor=L=>50*L*(L-1);
 function level(x){let L=1;while(xpFor(L+1)<=x)L++;return L}
 function logXP(n,why){if(!n)return;S.xpLog=[{ts:Date.now(),n,why:why||""},...(S.xpLog||[])].slice(0,40)}
 function takeXP(n,why){if(!n)return;S.xp=Math.max(0,S.xp-n);logXP(-n,"Скасовано: "+(why||""))}
-function addXP(n,quiet,why){const b=level(S.xp);S.xp=Math.max(0,S.xp+n);logXP(n,why);if(n>0){const a=level(S.xp);if(a>b)pendingToasts.push({msg:`Рівень ${a}`,cls:"sun"});else if(!quiet)pendingToasts.push({msg:`+${n} XP`})}}
+function addXP(n,quiet,why){const b=level(S.xp);S.xp=Math.max(0,S.xp+n);logXP(n,why);if(n>0){const a=level(S.xp);if(a>b){const fb=locoFormIdx(b),fa=locoFormIdx(a);pendingToasts.push({msg:fa>fb?`Loco еволюціонував: ${LOCO_FORMS[fa].name}`:`Loco міцнішає · рівень ${a}`,cls:"sun"})}else if(!quiet)pendingToasts.push({msg:`+${n} XP`})}}
 
 /* ---------- persistence ---------- */
 let ref=null, syncMode="loading", writing=false, dirty=false, timer=null;
@@ -3494,8 +3730,9 @@ function statsView(){
       <div class="ppace"><div><small>Потрібний темп</small><b>${M.need!=null?r1(M.need):"—"}</b><span>од./день</span></div><div><small>Твій темп</small><b>${r1(M.pace)}</b><span>од./день · ${M.T} дн.</span></div></div>
       <div class="snote">${M.rem<=0?"Усе до модуля зроблено.":M.eta!=null?(M.eta<=M.D?`У такому темпі закінчиш за ~${Math.ceil(M.eta)} ${pl(Math.ceil(M.eta),"день","дні","днів")}, запас ${Math.floor(M.D-M.eta)} ${pl(Math.floor(M.D-M.eta),"день","дні","днів")}.`:`У такому темпі не вистачить ~${Math.ceil(M.eta-M.D)} ${pl(Math.ceil(M.eta-M.D),"дня","днів","днів")}.`):"Ще немає виконаних завдань, щоб оцінити темп."}</div></section>`}
   const perU=M.D>0&&M.rem>0?M.D/M.rem:null, hrs=M.openC.reduce((s,x)=>s+remMinsOf(x),0)/60;
+  const avgH=k=>{const l=S.tasks.filter(x=>x.kind==="task"&&x.done&&(x.diff||0)===k&&x.spent>0); return l.length?{h:l.reduce((s,x)=>s+x.spent,0)/l.length/36e5,n:l.length}:null};
   const timeB=`<section class="sb glass s-time" style="--sp:3"><div class="slabel">Час на одне завдання</div>
-    ${perU!=null?`<div class="trows">${[[1,"легке"],[2,"середнє"],[3,"складне"]].map(([k,l])=>`<div class="trow2"><i class="sw d${k}"></i><span>${l}</span><b>${r1(perU*W_DIFF[k])}</b><small>${pl(Math.round(perU*W_DIFF[k]),"день","дні","днів")}</small></div>`).join("")}</div>`:`<div class="snote" style="margin:10px 0">${M.rem<=0?"Нічого не лишилось.":"Потрібна дата модуля."}</div>`}
+    ${true?`<div class="trows">${[[1,"легке"],[2,"середнє"],[3,"складне"]].map(([k,l])=>{const A=avgH(k), hh=A?A.h:minsOf({diff:k})/60;return `<div class="trow2" title="${A?`середнє з таймера по ${A.n} виконаних`:"оцінка з налаштувань: таймер ще не має даних"}"><i class="sw d${k}"></i><span>${l}<em class="tsrc">${A?"факт":"оцінка"}</em></span><b>${r1(hh)}</b><small>год</small></div>`}).join("")}</div>`:`<div class="snote" style="margin:10px 0">${M.rem<=0?"Нічого не лишилось.":"Потрібна дата модуля."}</div>`}
     <div class="snote">Потрібно ~<b>${r1(hrs)} год</b> зосередженої роботи${M.D>0?`, тобто ~${Math.round(hrs*60/Math.max(1,M.D))} хв на день`:""}. За твоїми налаштуваннями часу: легке ${fmtMin(minsOf({diff:1}))}, середнє ${fmtMin(minsOf({diff:2}))}, складне ${fmtMin(minsOf({diff:3}))}.</div></section>`;
   const st=streaks(M), wk=addDays(t,-6), pwk=addDays(t,-13);
   const d7=M.doneAll.filter(x=>dayOf(x.doneAt)>=wk).length, p7=M.doneAll.filter(x=>{const d=dayOf(x.doneAt);return d>=pwk&&d<wk}).length;
@@ -3537,10 +3774,24 @@ function statsView(){
     <div class="spark wide" role="img" aria-label="Хвилини фокусу за 8 тижнів">${fv.map((v,i)=>`<i style="height:${Math.max(v?8:2,Math.round(v/fmx*100))}%" class="${v?"on":""}${i===7?" cur":""}" data-tip="Тиждень з ${fmtS(fw[i])}: ${v} хв"></i>`).join("")}</div></section>`;
   const L=level(S.xp), xp30=(S.xpLog||[]).filter(x=>x.ts>Date.now()-30*864e5).reduce((s,x)=>s+x.n,0);
   const xpB=`<section class="sb glass" style="--sp:4"><div class="slabel">Досвід</div>
-    <div class="rnums"><div><b>${L}</b><small>рівень · ${rankOf(L)}</small></div><div><b>${S.xp}</b><small>XP усього</small></div><div><b>${xp30}</b><small>XP за 30 днів</small></div></div>
+    <div class="rnums"><div><b>${L}</b><small>рівень · Loco ${LOCO_FORMS[locoFormIdx(L)].name}</small></div><div><b>${S.xp}</b><small>XP усього</small></div><div><b>${xp30}</b><small>XP за 30 днів</small></div></div>
     <div class="bar" style="height:8px"><i style="width:${Math.round((S.xp-xpFor(L))/(xpFor(L+1)-xpFor(L))*100)}%;--c:var(--sun)"></i></div><div class="snote">до рівня ${L+1}: ${xpFor(L+1)-S.xp} XP</div></section>`;
+  const SS=(S.sessions||[]), dms=d=>SS.filter(x=>dayOf(x.s)===d).reduce((s,x)=>s+x.ms,0);
+  const d14=Array.from({length:14},(_,i)=>addDays(t,-13+i)), v14=d14.map(dms), m14=Math.max(36e5,...v14);
+  const wkMs=SS.filter(x=>dayOf(x.s)>=mondayOf(t)).reduce((s,x)=>s+x.ms,0), m30=SS.filter(x=>x.s>=Date.now()-30*864e5), ms30=m30.reduce((s,x)=>s+x.ms,0);
+  const rated=m30.filter(x=>x.r), avgR=rated.length?rated.reduce((s,x)=>s+x.r,0)/rated.length:null;
+  const byC={}; m30.forEach(x=>{const k=x.k==="book"?"__book":(x.cid||"__none"); byC[k]=(byC[k]||0)+x.ms});
+  const cRows=Object.entries(byC).sort((a,b)=>b[1]-a[1]).slice(0,6), cMax=Math.max(1,...cRows.map(x=>x[1]));
+  const workB=`<section class="sb glass s-work" style="--sp:8"><div class="shead2"><div class="slabel">Час роботи за таймером</div><span class="snote">завдання й читання</span></div>
+    ${SS.length?`<div class="rnums"><div><b>${r1(wkMs/36e5)}</b><small>год цього тижня</small></div><div><b>${r1(ms30/36e5)}</b><small>год за 30 днів</small></div><div><b>${m30.length}</b><small>${pl(m30.length,"сесія","сесії","сесій")} за 30 днів</small></div><div><b>${avgR?r1(avgR):"—"}</b><small>середня оцінка з 5</small></div></div>
+    <div class="spark wide" role="img" aria-label="Години роботи за 14 днів">${d14.map((d,i)=>`<i style="height:${Math.max(v14[i]?8:2,Math.round(v14[i]/m14*100))}%" class="${v14[i]?"on":""}${d===t?" cur":""}" data-tip="${fmtD(d)}: ${fmtDur(v14[i])}"></i>`).join("")}</div>
+    ${cRows.length?`<div class="wrows">${cRows.map(([k,v])=>{const c=course(k);return `<div class="wrow"><span><i class="dot" style="background:${k==="__book"?"var(--sun)":c?CC(c.color):"var(--ink-2)"}"></i>${k==="__book"?"Читання":c?esc(c.name):"Без курсу"}</span><i class="wbar"><i style="width:${Math.round(v/cMax*100)}%"></i></i><b>${fmtDur(v)}</b></div>`}).join("")}</div>`:""}`
+    :`<div class="empty" style="margin:6px 0 0">Ще немає сесій. Натисни «Почати» на завданні або «Читати» на книзі, а потім «Завершити».</div>`}</section>`;
+  const lastS=[...SS].sort((a,b)=>b.e-a.e).slice(0,5);
+  const sessB=`<section class="sb glass" style="--sp:4"><div class="slabel">Останні сесії</div>
+    ${lastS.length?`<div class="slist">${lastS.map(x=>`<div class="srow2"><div><b>${esc(x.title)}</b><small>${fmtS(dayOf(x.s))} · ${fmtDur(x.ms)}${x.n?` · ${esc(x.n)}`:""}</small></div>${x.r?`<span class="srate r${x.r}" title="Оцінка ${x.r} з 5">${x.r}</span>`:""}</div>`).join("")}</div>`:'<div class="empty" style="margin:6px 0 0">Тут з\'являться твої сесії.</div>'}</section>`;
   return `<div class="pagehead glass"><h1>Статистика</h1><span class="muted" style="font-size:.86rem;font-weight:600">дані за останні пів року · одиниця = легке завдання</span></div>
-    <div class="sgrid">${hero}${probB}${timeB}${bd}${tiles}${wkB}${mixB}${heatB}${wdB}${crsB}${readB}${planB}${focB}${xpB}</div>`;
+    <div class="sgrid">${hero}${probB}${timeB}${bd}${tiles}${workB}${sessB}${wkB}${mixB}${heatB}${wdB}${crsB}${readB}${planB}${focB}${xpB}</div>`;
 }
 /* hover tooltip for any [data-tip] */
 (function(){let tip=null;
@@ -3612,13 +3863,15 @@ function todayRow(t,showCourse){
   const c=course(t.courseId), ed=effDue(t), n=ed?diffDays(ed,today()):null, urg=!t.done&&n!=null?(n<7?" urg-r":n<=14?" urg-y":""):"";
   const dueTxt=t.done?"виконано":ed?`${t.due?"дедлайн":"до модуля"} ${fmtS(ed)} · ${n<0?`прострочено ${-n} дн.`:n===0?"сьогодні":n===1?"завтра":`за ${n} дн.`}`:"";
   const ss=subsOf(t), sd=ss.filter(x=>x.done).length;
-  return `<div class="tdr${t.done?" done":""}${urg}">
+  return `<div class="tdr${t.done?" done":""}${urg}${isActive("task",t.id)?" active":""}${expanded.has(t.id)&&ss.length?" open":""}">
     <button type="button" class="check ${t.done?"on":""}" data-act="${t.done?"undone":"done"}" data-id="${t.id}" aria-label="${t.done?"Позначити невиконаним":"Позначити виконаним"}: ${esc(t.title)}">${t.done?ICON.check:""}</button>
     <span class="dmark d${t.diff||0}" title="Складність: ${t.diff?DIFF[t.diff]:"не вказано"}" aria-hidden="true"></span>
     <span class="tdrt">${esc(t.title)}</span>
-    <small class="tdrm">${showCourse&&c?esc(c.name)+" · ":""}${t.diff?DIFF[t.diff]:"без складності"} · ~${fmtMin(t.done?minsOf(t):remMinsOf(t))}${ss.length?` · підпункти ${sd}/${ss.length}`:""}</small>
+    <small class="tdrm">${ss.length?`<button type="button" class="subtog${expanded.has(t.id)?" on":""}" data-act="subs" data-id="${t.id}" aria-expanded="${expanded.has(t.id)}" aria-label="Підпункти ${sd} з ${ss.length}: ${expanded.has(t.id)?"сховати":"показати"}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>${sd}/${ss.length}</button>`:""}${showCourse&&c?esc(c.name)+" · ":""}${t.diff?DIFF[t.diff]:"без складності"} · ~${fmtMin(t.done?minsOf(t):remMinsOf(t))}${t.spent?` · <span class="tspent">${CLOCK}${fmtDur(t.spent)}</span>`:""}</small>
     <span class="tdrd">${dueTxt}</span>
+    ${t.done?'<span class="tdrgo"></span>':startBtn("task",t,"tdrgo")}
     <button type="button" class="mini-btn" data-act="editTask" data-id="${t.id}" aria-label="Редагувати «${esc(t.title)}»">${ICON.edit}</button>
+    ${expanded.has(t.id)&&ss.length?subsBlock(t):""}
   </div>`;
 }
 
@@ -3714,7 +3967,7 @@ document.addEventListener("click",e=>{if(document.getElementById("fabmenu")&&!e.
 document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest("#fabmenu [data-act]")) setTimeout(closeFab,0)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("fabmenu")){closeFab(); const f=document.getElementById("fab"); if(f) f.focus()}});
 
-const LOCUS_BUILD="1.0.16";
+const LOCUS_BUILD="1.0.18";
 
 /* ---------- alive: entrance on view change, ring fill, count-up, completion burst ---------- */
 let aliveKey=null, aliveFirst=true;
@@ -3748,6 +4001,72 @@ function fxBurst(x,y,n){
 }
 document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest('[data-act="done"]'); if(!b) return; const r=b.getBoundingClientRect(); fxBurst(r.left+r.width/2,r.top+r.height/2,18)},true);
 
+
+/* ---------- work timer: one task or book at a time ---------- */
+const CLOCK='<svg class="clk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9.5 2.5h5"/></svg>';
+function subsBlock(t){return `<div class="subs">${subsOf(t).map(x=>`<div class="sub ${x.done?"done":""} sd${x.diff||0}"><button class="scheck ${x.done?"on":""} sd${x.diff||0}" data-act="sub" data-id="${t.id}" data-s="${x.id}" aria-label="${x.done?"Зняти позначку":"Виконано"}: ${esc(x.t)}">${x.done?ICON.check:""}</button><span>${esc(x.t)}</span><button class="chip dch xs d${x.diff||0}" data-act="subDiff" data-id="${t.id}" data-s="${x.id}" title="Змінити складність" aria-label="Складність підпункту: ${x.diff?DIFF[x.diff]:"не вказано"}. Змінити">${x.diff?DIFF[x.diff]:"?"}</button><button class="mini-btn xs" data-act="delSub" data-id="${t.id}" data-s="${x.id}" aria-label="Видалити підпункт">${ICON.x}</button></div>`).join("")}
+        <form class="subadd" data-form="sub" data-id="${t.id}"><label class="sr" for="sub-${t.id}">Новий підпункт</label><input class="inp" id="sub-${t.id}" placeholder="Новий підпункт…" maxlength="120" autocomplete="off"><button class="btn sm">Додати</button></form></div>`}
+const fmtClock=ms=>{const s=Math.max(0,Math.floor(ms/1000)), hh=Math.floor(s/3600), mm=Math.floor(s%3600/60), ss=s%60; return (hh?hh+":"+pad(mm):mm)+":"+pad(ss)};
+const fmtDur=ms=>{const m=Math.round(ms/60000); if(m<1) return "<1 хв"; const hh=Math.floor(m/60), mm=m%60; return hh?(mm?`${hh} год ${mm} хв`:`${hh} год`):`${mm} хв`};
+const isActive=(k,id)=>!!(S.active&&S.active.kind===k&&S.active.id===id);
+function trkItem(a){a=a||S.active; if(!a) return null; return a.kind==="book"?S.books.find(x=>x.id===a.id):S.tasks.find(x=>x.id===a.id)}
+function startBtn(k,item,cls){
+  if(isActive(k,item.id)) return `<button type="button" class="startbtn run ${cls||""}" data-act="trkStop" aria-label="Завершити: ${esc(item.title)}"><i class="recdot" aria-hidden="true"></i><span data-since="${S.active.start}">${fmtClock(Date.now()-S.active.start)}</span></button>`;
+  return `<button type="button" class="startbtn ${cls||""}" data-act="trkStart" data-k="${k}" data-id="${item.id}" aria-label="${k==="book"?"Почати читати":"Почати"}: ${esc(item.title)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg><span>${k==="book"?"Читати":"Почати"}</span></button>`;
+}
+function trkStart(k,id){
+  const it=k==="book"?S.books.find(x=>x.id===id):S.tasks.find(x=>x.id===id); if(!it) return;
+  if(S.active&&!isActive(k,id)){const cur=trkItem(); if(cur){toast(`Спершу заверши «${cur.title}»`); const nb=document.getElementById("nowbar"); if(nb){nb.classList.remove("shake"); void nb.offsetWidth; nb.classList.add("shake")} return} S.active=null}
+  if(S.active) return;
+  S.active={kind:k,id,start:Date.now()}; commit();
+}
+function renderNow(){
+  const nb=document.getElementById("nowbar"); if(!nb) return;
+  if(S.active&&!trkItem()) S.active=null;
+  const a=S.active; if(!a){nb.hidden=true; nb.innerHTML=""; document.body.classList.remove("tracking"); if(document.title.startsWith("● ")) document.title="Locus"; return}
+  const it=trkItem(), c=a.kind==="task"?course(it.courseId):(it.courseId?course(it.courseId):null);
+  nb.hidden=false; nb.className="nowbar k-"+a.kind; document.body.classList.add("tracking");
+  nb.innerHTML=`<span class="nowdot" aria-hidden="true"></span>
+    <button type="button" class="nowtxt" data-act="trkGo" title="Перейти"><small>${a.kind==="book"?"Зараз читаю":"Зараз працюю над"}</small><b>${esc(it.title)}</b>${c?`<span class="nowc"><i class="dot" style="background:${CC(c.color)}"></i>${esc(c.name)}</span>`:""}</button>
+    <span class="nowclock" data-since="${a.start}" aria-label="Минуло часу">${fmtClock(Date.now()-a.start)}</span>
+    <button type="button" class="nowstop" data-act="trkStop"><i aria-hidden="true"></i>Завершити</button>`;
+}
+setInterval(()=>{const now=Date.now(); document.querySelectorAll("[data-since]").forEach(el=>{el.textContent=fmtClock(now-(+el.dataset.since))});
+  if(S.active){const it=trkItem(); if(it) document.title=`● ${fmtClock(now-S.active.start)} · ${it.title}`}},1000);
+const RATE=[[1,"Важко"],[2,"Так собі"],[3,"Нормально"],[4,"Добре"],[5,"Потік"]];
+function trkStopSheet(){
+  const a=S.active, it=trkItem(); if(!a||!it) return;
+  const ms=Date.now()-a.start, mins=Math.max(1,Math.round(ms/60000)), isB=a.kind==="book";
+  const open=isB?[]:subsOf(it).filter(x=>!x.done);
+  openSheet(`<div class="trksheet" data-start="${a.start}">
+    <div class="trkhead"><span class="trkk">${isB?"Сесія читання":"Робоча сесія"}</span><h2>${esc(it.title)}</h2></div>
+    <div class="trkbig"><b>${fmtDur(mins*60000)}</b><small>${new Date(a.start).toLocaleTimeString("uk-UA",{hour:"2-digit",minute:"2-digit"})} – ${new Date().toLocaleTimeString("uk-UA",{hour:"2-digit",minute:"2-digit"})}</small></div>
+    <label class="field"><span>Тривалість, хв (можна виправити)</span><input class="inp" id="trk-min" type="number" inputmode="numeric" min="1" max="720" value="${mins}"></label>
+    <div class="field"><span>Як пройшла сесія?</span><div class="trkrate" role="group" aria-label="Оцінка сесії">${RATE.map(([v,l])=>`<button type="button" data-act="trkRate" data-v="${v}" aria-pressed="false"><b>${v}</b><small>${l}</small></button>`).join("")}</div></div>
+    ${isB?`<label class="field"><span>На якій сторінці зупинився? (зараз ${it.page} з ${it.total||"?"})</span><input class="inp" id="trk-page" type="number" inputmode="numeric" min="0" max="${it.total||99999}" value="${it.page}"></label>`
+      :`${open.length?`<div class="field"><span>Які підпункти встиг?</span><div class="trksubs">${open.map(x=>`<label><input type="checkbox" data-trksub="${x.id}"> ${esc(x.t)}</label>`).join("")}</div></div>`:""}
+      <label class="trkdone"><input type="checkbox" id="trk-done"> Завдання повністю виконано</label>`}
+    <label class="field"><span>Нотатка (необов'язково)</span><textarea class="inp" id="trk-note" rows="2" maxlength="300" placeholder="Що вдалося, що заважало"></textarea></label>
+    <div class="trkbtns"><button type="button" class="btn primary" data-act="trkSave">Зберегти сесію</button><button type="button" class="btn" data-act="trkResume">Продовжити таймер</button><button type="button" class="btn ghost" data-act="trkDiscard">Не зберігати</button></div>
+  </div>`,true);
+}
+function trkSave(){
+  const a=S.active, it=trkItem(); if(!a||!it){closeSheet();return}
+  const mins=clamp(parseInt((document.getElementById("trk-min")||{}).value,10)||1,1,720), ms=mins*60000;
+  const rb=document.querySelector('.trkrate [aria-pressed="true"]'), rating=rb?+rb.dataset.v:null;
+  const note=((document.getElementById("trk-note")||{}).value||"").trim().slice(0,300);
+  const page=a.kind==="book"?(document.getElementById("trk-page")||{}).value:null;
+  const doneT=a.kind==="task"&&(document.getElementById("trk-done")||{}).checked;
+  const subs=[...document.querySelectorAll("[data-trksub]:checked")].map(x=>x.dataset.trksub);
+  it.spent=(it.spent||0)+ms;
+  S.sessions=S.sessions||[]; S.sessions.push({id:uid(),k:a.kind,ref:a.id,title:it.title,cid:it.courseId||"",diff:a.kind==="task"?(it.diff||0):null,s:a.start,e:a.start+ms,ms,r:rating,n:note});
+  S.active=null; closeSheet();
+  if(a.kind==="task"){subsOf(it).forEach(x=>{if(subs.includes(x.id)&&!x.done){x.done=true;x.doneAt=Date.now()}});
+    if(doneT||(subsOf(it).length&&subsOf(it).every(x=>x.done))) {completeTask(it.id)} else commit()}
+  else {commit(); if(page!=null&&page!=="") logPages(it.id,page)}
+  toast(`Сесію збережено: ${fmtDur(ms)}`);
+}
+
 /* ---------- views ---------- */
 let view="home", openCourse=null, editing=false, showDone=false, showLater=false, libRoom="main", libQ="";
 function tabsHTML(){return TABS.map(([k,l])=>`<button class="tab" data-act="nav" data-v="${k}" title="${l}" ${view===k?'aria-current="page"':""}>${ICON[k]}<span>${l}</span></button>`).join("")}
@@ -3757,15 +4076,15 @@ function render(){
   {const g=document.getElementById("greet"); if(g) g.innerHTML=`${greeting()}, <b>${esc(S.settings.name||"Ігор-Еней")}</b>`;
    const rr=document.getElementById("railR"); if(rr) rr.innerHTML=railHTML();}
   const L=level(S.xp), p=(S.xp-xpFor(L))/(xpFor(L+1)-xpFor(L));
-  document.getElementById("lvl").innerHTML=`Рів. ${L}<i style="--p:${p}"></i>`;
-  document.getElementById("lvl").title=`${S.xp} XP. Як заробляти: сторінка XP`;
+  LOCO_C=null; {const LS=locoState(), lv=document.getElementById("lvl"); lv.innerHTML=`<span class="lcmini">${locoSVG({form:LS.vform,health:LS.health,mood:LS.mood,mini:true})}</span><span class="lcml">Loco</span><i style="--p:${LS.health/100}"></i>${LS.justEvolved?'<b class="lcnew">!</b>':""}`; lv.classList.toggle("sick",LS.health<35);}
+  {const LS=locoState(); document.getElementById("lvl").title=`Loco · здоров'я ${LS.health}% · рівень ${LS.L}`;}
   const v=document.getElementById("view");
   v.innerHTML=view==="courses"?(openCourse&&course(openCourse)?courseDetail(course(openCourse)):coursesView()):view==="library"?libraryView():view==="plan"?planView():view==="today"?todayView():view==="stats"?statsView():view==="xp"?xpView():homeView();
   if(view==="library"){const sc=document.getElementById("libscene");if(sc)sc.scrollLeft=libScroll; if(libQ) runSearch()}
   appearId=null;
   if(view==="home") watchHome(); else if(wRO){wRO.disconnect();wRO=null}
   document.getElementById("btnLayout").classList.toggle("on",editing&&view==="home");
-  setSync(); light(); aliveEnter();
+  setSync(); light(); renderNow(); aliveEnter();
 }
 function exampleBanner(){
   const has=S.courses.some(c=>c.example)||S.books.some(b=>b.example);
@@ -3796,7 +4115,7 @@ function taskRow(t,opts={}){
   const rec=t.kind==="review"&&!t.done;
   const later=!t.done&&t.kind==="task"&&t.due&&cycle().next&&t.due>cycle().next;
   const ued=t.kind==="task"&&!t.done?effDue(t):"", udl=ued?diffDays(ued,today()):99, urg=udl<7?" urg-r":udl<=14?" urg-y":"";
-  return `<div class="task ${t.done?"done":""}${later?" later":""}${urg} dl${t.kind==="task"?t.diff||0:0}" ${opts.drag?`data-sid="${t.id}"`:""}>${opts.drag?`<button type="button" class="dh" aria-label="Перемістити «${esc(t.title)}» (стрілки)">${GRIP}</button>`:""}
+  return `<div class="task ${t.done?"done":""}${isActive("task",t.id)?" active":""}${later?" later":""}${urg} dl${t.kind==="task"?t.diff||0:0}" ${opts.drag?`data-sid="${t.id}"`:""}>${opts.drag?`<button type="button" class="dh" aria-label="Перемістити «${esc(t.title)}» (стрілки)">${GRIP}</button>`:""}
     ${t.kind==="task"?`<span class="dmark d${t.diff||0}" title="Складність: ${t.diff?DIFF[t.diff]:"не вказано"}" aria-hidden="true"></span>`:""}${rec?"":`<button class="check ${t.done?"on":""} d${t.diff||0}" data-act="${t.done?"undone":"done"}" data-id="${t.id}" aria-label="${t.done?"Позначити невиконаним":"Позначити виконаним"}">${t.done?ICON.check:""}</button>`}
     <div class="body">
       <div class="title">${esc(t.title)}</div>
@@ -3805,16 +4124,17 @@ function taskRow(t,opts={}){
         ${t.kind==="task"&&t.ttype&&t.ttype!=="task"?`<span class="chip ttype">${TTYPE[t.ttype].ic} ${TTYPE[t.ttype].n.toLowerCase()}</span>`:""}
         ${t.kind==="task"?`<button class="chip dch d${t.diff||0}" data-act="diff" data-id="${t.id}" title="Змінити складність" aria-label="Складність: ${t.diff?DIFF[t.diff]:"не вказано"}. Змінити">${t.diff?DIFF[t.diff]:"складність"}</button>`:""}
         ${rec?`<span class="chip">крок ${(t.stage||0)+1} з ${S.settings.intervals.length}</span>`:""}
-        ${subsOf(t).length?(()=>{const ss=subsOf(t),d=ss.filter(x=>x.done).length;return `<span class="chip subchip">${ss.length<=10?`<span class="sdots">${ss.map(x=>`<i class="sdm sd${x.diff||0} ${x.done?"on":""}"></i>`).join("")}</span>`:`<i class="sbar"><i style="width:${Math.round(d/ss.length*100)}%"></i></i>`}${d}/${ss.length}</span>`})():""}
+        ${subsOf(t).length?(()=>{const ss=subsOf(t),d=ss.filter(x=>x.done).length;return `<button type="button" class="chip subchip${expanded.has(t.id)?" on":""}" data-act="subs" data-id="${t.id}" aria-expanded="${expanded.has(t.id)}" title="Показати або сховати підпункти">${ss.length<=10?`<span class="sdots">${ss.map(x=>`<i class="sdm sd${x.diff||0} ${x.done?"on":""}"></i>`).join("")}</span>`:`<i class="sbar"><i style="width:${Math.round(d/ss.length*100)}%"></i></i>`}${d}/${ss.length}</button>`})():""}
         ${t.recall&&!t.done?`<span class="chip">з повтореннями</span>`:""}
+        ${t.spent?`<span class="chip tspent" title="Час роботи за таймером">${CLOCK}${fmtDur(t.spent)}</span>`:""}
         ${t.example?'<span class="chip ex">Приклад</span>':""}
       </div>
     </div>
     ${t.done?"":`${taskDue(t)||'<span class="tdue none"></span>'}<span class="tspc"></span>${t.kind==="task"?planHTML(t)+critHTML(t):""}`}
     ${rec?`<div class="row" style="gap:6px;flex:none"><button class="btn sm primary" data-act="done" data-id="${t.id}" data-q="good">Пам'ятаю</button><button class="btn sm ghost" data-act="done" data-id="${t.id}" data-q="shaky">Слабко</button></div>`:""}
+    ${t.kind==="task"&&!t.done?startBtn("task",t):""}
     ${opts.tools===false?"":`${t.kind==="task"?`<button class="mini-btn ${expanded.has(t.id)?"on":""}" data-act="subs" data-id="${t.id}" aria-expanded="${expanded.has(t.id)}" aria-label="Підпункти">${ICON.list}</button><button class="mini-btn" data-act="editTask" data-id="${t.id}" aria-label="Редагувати">${ICON.edit}</button>`:""}<button class="mini-btn" data-act="delTask" data-id="${t.id}" aria-label="Видалити">${ICON.del}</button>`}
-    ${t.kind==="task"&&expanded.has(t.id)?`<div class="subs">${subsOf(t).map(x=>`<div class="sub ${x.done?"done":""} sd${x.diff||0}"><button class="scheck ${x.done?"on":""} sd${x.diff||0}" data-act="sub" data-id="${t.id}" data-s="${x.id}" aria-label="${x.done?"Зняти позначку":"Виконано"}: ${esc(x.t)}">${x.done?ICON.check:""}</button><span>${esc(x.t)}</span><button class="chip dch xs d${x.diff||0}" data-act="subDiff" data-id="${t.id}" data-s="${x.id}" title="Змінити складність" aria-label="Складність підпункту: ${x.diff?DIFF[x.diff]:"не вказано"}. Змінити">${x.diff?DIFF[x.diff]:"?"}</button><button class="mini-btn xs" data-act="delSub" data-id="${t.id}" data-s="${x.id}" aria-label="Видалити підпункт">${ICON.x}</button></div>`).join("")}
-        <form class="subadd" data-form="sub" data-id="${t.id}"><label class="sr" for="sub-${t.id}">Новий підпункт</label><input class="inp" id="sub-${t.id}" placeholder="Новий підпункт…" maxlength="120" autocomplete="off"><button class="btn sm">Додати</button></form></div>`:""}
+    ${t.kind==="task"&&expanded.has(t.id)?subsBlock(t):""}
   </div>`;
 }
 const TSORT=[["manual","Вручну"],["due","За дедлайном"],["plan","За запланованою датою"],["hard","Складність: від складних"],["easy","Складність: від легких"]];
@@ -3913,8 +4233,9 @@ function bookColor(b){const p=SKINB[curSkin()]||BOOKC;return p[hash(b.id)%p.leng
 function wReading(){
   const rs=S.books.filter(b=>b.status==="reading").slice(0,4);
   const rows=rs.map(b=>{const pct=b.total?Math.round(b.page/b.total*100):0;
-    return `<div class="rd"><button class="cov" style="--bc:${bookColor(b)};border:0;padding:0" data-act="book" data-id="${b.id}" aria-label="${esc(b.title)}"></button><div style="min-width:0"><div class="t">${esc(b.title)}</div><div class="bar"><i style="width:${pct}%;--c:var(--sun)"></i></div>
-      <form class="pagelog" data-form="pages" data-id="${b.id}"><label for="rp-${b.id}" class="muted">стор.</label><input id="rp-${b.id}" type="number" inputmode="numeric" min="0" max="${b.total}" value="${b.page}"><span class="muted">з ${b.total}</span><button class="btn sm">OK</button></form></div></div>`}).join("");
+    return `<div class="rd rd2${isActive("book",b.id)?" active":""}"><button class="cov" style="--bc:${bookColor(b)};border:0;padding:0" data-act="book" data-id="${b.id}" aria-label="${esc(b.title)}: відкрити книгу"></button><div style="min-width:0"><div class="t">${esc(b.title)}</div>
+      <div class="rdinfo"><b>${pct}%</b><span>${b.page} з ${b.total||"?"} стор.</span>${b.spent?`<span class="tspent">${CLOCK}${fmtDur(b.spent)}</span>`:""}</div>
+      <div class="bar"><i style="width:${pct}%;--c:var(--sun)"></i></div></div>${startBtn("book",b)}</div>`}).join("");
   return `<div class="head"><h2>Зараз читаю</h2><button class="btn sm ghost" data-act="nav" data-v="library">Бібліотека</button></div>
     ${rows||`<div class="empty">Нічого не читаєш зараз. Візьми книгу з полиці в бібліотеці.</div>`}`;
 }
@@ -3995,39 +4316,170 @@ function courseDetail(c){
 /* --- XP page --- */
 const RANKS=[[1,"Абітурієнт"],[3,"Першокурсник"],[5,"Практикант"],[8,"Інтерн"],[11,"Супервізований"],[15,"Молодший клініцист"],[19,"Клініцист"],[24,"Супервізор"]];
 const rankOf=L=>{let r=RANKS[0][1];for(const [l,n] of RANKS) if(L>=l) r=n;return r};
+/* ---------- Loco: study tamagotchi ---------- */
+const LOCO_FORMS=[
+  {lv:1,name:"Крихітка",ability:"Дивиться на тебе великими очима. Поки що це все, що він уміє.",bg:"#FFD9E6",stars:1},
+  {lv:3,name:"Малий",ability:"Махає рукою щоразу, коли ти закриваєш завдання.",bg:"#FFEBA8",stars:1},
+  {lv:5,name:"Спортик",ability:"Перші біцепси. Легкі завдання з'їдає не жуючи.",bg:"#C9F2DD",stars:2},
+  {lv:8,name:"Качок",ability:"Пов'язка і шість кубиків преса. Середні завдання для нього розминка.",bg:"#CDE8F7",stars:3},
+  {lv:12,name:"Титан",ability:"Носить плащ. Есе й презентації не лякають.",bg:"#E2D6FB",stars:4},
+  {lv:18,name:"Легенда",ability:"Корона і сяйво. Пройшов модулі, проєкти й сесії.",bg:"#FFE3A3",stars:5}];
+function locoFormIdx(L){let f=0;LOCO_FORMS.forEach((x,i)=>{if(L>=x.lv)f=i});return f}
+let LOCO_C=null, locoYay=0, petLog=[];
+function locoTick(){const t=today(); S.loco=S.loco||{born:t,pmax:{},vacs:[],seenForm:null}; const pm=S.loco.pmax=S.loco.pmax||{};
+  const n=S.tasks.filter(x=>x.kind==="task"&&x.plan===t).length; if(n>(pm[t]||0)) pm[t]=n;
+  const cut=addDays(t,-70); for(const k of Object.keys(pm)) if(k<cut) delete pm[k];}
+function locoState(){
+  if(LOCO_C) return LOCO_C;
+  locoTick();
+  const t=today(), lo=S.loco, L=level(S.xp), byPlan={}, doneDay={};
+  S.tasks.forEach(x=>{if(x.kind!=="task") return; if(x.plan)(byPlan[x.plan]=byPlan[x.plan]||[]).push(x); if(x.done&&x.doneAt){const k=d2s(new Date(x.doneAt));(doneDay[k]=doneDay[k]||[]).push(x)}});
+  const inVac=d=>(lo.vacs||[]).some(v=>d>=v.f&&(!v.t||d<=v.t));
+  const info=d=>{const Pl=byPlan[d]||[], p=Math.max(Pl.length,(lo.pmax||{})[d]||0);
+    const onTime=Pl.filter(x=>x.done&&x.doneAt&&d2s(new Date(x.doneAt))<=d).length, extra=(doneDay[d]||[]).filter(x=>x.plan!==d).length;
+    return {d,p,dn:Math.min(p,onTime+extra),extra,vac:inVac(d)}};
+  let hp=70, miss=0; const start=lo.born>addDays(t,-60)?lo.born:addDays(t,-60), hist={};
+  for(let d=start; d<t; d=addDays(d,1)){const i=info(d); let st="none";
+    if(i.vac) st="vac";
+    else if(i.p>0){const r=i.dn/i.p; if(r>=1){hp+=10;st="full";miss=0} else if(r>=.5){hp+=4;st="half";miss=0} else if(r>0){hp-=4;st="low";miss=0} else {miss++;hp-=7+Math.min(2,miss-1)*2;st="miss"}}
+    else if(i.extra>0){hp+=3;st="bonus"}
+    hp=Math.max(5,Math.min(100,hp)); hist[d]=Object.assign(i,{st})}
+  const T=info(t), vac=T.vac, hr=new Date().getHours(), form=locoFormIdx(L);
+  if(lo.seenForm==null) lo.seenForm=form;
+  const health=Math.round(hp), weak=health<35&&form>0, vform=weak?form-1:form;
+  const mood=vac||hr>=23||hr<6?"sleep":health<25?"sick":health<45?"sad":(T.p>0&&T.dn>=T.p)?"joy":"happy";
+  LOCO_C={L,form,vform,weak,health,mood,vac,today:T,hist,born:lo.born,justEvolved:lo.seenForm<form};
+  return LOCO_C;
+}
+function locoSay(st){
+  const T=st.today, hr=new Date().getHours(), left=T.p-T.dn, w=n=>pl(n,"завдання","завдання","завдань");
+  if(st.vac) return "Я у відпустці. Дні зараз не рахуються, відпочивай.";
+  if(st.mood==="sleep") return left>0?`Сплю. Завтра доїмо: лишилось ${left} ${w(left)}.`:"Сплю. Добраніч.";
+  if(st.justEvolved) return `Дивись, я тепер ${LOCO_FORMS[st.form].name}!`;
+  if(st.health<25) return "Мені зле. Одне маленьке завдання вже допоможе.";
+  if(T.p>0&&T.dn>=T.p) return "Все з'їв! Сьогоднішній план закрито.";
+  if(T.p>0&&T.dn>0) return `Вже ${T.dn} з ${T.p}. Ще ${left} ${w(left)}, і я ситий.`;
+  if(T.p>0) return hr>=15?`Я голодний. У плані ${T.p} ${w(T.p)}, а з'їдено нуль.`:`Сьогодні в плані ${T.p} ${w(T.p)}. Почнемо з найлегшого?`;
+  if(T.extra>0) return "Плану не було, а ти щось зробив. Бонусна їжа!";
+  if(st.weak) return "Я трохи схуд. Заплануй на завтра щось невелике.";
+  return "Сьогодні план порожній, тож я просто відпочиваю.";
+}
+function locoSVG(o){
+  const f=o.form||0, hp=o.health==null?80:o.health, md=o.mood||"happy", ink="#2B1B2E";
+  const col=hp>=45?"#7ED9AE":hp>=25?"#A9CDB6":"#BAC3B8", dark=hp>=45?"#4FB98A":hp>=25?"#87AE96":"#9AA597";
+  const sc=o.mini?1:[.8,.88,.94,1,1.03,1.05][f], W=[14,14,18,22,25,27][f], BI=[0,0,9,13,15,16][f], rx=56+f;
+  const arm=(d,cls,bx,by,fx,fy)=>`<g class="${cls}"><path d="${d}" fill="none" stroke="${ink}" stroke-width="${W+8}" stroke-linecap="round" stroke-linejoin="round"/>${BI?`<circle class="lc-bi" cx="${bx}" cy="${by}" r="${BI}" fill="${col}" stroke="${ink}" stroke-width="4"/>`:""}<path d="${d}" fill="none" stroke="${col}" stroke-width="${W}" stroke-linecap="round" stroke-linejoin="round"/><circle cx="${fx}" cy="${fy}" r="${W/2+4}" fill="${col}" stroke="${ink}" stroke-width="4"/></g>`;
+  const arms=f===0?arm("M54 132 Q40 142 42 154","lc-armL",0,0,42,154)+arm("M146 132 Q160 142 158 154","lc-armR",0,0,158,154)
+    :f===1?arm("M54 132 Q40 142 42 154","lc-armL",0,0,42,154)+arm("M146 124 Q164 116 166 98","lc-armR lc-wave",0,0,166,98)
+    :arm("M54 122 L30 128 L26 100","lc-armL lc-flex",42,125-W/2+2,26,100)+arm("M146 122 L170 128 L174 100","lc-armR lc-flex",158,125-W/2+2,174,100);
+  const dl=`style="animation-delay:-${(Math.random()*5).toFixed(2)}s"`;
+  const star=(x,y,s,c,d)=>`<path class="lc-spark" style="animation-delay:${d}s" d="M${x} ${y-s} L${x+s*.3} ${y-s*.3} L${x+s} ${y} L${x+s*.3} ${y+s*.3} L${x} ${y+s} L${x-s*.3} ${y+s*.3} L${x-s} ${y} L${x-s*.3} ${y-s*.3} Z" fill="${c}" stroke="${ink}" stroke-width="2.5" stroke-linejoin="round"/>`;
+  const mouth=md==="joy"?`<path d="M88 125 Q100 145 112 125 Z" fill="${ink}" stroke="${ink}" stroke-width="3" stroke-linejoin="round"/><ellipse cx="100" cy="135" rx="5.5" ry="3.2" fill="#FF6F91"/>`
+    :md==="sad"?`<path d="M90 135 Q100 126 110 135" fill="none" stroke="${ink}" stroke-width="4" stroke-linecap="round"/>`
+    :md==="sick"?`<path d="M88 132 Q94 127 100 132 Q106 137 112 132" fill="none" stroke="${ink}" stroke-width="4" stroke-linecap="round"/>`
+    :md==="sleep"?`<ellipse cx="100" cy="131" rx="4.5" ry="3.5" fill="${ink}"/>`
+    :`<path d="M89 127 Q100 139 111 127" fill="none" stroke="${ink}" stroke-width="4" stroke-linecap="round"/>`;
+  const thrive=!o.mini&&!o.still&&hp>=80&&(md==="happy"||md==="joy");
+  return `<svg class="loco m-${md} f${f}${o.still?" still":""}${o.mini?" mini":""}${o.mini&&Date.now()<locoYay?" lc-jump lc-happy":""}" viewBox="${o.mini?"38 24 124 124":"0 0 200 220"}" aria-hidden="true" focusable="false">
+  ${o.mini?"":`<ellipse class="lc-shadow" cx="100" cy="207" rx="52" ry="8" fill="rgba(43,27,46,.18)"/>`}
+  ${f>=5&&!o.mini?`<g class="lc-rays" opacity=".55">${Array.from({length:12},(_,i)=>`<path d="M100 128 L${100+Math.cos(i*Math.PI/6)*98} ${128+Math.sin(i*Math.PI/6)*98} L${100+Math.cos(i*Math.PI/6+.18)*98} ${128+Math.sin(i*Math.PI/6+.18)*98} Z" fill="#FFD23F"/>`).join("")}</g>`:""}
+  <g transform="translate(100 205) scale(${sc}) translate(-100 -205)"><g class="lc-bob">
+    ${f>=4?`<path d="M64 92 Q100 108 136 92 L158 194 Q100 214 42 194 Z" fill="#E8454F" stroke="${ink}" stroke-width="4" stroke-linejoin="round"/>`:""}
+    ${f<5?`<g class="lc-ant"><path d="M100 70 Q99 50 111 38" fill="none" stroke="${ink}" stroke-width="4" stroke-linecap="round"/><circle cx="112" cy="35" r="7.5" fill="#FF6FB5" stroke="${ink}" stroke-width="3.5"/></g>`:""}
+    <ellipse cx="80" cy="195" rx="15" ry="9" fill="${dark}" stroke="${ink}" stroke-width="4"/><ellipse cx="120" cy="195" rx="15" ry="9" fill="${dark}" stroke="${ink}" stroke-width="4"/>
+    ${arms}
+    <ellipse cx="100" cy="128" rx="${rx}" ry="64" fill="${col}" stroke="${ink}" stroke-width="5"/>
+    <ellipse cx="100" cy="152" rx="${33+f}" ry="31" fill="#FFF6E4" opacity=".8"/>
+    ${f>=3?`<g fill="none" stroke="rgba(43,27,46,.35)" stroke-width="2.5">${[138,152,166].map(y=>`<rect x="88" y="${y}" width="10" height="11" rx="4"/><rect x="102" y="${y}" width="10" height="11" rx="4"/>`).join("")}</g>`:f===2?`<path d="M86 140 Q93 145 99 140 M101 140 Q107 145 114 140" fill="none" stroke="rgba(43,27,46,.3)" stroke-width="2.5" stroke-linecap="round"/>`:""}
+    <ellipse cx="70" cy="126" rx="8" ry="5" fill="#FF8FB1" opacity="${md==="sick"?.2:.7}"/><ellipse cx="130" cy="126" rx="8" ry="5" fill="#FF8FB1" opacity="${md==="sick"?.2:.7}"/>
+    <g class="lc-eyes">
+      <ellipse cx="82" cy="108" rx="13" ry="15" fill="#fff" stroke="${ink}" stroke-width="4"/><ellipse cx="118" cy="108" rx="13" ry="15" fill="#fff" stroke="${ink}" stroke-width="4"/>
+      <g class="lc-pup"><circle cx="83" cy="110" r="6.5" fill="${ink}"/><circle cx="119" cy="110" r="6.5" fill="${ink}"/><circle cx="85.5" cy="107" r="2.2" fill="#fff"/><circle cx="121.5" cy="107" r="2.2" fill="#fff"/></g>
+      <ellipse class="lc-lid" ${dl} cx="82" cy="108" rx="13.5" ry="15.5" fill="${col}" stroke="${ink}" stroke-width="4"/><ellipse class="lc-lid" ${dl} cx="118" cy="108" rx="13.5" ry="15.5" fill="${col}" stroke="${ink}" stroke-width="4"/>
+    </g>
+    ${md==="sleep"?`<path d="M72 112 Q82 120 92 112 M108 112 Q118 120 128 112" fill="none" stroke="${ink}" stroke-width="4" stroke-linecap="round"/>`:""}
+    <g class="lc-heye" fill="none" stroke="${ink}" stroke-width="5" stroke-linecap="round"><path d="M71 111 Q82 97 93 111"/><path d="M107 111 Q118 97 129 111"/></g>
+    ${f>=3&&md!=="sleep"?`<path d="M70 88 L91 93 M130 88 L109 93" stroke="${ink}" stroke-width="4.5" stroke-linecap="round"/>`:""}
+    <g class="lc-mouth">${mouth}</g>
+    ${f>=3&&f<5?`<path d="M50 99 Q100 71 150 99" fill="none" stroke="${ink}" stroke-width="15" stroke-linecap="round"/><path d="M50 99 Q100 71 150 99" fill="none" stroke="#E8454F" stroke-width="8" stroke-linecap="round"/><path d="M150 98 l14 9 M150 98 l13 -6" stroke="${ink}" stroke-width="9" stroke-linecap="round"/><path d="M150 98 l14 9 M150 98 l13 -6" stroke="#E8454F" stroke-width="4" stroke-linecap="round"/>`:""}
+    ${f>=5?`<path d="M76 72 L78 44 L91 58 L100 36 L109 58 L122 44 L124 72 Z" fill="#FFD23F" stroke="${ink}" stroke-width="4" stroke-linejoin="round"/><circle cx="100" cy="62" r="4.5" fill="#FF6FB5" stroke="${ink}" stroke-width="2.5"/>`:""}
+    ${md==="sick"?`<g transform="rotate(-20 132 78)"><rect x="118" y="73" width="28" height="10" rx="3" fill="#FFF6E4" stroke="${ink}" stroke-width="3"/><rect x="127" y="64" width="10" height="28" rx="3" fill="#FFF6E4" stroke="${ink}" stroke-width="3"/></g><path d="M106 131 L136 142" stroke="${ink}" stroke-width="8" stroke-linecap="round"/><path d="M106 131 L136 142" stroke="#fff" stroke-width="4" stroke-linecap="round"/><circle cx="106" cy="131" r="4.5" fill="#FF6F61" stroke="${ink}" stroke-width="2.5"/>`:""}
+    ${md==="sad"||md==="sick"?`<path class="lc-tear" d="M150 86 Q157 97 150 102 Q143 97 150 86Z" fill="#8FD3F0" stroke="${ink}" stroke-width="2.5"/>`:""}
+  </g></g>
+  ${thrive?star(28,62,9,"#FFD23F",0)+star(172,72,7,"#3DD9EB",.6)+star(166,170,8,"#FF6FB5",1.2)+star(34,168,6,"#FFD23F",1.8):""}
+  ${md==="sleep"&&!o.mini?`<g font-family="Space Mono,monospace" font-weight="700" fill="${ink}"><text class="lc-z" x="138" y="62" font-size="18">z</text><text class="lc-z" style="animation-delay:1s" x="150" y="48" font-size="14">z</text><text class="lc-z" style="animation-delay:2s" x="160" y="36" font-size="11">z</text></g>`:""}
+</svg>`;
+}
+window.__loco={svg:o=>locoSVG(o),state:()=>{LOCO_C=null;return locoState()}};
+const PET_SAY=["Хе-хе, лоскотно!","Ще раз? Добре.","Мур. Тобто, дякую.","Обійми приємні, але їм я завдання.","Ти найкращий."];
+function locoPet(){
+  const now=Date.now(); petLog=petLog.filter(x=>now-x<60000); petLog.push(now);
+  const say=document.getElementById("lcSay"), sv=document.querySelector(".lcstage svg.loco");
+  if(petLog.length>5){if(say) say.textContent="Досить обіймів на зараз. Мене годують завдання."; return}
+  if(say) say.textContent=PET_SAY[Math.floor(Math.random()*PET_SAY.length)];
+  if(!sv||RMQ.matches) return;
+  sv.classList.remove("lc-jump","lc-happy"); void sv.getBoundingClientRect(); sv.classList.add("lc-jump","lc-happy");
+  clearTimeout(locoPet.t); locoPet.t=setTimeout(()=>sv.classList.remove("lc-jump","lc-happy"),1300);
+  const box=document.querySelector(".lchearts"); if(!box) return;
+  for(let i=0;i<5;i++){const s=document.createElement("i"); s.innerHTML='<svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.2 0 3.6 1.2 5.3 3.2 1.7-2 3.1-3.2 5.3-3.2 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z" fill="#FF6FB5" stroke="#2B1B2E" stroke-width="2"/></svg>';
+    s.style.left=(30+Math.random()*40)+"%"; s.style.animationDelay=(i*.12)+"s"; box.appendChild(s); setTimeout(()=>s.remove(),1600)}
+}
+let lcRaf=0, lcMove=0;
+function lcLook(px,py){document.querySelectorAll("svg.loco:not(.still)").forEach(s=>{const r=s.getBoundingClientRect(); if(!r.width) return;
+  let dx=px-(r.left+r.width/2), dy=py-(r.top+r.height*.45); const m=Math.hypot(dx,dy)||1, k=Math.min(1,m/260); dx=dx/m*3.8*k; dy=dy/m*3*k;
+  s.querySelectorAll(".lc-pup").forEach(g=>g.style.transform=`translate(${dx.toFixed(1)}px,${dy.toFixed(1)}px)`)})}
+document.addEventListener("pointermove",e=>{lcMove=Date.now(); if(lcRaf) return; lcRaf=requestAnimationFrame(()=>{lcRaf=0; lcLook(e.clientX,e.clientY)})},{passive:true});
+setInterval(()=>{if(Date.now()-lcMove<4000||document.hidden||RMQ.matches) return; const a=Math.random()*Math.PI*2, c=Math.random()<.35;
+  document.querySelectorAll("svg.loco:not(.still) .lc-pup").forEach(g=>g.style.transform=c?"":`translate(${(Math.cos(a)*3.6).toFixed(1)}px,${(Math.sin(a)*2.6).toFixed(1)}px)`)},2600);
+document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest('[data-act="done"]')) locoYay=Date.now()+1100},true);
+
 function xpView(){
-  const L=level(S.xp), lo=xpFor(L), hi=xpFor(L+1), p=(S.xp-lo)/(hi-lo);
-  const ladder=[
-    ["📚","Прочитати книгу повністю","Дочитай до останньої сторінки або постав статус «Прочитано».",XP.book],
-    ["🛠️","Проєкт","Завдання з типом «Проєкт».",XP.project],
-    ["🎤","Презентація","Завдання з типом «Презентація».",XP.presentation],
-    ["d3","Складне завдання","Червоне.",XP.d3],
-    ["d2","Середнє завдання","Жовте.",XP.d2],
-    ["d1","Легке завдання","Зелене.",XP.d1],
-    ["✍️","Есе","Завдання з типом «Есе».",XP.essay]];
-  const extra=[["Завдання без складності",XP.none],["Вівторкове завдання",XP.tue],["Повторення (самоперевірка)",XP.review]];
-  const log=(S.xpLog||[]).slice(0,15);
-  return `<div class="pagehead glass"><h1>XP</h1><span class="muted" style="font-size:.88rem">бонус за виконане, не головне</span></div>
-  <div class="xpgrid">
-    <section class="card glass xplevel" style="position:relative"><span class="xpdeco" aria-hidden="true">${ART.brain}</span>
-      <div class="label">Твій рівень</div>
-      <div class="xpbig">${L}</div>
-      <div class="xprank">${rankOf(L)}</div>
-      <div class="bar" style="height:10px;margin-top:14px"><i style="width:${Math.round(p*100)}%;--c:var(--sun)"></i></div>
-      <div class="row" style="justify-content:space-between;margin-top:6px;font-size:.84rem"><span class="mono">${S.xp} XP</span><span class="muted">ще ${hi-S.xp} до рівня ${L+1}</span></div>
-      <div class="ranks">${RANKS.map(([l,n])=>`<div class="${L>=l?"got":""} ${rankOf(L)===n?"cur":""}"><span class="mono">${l}</span>${n}</div>`).join("")}</div>
-    </section>
-    <section class="card glass">
-      <h2 style="margin-bottom:10px">Як заробляти XP</h2>
-      <ol class="ladder2">${ladder.map(([ic,n,d,v],i)=>`<li><span class="lic">${ic.startsWith("d")?`<i class="ddisc ${ic}"></i>`:ic}</span><div style="flex:1;min-width:0"><b>${n}</b><small>${d}</small></div><span class="xpv">+${v}</span></li>`).join("")}</ol>
-      <div class="xpextra">${extra.map(([n,v])=>`<span class="chip">${n} +${v}</span>`).join("")}</div>
-      <div class="muted" style="font-size:.8rem;margin-top:10px">Тип завдання (проєкт, презентація, есе) важливіший за складність: проєкт дає ${XP.project} XP навіть якщо він зелений. Скасована галочка забирає XP назад.</div>
-    </section>
-    <section class="card glass">
-      <h2 style="margin-bottom:10px">Останні нагороди</h2>
-      ${log.length?`<div class="xplog">${log.map(e=>`<div><span>${esc(e.why)}</span><span class="mono" style="${e.n<0?"color:var(--ink-2)":""}">${e.n>0?"+":""}${e.n}</span></div>`).join("")}</div>`:'<div class="empty">Ще порожньо. Закрий завдання, і тут з\'явиться запис.</div>'}
-    </section>
-  </div>`;
+  const st=locoState(), F=LOCO_FORMS, f=st.form, fv=st.vform, L=st.L, T=st.today, t=today();
+  const nf=F[f+1], lo=xpFor(F[f].lv), hi=nf?xpFor(nf.lv):0, powP=nf?Math.max(0,Math.min(100,Math.round((S.xp-lo)/(hi-lo)*100))):100;
+  const hcol=st.health>=60?"#4FB98A":st.health>=35?"#E8A317":"#E8454F", fedP=T.p?Math.round(T.dn/T.p*100):0;
+  const vacOn=(S.loco.vacs||[]).some(v=>!v.t||v.t>=t);
+  const say=locoSay(st); if(st.justEvolved) S.loco.seenForm=f;
+  const SN={full:"план закрито",half:"половина плану",low:"трохи",miss:"пропущено",none:"без плану",bonus:"бонус без плану",vac:"відпустка",today:"сьогодні",pre:"ще не було Loco"};
+  const days=[]; for(let i=13;i>=0;i--){const d=addDays(t,-i); let s=d<st.born?"pre":d===t?"today":(st.hist[d]||{st:"none"}).st; days.push([d,s])}
+  const stat=(n,val,p,c,sub)=>`<div class="lcstat"><div class="lcsl"><b>${n}</b><span>${val}</span></div><div class="lcbar"><i style="width:${p}%;background:${c}"></i></div>${sub?`<small>${sub}</small>`:""}</div>`;
+  const ladder=[["Прочитати книгу",XP.book],["Проєкт",XP.project],["Презентація",XP.presentation],["Складне завдання",XP.d3],["Середнє завдання",XP.d2],["Легке завдання",XP.d1],["Без складності",XP.none],["Вівторкове",XP.tue],["Есе",XP.essay],["Повторення",XP.review]];
+  const log=(S.xpLog||[]).slice(0,10);
+  return `<div class="pagehead glass"><h1>Loco</h1><span class="muted" style="font-size:.88rem">навчальний тамагочі: росте від виконаних завдань</span></div>
+  <div class="lcgrid">
+    <article class="lcard f${f}" style="--lbg:${F[fv].bg}">
+      <header class="lchead"><div><b class="lcname">Loco</b><span class="lcform">${F[fv].name}${st.weak?" · ослаб":""}</span></div><span class="lclv" title="Рівень">${L}</span></header>
+      <button type="button" class="lcstage" data-act="locoPet" aria-label="Погладити Loco">${locoSVG({form:fv,health:st.health,mood:st.mood})}<span class="lchearts" aria-hidden="true"></span></button>
+      <div class="lctype"><span>тип: навчальний</span><span>форма ${f+1}/6</span></div>
+      <div class="lcstats">
+        ${stat("Сила",`${S.xp} XP`,powP,"#FF6FB5",nf?`до форми «${nf.name}»: ще ${hi-S.xp} XP`:"максимальна форма")}
+        ${stat("Здоров'я",`${st.health}%`,st.health,hcol,st.vac?"на паузі: відпустка":st.health<35?"слабшає: пропущені дні з планом":"")}
+        ${stat("Ситість сьогодні",T.p?`${T.dn} з ${T.p}`:"плану немає",T.p?fedP:0,"#FFD23F","")}
+      </div>
+      <p class="lcability">${F[fv].ability}</p>
+      <footer class="lcfoot"><span class="lcstars" aria-label="${F[f].stars} з 5">${"★".repeat(F[f].stars)}<span>${"★".repeat(5-F[f].stars)}</span></span><span class="mono">#00${f+1}/006</span></footer>
+    </article>
+    <div class="lcside">
+      <div class="lcsay" id="lcSay" aria-live="polite">${esc(say)}</div>
+      <div class="lcacts"><button class="btn primary" data-act="nav" data-v="today">Нагодувати: до завдань</button><button class="btn" data-act="locoPet">Погладити</button><button class="btn${vacOn?" on":""}" data-act="locoVac">${vacOn?"Завершити відпустку":"Відпустка"}</button></div>
+      <section class="card glass lcdays"><h3>Останні 14 днів</h3>
+        <div class="lcstrip">${days.map(([d,s])=>`<span class="lcd ${s}" ${s==="today"?`style="--f:${fedP}%"`:""} title="${fmtS(d)}: ${SN[s]}"><small>${parse(d).getDate()}</small></span>`).join("")}</div>
+        <div class="lclegend"><span><i class="lcd full"></i>закрито</span><span><i class="lcd half"></i>половина</span><span><i class="lcd miss"></i>пропущено</span><span><i class="lcd none"></i>без плану</span><span><i class="lcd vac"></i>відпустка</span></div>
+      </section>
+      <section class="card glass lccare"><h3>Як доглядати Loco</h3><ol>
+        <li><b>Він їсть виконані завдання.</b> Кожне закрите завдання дає силу (XP), і з часом Loco змінює форму: від крихітки до легенди.</li>
+        <li><b>Плануй день.</b> Якщо на день були заплановані завдання, а ти не закрив жодного, його здоров'я падає. Закритий план лікує.</li>
+        <li><b>Дні без плану не рахуються.</b> Нічого не заплановано: Loco просто відпочиває.</li>
+        <li><b>Хворієш чи їдеш?</b> Увімкни «Відпустку», і дні на паузі не шкодять.</li>
+        <li><b>Сюди не треба заходити щодня.</b> Гладити приємно, але на здоров'я це не впливає. Найкращий догляд: закрити завдання і піти відпочивати.</li>
+      </ol></section>
+    </div>
+  </div>
+  <section class="card glass lcforms"><h2>Форми</h2><div class="lcfgrid">${F.map((x,i)=>`<div class="lcf ${i<=f?"got":"locked"}${i===f?" cur":""}">${locoSVG({form:i,health:100,mood:"happy",still:true})}<b>${i<=f?x.name:"???"}</b><small>рівень ${x.lv}</small></div>`).join("")}</div></section>
+  <details class="card glass lcxp"><summary><b>Скільки сили дає кожне завдання</b><span class="muted">і останні нагороди</span></summary>
+    <div class="lcxpgrid"><div class="xpextra">${ladder.map(([n,v])=>`<span class="chip">${n} <b>+${v}</b></span>`).join("")}</div>
+    ${log.length?`<div class="xplog">${log.map(e=>`<div><span>${esc(e.why)}</span><span class="mono" style="${e.n<0?"color:var(--ink-2)":""}">${e.n>0?"+":""}${e.n}</span></div>`).join("")}</div>`:'<div class="empty">Ще порожньо. Закрий завдання, і тут з\'явиться запис.</div>'}
+    <div class="muted" style="font-size:.8rem">Тип завдання (проєкт, презентація, есе) важливіший за складність. Скасована галочка забирає силу назад.</div></div>
+  </details>`;
 }
 /* --- course points (100) --- */
 function courseBooksCard(c){
@@ -4461,6 +4913,18 @@ document.addEventListener("click",e=>{
   switch(a){
     case "nav": view=b.dataset.v; openCourse=null; libZoom=null; showDone=false; try{history.replaceState(null,"","#"+view)}catch(_){} render(); window.scrollTo(0,0); break;
     case "settings": sheetSettings(); break;
+    case "locoPet": locoPet(); break;
+    case "trkStart": trkStart(b.dataset.k,id); break;
+    case "trkStop": trkStopSheet(); break;
+    case "trkRate": {document.querySelectorAll('.trkrate [data-act="trkRate"]').forEach(x=>x.setAttribute("aria-pressed",String(x===b))); break}
+    case "trkSave": trkSave(); break;
+    case "trkResume": closeSheet(); break;
+    case "trkDiscard": {const a=S.active; S.active=null; closeSheet(); commit(); if(a) toast("Сесію не збережено"); break}
+    case "trkGo": {const a=S.active; if(!a) break; if(a.kind==="book"){view="library";openCourse=null} else {const t=S.tasks.find(x=>x.id===a.id); if(t){view="courses";openCourse=t.courseId}} render(); window.scrollTo(0,0); break}
+    case "locoVac": {const t=today(), L=S.loco, v=(L.vacs||[]).find(x=>!x.t||x.t>=t); L.vacs=L.vacs||[];
+      if(v){if(v.f>=t) L.vacs=L.vacs.filter(x=>x!==v); else v.t=addDays(t,-1); toast("Відпустку завершено. Loco знову рахує дні з планом.")}
+      else {L.vacs.push({f:t,t:null}); L.vacs=L.vacs.slice(-20); toast("Loco у відпустці: дні не рахуються")}
+      commit(); break}
     case "lvlInfo": view="xp"; openCourse=null; render(); window.scrollTo(0,0); break;
     case "done": completeTask(id,b.dataset.q); break;
     case "undone": uncompleteTask(id); break;
