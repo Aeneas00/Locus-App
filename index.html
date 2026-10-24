@@ -2783,6 +2783,170 @@ body.tracking .page{padding-bottom:110px}
 :root[data-skin="loft"] .tcard{border:1.5px solid #C9A04E}
 @media (prefers-reduced-motion:reduce){.tspot,.tcard{transition:none}}
 
+/* ===== task sheet as a quest card ===== */
+.sheet{box-sizing:border-box}
+.scrim{z-index:93}
+.toasts{z-index:120}
+.sheet:has(.tqsheet){max-width:620px}
+.tqsheet{--tq-ink:var(--ink)}
+.tq{display:flex;flex-direction:column;gap:14px}
+.tq-top{display:flex;align-items:center;justify-content:space-between}
+.tq-kicker{font:700 .72rem "Space Mono",ui-monospace,monospace;text-transform:uppercase;letter-spacing:.14em;padding:5px 10px;border-radius:999px;background:var(--accent);color:var(--frame)}
+.tq-close{width:36px;height:36px;border-radius:50%;border:0;background:var(--glass-2);color:var(--ink);font-size:1.4rem;line-height:1;cursor:pointer}
+.tq-title{width:100%;box-sizing:border-box;border:0;border-bottom:3px solid var(--line);background:transparent;color:var(--ink);font:800 1.55rem/1.2 var(--f-display),Manrope,sans-serif;padding:6px 2px 10px;outline:0}
+.tq-title:focus{border-bottom-color:var(--accent)}
+.tq-title::placeholder{color:var(--ink-2);opacity:.6}
+.tq-courses{display:flex;flex-wrap:wrap;gap:6px}
+.tq-course input,.tq-d input,.tq-type input{position:absolute;opacity:0;pointer-events:none}
+.tq-course span{display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:999px;border:1.5px solid var(--glass-edge);background:var(--card);font-size:.82rem;font-weight:800;cursor:pointer;transition:transform .15s,background .15s}
+.tq-course span i{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.tq-course input:checked + span{background:var(--c);color:#1E1428;border-color:transparent;transform:translateY(-2px)}
+.tq-course input:checked + span i{background:#fff;box-shadow:0 0 0 2px rgba(0,0,0,.25)}
+.tq-course input:focus-visible + span,.tq-d input:focus-visible + .tq-dc,.tq-type input:focus-visible + span{outline:3px solid var(--accent);outline-offset:2px}
+.tq-dates{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tq-tile{display:flex;flex-direction:column;gap:6px;padding:14px;border-radius:20px;background:var(--glass-2);border:1.5px solid var(--glass-edge);min-width:0}
+.tq-lbl,.tq-sec{font:700 .7rem "Space Mono",ui-monospace,monospace;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-2)}
+.tq-big{display:flex;flex-direction:column;font-size:1.45rem;font-weight:900;line-height:1.15;min-height:3em}
+.tq-big small{font-size:.8rem;font-weight:700;color:var(--ink-2);margin-top:2px}
+.tq-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto}
+.tq-chip{border:1.5px solid var(--glass-edge);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 10px;font:inherit;font-size:.75rem;font-weight:800;cursor:pointer;transition:transform .12s}
+.tq-chip:hover{transform:translateY(-1px)}
+.tq-chip.on{background:var(--ink);color:var(--frame);border-color:transparent}
+.tq-tile.hot .tq-big{color:#E8454F}
+.tq-diff{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.tq-d{position:relative;cursor:pointer}
+.tq-dc{display:flex;flex-direction:column;align-items:center;gap:3px;padding:14px 6px 12px;border-radius:18px;text-align:center;background:var(--dc);color:#1E1428;border:2px solid transparent;transition:transform .18s cubic-bezier(.3,1.6,.5,1),box-shadow .18s;opacity:.55}
+.tq-d.d1{--dc:#8EE0A8}.tq-d.d2{--dc:#FFD86B}.tq-d.d3{--dc:#FF8A7A}.tq-d.d0{--dc:#D9D3E6}
+.tq-stars{font-style:normal;font-size:1.05rem;letter-spacing:1px;line-height:1}
+.tq-dc b{font-size:.95rem;font-weight:900}.tq-dc small{font-size:.7rem;font-weight:800;opacity:.75}
+.tq-d:hover .tq-dc{opacity:.85;transform:translateY(-2px)}
+.tq-d input:checked + .tq-dc{opacity:1;transform:translateY(-4px) scale(1.04);border-color:#1E1428;box-shadow:0 10px 20px -10px rgba(0,0,0,.5)}
+.tq-types{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.tq-sec.in{margin-right:4px}
+.tq-type span{display:inline-block;padding:4px 10px;border-radius:999px;border:1.5px dashed var(--glass-edge);font-size:.76rem;font-weight:700;color:var(--ink-2);cursor:pointer}
+.tq-type input:checked + span{border-style:solid;border-color:var(--ink);color:var(--ink);background:var(--card)}
+.tq-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:12px;border-top:1.5px dashed var(--line)}
+.tq-reward{display:flex;align-items:center;gap:10px}
+.tq-loco{width:46px;height:46px;display:block}.tq-loco svg{width:100%;height:100%;overflow:visible}
+.tq-reward small{display:block;font-size:.7rem;font-weight:800;color:var(--ink-2);text-transform:uppercase;letter-spacing:.08em}
+.tq-reward b{font-size:1.4rem;font-weight:900;color:var(--accent)}
+.tq-btns{display:flex;gap:8px}
+.tq-go{font-size:1rem;padding:12px 20px}
+@media (max-width:560px){.tq-dates{grid-template-columns:1fr}.tq-diff{grid-template-columns:1fr 1fr}.tq-title{font-size:1.3rem}.tq-big{min-height:0}}
+@media (prefers-reduced-motion:reduce){.tq-dc,.tq-course span,.tq-chip{transition:none}}
+/* retro: arcade quest card */
+:root[data-skin="retro"] .tq-kicker{background:#FF6FB5;color:#2B1B2E;border:2px solid var(--hard);box-shadow:2px 2px 0 var(--hard);font-family:"Press Start 2P",monospace;font-size:.55rem;letter-spacing:.06em}
+:root[data-skin="retro"] .tq-title{font-family:Fraunces,var(--f-display),serif;font-style:italic;border-bottom:3px dashed var(--hard)}
+:root[data-skin="retro"] .tq-course span{border:2px solid var(--hard);box-shadow:2px 2px 0 var(--hard)}
+:root[data-skin="retro"] .tq-course input:checked + span{border-color:var(--hard);box-shadow:3px 3px 0 var(--hard)}
+:root[data-skin="retro"] .tq-tile{background:var(--card);border:2.5px solid var(--hard);box-shadow:5px 5px 0 var(--hard);border-radius:16px}
+:root[data-skin="retro"] .tq-plan{background:linear-gradient(var(--card),var(--card)) padding-box,#7ED9AE}
+:root[data-skin="retro"] .tq-plan .tq-lbl{color:#1E8656}:root[data-skin="retro"] .tq-due .tq-lbl{color:#D9483B}
+:root[data-skin="retro"] .tq-big{font-family:"Space Mono",ui-monospace,monospace}
+:root[data-skin="retro"] .tq-chip{border:2px solid var(--hard)}
+:root[data-skin="retro"] .tq-chip.on{background:#FFD23F;color:#2B1B2E}
+:root[data-skin="retro"] .tq-dc{border:2.5px solid var(--hard);box-shadow:3px 3px 0 var(--hard);border-radius:14px}
+:root[data-skin="retro"] .tq-d input:checked + .tq-dc{box-shadow:6px 6px 0 var(--hard);border-color:var(--hard)}
+:root[data-skin="retro"] .tq-stars{font-family:"Press Start 2P",monospace;font-size:.8rem}
+:root[data-skin="retro"] .tq-reward b{font-family:"Press Start 2P",monospace;font-size:1rem;color:#FF6FB5;text-shadow:2px 2px 0 var(--hard)}
+:root[data-skin="retro"] .tq-foot{border-top:2.5px dashed var(--hard)}
+/* solarpunk: soft glass and garden colours */
+:root[data-skin="solar"] .tq-kicker{background:linear-gradient(180deg,#3FB57A,#1E8656);color:#fff;font-family:Manrope,system-ui,sans-serif;font-weight:800}
+:root[data-skin="solar"] .tq-tile{background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.9);border-radius:24px;box-shadow:0 12px 26px -16px rgba(20,80,50,.45)}
+:root[data-skin="solar"][data-tone="dark"] .tq-tile{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.14)}
+:root[data-skin="solar"] .tq-plan .tq-lbl{color:#1E8656}:root[data-skin="solar"] .tq-due .tq-lbl{color:#C77C12}
+:root[data-skin="solar"] .tq-chip.on{background:#2FA56B;color:#fff}
+:root[data-skin="solar"] .tq-d.d1{--dc:linear-gradient(160deg,#B6F0C4,#5CC985)}:root[data-skin="solar"] .tq-d.d2{--dc:linear-gradient(160deg,#FFEAA8,#F3C766)}:root[data-skin="solar"] .tq-d.d3{--dc:linear-gradient(160deg,#FFC9B0,#F08A68)}:root[data-skin="solar"] .tq-d.d0{--dc:linear-gradient(160deg,#EDF4F0,#CFDCD4)}
+:root[data-skin="solar"] .tq-dc{border-radius:22px}
+:root[data-skin="solar"] .tq-d input:checked + .tq-dc{border-color:#fff;box-shadow:0 0 0 3px rgba(47,165,107,.55),0 14px 26px -12px rgba(20,80,50,.6)}
+:root[data-skin="solar"] .tq-reward b{color:#1E8656}
+:root[data-skin="solar"][data-tone="dark"] .tq-reward b{color:#8EDC9A}
+:root[data-skin="solar"] .tq-go{background:linear-gradient(180deg,#3FB57A,#1E8656)!important;color:#fff!important;border:0}
+/* therapist office: paper, brass and serif */
+:root[data-skin="loft"] .tq-kicker{background:transparent;color:#8A6A3E;border:1px solid #C9A04E;font-family:Manrope,system-ui,sans-serif;font-weight:800}
+:root[data-skin="loft"] .tq-title{font-family:Lora,var(--f-display),serif;font-style:italic;border-bottom:1.5px solid #C9A04E}
+:root[data-skin="loft"] .tq-tile{background:color-mix(in srgb,var(--card) 85%,#F6EBD9);border:1px solid rgba(201,160,78,.6);border-radius:14px;box-shadow:inset 0 0 0 4px rgba(201,160,78,.08)}
+:root[data-skin="loft"] .tq-big{font-family:Lora,var(--f-display),serif;font-style:italic;font-weight:700}
+:root[data-skin="loft"] .tq-chip.on{background:#2F4636;color:#F3E6C8}
+:root[data-skin="loft"] .tq-d.d1{--dc:#B5C7A2}:root[data-skin="loft"] .tq-d.d2{--dc:#E3C27A}:root[data-skin="loft"] .tq-d.d3{--dc:#D59A86}:root[data-skin="loft"] .tq-d.d0{--dc:#DCD3C2}
+:root[data-skin="loft"] .tq-dc{border-radius:12px}
+:root[data-skin="loft"] .tq-dc b{font-family:Lora,serif;font-style:italic}
+:root[data-skin="loft"] .tq-d input:checked + .tq-dc{border-color:#8A6A3E;box-shadow:0 0 0 3px rgba(201,160,78,.45),0 12px 22px -12px rgba(40,25,10,.55)}
+:root[data-skin="loft"] .tq-reward b{font-family:Lora,serif;font-style:italic;color:#8A6A3E}
+:root[data-skin="loft"] .tq-go{background:#2F4636!important;color:#F3E6C8!important;border:1px solid #C9A04E}
+
+/* ===== subtask percent on the task ===== */
+.spring{display:inline-block;width:14px;height:14px;border-radius:50%;background:conic-gradient(var(--accent) calc(var(--p)*1%),var(--track) 0);box-shadow:inset 0 0 0 1.5px rgba(0,0,0,.12);vertical-align:-2px;margin-right:5px;position:relative}
+.spring::after{content:"";position:absolute;inset:3.5px;border-radius:50%;background:var(--card)}
+.chip.subchip b,.subtog b{font-weight:900;font-variant-numeric:tabular-nums}
+.subtog{padding:1px 8px 1px 5px}
+.task.hassubs,.tdr.hassubs{cursor:pointer}
+:root[data-skin="retro"] .spring{background:conic-gradient(#FF6FB5 calc(var(--p)*1%),rgba(43,27,46,.15) 0);box-shadow:inset 0 0 0 1.5px var(--hard)}
+:root[data-skin="solar"] .spring{background:conic-gradient(#2FA56B calc(var(--p)*1%),rgba(30,107,69,.15) 0)}
+:root[data-skin="loft"] .spring{background:conic-gradient(#C9A04E calc(var(--p)*1%),rgba(74,55,38,.15) 0)}
+
+/* ===== subtask focus layer ===== */
+html.sf-lock,html.sf-lock body{overflow:hidden}
+.subfocus{position:fixed;inset:0;z-index:94}
+.sf-dim{position:absolute;inset:0;background:rgba(18,10,26,.62);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
+.sf-dim.in{animation:sfdim .3s ease-out}
+@keyframes sfdim{from{opacity:0}}
+.subfocus.closing .sf-dim{animation:sfdim .25s ease-in reverse forwards}
+.sf-row{position:absolute;z-index:2;container-type:inline-size}
+.sf-row > *{min-height:100%;box-sizing:border-box}
+.sf-row > *{margin:0!important;box-shadow:0 0 0 3px var(--accent),0 22px 44px -16px rgba(0,0,0,.6)!important;animation:none!important;translate:none!important}
+.sf-panel{position:absolute;z-index:1;display:flex;flex-direction:column;gap:8px;overflow:visible}
+.sf-head{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:4px 12px;padding:10px 14px;border-radius:16px;background:var(--card);color:var(--ink);box-shadow:0 14px 30px -16px rgba(0,0,0,.6)}
+.sf-ttl{font-weight:800;font-size:.86rem}
+.sf-pct{font-size:1.3rem;font-weight:900;font-variant-numeric:tabular-nums;color:var(--accent)}
+.sf-bar{grid-column:1/-1;display:block;height:8px;border-radius:9px;background:var(--track);overflow:hidden}.sf-bar i{display:block;height:100%;background:var(--accent);border-radius:9px;transition:width .4s cubic-bezier(.2,.8,.2,1)}
+.sf-list{display:flex;flex-direction:column;gap:8px;overflow:auto;min-height:0;padding:2px 4px 4px;margin:0 -4px}
+.sf-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;background:var(--card);color:var(--ink);box-shadow:0 10px 22px -14px rgba(0,0,0,.6);transform-origin:50% 0}
+.sf-item.done .sf-t{text-decoration:line-through;color:var(--ink-2)}
+.sf-check{width:26px;height:26px;flex:none;border-radius:50%;border:2px solid var(--ink-2);background:transparent;display:grid;place-items:center;cursor:pointer;color:#fff;padding:0}
+.sf-check svg{width:14px;height:14px}
+.sf-check.on{background:var(--accent);border-color:var(--accent)}
+.sf-t{flex:1;min-width:0;font-weight:700;font-size:.95rem;overflow-wrap:anywhere}
+.sf-diff{flex:none;border:1.5px dashed var(--glass-edge);background:transparent;color:var(--ink-2);border-radius:999px;padding:3px 9px;font:inherit;font-size:.72rem;font-weight:800;cursor:pointer}
+.sf-diff.sd1{background:#8EE0A8;color:#123826;border:0}.sf-diff.sd2{background:#FFD86B;color:#3A2A06;border:0}.sf-diff.sd3{background:#FF8A7A;color:#3A0F0A;border:0}
+.sf-del{flex:none;width:28px;height:28px;border:0;border-radius:50%;background:transparent;color:var(--ink-2);display:grid;place-items:center;cursor:pointer}
+.sf-del svg{width:14px;height:14px}.sf-del:hover{background:var(--glass-2)}
+.sf-add{display:flex;gap:8px;padding:8px;border-radius:14px;background:var(--card);box-shadow:0 10px 22px -14px rgba(0,0,0,.6)}
+.sf-add .inp{flex:1;min-width:0;font-size:16px}
+@media (prefers-reduced-motion:no-preference){
+  .sf-panel.anim .sf-head{animation:sfhead .35s cubic-bezier(.3,1.4,.5,1) both}
+  @keyframes sfhead{from{opacity:0;transform:translateY(-24px) scaleY(.6)}}
+  .sf-panel.anim .sf-item,.sf-panel.anim .sf-add{animation:sfdrop .62s cubic-bezier(.25,1.3,.45,1) both;animation-delay:calc(var(--i) * 75ms + .12s)}
+  @keyframes sfdrop{0%{opacity:0;transform:translateY(-46px) rotate(var(--rot,0deg)) scale(.86)}55%{opacity:1;transform:translateY(7px) rotate(calc(var(--rot,0deg) * -.4))}78%{transform:translateY(-3px)}100%{opacity:1;transform:none}}
+  .subfocus.closing .sf-item,.subfocus.closing .sf-add,.subfocus.closing .sf-head{animation:sfup .22s ease-in forwards;animation-delay:0s}
+  @keyframes sfup{to{opacity:0;transform:translateY(-30px) scale(.9)}}
+  .sf-item{transition:transform .15s}.sf-item:hover{transform:translateX(3px)}
+  .sf-check.on{animation:chkpop .35s cubic-bezier(.3,1.8,.5,1)}
+}
+/* per style */
+:root[data-skin="retro"] .sf-dim{background:rgba(43,27,46,.66);background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:24px 24px}
+:root[data-skin="retro"] .sf-row > *{box-shadow:0 0 0 3px #FF6FB5,8px 8px 0 #2B1B2E!important}
+:root[data-skin="retro"] .sf-head,:root[data-skin="retro"] .sf-item,:root[data-skin="retro"] .sf-add{border:2.5px solid var(--hard);box-shadow:4px 4px 0 var(--hard);border-radius:12px}
+:root[data-skin="retro"] .sf-pct{font-family:"Press Start 2P",monospace;font-size:.9rem;color:#FF6FB5;text-shadow:2px 2px 0 var(--hard)}
+:root[data-skin="retro"] .sf-bar{border:2px solid var(--hard);height:12px}:root[data-skin="retro"] .sf-bar i{background:#FF6FB5;border-radius:0}
+:root[data-skin="retro"] .sf-check{border:2.5px solid var(--hard)}:root[data-skin="retro"] .sf-check.on{background:#FF6FB5;border-color:var(--hard);color:#2B1B2E}
+:root[data-skin="retro"] .sf-item:nth-child(4n+1){background:#FFF6E4}:root[data-skin="retro"] .sf-item:nth-child(4n+2){background:#E9F9F0}:root[data-skin="retro"] .sf-item:nth-child(4n+3){background:#FFF3C4}:root[data-skin="retro"] .sf-item:nth-child(4n+4){background:#F1EAFF}
+:root[data-skin="retro"][data-tone="dark"] .sf-item{background:var(--card)!important}
+:root[data-skin="retro"] .sf-diff.sd1,:root[data-skin="retro"] .sf-diff.sd2,:root[data-skin="retro"] .sf-diff.sd3{border:2px solid var(--hard)}
+:root[data-skin="solar"] .sf-dim{background:rgba(12,45,28,.5);-webkit-backdrop-filter:blur(6px) saturate(120%);backdrop-filter:blur(6px) saturate(120%)}
+:root[data-skin="solar"] .sf-row > *{box-shadow:0 0 0 3px #8EDC9A,0 24px 50px -18px rgba(10,50,30,.7)!important}
+:root[data-skin="solar"] .sf-head,:root[data-skin="solar"] .sf-item,:root[data-skin="solar"] .sf-add{background:rgba(255,255,255,.78);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.95);border-radius:20px;color:#123826}
+:root[data-skin="solar"][data-tone="dark"] .sf-head,:root[data-skin="solar"][data-tone="dark"] .sf-item,:root[data-skin="solar"][data-tone="dark"] .sf-add{background:rgba(20,40,30,.82);border-color:rgba(255,255,255,.14);color:#E6F5EA}
+:root[data-skin="solar"] .sf-pct{color:#1E8656}:root[data-skin="solar"] .sf-bar i{background:linear-gradient(90deg,#7EDB9C,#2FA56B)}
+:root[data-skin="solar"] .sf-check.on{background:#2FA56B;border-color:#2FA56B}
+:root[data-skin="loft"] .sf-dim{background:rgba(25,16,8,.62)}
+:root[data-skin="loft"] .sf-row > *{box-shadow:0 0 0 2px #C9A04E,0 24px 50px -18px rgba(20,12,4,.7)!important}
+:root[data-skin="loft"] .sf-head,:root[data-skin="loft"] .sf-item,:root[data-skin="loft"] .sf-add{background:#FBF4E6;color:#3B2A1C;border:1px solid rgba(201,160,78,.6);border-radius:10px}
+:root[data-skin="loft"][data-tone="dark"] .sf-head,:root[data-skin="loft"][data-tone="dark"] .sf-item,:root[data-skin="loft"][data-tone="dark"] .sf-add{background:#2A2119;color:#F3E7D4}
+:root[data-skin="loft"] .sf-t{font-family:Lora,var(--f-display),serif;font-size:1rem}
+:root[data-skin="loft"] .sf-pct{font-family:Lora,serif;font-style:italic;color:#8A6A3E}:root[data-skin="loft"] .sf-bar i{background:#C9A04E}
+:root[data-skin="loft"] .sf-check.on{background:#2F4636;border-color:#2F4636}
+
 .savebtn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border:0;border-radius:12px;background:linear-gradient(180deg,#F3C766,#D99A2B);color:#241606;font:inherit;font-weight:800;font-size:.95rem;cursor:pointer;box-shadow:0 8px 18px -8px rgba(217,154,43,.8),inset 0 1px 0 rgba(255,255,255,.45);transition:transform .15s,filter .15s}
 .savebtn svg{width:18px;height:18px}
 .savebtn:hover{filter:brightness(1.07);transform:translateY(-1px)}
@@ -4318,15 +4482,14 @@ function todayRow(t,showCourse){
   const c=course(t.courseId), ed=effDue(t), n=ed?diffDays(ed,today()):null, urg=!t.done&&n!=null?(n<7?" urg-r":n<=14?" urg-y":""):"";
   const dueTxt=t.done?"виконано":ed?`${t.due?"дедлайн":"до модуля"} ${fmtS(ed)} · ${n<0?`прострочено ${-n} дн.`:n===0?"сьогодні":n===1?"завтра":`за ${n} дн.`}`:"";
   const ss=subsOf(t), sd=ss.filter(x=>x.done).length;
-  return `<div class="tdr${t.done?" done":""}${urg}${isActive("task",t.id)?" active":""}${expanded.has(t.id)&&ss.length?" open":""}">
+  return `<div data-tid="${t.id}" class="tdr${t.done?" done":""}${urg}${isActive("task",t.id)?" active":""}${ss.length?" hassubs":""}">
     <button type="button" class="check ${t.done?"on":""}" data-act="${t.done?"undone":"done"}" data-id="${t.id}" aria-label="${t.done?"Позначити невиконаним":"Позначити виконаним"}: ${esc(t.title)}">${t.done?ICON.check:""}</button>
     <span class="dmark d${t.diff||0}" title="Складність: ${t.diff?DIFF[t.diff]:"не вказано"}" aria-hidden="true"></span>
     <span class="tdrt">${esc(t.title)}</span>
-    <small class="tdrm">${ss.length?`<button type="button" class="subtog${expanded.has(t.id)?" on":""}" data-act="subs" data-id="${t.id}" aria-expanded="${expanded.has(t.id)}" aria-label="Підпункти ${sd} з ${ss.length}: ${expanded.has(t.id)?"сховати":"показати"}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>${sd}/${ss.length}</button>`:""}${showCourse&&c?esc(c.name)+" · ":""}${t.diff?DIFF[t.diff]:"без складності"} · ~${fmtMin(t.done?minsOf(t):remMinsOf(t))}${t.spent?` · <span class="tspent">${CLOCK}${fmtDur(t.spent)}</span>`:""}</small>
+    <small class="tdrm">${ss.length?`<button type="button" class="subtog${expanded.has(t.id)?" on":""}" data-act="subs" data-id="${t.id}" aria-expanded="${expanded.has(t.id)}" aria-label="Підпункти ${sd} з ${ss.length}: відкрити">${spct(sd,ss.length)}</button>`:""}${showCourse&&c?esc(c.name)+" · ":""}${t.diff?DIFF[t.diff]:"без складності"} · ~${fmtMin(t.done?minsOf(t):remMinsOf(t))}${t.spent?` · <span class="tspent">${CLOCK}${fmtDur(t.spent)}</span>`:""}</small>
     <span class="tdrd">${dueTxt}</span>
     ${t.done?'<span class="tdrgo"></span>':startBtn("task",t,"tdrgo")}
     <button type="button" class="mini-btn" data-act="editTask" data-id="${t.id}" aria-label="Редагувати «${esc(t.title)}»">${ICON.edit}</button>
-    ${expanded.has(t.id)&&ss.length?subsBlock(t):""}
   </div>`;
 }
 
@@ -4422,7 +4585,7 @@ document.addEventListener("click",e=>{if(document.getElementById("fabmenu")&&!e.
 document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest("#fabmenu [data-act]")) setTimeout(closeFab,0)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("fabmenu")){closeFab(); const f=document.getElementById("fab"); if(f) f.focus()}});
 
-const LOCUS_BUILD="1.0.24";
+const LOCUS_BUILD="1.0.26";
 
 /* ---------- alive: entrance on view change, ring fill, count-up, completion burst ---------- */
 let aliveKey=null, aliveFirst=true;
@@ -4698,6 +4861,53 @@ function tourPlace(){
 }
 document.addEventListener("keydown",e=>{if(!tourOn) return; if(e.key==="Escape"){endTour();e.stopPropagation()} else if(e.key==="ArrowRight"){tourGo(1)} else if(e.key==="ArrowLeft"){tourGo(-1)}},true);
 
+
+/* ---------- subtasks: focus mode ---------- */
+const spct=(d,n)=>{const p=n?Math.round(d/n*100):0; return `<i class="spring" style="--p:${p}" aria-hidden="true"></i><b>${p}%</b>`};
+let subFocus=null, sfView=null;
+function sfRow(id){return [...document.querySelectorAll(`#view [data-tid="${id}"]`)].find(e=>{const r=e.getBoundingClientRect(); return r.width>0&&r.height>0})||null}
+function openSubFocus(id){
+  const row=sfRow(id); if(!row) return; subFocus=id; sfView=view;
+  const r=row.getBoundingClientRect(), want=Math.min(innerHeight*.18,110); if(Math.abs(r.top-want)>24) window.scrollBy(0,r.top-want);
+  document.documentElement.classList.add("sf-lock"); buildSubFocus(true);
+  setTimeout(()=>{const el=document.querySelector("#subFocus .sf-add input"); const t=S.tasks.find(x=>x.id===id); if(el&&t&&!subsOf(t).length) el.focus()},350);
+}
+function closeSubFocus(){
+  const L=document.getElementById("subFocus"); subFocus=null; document.documentElement.classList.remove("sf-lock");
+  if(!L) return; if(RMQ.matches){L.remove();return} L.classList.add("closing"); setTimeout(()=>L.remove(),260);
+}
+function buildSubFocus(anim){
+  const id=subFocus, t=S.tasks.find(x=>x.id===id), row=sfRow(id);
+  if(!t||!row||view!==sfView){closeSubFocus();return}
+  let L=document.getElementById("subFocus"); const fresh=!L;
+  if(!L){L=document.createElement("div"); L.id="subFocus"; L.className="subfocus"; L.setAttribute("role","dialog"); L.setAttribute("aria-label","Підпункти: "+t.title); document.body.appendChild(L)}
+  L.classList.remove("closing");
+  const r=row.getBoundingClientRect(), ss=subsOf(t), d=ss.filter(x=>x.done).length, p=ss.length?Math.round(d/ss.length*100):0;
+  const top=r.bottom+10, maxH=Math.max(160,innerHeight-top-16);
+  const keep=L.querySelector(".sf-list"), sc=keep?keep.scrollTop:0;
+  L.innerHTML=`<div class="sf-dim${fresh&&anim?" in":""}" data-act="sfClose"></div>
+    <div class="sf-row" style="top:${r.top}px;left:${r.left}px;width:${r.width}px;height:${r.height}px">${row.outerHTML.replace(/ id="[^"]*"/g,"")}</div>
+    <div class="sf-panel${anim?" anim":""}" style="top:${top}px;left:${r.left+Math.min(28,r.width*.04)}px;width:${Math.max(240,r.width-Math.min(56,r.width*.08))}px;max-height:${maxH}px">
+      <div class="sf-head"><span class="sf-ttl">${ss.length?`${d} з ${ss.length} ${pl(ss.length,"підпункту","підпунктів","підпунктів")}`:"Підпунктів ще немає"}</span><b class="sf-pct">${p}%</b><i class="sf-bar"><i style="width:${p}%"></i></i></div>
+      <div class="sf-list">${ss.map((x,i)=>`<div class="sf-item${x.done?" done":""}" style="--i:${i};--rot:${((i%3)-1)*4}deg"><button type="button" class="sf-check${x.done?" on":""}" data-act="sub" data-id="${t.id}" data-s="${x.id}" aria-label="${x.done?"Зняти позначку":"Виконано"}: ${esc(x.t)}">${x.done?ICON.check:""}</button><span class="sf-t">${esc(x.t)}</span><button type="button" class="sf-diff sd${x.diff||0}" data-act="subDiff" data-id="${t.id}" data-s="${x.id}" title="Змінити складність">${x.diff?DIFF[x.diff]:"складність"}</button><button type="button" class="sf-del" data-act="delSub" data-id="${t.id}" data-s="${x.id}" aria-label="Видалити підпункт">${ICON.x}</button></div>`).join("")}</div>
+      <form class="sf-add" data-form="sub" data-id="${t.id}" style="--i:${ss.length}"><label class="sr" for="sub-${t.id}">Новий підпункт</label><input class="inp" id="sub-${t.id}" placeholder="Новий підпункт…" maxlength="120" autocomplete="off"><button class="btn sm">Додати</button></form>
+    </div>`;
+  const nl=L.querySelector(".sf-list"); if(nl&&sc) nl.scrollTop=sc;
+}
+document.addEventListener("click",e=>{
+  const fl=document.getElementById("subFocus");
+  if(fl&&fl.contains(e.target)){
+    const a=e.target.closest("[data-act]"), act=a&&a.dataset.act;
+    if(act&&["editTask","delTask","diff","dpick","trkStart"].includes(act)&&act!=="dpick"&&act!=="trkStart"){closeSubFocus(); return}
+    if(!a&&e.target.closest(".sf-row")&&!e.target.closest("input,label,select,textarea")){closeSubFocus(); e.stopPropagation(); return}
+    return}
+  if(e.target.closest("button,a,input,label,select,textarea,[data-act],.dh,.tplan,form")) return;
+  const row=e.target.closest("#view .task.hassubs, #view .tdr.hassubs"); if(!row) return;
+  openSubFocus(row.dataset.tid);
+});
+document.addEventListener("keydown",e=>{if(subFocus&&e.key==="Escape"&&!document.querySelector(".sheet")){closeSubFocus()}});
+addEventListener("resize",()=>{if(subFocus) buildSubFocus(false)});
+
 /* ---------- views ---------- */
 let view="home", openCourse=null, editing=false, showDone=false, showLater=false, libRoom="main", libQ="";
 function tabsHTML(){return TABS.map(([k,l])=>`<button class="tab" data-act="nav" data-v="${k}" title="${l}" ${view===k?'aria-current="page"':""}>${ICON[k]}<span>${l}</span></button>`).join("")}
@@ -4715,7 +4925,7 @@ function render(){
   appearId=null;
   if(view==="home") watchHome(); else if(wRO){wRO.disconnect();wRO=null}
   document.getElementById("btnLayout").classList.toggle("on",editing&&view==="home");
-  setSync(); light(); renderNow(); aliveEnter(); afterRenderHelp();
+  setSync(); light(); renderNow(); aliveEnter(); afterRenderHelp(); if(subFocus) buildSubFocus(false);
 }
 function exampleBanner(){
   const has=S.courses.some(c=>c.example)||S.books.some(b=>b.example);
@@ -4746,7 +4956,7 @@ function taskRow(t,opts={}){
   const rec=t.kind==="review"&&!t.done;
   const later=!t.done&&t.kind==="task"&&t.due&&cycle().next&&t.due>cycle().next;
   const ued=t.kind==="task"&&!t.done?effDue(t):"", udl=ued?diffDays(ued,today()):99, urg=udl<7?" urg-r":udl<=14?" urg-y":"";
-  return `<div class="task ${t.done?"done":""}${isActive("task",t.id)?" active":""}${later?" later":""}${urg} dl${t.kind==="task"?t.diff||0:0}" ${opts.drag?`data-sid="${t.id}"`:""}>${opts.drag?`<button type="button" class="dh" aria-label="Перемістити «${esc(t.title)}» (стрілки)">${GRIP}</button>`:""}
+  return `<div data-tid="${t.id}" class="task ${t.done?"done":""}${isActive("task",t.id)?" active":""}${subsOf(t).length?" hassubs":""}${later?" later":""}${urg} dl${t.kind==="task"?t.diff||0:0}" ${opts.drag?`data-sid="${t.id}"`:""}>${opts.drag?`<button type="button" class="dh" aria-label="Перемістити «${esc(t.title)}» (стрілки)">${GRIP}</button>`:""}
     ${t.kind==="task"?`<span class="dmark d${t.diff||0}" title="Складність: ${t.diff?DIFF[t.diff]:"не вказано"}" aria-hidden="true"></span>`:""}${rec?"":`<button class="check ${t.done?"on":""} d${t.diff||0}" data-act="${t.done?"undone":"done"}" data-id="${t.id}" aria-label="${t.done?"Позначити невиконаним":"Позначити виконаним"}">${t.done?ICON.check:""}</button>`}
     <div class="body">
       <div class="title">${esc(t.title)}</div>
@@ -4755,7 +4965,7 @@ function taskRow(t,opts={}){
         ${t.kind==="task"&&t.ttype&&t.ttype!=="task"?`<span class="chip ttype">${TTYPE[t.ttype].ic} ${TTYPE[t.ttype].n.toLowerCase()}</span>`:""}
         ${t.kind==="task"?`<button class="chip dch d${t.diff||0}" data-act="diff" data-id="${t.id}" title="Змінити складність" aria-label="Складність: ${t.diff?DIFF[t.diff]:"не вказано"}. Змінити">${t.diff?DIFF[t.diff]:"складність"}</button>`:""}
         ${rec?`<span class="chip">крок ${(t.stage||0)+1} з ${S.settings.intervals.length}</span>`:""}
-        ${subsOf(t).length?(()=>{const ss=subsOf(t),d=ss.filter(x=>x.done).length;return `<button type="button" class="chip subchip${expanded.has(t.id)?" on":""}" data-act="subs" data-id="${t.id}" aria-expanded="${expanded.has(t.id)}" title="Показати або сховати підпункти">${ss.length<=10?`<span class="sdots">${ss.map(x=>`<i class="sdm sd${x.diff||0} ${x.done?"on":""}"></i>`).join("")}</span>`:`<i class="sbar"><i style="width:${Math.round(d/ss.length*100)}%"></i></i>`}${d}/${ss.length}</button>`})():""}
+        ${subsOf(t).length?(()=>{const ss=subsOf(t),d=ss.filter(x=>x.done).length;return `<button type="button" class="chip subchip${expanded.has(t.id)?" on":""}" data-act="subs" data-id="${t.id}" aria-expanded="${expanded.has(t.id)}" title="Підпункти: ${d} з ${ss.length}. Відкрити">${spct(d,ss.length)}</button>`})():""}
         ${t.recall&&!t.done?`<span class="chip">з повтореннями</span>`:""}
         ${t.spent?`<span class="chip tspent" title="Час роботи за таймером">${CLOCK}${fmtDur(t.spent)}</span>`:""}
         ${t.example?'<span class="chip ex">Приклад</span>':""}
@@ -4765,7 +4975,7 @@ function taskRow(t,opts={}){
     ${rec?`<div class="row" style="gap:6px;flex:none"><button class="btn sm primary" data-act="done" data-id="${t.id}" data-q="good">Пам'ятаю</button><button class="btn sm ghost" data-act="done" data-id="${t.id}" data-q="shaky">Слабко</button></div>`:""}
     ${t.kind==="task"&&!t.done?startBtn("task",t):""}
     ${opts.tools===false?"":`${t.kind==="task"?`<button class="mini-btn ${expanded.has(t.id)?"on":""}" data-act="subs" data-id="${t.id}" aria-expanded="${expanded.has(t.id)}" aria-label="Підпункти">${ICON.list}</button><button class="mini-btn" data-act="editTask" data-id="${t.id}" aria-label="Редагувати">${ICON.edit}</button>`:""}<button class="mini-btn" data-act="delTask" data-id="${t.id}" aria-label="Видалити">${ICON.del}</button>`}
-    ${t.kind==="task"&&expanded.has(t.id)?subsBlock(t):""}
+    
   </div>`;
 }
 const TSORT=[["manual","Вручну"],["due","За дедлайном"],["plan","За запланованою датою"],["hard","Складність: від складних"],["easy","Складність: від легких"]];
@@ -5546,20 +5756,43 @@ function closeSheet(){document.getElementById("sheetRoot").innerHTML=""}
 const cOpts=(sel,none)=>(none?`<option value="">Особиста полиця (без курсу)</option>`:"")+activeCourses().map(c=>`<option value="${c.id}" ${c.id===sel?"selected":""}>${esc(c.name)}</option>`).join("");
 function taskSheet(t,cid){
   if(!activeCourses().length){toast("Спершу додай курс");sheetCourse();return}
-  const isNew=!t, cy=cycle(); t=t||{courseId:cid||activeCourses()[0].id,due:cy.next||"",recall:false,plan:taskPlanDefault||""}; taskPlanDefault="";
-  openSheet(`<h2>${isNew?"Нове завдання":"Редагувати завдання"}</h2>
-  <form class="form" data-form="task"><input type="hidden" id="t-id" value="${t.id||""}">
-    <label class="field"><span>Завдання</span><input id="t-title" required maxlength="140" value="${esc(t.title||"")}"></label>
-    <label class="field"><span>Курс</span><select id="t-course">${cOpts(t.courseId)}</select></label>
-    <label class="field"><span>Дедлайн</span>${dateField("t-due",t.due)}<small>${cy.next?`Порожньо = до модульного тижня (${fmtS(cy.next)}).`:"Порожньо = без дати."}</small></label>
-    <label class="field"><span>Запланувати</span>${dateField("t-plan",t.plan||"")}<small>День, коли хочеш це робити. З'явиться в календарі.</small></label>
-    <label class="field"><span>Тип</span><select id="t-type">${Object.entries(TTYPE).map(([k,o])=>`<option value="${k}" ${(t.ttype||"task")===k?"selected":""}>${o.ic?o.ic+" ":""}${o.n}${k==="task"?" (XP за складністю)":` · ${XP[k]} XP`}</option>`).join("")}</select></label>
-    <label class="field"><span>Складність</span><select id="t-diff">${[[0,"Не вказано"],[1,"Легке (зелене)"],[2,"Середнє (жовте)"],[3,"Складне (червоне)"]].map(([k,l])=>`<option value="${k}" ${(t.diff||0)===k?"selected":""}>${l}</option>`).join("")}</select></label>
-    <label class="field"><span>Підпункти <span style="font-weight:500">(кожен з нового рядка)</span></span><textarea id="t-subs" rows="4" placeholder="Прочитати&#10;Виписати тези&#10;Питання до семінару">${esc(subsOf(t).map(x=>x.t).join("\n"))}</textarea></label>
-    <label class="checkline"><input type="checkbox" id="t-recall" ${t.recall?"checked":""}><span>Інтервальні повторення після виконання (${S.settings.intervals.join(" / ")} дн.). Самоперевірка через проміжки часу дає найкраще запам'ятовування.</span></label>
-    <div class="row" style="justify-content:flex-end"><button type="button" class="btn ghost" data-act="closeSheet">Скасувати</button><button class="btn primary">${isNew?"Додати":"Зберегти"}</button></div>
-  </form>`);
+  const isNew=!t, cy=cycle(); t=t||{courseId:cid||activeCourses()[0].id,due:"",recall:false,plan:taskPlanDefault||""}; taskPlanDefault="";
+  const st=locoState(), cs=activeCourses(), t0=today();
+  const D=[[1,"Легке","★"],[2,"Середнє","★★"],[3,"Складне","★★★"],[0,"Не знаю","?"]];
+  openSheet(`<div class="tqsheet" data-mod="${cy.next||""}">
+  <form class="form tq" data-form="task" autocomplete="off"><input type="hidden" id="t-id" value="${t.id||""}">
+    <div class="tq-top"><span class="tq-kicker">${isNew?"Новий квест":"Квест"}</span><button type="button" class="tq-close" data-act="closeSheet" aria-label="Закрити">×</button></div>
+    <label class="sr" for="t-title">Що треба зробити</label>
+    <input id="t-title" class="tq-title" required maxlength="140" placeholder="Що треба зробити?" value="${esc(t.title||"")}">
+    <div class="tq-courses" role="radiogroup" aria-label="Курс">${cs.map(c=>`<label class="tq-course" style="--c:${CC(c.color)}"><input type="radio" name="tq-course" value="${c.id}" ${c.id===t.courseId?"checked":""}><span><i></i>${esc(c.name)}</span></label>`).join("")}</div>
+    <div class="tq-dates">
+      <div class="tq-tile tq-plan"><span class="tq-lbl">Коли роблю</span><b class="tq-big" data-for="t-plan"></b>
+        <input type="hidden" id="t-plan" value="${t.plan||""}">
+        <div class="tq-chips">${[["Сьогодні",t0],["Завтра",addDays(t0,1)],["Післязавтра",addDays(t0,2)],["Без дня",""]].map(([l,v])=>`<button type="button" class="tq-chip" data-act="tqDate" data-f="t-plan" data-v="${v}">${l}</button>`).join("")}<button type="button" class="tq-chip pick" data-act="dpick" data-for="t-plan" data-ph="Інша дата">Інша дата</button></div></div>
+      <div class="tq-tile tq-due"><span class="tq-lbl">Дедлайн</span><b class="tq-big" data-for="t-due"></b>
+        <input type="hidden" id="t-due" value="${t.due||""}">
+        <div class="tq-chips">${[[cy.next?"До модуля":"Без дедлайну",""],["Через 3 дні",addDays(t0,3)],["Через тиждень",addDays(t0,7)]].map(([l,v])=>`<button type="button" class="tq-chip" data-act="tqDate" data-f="t-due" data-v="${v}">${l}</button>`).join("")}<button type="button" class="tq-chip pick" data-act="dpick" data-for="t-due" data-ph="Інша дата">Інша дата</button></div></div>
+    </div>
+    <div class="tq-sec">Складність</div>
+    <div class="tq-diff" role="radiogroup" aria-label="Складність">${D.map(([k,l,s])=>`<label class="tq-d d${k}"><input type="radio" name="tq-diff" value="${k}" ${(t.diff||0)===k?"checked":""}><span class="tq-dc"><i class="tq-stars" aria-hidden="true">${s}</i><b>${l}</b><small>${k?`~${fmtMin(minsOf({diff:k}))} · `:""}+${k===3?XP.d3:k===2?XP.d2:k===1?XP.d1:XP.none} XP</small></span></label>`).join("")}</div>
+    <div class="tq-types" role="radiogroup" aria-label="Тип завдання"><span class="tq-sec in">Тип</span>${Object.entries(TTYPE).map(([k,o])=>`<label class="tq-type"><input type="radio" name="tq-type" value="${k}" ${(t.ttype||"task")===k?"checked":""}><span>${o.n}${k==="task"?"":` · ${XP[k]} XP`}</span></label>`).join("")}</div>
+    <div class="tq-foot"><div class="tq-reward"><span class="tq-loco">${locoSVG({form:st.vform,health:st.health,mood:"happy",mini:true})}</span><span><small>Нагорода для Loco</small><b id="tq-xp">+0 XP</b></span></div>
+      <div class="tq-btns"><button type="button" class="btn ghost" data-act="closeSheet">Скасувати</button><button class="btn primary tq-go">${isNew?"Додати квест":"Зберегти"}</button></div></div>
+  </form></div>`);
+  tqUpdate();
 }
+const tqRel=v=>{const n=diffDays(v,today()); return n===0?"Сьогодні":n===1?"Завтра":n===2?"Післязавтра":n===-1?"Вчора":n<0?`${-n} дн. тому`:`через ${n} дн.`};
+function tqUpdate(){
+  const sh=document.querySelector(".tqsheet"); if(!sh) return; const mod=sh.dataset.mod;
+  sh.querySelectorAll(".tq-big").forEach(b=>{const v=(document.getElementById(b.dataset.for)||{}).value||"";
+    if(b.dataset.for==="t-plan") b.innerHTML=v?`${tqRel(v)}<small>${fmtL(v)}</small>`:`Без дня<small>можна вирішити пізніше</small>`;
+    else {const n=v?diffDays(v,today()):null; b.innerHTML=v?`${fmtS(v)}<small>${tqRel(v)}${n!=null&&n<7&&n>=0?" · скоро":""}</small>`:mod?`До модуля<small>${fmtL(mod)}</small>`:`Без дедлайну<small>можна додати пізніше</small>`;
+      b.closest(".tq-tile").classList.toggle("hot",!!v&&n!=null&&n<7)}
+    b.closest(".tq-tile").querySelectorAll('[data-act="tqDate"]').forEach(c=>c.classList.toggle("on",c.dataset.v===v))});
+  const d=+((sh.querySelector('input[name="tq-diff"]:checked')||{}).value||0), ty=(sh.querySelector('input[name="tq-type"]:checked')||{}).value||"task";
+  const xp=taskXP({ttype:ty==="task"?"":ty,diff:d}), el=document.getElementById("tq-xp"); if(el) el.textContent=`+${xp} XP`;
+}
+document.addEventListener("change",e=>{if(e.target.closest&&e.target.closest(".tqsheet")) tqUpdate()});
 function sheetCourse(c){
   const isNew=!c; c=c||{color:COLORS[S.courses.length%COLORS.length],room:libRoom!=="arch"?libRoom:"main"};
   openSheet(`<h2>${isNew?"Новий курс":"Редагувати курс"}</h2>
@@ -5699,6 +5932,7 @@ document.addEventListener("click",e=>{
     case "nav": view=b.dataset.v; openCourse=null; libZoom=null; showDone=false; try{history.replaceState(null,"","#"+view)}catch(_){} render(); window.scrollTo(0,0); break;
     case "settings": sheetSettings(); break;
     case "locoPet": lcOpen(2); break;
+    case "tqDate": {const inp=document.getElementById(b.dataset.f); if(inp){inp.value=b.dataset.v; tqUpdate()} break}
     case "helpMenu": helpMenu(); break;
     case "hintsShow": {closeHelp(); S.settings.hintsOn=true; S.settings.hintsOff=[]; commit({norender:true}); renderHints(); toast("Підказки увімкнено"); break}
     case "hintsHide": {closeHelp(); S.settings.hintsOn=false; commit({norender:true}); renderHints(); break}
@@ -5730,7 +5964,8 @@ document.addEventListener("click",e=>{
     case "editTask": taskSheet(S.tasks.find(t=>t.id===id)); break;
     case "addTask": taskSheet(null,b.dataset.course); break;
     case "toggleDone": showDone=!showDone; render(); break;
-    case "subs": expanded.has(id)?expanded.delete(id):expanded.add(id); render(); if(expanded.has(id)){const el=document.getElementById("sub-"+id); if(el) el.focus()} break;
+    case "subs": subFocus===id?closeSubFocus():openSubFocus(id); break;
+    case "sfClose": closeSubFocus(); break;
     case "sub": toggleSub(id,b.dataset.s); break;
     case "subDiff": {const t=S.tasks.find(x=>x.id===id), x=t&&subsOf(t).find(y=>y.id===b.dataset.s); if(x){x.diff=((x.diff||0)+1)%4; commit()} break}
     case "delSub": {const t=S.tasks.find(x=>x.id===id); if(t){t.subs=subsOf(t).filter(x=>x.id!==b.dataset.s); if(t.subs.length&&!t.done&&t.subs.every(x=>x.done)){completeTask(id);break}} commit(); break}
@@ -5885,8 +6120,9 @@ document.addEventListener("submit",e=>{
       commit(); const el=document.getElementById("ga-name"); if(el) el.focus(); break}
     case "task":{
       const id=v("t-id"), title=v("t-title").trim(); if(!title) return;
-      const data={title,courseId:v("t-course"),due:v("t-due"),plan:v("t-plan"),recall:document.getElementById("t-recall").checked,diff:+v("t-diff")||0,ttype:v("t-type")||"task"};
-      const lines=v("t-subs").split("\n").map(x=>x.trim()).filter(Boolean).slice(0,40);
+      const rq=n=>(document.querySelector(`input[name="${n}"]:checked`)||{}).value, prevT=id?S.tasks.find(x=>x.id===id):null;
+      const data={title,courseId:rq("tq-course")||(prevT?prevT.courseId:activeCourses()[0].id),due:v("t-due"),plan:v("t-plan"),recall:prevT?!!prevT.recall:false,diff:+(rq("tq-diff")||0),ttype:rq("tq-type")||"task"};
+      const subsEl=document.getElementById("t-subs"), lines=subsEl?subsEl.value.split("\n").map(x=>x.trim()).filter(Boolean).slice(0,40):(prevT?subsOf(prevT).map(x=>x.t):[]);
       if(id){const t=S.tasks.find(x=>x.id===id); if(t){const prev=subsOf(t); Object.assign(t,data); t.example=false;
           t.subs=lines.map(l=>{const pv=prev.find(x=>x.t===l);return pv?{...pv}:{id:uid(),t:l,done:false}});
           if(t.subs.length&&t.subs.every(x=>x.done)&&!t.done){closeSheet();completeTask(t.id);break}
