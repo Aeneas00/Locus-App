@@ -3198,6 +3198,11 @@ html{scrollbar-gutter:stable}
 .task .title{overflow-wrap:anywhere}
 .tdrt{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;overflow-wrap:anywhere}
 
+.sup-addn .sup-dot.add{border-style:dashed;color:var(--ink-2);cursor:default}
+.sup-addn .sup-dot.add svg{width:16px;height:16px}
+.sup-addc{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.sup-tl{margin-top:4px}
+
 .savebtn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border:0;border-radius:12px;background:linear-gradient(180deg,#F3C766,#D99A2B);color:#241606;font:inherit;font-weight:800;font-size:.95rem;cursor:pointer;box-shadow:0 8px 18px -8px rgba(217,154,43,.8),inset 0 1px 0 rgba(255,255,255,.45);transition:transform .15s,filter .15s}
 .savebtn svg{width:18px;height:18px}
 .savebtn:hover{filter:brightness(1.07);transform:translateY(-1px)}
@@ -4841,7 +4846,7 @@ document.addEventListener("click",e=>{if(document.getElementById("fabmenu")&&!e.
 document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest("#fabmenu [data-act]")) setTimeout(closeFab,0)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("fabmenu")){closeFab(); const f=document.getElementById("fab"); if(f) f.focus()}});
 
-const LOCUS_BUILD="1.0.36";
+const LOCUS_BUILD="1.0.37";
 
 /* ---------- alive: entrance on view change, ring fill, count-up, completion burst ---------- */
 let aliveKey=null, aliveFirst=true;
@@ -5292,12 +5297,16 @@ function supView(){
       <div class="sup-tools">${t&&st!=="done"&&st!=="off"?startBtn("task",t):""}<button type="button" class="mini-btn" data-act="tueDot" data-d="${d}" aria-label="Редагувати супервізію" title="Редагувати">${ICON.edit}</button></div>
     </div>`}).join("")+(nowPut?"":`<div class="sup-now"><span>сьогодні · ${fmtS(t0)}</span></div>`);
   return `<div class="pagehead glass suphead"><h1>${esc(name)}</h1></div>
-    <div class="supbar card glass">
-      <div class="supadd"><span class="tq-sec">Нова дата</span>${dateField("sup-new","","Обрати дату")}<button type="button" class="btn sm primary" data-act="supAdd">${ICON.plus}Додати</button></div>
     </div>
-    ${dates.length?`<div class="sup-tl">${nodes}</div>`:`<div class="card glass empty" style="padding:24px">Додай першу дату супервізії вище. Кожна стане завданням: можна запланувати підготовку, додати підпункти й позначити виконаною.</div>`}`;
+    <div class="sup-tl">${nodes}${(()=>{const last=dates[dates.length-1], sug=last&&last>=t0?addDays(last,7):addDays(t0,7);
+      return `<div class="sup-n sup-addn"><div class="sup-d"></div><span class="sup-dot add" aria-hidden="true">${ICON.plus}</span>
+        <div class="sup-addc"><input type="hidden" id="sup-new" value=""><button type="button" class="btn sm primary" data-act="dpick" data-for="sup-new" data-ph="Нова супервізія">${ICON.plus}Нова супервізія</button><button type="button" class="btn sm ghost" data-act="supAddD" data-v="${sug}" title="Додати на ${fmtL(sug)}">+ ${fmtS(sug)}</button></div></div>`})()}</div>`;
 }
 document.addEventListener("change",e=>{const el=e.target; if(el&&el.dataset&&el.dataset.supcourse){S.settings.supCourse=el.value; commit({norender:true}); toast("Нові супервізії будуть у цьому курсі")}});
+
+
+function supAddDate(v){if(!v) return; if(!S.tueDates.includes(v)) S.tueDates.push(v); if(S.tue[v]&&S.tue[v].s==="off") S.tue[v].s=""; commit(); toast(`Супервізія: ${fmtL(v)}`)}
+document.addEventListener("change",e=>{if(e.target&&e.target.id==="sup-new"&&e.target.value) supAddDate(e.target.value)});
 
 /* ---------- views ---------- */
 let view="home", openCourse=null, editing=false, showDone=false, showLater=false, libRoom="main", libQ="";
@@ -6347,6 +6356,7 @@ document.addEventListener("click",e=>{
     case "locoPet": lcOpen(2); break;
     case "trayToggle": trayOpen=!trayOpen; render(); break;
     case "supDone": {const d=b.dataset.d, inSheet=!!b.closest(".supsheet"); setTue(d,"done"); if(inSheet) sheetTue(d); break}
+    case "supAddD": supAddDate(b.dataset.v); break;
     case "supAdd": {const v=(document.getElementById("sup-new")||{}).value; if(!v){toast("Обери дату");break} if(!S.tueDates.includes(v)) S.tueDates.push(v); if(S.tue[v]&&S.tue[v].s==="off") S.tue[v].s=""; commit(); toast(`Супервізія: ${fmtL(v)}`); break}
     case "supSave": {const d=b.dataset.d, t=supTask(d), e=S.tue[d]||(S.tue[d]={s:"",note:""}); if(t){const ti=(document.getElementById("sup-title")||{}).value; if(ti&&ti.trim()&&ti.trim()!==t.title){t.title=ti.trim(); t.titleSet=true} const c=document.querySelector('input[name="sup-course"]:checked'); if(c) t.courseId=c.value; t.plan=(document.getElementById("t-plan")||{}).value||""} e.note=(document.getElementById("tue-note")||{}).value||""; closeSheet(); commit(); toast("Збережено"); break}
     case "reqToggle": {const bk=S.books.find(x=>x.id===id); if(bk){bk.req=!bk.req; commit(); if(document.querySelector(".sheet .reqtog")) sheetBook(bk); toast(bk.req?`«${bk.title}» обов'язкова до модуля`:`«${bk.title}» більше не обов'язкова`)} break}
