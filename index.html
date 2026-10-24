@@ -23,7 +23,7 @@ const DATA_COLUMN = "content";               // колонка з даними (
 <title>Locus</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600;1,9..144,800&family=Space+Mono:wght@400;700&family=Philosopher:ital,wght@0,400;0,700;1,700&family=Rubik:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600;1,9..144,800&family=Space+Mono:wght@400;700&family=Philosopher:ital,wght@0,400;0,700;1,700&family=Rubik:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Press+Start+2P&display=swap">
 <style>
 /* Layout: a window onto a drawn solarpunk horizon (fixed canvas) with frosted-glass panes over it.
    Home = reorderable widget grid (module ring, course rings, Tuesday line, tasks, reading, focus). Library = rooms → shelves → spines. */
@@ -2369,6 +2369,203 @@ input[type="color"]::-webkit-color-swatch-wrapper{padding:3px}input[type="color"
 .trksheet textarea{resize:vertical;font:inherit}
 :root[data-skin="retro"] .trkrate button{border:2px solid var(--hard)}:root[data-skin="retro"] .trkbig{border:2px solid var(--hard)}
 
+/* ===== probability: arcade screen ===== */
+.sb.arcade{position:relative;overflow:hidden;gap:12px;padding:16px 16px 14px;border-radius:18px;color:#F4F0FF;
+  background:radial-gradient(120% 90% at 50% 0%,#2A2160 0%,#15112E 60%,#0C0A1C 100%);border:3px solid #2B1B2E;box-shadow:0 18px 36px -18px rgba(20,10,40,.8);
+  --neon:#FF4D6D;--neon2:#FF9EB0}
+.sb.arcade::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+  background:repeating-linear-gradient(180deg,rgba(255,255,255,.05) 0 1px,transparent 1px 3px),radial-gradient(140% 100% at 50% 50%,transparent 60%,rgba(0,0,0,.45))}
+:root[data-skin="retro"] .sb.arcade{box-shadow:6px 6px 0 var(--hard)}
+.arcade.st-bad{--neon:#FF4D6D;--neon2:#FFB3C1}.arcade.st-risk{--neon:#FF9F1C;--neon2:#FFD39A}.arcade.st-ok{--neon:#FFE14D;--neon2:#FFF3A8}.arcade.st-good{--neon:#3DFF8F;--neon2:#B6FFD4}.arcade.st-none{--neon:#7EE8FF;--neon2:#C9F6FF}
+.arc-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.arc-lbl{font:400 .5rem/1 "Press Start 2P",monospace;padding:5px 6px;background:var(--neon);color:#15112E;text-transform:uppercase}
+.arc-ttl{flex:1;min-width:0;font:400 .56rem/1.5 "Press Start 2P",monospace;text-transform:uppercase;color:#CFC8FF;letter-spacing:.02em}
+.arc-time{font:400 .62rem/1 "Press Start 2P",monospace;color:#FFE14D;text-shadow:0 0 8px rgba(255,225,77,.6)}
+.arc-time small{font-size:.45rem;margin-right:5px;color:#CFC8FF;text-transform:uppercase}
+.arc-score{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.arc-score b{font:400 clamp(2.2rem,4.2vw,3.1rem)/1 "Press Start 2P",monospace;color:var(--neon);text-shadow:3px 3px 0 #FF2E93,0 0 18px var(--neon)}
+.arc-score b i{font-style:normal;font-size:.5em;margin-left:4px}
+.arc-blinkb{font-size:1.1rem!important;animation:arcblink 1s steps(2) infinite}
+.arc-st{font:400 .52rem/1.6 "Press Start 2P",monospace;text-transform:uppercase;color:var(--neon2);max-width:12em;text-align:right;animation:arcblink 1.2s steps(2) infinite}
+@keyframes arcblink{50%{opacity:.35}}
+.arc-hp{display:grid;grid-template-columns:repeat(20,minmax(0,1fr));gap:3px;padding:5px;background:#0A0818;border:2px solid #4B3F8F;box-shadow:inset 0 0 0 2px #0A0818}
+.arc-hp i{height:20px;background:#221C45}
+.arc-hp i.on{background:linear-gradient(180deg,var(--neon2) 0 25%,var(--neon) 25% 80%,color-mix(in srgb,var(--neon) 70%,#000) 80%);box-shadow:0 0 8px color-mix(in srgb,var(--neon) 60%,transparent)}
+.arc-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.arc-stats > div{display:flex;flex-direction:column;gap:3px;padding:9px 10px;background:rgba(255,255,255,.06);border:2px solid #4B3F8F}
+.arc-stats small{font:400 .46rem/1.4 "Press Start 2P",monospace;text-transform:uppercase;color:#CFC8FF}
+.arc-stats b{font:400 1.05rem/1.2 "Press Start 2P",monospace;color:#fff}
+.arc-stats span{font-size:.72rem;font-weight:700;color:#A9A2D9}
+.arc-mini{display:block;height:6px;margin-top:4px;background:#221C45}
+.arc-mini i{display:block;height:100%;background:#7EE8FF}
+.arc-stats .me .arc-mini i{background:var(--neon)}
+.arc-say{margin-top:auto;display:flex;gap:8px;align-items:flex-start;padding:9px 10px;background:#0A0818;border:2px solid #4B3F8F;font:700 .8rem/1.45 "Space Mono",ui-monospace,monospace;color:#E9E4FF}
+.arc-say i{font-style:normal;color:var(--neon);animation:arcblink 1s steps(2) infinite}
+.sb.arcade .btn{background:var(--neon);color:#15112E;border-color:#15112E}
+@media (prefers-reduced-motion:no-preference){
+  .vin .arc-hp i.on{animation:arcfill .25s steps(2) both;animation-delay:calc(var(--i) * 45ms + .3s)}
+  @keyframes arcfill{from{opacity:0}}
+  .arc-hp i.on:last-of-type{}
+}
+@media (prefers-reduced-motion:reduce){.arc-st,.arc-say i,.arc-blinkb{animation:none}}
+
+/* ===== now-bar at the bottom ===== */
+.nowbar{position:fixed;top:auto;left:50%;bottom:max(20px,env(safe-area-inset-bottom,0px));translate:-50% 0;width:min(760px,calc(100vw - 200px));margin:0;z-index:91}
+body.tracking .page{padding-bottom:110px}
+@media (max-width:760px){
+  .nowbar{top:auto;left:10px;right:10px;width:auto;translate:none;bottom:calc(env(safe-area-inset-bottom,0px) + 76px)}
+  body.tracking .center{padding-top:0}
+  body.tracking .page{padding-bottom:170px}
+  body.tracking .fab{bottom:calc(150px + env(safe-area-inset-bottom,0px))}
+  body.tracking .fabmenu{bottom:calc(212px + env(safe-area-inset-bottom,0px))}
+}
+.nowbar.shake{animation:nowflow 6s linear infinite,gshake2 .45s}
+
+/* solarpunk banner: glass, leaf green and sun gold */
+:root[data-skin="solar"] .nowbar{color:#123826;background:rgba(255,255,255,.62);background-image:linear-gradient(110deg,rgba(143,220,154,.55),rgba(255,236,170,.55),rgba(143,220,154,.55));background-size:300% 100%;
+  -webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%);border:1px solid rgba(255,255,255,.85);border-radius:24px;box-shadow:0 18px 40px -16px rgba(20,90,50,.55),inset 0 1px 0 rgba(255,255,255,.9)}
+:root[data-skin="solar"] .nowbar.k-book{background-image:linear-gradient(110deg,rgba(255,236,170,.6),rgba(190,230,255,.55),rgba(255,236,170,.6))}
+:root[data-skin="solar"] .nowdot{background:#2FA56B;animation-name:solpulse}
+@keyframes solpulse{0%{box-shadow:0 0 0 0 rgba(47,165,107,.6)}80%,100%{box-shadow:0 0 0 12px rgba(47,165,107,0)}}
+:root[data-skin="solar"] .nowtxt small{font-family:Manrope,system-ui,sans-serif;font-weight:800;letter-spacing:.06em}
+:root[data-skin="solar"] .nowclock{background:rgba(255,255,255,.8);color:#1E6B45;border-radius:14px;box-shadow:inset 0 0 0 1px rgba(30,107,69,.2)}
+:root[data-skin="solar"] .nowstop{background:linear-gradient(180deg,#3FB57A,#1E8656);color:#fff;border-radius:16px;box-shadow:0 8px 18px -8px rgba(20,90,50,.7)}
+
+/* therapist-office banner: green felt, brass and serif */
+:root[data-skin="loft"] .nowbar{color:#F3E7D4;background:#2F4636;background-image:radial-gradient(120% 140% at 0% 0%,rgba(243,199,102,.22),transparent 55%);animation:loftglow 3.2s ease-in-out infinite;
+  border:1.5px solid #C9A04E;border-radius:18px;box-shadow:0 18px 40px -18px rgba(30,20,10,.75),inset 0 0 0 4px rgba(201,160,78,.12)}
+:root[data-skin="loft"] .nowbar.k-book{background-color:#3A2D22}
+@keyframes loftglow{50%{box-shadow:0 18px 44px -14px rgba(217,161,74,.55),inset 0 0 0 4px rgba(201,160,78,.2)}}
+:root[data-skin="loft"] .nowbar.shake{animation:loftglow 3.2s ease-in-out infinite,gshake2 .45s}
+:root[data-skin="loft"] .nowdot{background:#F3C766;animation-name:loftpulse}
+@keyframes loftpulse{0%{box-shadow:0 0 0 0 rgba(243,199,102,.6)}80%,100%{box-shadow:0 0 0 12px rgba(243,199,102,0)}}
+:root[data-skin="loft"] .nowtxt small{font-family:Manrope,system-ui,sans-serif;letter-spacing:.12em;color:#D9C29A;opacity:1}
+:root[data-skin="loft"] .nowtxt b{font-family:Lora,var(--f-display),serif;font-style:italic;font-weight:700;font-size:1.2rem}
+:root[data-skin="loft"] .nowc{color:#D9C29A}
+:root[data-skin="loft"] .nowclock{background:rgba(0,0,0,.25);color:#F3C766;border:1px solid rgba(201,160,78,.6);font-family:"JetBrains Mono",ui-monospace,monospace}
+:root[data-skin="loft"] .nowstop{background:linear-gradient(180deg,#E3B861,#B8862F);color:#2A1C0C;border-radius:12px}
+
+/* ===== Loco card per skin ===== */
+:root[data-skin="solar"] .lcard{background:rgba(255,255,255,.6);-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%);border:1px solid rgba(255,255,255,.9);border-radius:28px;color:#123826;box-shadow:0 24px 50px -22px rgba(20,80,50,.55),inset 0 1px 0 rgba(255,255,255,.9)}
+:root[data-skin="solar"] .lcname{font-family:"Bricolage Grotesque",Manrope,system-ui,sans-serif;font-style:normal;font-weight:800;color:#1E6B45;text-shadow:none}
+:root[data-skin="solar"] .lcform{background:rgba(255,255,255,.8);border:1px solid rgba(30,107,69,.3);color:#1E6B45;font-family:Manrope,system-ui,sans-serif;font-weight:800}
+:root[data-skin="solar"] .lclv{background:linear-gradient(180deg,#FFE29A,#F3C766);border:0;box-shadow:0 8px 16px -8px rgba(160,110,10,.7);font-family:Manrope,system-ui,sans-serif;font-style:normal;color:#5A3A06}
+:root[data-skin="solar"] .lcstage{border:1px solid rgba(255,255,255,.9);border-radius:22px;background-image:radial-gradient(circle at 50% 120%,rgba(255,255,255,.85),transparent 60%),linear-gradient(180deg,rgba(255,255,255,.35),transparent);box-shadow:inset 0 0 0 1px rgba(30,107,69,.12)}
+:root[data-skin="solar"] .lctype{font-family:Manrope,system-ui,sans-serif;font-weight:800;border-bottom:1px solid rgba(30,107,69,.2)}
+:root[data-skin="solar"] .lcbar{border:0;background:rgba(30,107,69,.12);height:10px}
+:root[data-skin="solar"] .lcbar i{border:0;border-radius:9px}
+:root[data-skin="solar"] .lcability{background:rgba(255,255,255,.7);border:1px solid rgba(30,107,69,.18);border-radius:16px;font-family:Manrope,system-ui,sans-serif;font-style:normal;font-weight:600}
+:root[data-skin="solar"] .lcstat small,:root[data-skin="solar"] .lcsl span{color:#2E5B44}
+:root[data-skin="solar"] .lcstars{-webkit-text-stroke:0;color:#E2A72E}:root[data-skin="solar"] .lcstars span{color:rgba(30,107,69,.2)}
+:root[data-skin="solar"] .lcd{border-width:1px;border-color:rgba(30,107,69,.35)}
+
+:root[data-skin="loft"] .lcard{background:linear-gradient(170deg,#FBF4E6,#F1E5CE);border:1.5px solid #C9A04E;border-radius:20px;color:#3B2A1C;box-shadow:0 24px 48px -22px rgba(40,25,10,.6),inset 0 0 0 5px rgba(201,160,78,.12)}
+:root[data-skin="loft"] .lcname{font-family:Lora,var(--f-display),serif;font-style:italic;font-weight:700;color:#2F4636;text-shadow:none}
+:root[data-skin="loft"] .lcform{background:transparent;border:1px solid #C9A04E;color:#8A6A3E;font-family:Manrope,system-ui,sans-serif;font-weight:800;letter-spacing:.12em}
+:root[data-skin="loft"] .lclv{background:#2F4636;color:#F3E6C8;border:1.5px solid #C9A04E;box-shadow:none;font-family:Lora,serif}
+:root[data-skin="loft"] .lcstage{border:1.5px solid rgba(74,55,38,.35);border-radius:14px;background-image:radial-gradient(circle at 50% 115%,rgba(255,236,190,.9),transparent 60%),linear-gradient(180deg,rgba(255,255,255,.25),rgba(0,0,0,.04));box-shadow:inset 0 2px 10px rgba(60,40,20,.15)}
+:root[data-skin="loft"] .lctype{font-family:Manrope,system-ui,sans-serif;font-weight:800;letter-spacing:.12em;color:#8A6A3E;border-bottom:1px solid rgba(201,160,78,.5)}
+:root[data-skin="loft"] .lcbar{border:1px solid rgba(74,55,38,.3);background:#F7EEDD;height:9px}
+:root[data-skin="loft"] .lcbar i{border:0}
+:root[data-skin="loft"] .lcability{background:#FFFBF2;border:1px solid rgba(201,160,78,.55);font-family:Lora,serif}
+:root[data-skin="loft"] .lcsl span{font-family:"JetBrains Mono",ui-monospace,monospace}
+:root[data-skin="loft"] .lcstars{-webkit-text-stroke:0;color:#C9A04E}:root[data-skin="loft"] .lcstars span{color:rgba(74,55,38,.18)}
+:root[data-skin="loft"] .lcd{border-width:1px;border-color:rgba(74,55,38,.4)}
+:root[data-skin="loft"] .lcd.full{background:#9DB89A}:root[data-skin="loft"] .lcd.half{background:#E3C27A}:root[data-skin="loft"] .lcd.miss{background:#C77A68}:root[data-skin="loft"] .lcd.low{background:#D9A07A}
+:root[data-skin="loft"] .lcard.f4::after,:root[data-skin="loft"] .lcard.f5::after{mix-blend-mode:overlay;opacity:.6}
+:root[data-skin="loft"] .lcf.cur{background:rgba(201,160,78,.12)}
+:root[data-skin="solar"] .lcf.cur{background:rgba(143,220,154,.25)}
+:root[data-skin="solar"] .lcstage{background-color:color-mix(in srgb,var(--lbg) 15%,#E0F6E5)}
+:root[data-skin="loft"] .lcstage{background-color:color-mix(in srgb,var(--lbg) 25%,#EFE2C8)}
+:root[data-skin="loft"] .brword{font-family:Lora,var(--f-display),serif;font-style:italic;font-weight:700;color:#2F4636;text-shadow:none}
+:root[data-skin="loft"][data-tone="dark"] .brword{color:#F3E6C8}
+:root[data-skin="solar"] .brword{font-family:"Bricolage Grotesque",Manrope,system-ui,sans-serif;font-style:normal;color:#1E6B45;text-shadow:none}
+:root[data-skin="solar"][data-tone="dark"] .brword{color:#B7F0A8}
+@media (max-width:760px){.topbar > .lvl{display:flex!important;padding:3px 8px 3px 6px;gap:6px}.topbar > .lvl .lcml{display:none}.topbar > .lvl i{display:block!important;width:24px}}
+
+/* ===== Loco pixel device ===== */
+.tamawrap{display:flex;flex-direction:column;align-items:center;gap:18px;padding:10px 0 40px}
+.tama{--shell1:#FF9BD0;--shell2:#A98BF0;--edge:#2B1B2E;--bezel:#FFD23F;--btn:#FFF6E4;--lcdbg:#CFE7B0;--lcdink:#1E2B1A;
+  position:relative;width:min(440px,100%);aspect-ratio:44/56;display:flex;flex-direction:column;align-items:center;padding:7% 0 0;box-sizing:border-box;
+  border-radius:50% 50% 47% 47% / 57% 57% 43% 43%;border:4px solid var(--edge);
+  background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.75) 0 1.5px,transparent 2.5px) 0 0/34px 34px,radial-gradient(circle at 70% 60%,rgba(255,255,255,.55) 0 1px,transparent 2px) 0 0/22px 22px,linear-gradient(160deg,var(--shell1),var(--shell2));
+  box-shadow:10px 12px 0 var(--edge),inset -14px -18px 30px rgba(43,27,46,.25),inset 10px 14px 24px rgba(255,255,255,.35)}
+.tama::before{content:"";position:absolute;left:12%;top:6%;width:30%;height:16%;border-radius:50%;background:radial-gradient(ellipse at center,rgba(255,255,255,.65),transparent 70%);transform:rotate(-24deg);pointer-events:none}
+.tama-loop{position:absolute;top:-26px;left:50%;width:34px;height:34px;margin-left:-17px;border-radius:50%;border:6px solid var(--edge);background:transparent;z-index:-1}
+.tama-brand{font:400 clamp(.9rem,3vw,1.25rem)/1 "Press Start 2P",monospace;color:#FFF6E4;text-shadow:3px 3px 0 var(--edge);letter-spacing:.08em;margin-bottom:5%}
+.tama-bezel{width:74%;padding:4.5%;border-radius:26px;background:var(--bezel);border:3px solid var(--edge);box-shadow:inset 0 -6px 0 rgba(0,0,0,.12),inset 0 4px 0 rgba(255,255,255,.4),4px 4px 0 var(--edge)}
+.tama-lcd{display:flex;flex-direction:column;gap:4px;padding:6px 6px;border-radius:12px;color:var(--lcdink);
+  background:linear-gradient(rgba(0,0,0,.035) 1px,transparent 1px) 0 0/4px 4px,linear-gradient(90deg,rgba(0,0,0,.035) 1px,transparent 1px) 0 0/4px 4px,var(--lcdbg);
+  box-shadow:inset 0 3px 8px rgba(0,0,0,.28),inset 0 0 0 2px rgba(0,0,0,.2)}
+.tama-icons{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.tama-ic{display:grid;place-items:center;height:30px;border:0;border-radius:6px;background:transparent;color:var(--lcdink);opacity:.5;cursor:pointer;padding:0}
+.tama-ic .pix{width:18px;height:18px;fill:currentColor}
+.tama-ic:hover{opacity:.85}
+.tama-ic.sel{opacity:1;box-shadow:inset 0 0 0 2px currentColor}
+.tama-ic.act{opacity:1;background:var(--lcdink);color:var(--lcdbg)}
+.tama-ic:focus-visible{outline:2px dashed currentColor;outline-offset:1px}
+.tama-screen{position:relative;height:clamp(150px,44vw,196px);overflow:hidden;font:400 8px/1.55 "Press Start 2P",monospace;color:var(--lcdink)}
+.tama-screen canvas{display:block;width:100%;height:auto;image-rendering:pixelated;image-rendering:crisp-edges}
+.lcs-home{display:flex;flex-direction:column;height:100%}
+.lcs-home canvas{flex:1;min-height:0;object-fit:contain}
+.lcs-top{display:flex;justify-content:space-between;align-items:center;padding:0 2px;text-transform:uppercase}
+.lcs-hearts{display:flex;gap:3px}.lch{width:10px;height:10px;fill:currentColor}
+.lcs-marq{overflow:hidden;white-space:nowrap;border-top:2px solid currentColor;padding-top:3px}
+.lcs-marq span{display:inline-block;padding-left:100%;animation:lcmarq 11s linear infinite}
+.lcs-marq.still span{padding-left:0;animation:none;white-space:normal}
+@keyframes lcmarq{to{transform:translateX(-100%)}}
+.lcs-page{display:flex;flex-direction:column;gap:3px;height:100%;padding:0 2px;text-transform:none}
+.lcs-page h4{margin:0 0 3px;font:inherit;font-size:9px;text-transform:uppercase;border-bottom:2px solid currentColor;padding-bottom:3px}
+.lcs-page small{font-size:7px;opacity:.85;line-height:1.5}
+.lcs-row{display:flex;justify-content:space-between;align-items:center;gap:6px}.lcs-row b{font-weight:400;text-transform:uppercase}
+.lcs-row.c{justify-content:space-between}
+.lcs-bar{display:flex;gap:1px}.lcs-bar i{width:7px;height:8px;border:1px solid currentColor;box-sizing:border-box}.lcs-bar i.on{background:currentColor}
+.lcs-big{font-size:20px;line-height:1.2;margin:4px 0}
+.lcs-list{margin:2px 0 0;padding:0;list-style:none;font-size:7px}.lcs-list li{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.lcs-list li::before{content:"> "}
+.lcs-cta{margin-top:auto;font-size:7px;text-transform:uppercase;animation:arcblink 1.2s steps(2) infinite}
+.lcs-days{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin:4px 0}
+.lcs-days i,.lcs-leg i{display:block;height:20px;border:2px solid currentColor;box-sizing:border-box}
+.lcs-leg i{display:inline-block;width:9px;height:9px;border-width:1px;margin-right:4px;vertical-align:-1px}
+.d-full{background:currentColor}
+.d-half{background:linear-gradient(0deg,currentColor 50%,transparent 50%)}
+.d-low{background:linear-gradient(0deg,currentColor 25%,transparent 25%)}
+.d-miss{background:linear-gradient(45deg,transparent 44%,currentColor 44% 56%,transparent 56%),linear-gradient(-45deg,transparent 44%,currentColor 44% 56%,transparent 56%)}
+.d-none{border-style:dotted!important;opacity:.6}
+.d-bonus{background:radial-gradient(currentColor 30%,transparent 32%)}
+.d-vac{background:repeating-linear-gradient(45deg,currentColor 0 2px,transparent 2px 5px)}
+.d-today{border-width:4px!important}
+.d-pre{opacity:.15}
+.lcs-leg{display:flex;flex-wrap:wrap;gap:3px 8px;font-size:6.5px}
+.lcs-forms canvas{height:clamp(70px,22vw,96px);width:auto;max-width:100%;align-self:center}
+.lcs-xp{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:3px}.lcs-xp li{display:flex;justify-content:space-between}.lcs-xp b{font-weight:400}
+.lcs-p{margin:2px 0;font-size:7.5px;line-height:1.65}
+.tama-btns{display:flex;gap:9%;align-items:flex-start;margin-top:7%}
+.tama-btn{width:clamp(42px,12vw,54px);height:clamp(42px,12vw,54px);border-radius:50%;border:3px solid var(--edge);background:var(--btn);color:var(--edge);font:400 .7rem "Press Start 2P",monospace;cursor:pointer;
+  box-shadow:0 5px 0 var(--edge),inset 0 -4px 0 rgba(0,0,0,.12),inset 0 3px 0 rgba(255,255,255,.7);transition:transform .08s,box-shadow .08s}
+.tama-btn.b{margin-top:14px}
+.tama-btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--edge),inset 0 -2px 0 rgba(0,0,0,.12)}
+.tama-lbl{display:flex;gap:9%;margin-top:6px;font:400 .5rem "Press Start 2P",monospace;color:var(--edge);text-transform:uppercase}
+.tama-lbl span{width:clamp(42px,12vw,54px);text-align:center}
+.tama-lbl span:nth-child(2){margin-top:14px}
+.tama-hint{max-width:440px;text-align:center;font-size:.82rem;font-weight:600;color:var(--ink-2);margin:0}
+:root[data-skin="solar"] .tama{--shell1:#A9E8B4;--shell2:#3FA36E;--edge:#1E4D36;--bezel:rgba(255,255,255,.75);--btn:#FFF8E1;--lcdbg:#D6F0C0;--lcdink:#14361F;
+  background:radial-gradient(circle at 80% 18%,rgba(255,226,140,.9) 0 9%,transparent 9.5%),repeating-conic-gradient(from 0deg at 80% 18%,rgba(255,236,170,.25) 0 6deg,transparent 6deg 18deg),linear-gradient(160deg,var(--shell1),var(--shell2));
+  border-width:2px;box-shadow:0 30px 60px -24px rgba(20,80,50,.65),inset -14px -18px 30px rgba(20,70,40,.25),inset 10px 14px 24px rgba(255,255,255,.4)}
+:root[data-skin="solar"] .tama-bezel{border:1px solid rgba(255,255,255,.9);box-shadow:0 10px 24px -12px rgba(20,80,50,.6),inset 0 1px 0 #fff;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+:root[data-skin="solar"] .tama-brand{font-family:"Bricolage Grotesque",Manrope,system-ui,sans-serif;font-weight:800;font-size:1.5rem;color:#fff;text-shadow:0 2px 8px rgba(20,70,40,.45)}
+:root[data-skin="solar"] .tama-btn{border-width:1px;box-shadow:0 5px 0 #2E7D52,0 10px 16px -8px rgba(20,70,40,.6),inset 0 3px 0 rgba(255,255,255,.8)}
+:root[data-skin="solar"] .tama-lbl{color:#14361F}
+:root[data-skin="loft"] .tama{--shell1:#8A6440;--shell2:#4A3220;--edge:#2A1C10;--bezel:linear-gradient(180deg,#E8C77E,#B8862F);--btn:#F6EBD9;--lcdbg:#EFD59A;--lcdink:#3A2510;
+  background:repeating-linear-gradient(100deg,rgba(255,255,255,.04) 0 3px,rgba(0,0,0,.05) 3px 7px,transparent 7px 13px),linear-gradient(160deg,var(--shell1),var(--shell2));
+  border:2px solid #2A1C10;box-shadow:0 30px 60px -24px rgba(30,18,6,.7),inset 0 0 0 6px rgba(201,160,78,.35),inset -14px -18px 30px rgba(0,0,0,.3)}
+:root[data-skin="loft"] .tama-bezel{border:1.5px solid #6E4A1E;box-shadow:0 8px 18px -10px rgba(0,0,0,.6),inset 0 2px 0 rgba(255,255,255,.5)}
+:root[data-skin="loft"] .tama-brand{font-family:Lora,var(--f-display),serif;font-style:italic;font-weight:700;font-size:1.6rem;color:#E8C77E;text-shadow:0 1px 0 #2A1C10;letter-spacing:.02em}
+:root[data-skin="loft"] .tama-btn{border:1.5px solid #6E4A1E;box-shadow:0 5px 0 #6E4A1E,0 10px 16px -8px rgba(0,0,0,.6),inset 0 3px 0 rgba(255,255,255,.8);font-family:Lora,serif;font-style:italic;font-size:1rem}
+:root[data-skin="loft"] .tama-lbl{color:#E8C77E;font-family:Manrope,system-ui,sans-serif;font-weight:800;font-size:.62rem;letter-spacing:.1em}
+:root[data-skin="loft"] .tama-loop,:root[data-skin="solar"] .tama-loop{border-width:5px}
+:root[data-tone="dark"] .tama-hint{color:var(--ink-2)}
+@media (prefers-reduced-motion:reduce){.lcs-marq span{animation:none;padding-left:0;white-space:normal}}
+
 .savebtn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border:0;border-radius:12px;background:linear-gradient(180deg,#F3C766,#D99A2B);color:#241606;font:inherit;font-weight:800;font-size:.95rem;cursor:pointer;box-shadow:0 8px 18px -8px rgba(217,154,43,.8),inset 0 1px 0 rgba(255,255,255,.45);transition:transform .15s,filter .15s}
 .savebtn svg{width:18px;height:18px}
 .savebtn:hover{filter:brightness(1.07);transform:translateY(-1px)}
@@ -2376,6 +2573,11 @@ input[type="color"]::-webkit-color-swatch-wrapper{padding:3px}input[type="color"
 .savebtn.saving{filter:saturate(.6);cursor:progress}
 .savebtn.done{background:linear-gradient(180deg,#9CCB7E,#5F9447);color:#0F2108}
 .savebtn.fail{background:linear-gradient(180deg,#E99A84,#B8503B);color:#fff}
+.savebtn.auto-ok{background:linear-gradient(180deg,#9CCB7E,#5F9447);color:#0F2108}
+.savebtn.auto-busy{background:linear-gradient(180deg,#F3C766,#D99A2B);color:#241606}
+.savebtn.auto-busy svg{animation:sbpulse 1s ease-in-out infinite}
+.savebtn.auto-bad{background:linear-gradient(180deg,#E99A84,#B8503B);color:#fff}
+@keyframes sbpulse{50%{opacity:.4}}
 @media (max-width:760px){.savebtn span{display:none}.savebtn{padding:0 12px}}
 
 /* ===== gate: retro splash, login + access code ===== */
@@ -2959,7 +3161,9 @@ function commit(opts={}){
 let sb=null, sbUser=null, cloudFailShown=false;
 const errText=e=>(e&&(e.message||e.error_description||e.hint))||"невідома помилка";
 /* writes the whole app state into user_data.content for the logged-in user */
-function saveBtnState(st){const b=document.getElementById("btnCloud"); if(!b) return; b.classList.remove("saving","done","fail"); if(st) b.classList.add(st); const t=b.querySelector("span"); if(t) t.textContent=st==="saving"?"Зберігаю…":st==="done"?"Збережено":st==="fail"?"Помилка":"Зберегти"; if(st==="done"||st==="fail") setTimeout(()=>saveBtnState(""),2200)}
+let manualSt=false, lastSaved=0;
+function autoSaveUI(){if(manualSt) return; const b=document.getElementById("btnCloud"); if(!b) return; const busy=dirty||writing, bad=!busy&&syncMode==="local"; b.classList.remove("saving","done","fail","auto-ok","auto-busy","auto-bad"); b.classList.add(busy?"auto-busy":bad?"auto-bad":"auto-ok"); const t=b.querySelector("span"); if(t) t.textContent=busy?"Зберігаю…":bad?"Не збережено":"Збережено"; b.title=busy?"Зміни зберігаються в хмару":bad?"Немає зв'язку з хмарою. Натисни, щоб спробувати ще раз":"Усе збережено автоматично"+(lastSaved?" о "+new Date(lastSaved).toLocaleTimeString("uk-UA",{hour:"2-digit",minute:"2-digit"}):"")}
+function saveBtnState(st){const b=document.getElementById("btnCloud"); if(!b) return; manualSt=!!st; b.classList.remove("saving","done","fail"); if(st) b.classList.add(st); const t=b.querySelector("span"); if(t) t.textContent=st==="saving"?"Зберігаю…":st==="done"?"Збережено":st==="fail"?"Помилка":"Зберегти"; if(st==="done"||st==="fail") setTimeout(()=>{manualSt=false;autoSaveUI()},2200); if(!st) autoSaveUI()}
 async function saveToCloud(manual){
   if(manual) saveBtnState("saving");
   if(!sb){if(manual) toast("Не вдалося зберегти: немає підключення до Supabase"); return false}
@@ -2970,7 +3174,7 @@ async function saveToCloud(manual){
     const row={user_id:user.id,updated_at:new Date().toISOString()}; row[DATA_COLUMN]=JSON.parse(JSON.stringify(S));
     const {error}=await sb.from(DATA_TABLE).upsert(row,{onConflict:"user_id"});
     if(error) throw error;
-    syncMode="cloud"; setSync(); cloudFailShown=false;
+    syncMode="cloud"; lastSaved=Date.now(); setSync(); cloudFailShown=false;
     if(manual){toast("Дані збережено в хмарі!"); saveBtnState("done")}
     return true;
   }catch(e){
@@ -2985,7 +3189,7 @@ async function flush(){
   writing=true; dirty=false;
   const ok=await saveToCloud(false);
   if(!ok){dirty=true; setTimeout(flush,8000+Math.random()*2000)}
-  writing=false; if(dirty&&ok) flush();
+  writing=false; autoSaveUI(); if(dirty&&ok) flush();
 }
 /* SELECT the row matching auth.uid() */
 async function pullRemote(){
@@ -3010,6 +3214,13 @@ document.addEventListener("visibilitychange",async()=>{
   try{const raw=await pullRemote(); if(raw&&(raw.updatedAt||0)>(S.updatedAt||0)){S=normalize(JSON.parse(JSON.stringify(raw)));try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}applyLook();render()}}catch(e){}
 });
 
+/* ---------- autosave guards ---------- */
+{const _ss=setSync; setSync=function(){_ss(); autoSaveUI()}}
+function flushNow(){if(!sbUser||(!dirty&&!writing)) return; clearTimeout(timer); flush()}
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="hidden") flushNow()});
+window.addEventListener("pagehide",flushNow);
+window.addEventListener("beforeunload",e=>{if(sbUser&&(dirty||writing)){flushNow(); e.preventDefault(); e.returnValue=""}});
+setInterval(()=>{if(sbUser&&dirty&&!writing) flush()},15000);
 /* ---------- gate: Supabase login, then access code ---------- */
 const OWNER_KEY="studyquest.owner", UNLOCK_KEY="studyquest.unlocked";
 const $g=id=>document.getElementById(id);
@@ -3040,7 +3251,8 @@ function unlock(){
   document.body.classList.remove("locked"); applyLook(); render(); if(getFocus()) showFocus(); initCloud();
 }
 async function logout(){
-  try{if(dirty) await flush()}catch(e){}
+  try{if(dirty||writing){clearTimeout(timer); dirty=true; writing=false; await saveToCloud(false); dirty=false}}catch(e){}
+  if(syncMode!=="cloud"&&!confirm("Останні зміни ще не збереглись у хмару (немає зв'язку). Якщо вийти зараз, вони залишаться лише на цьому пристрої. Все одно вийти?")) return;
   try{sessionStorage.removeItem(UNLOCK_KEY);localStorage.removeItem(KEY);localStorage.removeItem(OWNER_KEY)}catch(e){}
   try{if(sb) await sb.auth.signOut()}catch(e){}
   location.reload();
@@ -3723,12 +3935,18 @@ function statsView(){
     <div class="ubar" role="img" aria-label="Обсяг роботи ${r1(M.rem)} одиниць"><span>Обсяг роботи</span><b>${r1(M.rem)} од.</b><small>легке = 1, середнє = 2, складне = 3; без складності рахується як середнє, підпункти зменшують залишок</small></div>
   </section>`;
   let probB;
-  if(M.prob==null) probB=`<section class="sb glass" style="--sp:4"><div class="slabel">Ймовірність встигнути</div><div class="empty" style="margin:8px 0 0">Потрібна дата модульного тижня.</div></section>`;
+  if(M.prob==null) probB=`<section class="sb s-prob arcade st-none" style="--sp:4"><div class="arc-top"><span class="arc-lbl">Місія</span><span class="arc-ttl">Встигнути до модуля</span></div><div class="arc-score"><b class="arc-blinkb">Insert coin</b></div><div class="arc-say"><i aria-hidden="true">▶</i>Потрібна дата модульного тижня.</div><div><button class="btn sm" data-act="settings">Вказати дату</button></div></section>`;
   else{const [st,txt]=STATUS(M.prob);
-    probB=`<section class="sb glass s-prob" style="--sp:4"><div class="slabel">Ймовірність встигнути</div>
-      <div class="gwrap">${sGauge(M.prob)}<div class="gnum"><b>${Math.round(M.prob*100)}%</b><span class="pstat ${st}"><i></i>${txt}</span></div></div>
-      <div class="ppace"><div><small>Потрібний темп</small><b>${M.need!=null?r1(M.need):"—"}</b><span>од./день</span></div><div><small>Твій темп</small><b>${r1(M.pace)}</b><span>од./день · ${M.T} дн.</span></div></div>
-      <div class="snote">${M.rem<=0?"Усе до модуля зроблено.":M.eta!=null?(M.eta<=M.D?`У такому темпі закінчиш за ~${Math.ceil(M.eta)} ${pl(Math.ceil(M.eta),"день","дні","днів")}, запас ${Math.floor(M.D-M.eta)} ${pl(Math.floor(M.D-M.eta),"день","дні","днів")}.`:`У такому темпі не вистачить ~${Math.ceil(M.eta-M.D)} ${pl(Math.ceil(M.eta-M.D),"дня","днів","днів")}.`):"Ще немає виконаних завдань, щоб оцінити темп."}</div></section>`}
+    const pc=Math.round(M.prob*100), cells=Math.round(M.prob*20), pr=M.need?Math.min(100,Math.round(M.pace/M.need*100)):100;
+    probB=`<section class="sb s-prob arcade st-${st}" style="--sp:4">
+      <div class="arc-top"><span class="arc-lbl">Місія</span><span class="arc-ttl">Встигнути до модуля</span><span class="arc-time"><small>час</small>${M.D}д</span></div>
+      <div class="arc-score"><b>${pc}<i>%</i></b><span class="arc-st">${txt}</span></div>
+      <div class="arc-hp" role="img" aria-label="Ймовірність встигнути ${pc}%">${Array.from({length:20},(_,i)=>`<i class="${i<cells?"on":""}" style="--i:${i}"></i>`).join("")}</div>
+      <div class="arc-stats">
+        <div><small>Потрібно</small><b>${M.need!=null?r1(M.need):"—"}</b><span>од./день</span><i class="arc-mini"><i style="width:100%"></i></i></div>
+        <div class="me"><small>Твій темп</small><b>${r1(M.pace)}</b><span>од./день · ${M.T} дн.</span><i class="arc-mini"><i style="width:${pr}%"></i></i></div>
+      </div>
+      <div class="arc-say"><i aria-hidden="true">▶</i>${M.rem<=0?"Усе до модуля зроблено.":M.eta!=null?(M.eta<=M.D?`У такому темпі закінчиш за ~${Math.ceil(M.eta)} ${pl(Math.ceil(M.eta),"день","дні","днів")}, запас ${Math.floor(M.D-M.eta)} ${pl(Math.floor(M.D-M.eta),"день","дні","днів")}.`:`У такому темпі не вистачить ~${Math.ceil(M.eta-M.D)} ${pl(Math.ceil(M.eta-M.D),"дня","днів","днів")}.`):"Ще немає виконаних завдань, щоб оцінити темп."}</div></section>`}
   const perU=M.D>0&&M.rem>0?M.D/M.rem:null, hrs=M.openC.reduce((s,x)=>s+remMinsOf(x),0)/60;
   const avgH=k=>{const l=S.tasks.filter(x=>x.kind==="task"&&x.done&&(x.diff||0)===k&&x.spent>0); return l.length?{h:l.reduce((s,x)=>s+x.spent,0)/l.length/36e5,n:l.length}:null};
   const timeB=`<section class="sb glass s-time" style="--sp:3"><div class="slabel">Час на одне завдання</div>
@@ -3967,7 +4185,7 @@ document.addEventListener("click",e=>{if(document.getElementById("fabmenu")&&!e.
 document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest("#fabmenu [data-act]")) setTimeout(closeFab,0)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("fabmenu")){closeFab(); const f=document.getElementById("fab"); if(f) f.focus()}});
 
-const LOCUS_BUILD="1.0.18";
+const LOCUS_BUILD="1.0.22";
 
 /* ---------- alive: entrance on view change, ring fill, count-up, completion burst ---------- */
 let aliveKey=null, aliveFirst=true;
@@ -4018,7 +4236,7 @@ function trkStart(k,id){
   const it=k==="book"?S.books.find(x=>x.id===id):S.tasks.find(x=>x.id===id); if(!it) return;
   if(S.active&&!isActive(k,id)){const cur=trkItem(); if(cur){toast(`Спершу заверши «${cur.title}»`); const nb=document.getElementById("nowbar"); if(nb){nb.classList.remove("shake"); void nb.offsetWidth; nb.classList.add("shake")} return} S.active=null}
   if(S.active) return;
-  S.active={kind:k,id,start:Date.now()}; commit();
+  S.active={kind:k,id,start:Date.now()}; try{localStorage.setItem(BEAT_KEY,String(Date.now()))}catch(e){} commit();
 }
 function renderNow(){
   const nb=document.getElementById("nowbar"); if(!nb) return;
@@ -4031,6 +4249,21 @@ function renderNow(){
     <span class="nowclock" data-since="${a.start}" aria-label="Минуло часу">${fmtClock(Date.now()-a.start)}</span>
     <button type="button" class="nowstop" data-act="trkStop"><i aria-hidden="true"></i>Завершити</button>`;
 }
+const BEAT_KEY="studyquest.beat";
+function trkAutoClose(endTs,silent){
+  const a=S.active, it=trkItem(); if(!a) return; S.active=null; if(!it) return;
+  const ms=Math.max(0,Math.min(endTs,Date.now())-a.start); if(ms<30000){commit({norender:silent}); return}
+  it.spent=(it.spent||0)+ms;
+  S.sessions=S.sessions||[]; S.sessions.push({id:uid(),k:a.kind,ref:a.id,title:it.title,cid:it.courseId||"",diff:a.kind==="task"?(it.diff||0):null,s:a.start,e:a.start+ms,ms,r:null,n:"таймер зупинено при закритті",auto:true});
+  commit({norender:silent});
+  if(typeof flushNow==="function") flushNow();
+  if(!silent) toast(`Таймер «${it.title}» зупинився, коли застосунок закрили: зараховано ${fmtDur(ms)}`);
+}
+window.addEventListener("pagehide",()=>{if(S.active) trkAutoClose(Date.now(),true)});
+setInterval(()=>{if(S.active){try{localStorage.setItem(BEAT_KEY,String(Date.now()))}catch(e){}}},20000);
+function trkResumeCheck(){ if(!S.active) return; let beat=0; try{beat=+localStorage.getItem(BEAT_KEY)||0}catch(e){}
+  if(beat&&Date.now()-beat>120000&&beat>S.active.start) trkAutoClose(beat+20000,false)}
+setTimeout(trkResumeCheck,0);
 setInterval(()=>{const now=Date.now(); document.querySelectorAll("[data-since]").forEach(el=>{el.textContent=fmtClock(now-(+el.dataset.since))});
   if(S.active){const it=trkItem(); if(it) document.title=`● ${fmtClock(now-S.active.start)} · ${it.title}`}},1000);
 const RATE=[[1,"Важко"],[2,"Так собі"],[3,"Нормально"],[4,"Добре"],[5,"Потік"]];
@@ -4364,9 +4597,13 @@ function locoSay(st){
   if(st.weak) return "Я трохи схуд. Заплануй на завтра щось невелике.";
   return "Сьогодні план порожній, тож я просто відпочиваю.";
 }
+const LOCO_PAL={
+  retro:{ink:"#2B1B2E",body:"#7ED9AE",dark:"#4FB98A",mid:"#A9CDB6",midd:"#87AE96",low:"#BAC3B8",lowd:"#9AA597",belly:"#FFF6E4",cheek:"#FF8FB1",tip:"#FF6FB5",cape:"#E8454F",band:"#E8454F",gold:"#FFD23F",shadow:"rgba(43,27,46,.18)"},
+  solar:{ink:"#1E4D36",body:"#8EDC9A",dark:"#4FAE6B",mid:"#B3D6B2",midd:"#8DB38C",low:"#C2CBBE",lowd:"#9FAA9B",belly:"#F3FFE9",cheek:"#FFB59A",tip:"#F3C766",cape:"#E58A4E",band:"#2A9D9A",gold:"#F3C766",shadow:"rgba(20,70,40,.2)"},
+  loft:{ink:"#4A3726",body:"#B5C7A2",dark:"#8DA27A",mid:"#C2C9B0",midd:"#A0A88D",low:"#C9C6BA",lowd:"#A9A597",belly:"#F6EBD9",cheek:"#E2A190",tip:"#C9A04E",cape:"#7A2E2A",band:"#7A2E2A",gold:"#C9A04E",shadow:"rgba(60,40,20,.2)"}};
 function locoSVG(o){
-  const f=o.form||0, hp=o.health==null?80:o.health, md=o.mood||"happy", ink="#2B1B2E";
-  const col=hp>=45?"#7ED9AE":hp>=25?"#A9CDB6":"#BAC3B8", dark=hp>=45?"#4FB98A":hp>=25?"#87AE96":"#9AA597";
+  const f=o.form||0, hp=o.health==null?80:o.health, md=o.mood||"happy", K=LOCO_PAL[curSkin()]||LOCO_PAL.retro, ink=K.ink;
+  const col=hp>=45?K.body:hp>=25?K.mid:K.low, dark=hp>=45?K.dark:hp>=25?K.midd:K.lowd;
   const sc=o.mini?1:[.8,.88,.94,1,1.03,1.05][f], W=[14,14,18,22,25,27][f], BI=[0,0,9,13,15,16][f], rx=56+f;
   const arm=(d,cls,bx,by,fx,fy)=>`<g class="${cls}"><path d="${d}" fill="none" stroke="${ink}" stroke-width="${W+8}" stroke-linecap="round" stroke-linejoin="round"/>${BI?`<circle class="lc-bi" cx="${bx}" cy="${by}" r="${BI}" fill="${col}" stroke="${ink}" stroke-width="4"/>`:""}<path d="${d}" fill="none" stroke="${col}" stroke-width="${W}" stroke-linecap="round" stroke-linejoin="round"/><circle cx="${fx}" cy="${fy}" r="${W/2+4}" fill="${col}" stroke="${ink}" stroke-width="4"/></g>`;
   const arms=f===0?arm("M54 132 Q40 142 42 154","lc-armL",0,0,42,154)+arm("M146 132 Q160 142 158 154","lc-armR",0,0,158,154)
@@ -4381,17 +4618,17 @@ function locoSVG(o){
     :`<path d="M89 127 Q100 139 111 127" fill="none" stroke="${ink}" stroke-width="4" stroke-linecap="round"/>`;
   const thrive=!o.mini&&!o.still&&hp>=80&&(md==="happy"||md==="joy");
   return `<svg class="loco m-${md} f${f}${o.still?" still":""}${o.mini?" mini":""}${o.mini&&Date.now()<locoYay?" lc-jump lc-happy":""}" viewBox="${o.mini?"38 24 124 124":"0 0 200 220"}" aria-hidden="true" focusable="false">
-  ${o.mini?"":`<ellipse class="lc-shadow" cx="100" cy="207" rx="52" ry="8" fill="rgba(43,27,46,.18)"/>`}
-  ${f>=5&&!o.mini?`<g class="lc-rays" opacity=".55">${Array.from({length:12},(_,i)=>`<path d="M100 128 L${100+Math.cos(i*Math.PI/6)*98} ${128+Math.sin(i*Math.PI/6)*98} L${100+Math.cos(i*Math.PI/6+.18)*98} ${128+Math.sin(i*Math.PI/6+.18)*98} Z" fill="#FFD23F"/>`).join("")}</g>`:""}
+  ${o.mini?"":`<ellipse class="lc-shadow" cx="100" cy="207" rx="52" ry="8" fill="${K.shadow}"/>`}
+  ${f>=5&&!o.mini?`<g class="lc-rays" opacity=".55">${Array.from({length:12},(_,i)=>`<path d="M100 128 L${100+Math.cos(i*Math.PI/6)*98} ${128+Math.sin(i*Math.PI/6)*98} L${100+Math.cos(i*Math.PI/6+.18)*98} ${128+Math.sin(i*Math.PI/6+.18)*98} Z" fill="${K.gold}"/>`).join("")}</g>`:""}
   <g transform="translate(100 205) scale(${sc}) translate(-100 -205)"><g class="lc-bob">
-    ${f>=4?`<path d="M64 92 Q100 108 136 92 L158 194 Q100 214 42 194 Z" fill="#E8454F" stroke="${ink}" stroke-width="4" stroke-linejoin="round"/>`:""}
-    ${f<5?`<g class="lc-ant"><path d="M100 70 Q99 50 111 38" fill="none" stroke="${ink}" stroke-width="4" stroke-linecap="round"/><circle cx="112" cy="35" r="7.5" fill="#FF6FB5" stroke="${ink}" stroke-width="3.5"/></g>`:""}
+    ${f>=4?`<path d="M64 92 Q100 108 136 92 L158 194 Q100 214 42 194 Z" fill="${K.cape}" stroke="${ink}" stroke-width="4" stroke-linejoin="round"/>`:""}
+    ${f<5?`<g class="lc-ant"><path d="M100 70 Q99 50 111 38" fill="none" stroke="${ink}" stroke-width="4" stroke-linecap="round"/><circle cx="112" cy="35" r="7.5" fill="${K.tip}" stroke="${ink}" stroke-width="3.5"/></g>`:""}
     <ellipse cx="80" cy="195" rx="15" ry="9" fill="${dark}" stroke="${ink}" stroke-width="4"/><ellipse cx="120" cy="195" rx="15" ry="9" fill="${dark}" stroke="${ink}" stroke-width="4"/>
     ${arms}
     <ellipse cx="100" cy="128" rx="${rx}" ry="64" fill="${col}" stroke="${ink}" stroke-width="5"/>
-    <ellipse cx="100" cy="152" rx="${33+f}" ry="31" fill="#FFF6E4" opacity=".8"/>
+    <ellipse cx="100" cy="152" rx="${33+f}" ry="31" fill="${K.belly}" opacity=".85"/>
     ${f>=3?`<g fill="none" stroke="rgba(43,27,46,.35)" stroke-width="2.5">${[138,152,166].map(y=>`<rect x="88" y="${y}" width="10" height="11" rx="4"/><rect x="102" y="${y}" width="10" height="11" rx="4"/>`).join("")}</g>`:f===2?`<path d="M86 140 Q93 145 99 140 M101 140 Q107 145 114 140" fill="none" stroke="rgba(43,27,46,.3)" stroke-width="2.5" stroke-linecap="round"/>`:""}
-    <ellipse cx="70" cy="126" rx="8" ry="5" fill="#FF8FB1" opacity="${md==="sick"?.2:.7}"/><ellipse cx="130" cy="126" rx="8" ry="5" fill="#FF8FB1" opacity="${md==="sick"?.2:.7}"/>
+    <ellipse cx="70" cy="126" rx="8" ry="5" fill="${K.cheek}" opacity="${md==="sick"?.2:.7}"/><ellipse cx="130" cy="126" rx="8" ry="5" fill="${K.cheek}" opacity="${md==="sick"?.2:.7}"/>
     <g class="lc-eyes">
       <ellipse cx="82" cy="108" rx="13" ry="15" fill="#fff" stroke="${ink}" stroke-width="4"/><ellipse cx="118" cy="108" rx="13" ry="15" fill="#fff" stroke="${ink}" stroke-width="4"/>
       <g class="lc-pup"><circle cx="83" cy="110" r="6.5" fill="${ink}"/><circle cx="119" cy="110" r="6.5" fill="${ink}"/><circle cx="85.5" cy="107" r="2.2" fill="#fff"/><circle cx="121.5" cy="107" r="2.2" fill="#fff"/></g>
@@ -4401,8 +4638,8 @@ function locoSVG(o){
     <g class="lc-heye" fill="none" stroke="${ink}" stroke-width="5" stroke-linecap="round"><path d="M71 111 Q82 97 93 111"/><path d="M107 111 Q118 97 129 111"/></g>
     ${f>=3&&md!=="sleep"?`<path d="M70 88 L91 93 M130 88 L109 93" stroke="${ink}" stroke-width="4.5" stroke-linecap="round"/>`:""}
     <g class="lc-mouth">${mouth}</g>
-    ${f>=3&&f<5?`<path d="M50 99 Q100 71 150 99" fill="none" stroke="${ink}" stroke-width="15" stroke-linecap="round"/><path d="M50 99 Q100 71 150 99" fill="none" stroke="#E8454F" stroke-width="8" stroke-linecap="round"/><path d="M150 98 l14 9 M150 98 l13 -6" stroke="${ink}" stroke-width="9" stroke-linecap="round"/><path d="M150 98 l14 9 M150 98 l13 -6" stroke="#E8454F" stroke-width="4" stroke-linecap="round"/>`:""}
-    ${f>=5?`<path d="M76 72 L78 44 L91 58 L100 36 L109 58 L122 44 L124 72 Z" fill="#FFD23F" stroke="${ink}" stroke-width="4" stroke-linejoin="round"/><circle cx="100" cy="62" r="4.5" fill="#FF6FB5" stroke="${ink}" stroke-width="2.5"/>`:""}
+    ${f>=3&&f<5?`<path d="M50 99 Q100 71 150 99" fill="none" stroke="${ink}" stroke-width="15" stroke-linecap="round"/><path d="M50 99 Q100 71 150 99" fill="none" stroke="${K.band}" stroke-width="8" stroke-linecap="round"/><path d="M150 98 l14 9 M150 98 l13 -6" stroke="${ink}" stroke-width="9" stroke-linecap="round"/><path d="M150 98 l14 9 M150 98 l13 -6" stroke="${K.band}" stroke-width="4" stroke-linecap="round"/>`:""}
+    ${f>=5?`<path d="M76 72 L78 44 L91 58 L100 36 L109 58 L122 44 L124 72 Z" fill="${K.gold}" stroke="${ink}" stroke-width="4" stroke-linejoin="round"/><circle cx="100" cy="62" r="4.5" fill="${K.tip}" stroke="${ink}" stroke-width="2.5"/>`:""}
     ${md==="sick"?`<g transform="rotate(-20 132 78)"><rect x="118" y="73" width="28" height="10" rx="3" fill="#FFF6E4" stroke="${ink}" stroke-width="3"/><rect x="127" y="64" width="10" height="28" rx="3" fill="#FFF6E4" stroke="${ink}" stroke-width="3"/></g><path d="M106 131 L136 142" stroke="${ink}" stroke-width="8" stroke-linecap="round"/><path d="M106 131 L136 142" stroke="#fff" stroke-width="4" stroke-linecap="round"/><circle cx="106" cy="131" r="4.5" fill="#FF6F61" stroke="${ink}" stroke-width="2.5"/>`:""}
     ${md==="sad"||md==="sick"?`<path class="lc-tear" d="M150 86 Q157 97 150 102 Q143 97 150 86Z" fill="#8FD3F0" stroke="${ink}" stroke-width="2.5"/>`:""}
   </g></g>
@@ -4412,18 +4649,7 @@ function locoSVG(o){
 }
 window.__loco={svg:o=>locoSVG(o),state:()=>{LOCO_C=null;return locoState()}};
 const PET_SAY=["Хе-хе, лоскотно!","Ще раз? Добре.","Мур. Тобто, дякую.","Обійми приємні, але їм я завдання.","Ти найкращий."];
-function locoPet(){
-  const now=Date.now(); petLog=petLog.filter(x=>now-x<60000); petLog.push(now);
-  const say=document.getElementById("lcSay"), sv=document.querySelector(".lcstage svg.loco");
-  if(petLog.length>5){if(say) say.textContent="Досить обіймів на зараз. Мене годують завдання."; return}
-  if(say) say.textContent=PET_SAY[Math.floor(Math.random()*PET_SAY.length)];
-  if(!sv||RMQ.matches) return;
-  sv.classList.remove("lc-jump","lc-happy"); void sv.getBoundingClientRect(); sv.classList.add("lc-jump","lc-happy");
-  clearTimeout(locoPet.t); locoPet.t=setTimeout(()=>sv.classList.remove("lc-jump","lc-happy"),1300);
-  const box=document.querySelector(".lchearts"); if(!box) return;
-  for(let i=0;i<5;i++){const s=document.createElement("i"); s.innerHTML='<svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.2 0 3.6 1.2 5.3 3.2 1.7-2 3.1-3.2 5.3-3.2 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z" fill="#FF6FB5" stroke="#2B1B2E" stroke-width="2"/></svg>';
-    s.style.left=(30+Math.random()*40)+"%"; s.style.animationDelay=(i*.12)+"s"; box.appendChild(s); setTimeout(()=>s.remove(),1600)}
-}
+function locoPet(){lcOpen(2)}
 let lcRaf=0, lcMove=0;
 function lcLook(px,py){document.querySelectorAll("svg.loco:not(.still)").forEach(s=>{const r=s.getBoundingClientRect(); if(!r.width) return;
   let dx=px-(r.left+r.width/2), dy=py-(r.top+r.height*.45); const m=Math.hypot(dx,dy)||1, k=Math.min(1,m/260); dx=dx/m*3.8*k; dy=dy/m*3*k;
@@ -4433,53 +4659,174 @@ setInterval(()=>{if(Date.now()-lcMove<4000||document.hidden||RMQ.matches) return
   document.querySelectorAll("svg.loco:not(.still) .lc-pup").forEach(g=>g.style.transform=c?"":`translate(${(Math.cos(a)*3.6).toFixed(1)}px,${(Math.sin(a)*2.6).toFixed(1)}px)`)},2600);
 document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest('[data-act="done"]')) locoYay=Date.now()+1100},true);
 
+/* ---------- Loco as a pixel virtual pet ---------- */
+const LC_ICONS=[
+  ["Стан",[".XX.XX.","XXXXXXX","XXXXXXX",".XXXXX.","..XXX..","...X...","......."]],
+  ["Їжа",["...X...","..X....",".XXXXX.","XXXXXXX","XXXXXXX","XXXXXXX",".XXXXX."]],
+  ["Погладити",[".XXXXX.","X.....X","X.X.X.X","X.....X","X.XXX.X","X.....X",".XXXXX."]],
+  ["Історія",["XXXXXXX","X.X.X.X","XXXXXXX","X.X.X.X","XXXXXXX","X.X.X.X","XXXXXXX"]],
+  ["Форми",["...X...","...X...","XXXXXXX",".XXXXX.","..XXX..",".XX.XX.",".X...X."]],
+  ["Сила",[".......","X.....X","XX...XX","XXXXXXX","XX...XX","X.....X","......."]],
+  ["Відпустка",["..XXX..",".XX....","XX.....","XX.....","XX.....",".XX....","..XXX.."]],
+  ["Довідка",[".XXXXX.","XX...XX",".....XX","...XXX.","...XX..",".......","...XX.."]]];
+const pixSVG=(rows,cls)=>`<svg class="${cls||"pix"}" viewBox="0 0 ${rows[0].length} ${rows.length}" shape-rendering="crispEdges" aria-hidden="true">${rows.map((r,y)=>[...r].map((c,x)=>c==="X"?`<rect x="${x}" y="${y}" width="1" height="1"/>`:"").join("")).join("")}</svg>`;
+const HEART=[".X.X.","XXXXX","XXXXX",".XXX.","..X.."], HEART0=[".X.X.","X.X.X","X...X",".X.X.","..X.."];
+const LCD_PAL={retro:{bg:"#CFE7B0",ink:"#1E2B1A",mid:"#86A36B"},solar:{bg:"#D6F0C0",ink:"#14361F",mid:"#6FA86A"},loft:{bg:"#EFD59A",ink:"#3A2510",mid:"#B88A4A"}};
+const lcUI={sel:0,mode:"home",page:0,form:0,pet:0,petMsg:""};
+let lcTick=0, lcBlink=0;
+function lcDraw(cv,o){
+  if(!cv||!cv.getContext) return; const ctx=cv.getContext("2d"), Z=8, Wd=cv.width/Z, Ht=cv.height/Z, P=LCD_PAL[curSkin()]||LCD_PAL.retro;
+  ctx.clearRect(0,0,cv.width,cv.height);
+  const INK=P.ink, MID=o.sil?P.ink:P.mid, BG=o.sil?P.ink:P.bg;
+  const px=(x,y,c)=>{x=Math.round(x);y=Math.round(y);if(x<0||y<0||x>=Wd||y>=Ht)return;ctx.fillStyle=c;ctx.fillRect(x*Z,y*Z,Z,Z)};
+  const line=(x0,y0,x1,y1,c)=>{const n=Math.max(Math.abs(x1-x0),Math.abs(y1-y0))||1;for(let i=0;i<=n;i++)px(x0+(x1-x0)*i/n,y0+(y1-y0)*i/n,c)};
+  const f=o.form||0, md=o.mood||"happy", fr=o.frame||0, cx=Math.floor(Wd/2), gy=Ht-1;
+  const rx=[4,5,5.5,6,6,6.5][f], ry=[4.5,5.5,6,6.5,6.5,7][f];
+  let bob=md==="sleep"?0:(md==="joy"?(fr%2?-1:0):(fr%4<2?0:-1)); if(o.jump!=null) bob=[0,-2,-4,-3,-1,0][o.jump]||0;
+  const cy=gy-1-Math.ceil(ry)+bob, top=Math.round(cy-ry), sick=md==="sick";
+  const inE=(x,y)=>{const dx=(x+.5-(cx+.5))/rx, dy=(y+.5-(cy+.5))/ry; return dx*dx+dy*dy<=1};
+  // cape
+  if(f>=4){for(let y=cy-2;y<=gy;y++){const w=Math.round(rx-1+(y-(cy-2))*.45); line(cx-w,y,cx+w,y,MID)}}
+  // feet
+  const fy=gy+(o.jump!=null?bob:0); line(cx-3,fy,cx-2,fy,INK); line(cx+2,fy,cx+3,fy,INK);
+  // arms
+  const L=cx-Math.ceil(rx), R=cx+Math.ceil(rx);
+  if(f===0){px(L-1,cy+1,INK);px(R+1,cy+1,INK)}
+  else if(f===1){line(L-1,cy,L-2,cy+2,INK); const up=fr%2; line(R+1,cy,R+2,cy-1,INK); line(R+2,cy-1,R+2+up,cy-3,INK); px(R+2+up,cy-4,INK)}
+  else{const big=f>=3?1:0, pump=(fr%4===3)?1:0;
+    [[-1,L],[1,R]].forEach(([d,S0])=>{line(S0+d,cy,S0+d*3,cy,INK); line(S0+d*3,cy,S0+d*3,cy-3,INK);
+      px(S0+d*2,cy-1,INK); if(big||pump){px(S0+d*2,cy-2,INK);px(S0+d,cy-1,INK)} if(big&&pump){px(S0+d*2,cy-3,INK)}
+      px(S0+d*3,cy-4,INK); px(S0+d*4,cy-4,INK); px(S0+d*4,cy-3,INK); if(big){line(S0+d,cy+1,S0+d*3,cy+1,INK)}})}
+  // body
+  for(let y=top-1;y<=gy;y++) for(let x=cx-8;x<=cx+8;x++) if(inE(x,y)){const edge=!inE(x-1,y)||!inE(x+1,y)||!inE(x,y-1)||!inE(x,y+1); px(x,y,edge?INK:(sick||o.dim?MID:BG))}
+  const ey=cy-2, my=cy;
+  // belly / abs
+  if(f>=3){[cy+3,cy+5].forEach(y=>{px(cx-1,y,MID);px(cx+1,y,MID)})}
+  // antenna or crown
+  if(f<5){const sw=md==="sad"||sick?2:(fr%2); line(cx,top-1,cx,top-2,INK); px(cx+sw,top-3,INK); px(cx+sw,top-4,INK); px(cx+sw+1,top-4,INK); px(cx+sw+1,top-3,INK)}
+  else{line(cx-3,top-1,cx+3,top-1,INK); [cx-3,cx,cx+3].forEach(x=>{px(x,top-2,INK)}); px(cx,top-3,INK)}
+  if(f===3||f===4){line(cx-Math.floor(rx)+1,top+2,cx+Math.floor(rx)-1,top+2,INK); px(R+1,top+2,INK); px(R+2,top+3,INK)}
+  // eyes
+  const eyes=(xs)=>xs.forEach(x=>{
+    if(o.happy||md==="joy"){px(x-1,ey+1,INK);px(x,ey,INK);px(x+1,ey+1,INK)}
+    else if(md==="sleep"){px(x-1,ey+1,INK);px(x,ey+1,INK)}
+    else if(sick){px(x-1,ey-1,INK);px(x+1,ey-1,INK);px(x,ey,INK);px(x-1,ey+1,INK);px(x+1,ey+1,INK)}
+    else if(o.blink){px(x,ey+1,INK)}
+    else {px(x,ey,INK);px(x,ey+1,INK); if(md==="sad"){px(x+(x<cx?-1:1),ey-1,INK)}}});
+  eyes([cx-2,cx+2]);
+  if(f>=3&&md!=="sleep"&&!o.happy){px(cx-3,ey-2,INK);px(cx-2,ey-2,INK);px(cx+2,ey-2,INK);px(cx+3,ey-2,INK)}
+  // cheeks
+  if((md==="happy"||md==="joy"||o.happy)&&rx>=5){px(cx-4,my,MID);px(cx+4,my,MID)}
+  // mouth
+  if(md==="joy"||o.happy){line(cx-1,my+1,cx+1,my+1,INK);px(cx,my+2,INK)}
+  else if(md==="sad"){px(cx-1,my+2,INK);px(cx,my+1,INK);px(cx+1,my+2,INK)}
+  else if(sick){px(cx-2,my+1,INK);px(cx-1,my+2,INK);px(cx,my+1,INK);px(cx+1,my+2,INK);px(cx+2,my+1,INK); line(cx+2,my+2,cx+5,my+3,INK)}
+  else if(md==="sleep"){px(cx,my+1,INK)}
+  else {px(cx-1,my+1,INK);px(cx,my+2,INK);px(cx+1,my+1,INK)}
+  // extras
+  if(md==="sad"||sick){const t=(fr%3); px(cx-2,ey+2+t,MID)}
+  if(sick){px(R+1,top+1,MID);px(R+1,top+2,MID)}
+  if(md==="sleep"&&!o.still){const zx=R+2, zy=top-2-(fr%3); [[0,0],[1,0],[2,0],[1,1],[0,2],[1,2],[2,2]].forEach(([a,b])=>px(zx+a,zy+b,INK))}
+  if(o.hearts){o.hearts.forEach(([hx,hy])=>{[[0,0],[2,0],[0,1],[1,1],[2,1],[1,2]].forEach(([a,b])=>px(hx+a,hy+b,INK))})}
+  if(o.thrive&&!o.still&&fr%4<2){[[cx-9,top],[cx+8,top+2],[cx-8,gy-3]].forEach(([x,y])=>{px(x,y,INK);px(x-1,y,MID);px(x+1,y,MID);px(x,y-1,MID);px(x,y+1,MID)})}
+}
+function lcHearts(n){return Array.from({length:5},(_,i)=>pixSVG(i<n?HEART:HEART0,"lch")).join("")}
+function lcScreenHTML(){
+  const st=locoState(), F=LOCO_FORMS, T=st.today, m=lcUI.mode, fv=F[st.vform];
+  const bar=(p,n=10)=>`<span class="lcs-bar">${Array.from({length:n},(_,i)=>`<i class="${i<Math.round(p*n)?"on":""}"></i>`).join("")}</span>`;
+  const pg=(items,per)=>{const pages=Math.max(1,Math.ceil(items.length/per)), p=lcUI.page%pages; return {list:items.slice(p*per,p*per+per),p:p+1,pages}};
+  if(m==="home") return `<div class="lcs-home"><div class="lcs-top"><span class="lcs-hearts" aria-label="Здоров'я ${st.health}%">${lcHearts(Math.ceil(st.health/20))}</span><span>LV${st.L}</span></div><canvas id="lcCanvas" width="288" height="160"></canvas><div class="lcs-marq"><span>${esc(lcUI.petMsg||locoSay(st))}</span></div></div>`;
+  if(m==="stats"){const nf=F[st.form+1], lo=xpFor(F[st.form].lv), hi=nf?xpFor(nf.lv):0;
+    return `<div class="lcs-page"><h4>Стан</h4>
+      <div class="lcs-row"><b>Сила</b>${bar(nf?(S.xp-lo)/(hi-lo):1)}</div><small>${S.xp} XP${nf?` · до «${nf.name}» ${hi-S.xp}`:" · максимум"}</small>
+      <div class="lcs-row"><b>Здоров'я</b>${bar(st.health/100)}</div><small>${st.health}%${st.vac?" · пауза":st.weak?" · ослаб":""}</small>
+      <div class="lcs-row"><b>Ситість</b>${bar(T.p?T.dn/T.p:0)}</div><small>${T.p?`${T.dn} з ${T.p} сьогодні`:"плану немає"}</small>
+      <div class="lcs-row"><b>Форма</b><span>${fv.name}</span></div></div>`}
+  if(m==="food"){const open=S.tasks.filter(x=>x.kind==="task"&&!x.done&&x.plan===today()).slice(0,3);
+    return `<div class="lcs-page"><h4>Їжа</h4><div class="lcs-big">${T.p?`${T.dn}/${T.p}`:"0/0"}</div><small>${T.p?(T.dn>=T.p?"з'їв увесь план!":"з'їдено сьогодні"):"на сьогодні нічого не заплановано"}</small>
+      ${open.length?`<ul class="lcs-list">${open.map(x=>`<li>${esc(x.title)}</li>`).join("")}</ul>`:""}<div class="lcs-cta">B: до завдань</div></div>`}
+  if(m==="pet") return `<div class="lcs-home"><div class="lcs-top"><span>Погладити</span><span>${petLog.length>5?"досить":"♥"}</span></div><canvas id="lcCanvas" width="288" height="160"></canvas><div class="lcs-marq still"><span>${esc(lcUI.petMsg)}</span></div></div>`;
+  if(m==="hist"){const t=today(), SN={full:"■",half:"▣",low:"▪",miss:"×",none:"·",bonus:"+",vac:"~",today:"○",pre:" "};
+    const days=[]; for(let i=13;i>=0;i--){const d=addDays(t,-i); days.push(d<st.born?"pre":d===t?"today":(st.hist[d]||{st:"none"}).st)}
+    return `<div class="lcs-page"><h4>14 днів</h4><div class="lcs-days">${days.map(s=>`<i class="d-${s}" aria-hidden="true"></i>`).join("")}</div>
+      <div class="lcs-leg"><span><i class="d-full"></i>закрито</span><span><i class="d-half"></i>половина</span><span><i class="d-miss"></i>пропуск</span><span><i class="d-none"></i>без плану</span><span><i class="d-vac"></i>відпустка</span></div></div>`}
+  if(m==="forms"){const i=((lcUI.form%6)+6)%6, x=F[i], got=i<=st.form;
+    return `<div class="lcs-page lcs-forms"><h4>Форма ${i+1}/6</h4><canvas id="lcFormCanvas" width="288" height="160"></canvas><div class="lcs-row c"><b>${got?x.name:"???"}</b><span>LV${x.lv}</span></div><small>${got?x.ability:"Відкриється на рівні "+x.lv}</small><div class="lcs-cta">A: наступна</div></div>`}
+  if(m==="xp"){const L=[["Книга",XP.book],["Проєкт",XP.project],["Презентація",XP.presentation],["Складне",XP.d3],["Середнє",XP.d2],["Легке",XP.d1],["Без складності",XP.none],["Вівторкове",XP.tue],["Есе",XP.essay],["Повторення",XP.review]];
+    const P2=pg(L,5); return `<div class="lcs-page"><h4>Сила · ${P2.p}/${P2.pages}</h4><ul class="lcs-xp">${P2.list.map(([n,v])=>`<li><span>${n}</span><b>+${v}</b></li>`).join("")}</ul><div class="lcs-cta">A: далі</div></div>`}
+  if(m==="vac"){const on=(S.loco.vacs||[]).some(v=>!v.t||v.t>=today());
+    return `<div class="lcs-page"><h4>Відпустка</h4><div class="lcs-big">${on?"УВІМК":"ВИМК"}</div><small>${on?"Дні не рахуються. Loco відпочиває.":"Хворієш чи їдеш? Увімкни, і пропущені дні не шкодитимуть."}</small><div class="lcs-cta">B: ${on?"завершити":"увімкнути"}</div></div>`}
+  if(m==="help"){const H=[["Їжа","Loco їсть виконані завдання. Кожне дає силу (XP), і з часом він змінює форму."],["План","Якщо на день були заплановані завдання, а ти не закрив жодного, здоров'я падає."],["Вихідні","Дні без плану не рахуються. Loco просто відпочиває."],["Відпустка","Хворієш чи їдеш? Увімкни відпустку в меню з місяцем."],["Без фанатизму","Гладити приємно, але на здоров'я не впливає. Найкращий догляд: закрити завдання і піти відпочивати."]];
+    const p=lcUI.page%H.length; return `<div class="lcs-page"><h4>Довідка ${p+1}/${H.length}</h4><div class="lcs-row"><b>${H[p][0]}</b></div><p class="lcs-p">${H[p][1]}</p><div class="lcs-cta">A: далі</div></div>`}
+  return "";
+}
+const LC_MODES=["stats","food","pet","hist","forms","xp","vac","help"];
+function lcPaint(){
+  const sc=document.getElementById("lcScreen"); if(!sc) return;
+  sc.innerHTML=lcScreenHTML();
+  document.querySelectorAll(".tama-ic").forEach(b=>{const i=+b.dataset.i; b.classList.toggle("sel",i===lcUI.sel); b.classList.toggle("act",lcUI.mode!=="home"&&LC_MODES[i]===lcUI.mode)});
+  lcFrame();
+}
+function lcFrame(){
+  const st=locoState(), cv=document.getElementById("lcCanvas");
+  if(cv){const petting=lcUI.mode==="pet"&&lcUI.pet>0, j=petting?Math.min(5,Math.floor((8-lcUI.pet)%6)):null;
+    lcDraw(cv,{form:st.vform,mood:petting?"happy":st.mood,frame:lcTick,blink:lcBlink>0,happy:petting,jump:petting?j:null,dim:st.health<35,thrive:st.health>=80&&st.mood!=="sleep",
+      hearts:petting?[[6,10-(8-lcUI.pet)],[30,12-(8-lcUI.pet)],[10,4-(8-lcUI.pet)+6]].filter(h=>h[1]>=0):null})}
+  const fc=document.getElementById("lcFormCanvas");
+  if(fc){const i=((lcUI.form%6)+6)%6; lcDraw(fc,{form:i,mood:"happy",frame:lcTick,sil:i>st.form,still:i>st.form})}
+}
+function lcOpen(i){
+  lcUI.sel=i; lcUI.mode=LC_MODES[i]; lcUI.page=0; lcUI.petMsg="";
+  if(lcUI.mode==="forms") lcUI.form=locoState().form;
+  if(lcUI.mode==="pet") lcPet();
+  if(view!=="xp"){view="xp"; openCourse=null; render(); return}
+  lcPaint();
+}
+function lcPet(){
+  const now=Date.now(); petLog=petLog.filter(x=>now-x<60000); petLog.push(now);
+  if(petLog.length>5){lcUI.pet=0; lcUI.petMsg="Досить обіймів на зараз. Мене годують завдання."; return}
+  lcUI.pet=8; lcUI.petMsg=PET_SAY[Math.floor(Math.random()*PET_SAY.length)];
+}
+function lcBtn(k){
+  const m=lcUI.mode;
+  if(k==="A"){ if(m==="home"){lcUI.sel=(lcUI.sel+1)%8}
+    else if(m==="forms"){lcUI.form=(lcUI.form+1)%6}
+    else if(m==="pet"){lcPet()}
+    else {lcUI.page++} lcPaint(); return}
+  if(k==="B"){ if(m==="home"){lcOpen(lcUI.sel); return}
+    if(m==="food"){view="today"; openCourse=null; render(); window.scrollTo(0,0); return}
+    if(m==="pet"){lcPet(); lcPaint(); return}
+    if(m==="vac"){const t=today(), Lo=S.loco; Lo.vacs=Lo.vacs||[]; const v=Lo.vacs.find(x=>!x.t||x.t>=t);
+      if(v){if(v.f>=t) Lo.vacs=Lo.vacs.filter(x=>x!==v); else v.t=addDays(t,-1)} else {Lo.vacs.push({f:t,t:null}); Lo.vacs=Lo.vacs.slice(-20)}
+      commit(); return}
+    lcUI.page++; lcPaint(); return}
+  if(k==="C"){lcUI.mode="home"; lcUI.page=0; lcUI.petMsg=""; lcUI.pet=0; lcPaint()}
+}
+setInterval(()=>{if(view!=="xp"||document.hidden) return; lcTick++; if(lcBlink>0) lcBlink--; else if(Math.random()<.06) lcBlink=1; if(lcUI.pet>0){lcUI.pet--; if(!lcUI.pet&&lcUI.mode==="pet"){}} lcFrame()},260);
+document.addEventListener("keydown",e=>{if(view!=="xp"||document.querySelector(".sheet")||/INPUT|TEXTAREA|SELECT/.test((e.target||{}).tagName||"")) return;
+  const k=e.key; if(k==="ArrowRight"||k==="a"||k==="A"){lcBtn("A");e.preventDefault()} else if(k==="ArrowLeft"){lcUI.sel=(lcUI.sel+7)%8;lcPaint();e.preventDefault()} else if(k==="Enter"||k==="b"||k==="B"){if(e.target.closest&&e.target.closest("button"))return; lcBtn("B");e.preventDefault()} else if(k==="Escape"||k==="c"||k==="C"){lcBtn("C")}});
 function xpView(){
-  const st=locoState(), F=LOCO_FORMS, f=st.form, fv=st.vform, L=st.L, T=st.today, t=today();
-  const nf=F[f+1], lo=xpFor(F[f].lv), hi=nf?xpFor(nf.lv):0, powP=nf?Math.max(0,Math.min(100,Math.round((S.xp-lo)/(hi-lo)*100))):100;
-  const hcol=st.health>=60?"#4FB98A":st.health>=35?"#E8A317":"#E8454F", fedP=T.p?Math.round(T.dn/T.p*100):0;
-  const vacOn=(S.loco.vacs||[]).some(v=>!v.t||v.t>=t);
-  const say=locoSay(st); if(st.justEvolved) S.loco.seenForm=f;
-  const SN={full:"план закрито",half:"половина плану",low:"трохи",miss:"пропущено",none:"без плану",bonus:"бонус без плану",vac:"відпустка",today:"сьогодні",pre:"ще не було Loco"};
-  const days=[]; for(let i=13;i>=0;i--){const d=addDays(t,-i); let s=d<st.born?"pre":d===t?"today":(st.hist[d]||{st:"none"}).st; days.push([d,s])}
-  const stat=(n,val,p,c,sub)=>`<div class="lcstat"><div class="lcsl"><b>${n}</b><span>${val}</span></div><div class="lcbar"><i style="width:${p}%;background:${c}"></i></div>${sub?`<small>${sub}</small>`:""}</div>`;
-  const ladder=[["Прочитати книгу",XP.book],["Проєкт",XP.project],["Презентація",XP.presentation],["Складне завдання",XP.d3],["Середнє завдання",XP.d2],["Легке завдання",XP.d1],["Без складності",XP.none],["Вівторкове",XP.tue],["Есе",XP.essay],["Повторення",XP.review]];
-  const log=(S.xpLog||[]).slice(0,10);
-  return `<div class="pagehead glass"><h1>Loco</h1><span class="muted" style="font-size:.88rem">навчальний тамагочі: росте від виконаних завдань</span></div>
-  <div class="lcgrid">
-    <article class="lcard f${f}" style="--lbg:${F[fv].bg}">
-      <header class="lchead"><div><b class="lcname">Loco</b><span class="lcform">${F[fv].name}${st.weak?" · ослаб":""}</span></div><span class="lclv" title="Рівень">${L}</span></header>
-      <button type="button" class="lcstage" data-act="locoPet" aria-label="Погладити Loco">${locoSVG({form:fv,health:st.health,mood:st.mood})}<span class="lchearts" aria-hidden="true"></span></button>
-      <div class="lctype"><span>тип: навчальний</span><span>форма ${f+1}/6</span></div>
-      <div class="lcstats">
-        ${stat("Сила",`${S.xp} XP`,powP,"#FF6FB5",nf?`до форми «${nf.name}»: ще ${hi-S.xp} XP`:"максимальна форма")}
-        ${stat("Здоров'я",`${st.health}%`,st.health,hcol,st.vac?"на паузі: відпустка":st.health<35?"слабшає: пропущені дні з планом":"")}
-        ${stat("Ситість сьогодні",T.p?`${T.dn} з ${T.p}`:"плану немає",T.p?fedP:0,"#FFD23F","")}
+  const st=locoState(); if(st.justEvolved) S.loco.seenForm=st.form;
+  setTimeout(lcFrame,0);
+  const ic=(i)=>`<button type="button" class="tama-ic${lcUI.sel===i?" sel":""}${lcUI.mode!=="home"&&LC_MODES[i]===lcUI.mode?" act":""}" data-act="lcIcon" data-i="${i}" aria-label="${LC_ICONS[i][0]}" title="${LC_ICONS[i][0]}">${pixSVG(LC_ICONS[i][1])}</button>`;
+  return `<div class="tamawrap">
+    <div class="tama" role="group" aria-label="Loco, навчальний тамагочі">
+      <span class="tama-loop" aria-hidden="true"></span>
+      <div class="tama-brand" aria-hidden="true">Loco</div>
+      <div class="tama-bezel"><div class="tama-lcd">
+        <div class="tama-icons">${[0,1,2,3].map(ic).join("")}</div>
+        <div class="tama-screen" id="lcScreen" aria-live="polite">${lcScreenHTML()}</div>
+        <div class="tama-icons">${[4,5,6,7].map(ic).join("")}</div>
+      </div></div>
+      <div class="tama-btns">
+        <button type="button" class="tama-btn" data-act="lcA" aria-label="Кнопка A: далі">A</button>
+        <button type="button" class="tama-btn b" data-act="lcB" aria-label="Кнопка B: вибрати">B</button>
+        <button type="button" class="tama-btn" data-act="lcC" aria-label="Кнопка C: назад">C</button>
       </div>
-      <p class="lcability">${F[fv].ability}</p>
-      <footer class="lcfoot"><span class="lcstars" aria-label="${F[f].stars} з 5">${"★".repeat(F[f].stars)}<span>${"★".repeat(5-F[f].stars)}</span></span><span class="mono">#00${f+1}/006</span></footer>
-    </article>
-    <div class="lcside">
-      <div class="lcsay" id="lcSay" aria-live="polite">${esc(say)}</div>
-      <div class="lcacts"><button class="btn primary" data-act="nav" data-v="today">Нагодувати: до завдань</button><button class="btn" data-act="locoPet">Погладити</button><button class="btn${vacOn?" on":""}" data-act="locoVac">${vacOn?"Завершити відпустку":"Відпустка"}</button></div>
-      <section class="card glass lcdays"><h3>Останні 14 днів</h3>
-        <div class="lcstrip">${days.map(([d,s])=>`<span class="lcd ${s}" ${s==="today"?`style="--f:${fedP}%"`:""} title="${fmtS(d)}: ${SN[s]}"><small>${parse(d).getDate()}</small></span>`).join("")}</div>
-        <div class="lclegend"><span><i class="lcd full"></i>закрито</span><span><i class="lcd half"></i>половина</span><span><i class="lcd miss"></i>пропущено</span><span><i class="lcd none"></i>без плану</span><span><i class="lcd vac"></i>відпустка</span></div>
-      </section>
-      <section class="card glass lccare"><h3>Як доглядати Loco</h3><ol>
-        <li><b>Він їсть виконані завдання.</b> Кожне закрите завдання дає силу (XP), і з часом Loco змінює форму: від крихітки до легенди.</li>
-        <li><b>Плануй день.</b> Якщо на день були заплановані завдання, а ти не закрив жодного, його здоров'я падає. Закритий план лікує.</li>
-        <li><b>Дні без плану не рахуються.</b> Нічого не заплановано: Loco просто відпочиває.</li>
-        <li><b>Хворієш чи їдеш?</b> Увімкни «Відпустку», і дні на паузі не шкодять.</li>
-        <li><b>Сюди не треба заходити щодня.</b> Гладити приємно, але на здоров'я це не впливає. Найкращий догляд: закрити завдання і піти відпочивати.</li>
-      </ol></section>
+      <div class="tama-lbl" aria-hidden="true"><span>далі</span><span>ок</span><span>назад</span></div>
     </div>
-  </div>
-  <section class="card glass lcforms"><h2>Форми</h2><div class="lcfgrid">${F.map((x,i)=>`<div class="lcf ${i<=f?"got":"locked"}${i===f?" cur":""}">${locoSVG({form:i,health:100,mood:"happy",still:true})}<b>${i<=f?x.name:"???"}</b><small>рівень ${x.lv}</small></div>`).join("")}</div></section>
-  <details class="card glass lcxp"><summary><b>Скільки сили дає кожне завдання</b><span class="muted">і останні нагороди</span></summary>
-    <div class="lcxpgrid"><div class="xpextra">${ladder.map(([n,v])=>`<span class="chip">${n} <b>+${v}</b></span>`).join("")}</div>
-    ${log.length?`<div class="xplog">${log.map(e=>`<div><span>${esc(e.why)}</span><span class="mono" style="${e.n<0?"color:var(--ink-2)":""}">${e.n>0?"+":""}${e.n}</span></div>`).join("")}</div>`:'<div class="empty">Ще порожньо. Закрий завдання, і тут з\'явиться запис.</div>'}
-    <div class="muted" style="font-size:.8rem">Тип завдання (проєкт, презентація, есе) важливіший за складність. Скасована галочка забирає силу назад.</div></div>
-  </details>`;
+    <p class="tama-hint">A перемикає іконки, B відкриває, C повертає до Loco. Іконки на екрані теж натискаються. На клавіатурі: стрілки, Enter, Esc.</p>
+  </div>`;
 }
 /* --- course points (100) --- */
 function courseBooksCard(c){
@@ -4913,7 +5260,11 @@ document.addEventListener("click",e=>{
   switch(a){
     case "nav": view=b.dataset.v; openCourse=null; libZoom=null; showDone=false; try{history.replaceState(null,"","#"+view)}catch(_){} render(); window.scrollTo(0,0); break;
     case "settings": sheetSettings(); break;
-    case "locoPet": locoPet(); break;
+    case "locoPet": lcOpen(2); break;
+    case "lcA": lcBtn("A"); break;
+    case "lcB": lcBtn("B"); break;
+    case "lcC": lcBtn("C"); break;
+    case "lcIcon": lcOpen(+b.dataset.i); break;
     case "trkStart": trkStart(b.dataset.k,id); break;
     case "trkStop": trkStopSheet(); break;
     case "trkRate": {document.querySelectorAll('.trkrate [data-act="trkRate"]').forEach(x=>x.setAttribute("aria-pressed",String(x===b))); break}
