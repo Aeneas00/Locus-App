@@ -1973,6 +1973,21 @@ input[type="color"]::-webkit-color-swatch-wrapper{padding:3px}input[type="color"
 .tdr.done{background:color-mix(in srgb,var(--tdc) 45%,transparent)}
 @media (max-width:760px){.tdr{padding:7px 10px}}
 
+/* ===== Today: stats + reading side by side ===== */
+.tdtoprow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:stretch}
+.tdtoprow.solo{grid-template-columns:minmax(0,1fr)}
+.tdtoprow:not(.solo) .tdhero{grid-template-columns:auto minmax(0,1fr);align-content:start}
+.tdtoprow:not(.solo) .tdtiles{grid-column:1/-1;grid-template-columns:repeat(4,minmax(0,1fr))}
+.tdtoprow:not(.solo) .tdring{width:120px;height:120px}
+.tdtoprow:not(.solo) .tdinfo h1{font-size:1.6rem}
+.tdtoprow:not(.solo) .tdt b{font-size:1.02rem;white-space:nowrap}
+.tdtoprow:not(.solo) .tdt{padding:10px 11px}
+.tdtoprow:not(.solo) .tdt small{font-size:.62rem}
+.tdtoprow .tdbooks{margin:0;overflow:auto;max-height:100%}
+.tdtoprow .tdbooks .rd + .rd{margin-top:2px}
+@media (max-width:1180px){.tdtoprow:not(.solo) .tdtiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){.tdtoprow{grid-template-columns:minmax(0,1fr)}}
+
 .savebtn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border:0;border-radius:12px;background:linear-gradient(180deg,#F3C766,#D99A2B);color:#241606;font:inherit;font-weight:800;font-size:.95rem;cursor:pointer;box-shadow:0 8px 18px -8px rgba(217,154,43,.8),inset 0 1px 0 rgba(255,255,255,.45);transition:transform .15s,filter .15s}
 .savebtn svg{width:18px;height:18px}
 .savebtn:hover{filter:brightness(1.07);transform:translateY(-1px)}
@@ -3350,9 +3365,8 @@ function todayView(){
       ${tomorrow.map(x=>{const c=course(x.courseId);return `<div class="tdsr tmr" draggable="true" data-plan-task="${x.id}"><span class="fgrip" aria-hidden="true">${GRIP}</span><i class="dot" style="background:${c.color}"></i><span>${esc(x.title)}</span><small>${esc(c.name)}${x.diff?" · "+DIFF[x.diff]:""} · ~${fmtMin(minsOf(x))}</small><button class="btn sm" data-act="planToday" data-id="${x.id}">↑ На сьогодні</button></div>`}).join("")}</section>`;
   return `<div class="todaywrap">
     <div class="tdtop"><div class="seg" role="group" aria-label="Групувати"><button data-act="todayGroup" data-v="course" aria-pressed="${grp==="course"}">За предметами</button><button data-act="todayGroup" data-v="diff" aria-pressed="${grp==="diff"}">За складністю</button></div></div>
-    ${hero}${evOn(t).length?`<section class="tdevents glass"><header><h3>Події сьогодні</h3><span class="tdgc">${evOn(t).length}</span></header><div class="evlist">${evOn(t).map(evRow).join("")}</div></section>`:""}
+    <div class="tdtoprow${S.books.some(b=>b.status==="reading")?"":" solo"}">${hero}${S.books.some(b=>b.status==="reading")?`<section class="tdbooks glass">${wReading().replace("<h2>Зараз читаю</h2>","<h2>Читаю сьогодні</h2>")}</section>`:""}</div>${evOn(t).length?`<section class="tdevents glass"><header><h3>Події сьогодні</h3><span class="tdgc">${evOn(t).length}</span></header><div class="evlist">${evOn(t).map(evRow).join("")}</div></section>`:""}
     <div class="tdlist" data-day="${t}">${body}</div>${missedB}
-    ${S.books.some(b=>b.status==="reading")?`<section class="tdbooks glass">${wReading().replace("<h2>Зараз читаю</h2>","<h2>Читаю сьогодні</h2>")}</section>`:""}
     ${tmB}</div>`;
 }
 
@@ -3403,7 +3417,7 @@ document.addEventListener("click",e=>{if(document.getElementById("fabmenu")&&!e.
 document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest("#fabmenu [data-act]")) setTimeout(closeFab,0)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("fabmenu")){closeFab(); const f=document.getElementById("fab"); if(f) f.focus()}});
 
-const LOCUS_BUILD="11 · 24.10.2026";
+const LOCUS_BUILD="1.0.12";
 /* ---------- views ---------- */
 let view="home", openCourse=null, editing=false, showDone=false, showLater=false, libRoom="main", libQ="";
 function tabsHTML(){return TABS.map(([k,l])=>`<button class="tab" data-act="nav" data-v="${k}" title="${l}" ${view===k?'aria-current="page"':""}>${ICON[k]}<span>${l}</span></button>`).join("")}
@@ -3900,7 +3914,7 @@ function sheetSettings(keep){
     `;
   openSheet(`<div class="setwrap"><div class="sethead"><h2>Налаштування</h2><button type="button" class="iconbtn" data-act="closeSheet" aria-label="Закрити">${ICON.x}</button></div>
     <nav class="setnav" aria-label="Розділи налаштувань">${SETTABS.map(([k,l])=>`<button type="button" data-act="setTab" data-v="${k}" aria-current="${setTab===k?"page":"false"}">${l}</button>`).join("")}</nav>
-    <div class="setbody form">${body}<div class="setfoot"><span class="muted">Зміни зберігаються одразу.</span><span class="buildno" title="Номер збірки">Locus build ${LOCUS_BUILD}</span></div></div></div>`,true);
+    <div class="setbody form">${body}<div class="setfoot"><span class="muted">Зміни зберігаються одразу.</span><span class="buildno" title="Номер збірки">${LOCUS_BUILD}</span></div></div></div>`,true);
   if(keep){const el=document.querySelector(".setbody"); if(el) el.scrollTop=sc}
 }
 document.addEventListener("change",e=>{const el=e.target, k=el&&el.dataset&&el.dataset.set; if(!k) return; const s=S.settings;
