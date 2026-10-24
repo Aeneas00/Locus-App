@@ -3010,6 +3010,117 @@ html.sf-lock,html.sf-lock body{overflow:hidden}
 :root[data-skin="solar"] .sf-xp.got{color:#1E8656}:root[data-skin="loft"] .sf-xp.got{color:#8A6A3E}
 @media (max-width:420px){.sf-xp{display:none}}
 
+/* ===== lighter task rows ===== */
+.tcrit{display:none!important}
+.tdue.mod,.tdue.none{visibility:hidden}
+.tpbtn.has{flex-direction:row!important;align-items:center;gap:6px;padding:6px 10px!important}
+.tpbtn.has svg{width:14px;height:14px}
+.tpbtn.has b{font-size:.85rem;font-weight:800;white-space:nowrap}
+.tplan.today .tpbtn.has b{color:var(--accent)}.tplan.late .tpbtn.has b{color:var(--warn)}
+.tspent2{display:inline-flex;align-items:center;gap:4px;font-size:.82rem;font-weight:900;color:var(--ink);font-variant-numeric:tabular-nums;padding:2px 8px;border-radius:999px;background:var(--glass-2)}
+.tspent2 .clk{width:14px;height:14px;margin:0}
+.tdrm .tspent2{margin-left:8px;font-size:.76rem}
+.tprog{display:block;width:min(220px,100%);height:7px;margin-top:6px;padding:0;border:0;border-radius:9px;background:var(--track);overflow:hidden;cursor:pointer}
+.tprog i{display:block;height:100%;border-radius:9px;background:var(--accent);transition:width .4s}
+.tprog.sm{display:inline-block;width:70px;height:6px;margin:0 0 0 8px;vertical-align:middle}
+:root[data-skin="retro"] .tprog{border:1.5px solid var(--hard);height:9px}:root[data-skin="retro"] .tprog i{background:#FF6FB5;border-radius:0}
+:root[data-skin="solar"] .tprog i{background:linear-gradient(90deg,#7EDB9C,#2FA56B)}
+:root[data-skin="loft"] .tprog i{background:#C9A04E}
+/* ===== course sections ===== */
+.tsec{margin-top:6px}
+.tsech{display:flex;align-items:baseline;gap:10px;margin:6px 2px 10px}
+.tsech b{font-size:1rem;font-weight:900}
+.tsech span{font:700 .78rem "Space Mono",ui-monospace,monospace;padding:2px 8px;border-radius:999px;background:var(--glass-2)}
+.tsech small{color:var(--ink-2);font-weight:700;font-size:.8rem}
+.tsmod > .tasklist{padding:10px;border-radius:20px;background:color-mix(in srgb,var(--accent) 9%,transparent);box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--accent) 35%,transparent)}
+.tsmod .tsech b{color:var(--accent)}
+.tslater{margin-top:18px;padding:12px;border-radius:20px;border:2px dashed var(--line);opacity:.62;transition:opacity .2s}
+.tslater:hover,.tslater:focus-within{opacity:.9}
+.tslater .task{filter:saturate(.45)}
+:root[data-skin="retro"] .tsmod > .tasklist{background:#FFF4CF;box-shadow:inset 0 0 0 2.5px var(--hard)}
+:root[data-skin="retro"][data-tone="dark"] .tsmod > .tasklist{background:rgba(255,210,63,.1)}
+:root[data-skin="retro"] .tslater{border:2.5px dashed var(--hard)}
+:root[data-skin="solar"] .tsmod > .tasklist{background:rgba(143,220,154,.22);box-shadow:inset 0 0 0 1px rgba(47,165,107,.45)}
+:root[data-skin="loft"] .tsmod > .tasklist{background:rgba(201,160,78,.1);box-shadow:inset 0 0 0 1px rgba(201,160,78,.55)}
+/* ===== required books row ===== */
+.reqrow{border-radius:24px;padding:14px 18px;margin-bottom:16px}
+.reqhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.reqhead h3{margin:0;font-size:1.1rem}
+.reqhead .grow{flex:1}
+.reqhead select{max-width:260px}
+.reqlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.reqb{display:flex;align-items:center;gap:10px;padding:8px 8px 8px 10px;border-radius:16px;background:var(--glass-2);min-width:0}
+.reqb.done{opacity:.6}
+.reqcov{flex:none;width:30px;height:42px;border:0;border-radius:3px 6px 6px 3px;background:var(--bc);box-shadow:inset 3px 0 0 rgba(0,0,0,.2);cursor:pointer;padding:0}
+.reqtx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.reqtx b{font-size:.88rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.reqtx span{font-size:.74rem;font-weight:700;color:var(--ink-2)}
+.reqbar{display:block;height:6px;border-radius:9px;background:var(--track);overflow:hidden}.reqbar i{display:block;height:100%;background:var(--sun)}
+.reqb .startbtn{height:30px;padding:0 10px 0 8px;font-size:.74rem}
+.reqb .mini-btn{width:26px;height:26px}
+.reqempty{font-size:.84rem;color:var(--ink-2);font-weight:600}
+:root[data-skin="retro"] .reqrow{border:2.5px solid var(--hard)!important;box-shadow:5px 5px 0 var(--hard)!important}
+:root[data-skin="retro"] .reqb{background:var(--card);border:2px solid var(--hard)}
+:root[data-skin="retro"] .reqbar{border:1.5px solid var(--hard)}:root[data-skin="retro"] .reqbar i{background:#FF6FB5}
+.reqtog{display:flex;align-items:center;gap:12px;width:100%;margin-top:14px;padding:12px 14px;border-radius:16px;border:1.5px dashed var(--glass-edge);background:transparent;color:var(--ink);text-align:left;font:inherit;cursor:pointer}
+.reqtog i{flex:none;width:24px;height:24px;border-radius:7px;border:2px solid var(--ink-2);display:grid;place-items:center;color:#fff}
+.reqtog i svg{width:14px;height:14px}
+.reqtog b{display:block;font-weight:800}.reqtog small{display:block;font-size:.76rem;color:var(--ink-2);font-weight:600}
+.reqtog.on{border-style:solid;border-color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.reqtog.on i{background:var(--accent);border-color:var(--accent)}
+
+#tabsBottom .tab[data-v="sup"]{display:none}
+/* ===== supervision sheet ===== */
+.supsheet{display:flex;flex-direction:column;gap:12px}
+.sup-when{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}.sup-when b{font-size:1.5rem;font-weight:900}.sup-when span{color:var(--ink-2);font-weight:700}
+.tq-dates.one{grid-template-columns:1fr}
+.sup-subs{display:flex;flex-direction:column;gap:6px}
+.sup-sub{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:12px;background:var(--glass-2)}
+.sup-sub span{flex:1;font-weight:700}.sup-sub.done span{text-decoration:line-through;color:var(--ink-2)}
+.sup-add{display:flex;gap:8px}.sup-add .inp{flex:1;min-width:0;font-size:16px}
+.supsheet textarea{width:100%;box-sizing:border-box;resize:vertical;font:inherit;font-size:16px}
+.sup-acts{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.sup-off{padding:16px;border-radius:16px;background:var(--glass-2);display:flex;flex-direction:column;gap:10px;align-items:flex-start}.sup-off p{margin:0;font-weight:700}
+:root[data-skin="retro"] .sup-sub{background:var(--card);border:2px solid var(--hard)}
+/* ===== supervisions page ===== */
+.supbar{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:flex-end;border-radius:22px;padding:14px 18px;margin-bottom:18px}
+.supadd,.supdef{display:flex;flex-direction:column;gap:6px}
+.supadd{flex-direction:row;align-items:center;flex-wrap:wrap;gap:10px}.supadd .tq-sec{width:100%}
+.sup-tl{position:relative;display:flex;flex-direction:column;gap:12px;padding-left:4px;max-width:860px}
+.sup-tl::before{content:"";position:absolute;left:94px;top:10px;bottom:10px;width:3px;border-radius:3px;background:var(--line)}
+.sup-n{position:relative;display:grid;grid-template-columns:64px 34px minmax(0,1fr) auto;gap:14px;align-items:center}
+.sup-d{display:flex;flex-direction:column;align-items:flex-end;line-height:1.05}
+.sup-d b{font-size:1.6rem;font-weight:900}.sup-d small{font-size:.75rem;font-weight:800;color:var(--ink-2)}.sup-d span{font-size:.68rem;font-weight:700;color:var(--ink-2);text-transform:uppercase;letter-spacing:.06em}
+.sup-dot{position:relative;z-index:1;width:34px;height:34px;border-radius:50%;border:3px solid var(--ink-2);background:var(--card);display:grid;place-items:center;cursor:pointer;color:#fff;font-weight:900;padding:0}
+.sup-dot svg{width:16px;height:16px}
+.sup-c{min-width:0;padding:12px 14px;border-radius:18px;background:var(--card);border:1px solid var(--glass-edge);display:flex;flex-direction:column;gap:6px}
+.sup-main{border:0;background:none;padding:0;text-align:left;color:inherit;font:inherit;cursor:pointer;display:flex;flex-direction:column;gap:3px}
+.sup-main b{font-size:1rem;font-weight:800}.sup-main small{display:flex;flex-wrap:wrap;align-items:center;gap:4px;font-size:.78rem;font-weight:700;color:var(--ink-2)}
+.sup-main .dot{width:9px;height:9px}
+.sup-c .tprog.sm{margin:0;width:120px}
+.sup-n.st-done .sup-dot{background:var(--accent);border-color:var(--accent)}
+.sup-n.st-done .sup-c{opacity:.7}
+.sup-n.st-off .sup-dot{border-style:dashed;color:var(--ink-2)}.sup-n.st-off .sup-c{opacity:.45}
+.sup-n.st-miss .sup-dot{border-color:var(--warn)}
+.sup-n.st-future .sup-c{background:transparent;border-style:dashed}
+.sup-n.st-today .sup-dot,.sup-n.nx .sup-dot{border-color:var(--accent);box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 22%,transparent)}
+.sup-n.nx .sup-c{border:2px solid var(--accent);background:color-mix(in srgb,var(--accent) 8%,var(--card));border-style:solid}
+.sup-now{position:relative;margin:2px 0 2px 64px;padding-left:34px;display:flex;align-items:center}
+.sup-now span{position:relative;z-index:1;font:700 .7rem "Space Mono",ui-monospace,monospace;text-transform:uppercase;letter-spacing:.1em;padding:4px 10px;border-radius:999px;background:var(--ink);color:var(--card)}
+.sup-now::before{content:"";position:absolute;left:0;right:0;top:50%;height:2px;background:repeating-linear-gradient(90deg,var(--ink) 0 6px,transparent 6px 12px);opacity:.5}
+:root[data-skin="retro"] .sup-c{border:2.5px solid var(--hard);box-shadow:4px 4px 0 var(--hard)}
+:root[data-skin="retro"] .sup-n.st-future .sup-c{box-shadow:none;border-style:dashed}
+:root[data-skin="retro"] .sup-n.nx .sup-c{background:#FFF1B8;border:3px solid var(--hard);box-shadow:5px 5px 0 #FF6FB5}
+:root[data-skin="retro"][data-tone="dark"] .sup-n.nx .sup-c{background:#4A2F55}
+:root[data-skin="retro"] .sup-dot{border-color:var(--hard)}:root[data-skin="retro"] .sup-n.st-done .sup-dot{background:#FF6FB5;border-color:var(--hard);color:#2B1B2E}
+:root[data-skin="retro"] .sup-tl::before{background:var(--hard)}
+:root[data-skin="retro"] .sup-d b{font-family:"Space Mono",ui-monospace,monospace}
+:root[data-skin="solar"] .sup-c{background:rgba(255,255,255,.6);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+:root[data-skin="solar"][data-tone="dark"] .sup-c{background:rgba(255,255,255,.07)}
+:root[data-skin="loft"] .sup-d b{font-family:Lora,serif;font-style:italic}
+:root[data-skin="loft"] .sup-main b{font-family:Lora,serif}
+@media (max-width:640px){.sup-tl::before{left:71px}.sup-n{grid-template-columns:44px 30px minmax(0,1fr);gap:10px}.sup-n > .startbtn{grid-column:3;justify-self:start}.sup-d b{font-size:1.25rem}.sup-dot{width:30px;height:30px}.sup-now{margin-left:44px;padding-left:30px}}
+
 .savebtn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border:0;border-radius:12px;background:linear-gradient(180deg,#F3C766,#D99A2B);color:#241606;font:inherit;font-weight:800;font-size:.95rem;cursor:pointer;box-shadow:0 8px 18px -8px rgba(217,154,43,.8),inset 0 1px 0 rgba(255,255,255,.45);transition:transform .15s,filter .15s}
 .savebtn svg{width:18px;height:18px}
 .savebtn:hover{filter:brightness(1.07);transform:translateY(-1px)}
@@ -3481,12 +3592,13 @@ function taskXP(t){if(t.kind==="review")return XP.review;if(t.ttype&&XP[t.ttype]
 const WIDGETS={ring:{n:"Модульне коло",full:false},courses:{n:"Кільця курсів",full:true},tasks:{n:"Завдання до модуля",full:false},tue:{n:"Вівторки",full:true},reading:{n:"Зараз читаю",full:false},loans:{n:"Позичені книги",full:false}};
 const SCENES=[["theme","Як у системі"],["time","За часом доби"],["day","Світлий"],["night","Темний"]];
 const FROST=[["clear","Прозоре"],["mid","Звичайне"],["matte","Матове"]];
-const TABS=[["home","Головна"],["today","Сьогодні"],["courses","Курси"],["plan","Календар"],["stats","Статистика"],["library","Бібліотека"],["xp","Loco"]];
+const TABS=[["home","Головна"],["today","Сьогодні"],["courses","Курси"],["plan","Календар"],["stats","Статистика"],["library","Бібліотека"],["sup","Супервізії"],["xp","Loco"]];
 const ICON={
   today:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
   stats:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>',
   plan:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M8 14h3M8 17h6"/></svg>',
   flag:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg>',
+  sup:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="16.5" cy="9.5" r="2.5"/><path d="M3 19c.6-3.2 2.7-5 5-5s4.4 1.8 5 5M13.5 18.5c.4-2.3 1.7-3.6 3.2-3.6s2.8 1.3 3.3 3.6"/></svg>',
   home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg>',
   courses:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4z"/><path d="M7 9.5V15c0 1.5 2.2 3 5 3s5-1.5 5-3V9.5"/></svg>',
   library:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16M8 4v16M12 6l4 14M18 4v16M3 20h18"/></svg>',
@@ -3617,6 +3729,7 @@ let ref=null, syncMode="loading", writing=false, dirty=false, timer=null;
 function setSync(){const el=document.getElementById("sync");if(!el)return;el.className="sync "+(syncMode==="cloud"?"ok":syncMode==="local"?"local":"");
   el.title=syncMode==="cloud"?"Збережено в акаунті":syncMode==="local"?"Збережено лише на цьому пристрої":"Підключення…"}
 function commit(opts={}){
+  try{ensureSup()}catch(e){}
   S.updatedAt=Date.now();
   try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}
   if(ref){dirty=true;clearTimeout(timer);timer=setTimeout(flush,600)}
@@ -3871,7 +3984,7 @@ const subsOf=t=>Array.isArray(t.subs)?t.subs:[];
 function taskFrac(t){if(t.done)return 1;const ss=subsOf(t);if(!ss.length)return 0;return Math.min(.95,ss.filter(x=>x.done).length/ss.length)}
 function progress(ts){const d=ts.filter(x=>x.done).length;return {d,n:ts.length,f:ts.length?ts.reduce((a,t)=>a+taskFrac(t),0)/ts.length:0}}
 const pctMode=()=>S.settings.ringMode==="pct";
-function ringData(ts){const P=progress(ts),pm=pctMode();return {P,f:pm?P.f:(P.n?P.d/P.n:0),label:pm?Math.round(P.f*100)+"%":`${P.d}/${P.n}`}}
+function ringData(ts,cid){const P=cid!==undefined?modProgress(cid):progress(ts),pm=pctMode();return {P,f:pm?P.f:(P.n?P.d/P.n:0),label:pm?Math.round(P.f*100)+"%":`${P.d}/${P.n}`}}
 let expanded=new Set();
 function toggleSub(tid,sid){
   const t=S.tasks.find(x=>x.id===tid); if(!t) return; const sb=subsOf(t).find(x=>x.id===sid); if(!sb) return;
@@ -3917,10 +4030,9 @@ function uncompleteTask(id){
   commit();
 }
 function setTue(d,s){
-  const e=S.tue[d]||(S.tue[d]={s:"",note:""});
-  if(e.s==="done") takeXP(XP.tue,S.settings.tueName);
-  e.s=e.s===s?"":s;
-  if(e.s==="done"){addXP(XP.tue,true,S.settings.tueName+" · "+fmtS(d));fun("tue",XP.tue)}
+  ensureSup(); const e=S.tue[d]||(S.tue[d]={s:"",note:""}), t=supTask(d);
+  if(s==="done"){ if(!t) return; if(t.done){uncompleteSup(t)} else completeTask(t.id); return}
+  if(e.s==="off"){e.s=""; delete e.made} else {e.s="off"; supDrop(d)}
   commit();
 }
 function bookFinishCheck(b){
@@ -4165,7 +4277,7 @@ const initials=n=>{const w=String(n).trim().split(/\s+/).filter(Boolean);return 
 function railHTML(){
   const cs=activeCourses(), t=today();
   const nextTue=[...new Set(S.tueDates)].sort().find(d=>d>=t), loans=activeLoans(), lw=loans.some(b=>loanState(b)==="over")?"over":loans.some(b=>loanState(b)==="soon")?"soon":"";
-  const ring=c=>{const R=ringData(cycleTasks(c.id)), C=2*Math.PI*21;return `<button class="ravatar" data-act="openCourse" data-id="${c.id}" title="${esc(c.name)} · ${R.label}" aria-label="${esc(c.name)}, ${R.label}"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="none" stroke="var(--track)" stroke-width="4"/><circle cx="24" cy="24" r="21" fill="none" stroke="${CC(c.color)}" stroke-width="4" stroke-linecap="round" stroke-dasharray="${(C*R.f).toFixed(1)} ${C.toFixed(1)}"/></svg><span style="background:${CC(c.color)}">${esc(initials(c.name))}</span></button>`};
+  const ring=c=>{const R=ringData(null,c.id), C=2*Math.PI*21;return `<button class="ravatar" data-act="openCourse" data-id="${c.id}" title="${esc(c.name)} · ${R.label}" aria-label="${esc(c.name)}, ${R.label}"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="none" stroke="var(--track)" stroke-width="4"/><circle cx="24" cy="24" r="21" fill="none" stroke="${CC(c.color)}" stroke-width="4" stroke-linecap="round" stroke-dasharray="${(C*R.f).toFixed(1)} ${C.toFixed(1)}"/></svg><span style="background:${CC(c.color)}">${esc(initials(c.name))}</span></button>`};
   return `<div class="rblock">${cs.map(ring).join("")}<button class="ravatar add" data-act="addCourse" title="Новий курс" aria-label="Новий курс">${ICON.plus}</button></div>
     <div class="rblock">
       <button class="rmini" data-act="settingsTue" title="${nextTue?esc(S.settings.tueName)+": "+fmtL(nextTue):"Позначити вівторкові завдання"}" aria-label="${nextTue?esc(S.settings.tueName)+", наступне "+fmtL(nextTue):"Календар вівторкових завдань"}"><small>${nextTue?parse(nextTue).toLocaleDateString("uk-UA",{month:"short"}).replace(".",""):"вт"}</small><b>${nextTue?parse(nextTue).getDate():"—"}</b></button>
@@ -4174,7 +4286,7 @@ function railHTML(){
     </div>`;
 }
 function heroRow(){
-  const tp=todayPick(), cy=cycle(), P=progress(cycleTasks()), left=P.n-P.d, days=cy.next?diffDays(cy.next,cy.t):null;
+  const tp=todayPick(), cy=cycle(), P=modProgress(), left=P.n-P.d, days=cy.next?diffDays(cy.next,cy.t):null;
   let chip,title,desc,actions;
   if(tp&&tp.kind==="task"){const it=tp.item,c=course(it.courseId);
     chip="Сьогодні роблю"; title=esc(it.title);
@@ -4294,7 +4406,7 @@ function courseCard(c,i){
 
 
 /* ---------- statistics ---------- */
-const W_DIFF={0:2,1:1,2:2,3:3};
+const W_DIFF=new Proxy({},{get:(_,k)=>{const b=minsOf({diff:1})||30; return Math.round(minsOf({diff:+k||0})/b*10)/10}});
 const unitsOf=t=>W_DIFF[t.diff||0]*(1-(t.done?1:Math.min(.95,taskFrac(t))));
 const unitsFull=t=>W_DIFF[t.diff||0];
 const dayOf=ts=>d2s(new Date(ts));
@@ -4400,7 +4512,7 @@ function statsView(){
     <div class="herofig"><b>${nOpen}</b><span>${pl(nOpen,"завдання","завдання","завдань")}<br>${cy.next?`за ${M.D} ${pl(M.D,"день","дні","днів")}`:"дата модуля не вказана"}</span></div>
     ${cy.next?`<div class="snote">Модульний тиждень: <b>${fmtL(cy.next)}</b> · виконано ${M.doneC.length} з ${nAll}</div>`:`<div class="snote"><button class="btn sm" data-act="settings">Вказати модульний тиждень</button></div>`}
     <div class="drow2">${diffChips||'<span class="snote">Усе виконано</span>'}</div>
-    <div class="ubar" role="img" aria-label="Обсяг роботи ${r1(M.rem)} одиниць"><span>Обсяг роботи</span><b>${r1(M.rem)} од.</b><small>легке = 1, середнє = 2, складне = 3; без складності рахується як середнє, підпункти зменшують залишок</small></div>
+    <div class="ubar" role="img" aria-label="Обсяг роботи ${r1(M.rem)} одиниць"><span>Обсяг роботи</span><b>${r1(M.rem)} од.</b><small>${`легке = 1, середнє = ${W_DIFF[2]}, складне = ${W_DIFF[3]}, без складності = ${W_DIFF[0]} (з твоїх налаштувань часу); підпункти зменшують залишок`}</small></div>
   </section>`;
   let probB;
   if(M.prob==null) probB=`<section class="sb s-prob arcade st-none" style="--sp:4"><div class="arc-top"><span class="arc-lbl">Місія</span><span class="arc-ttl">Встигнути до модуля</span></div><div class="arc-score"><b class="arc-blinkb">Insert coin</b></div><div class="arc-say"><i aria-hidden="true">▶</i>Потрібна дата модульного тижня.</div><div><button class="btn sm" data-act="settings">Вказати дату</button></div></section>`;
@@ -4525,7 +4637,7 @@ function planHTML(t){
   const id="tp-"+t.id;
   if(!t.plan) return `<span class="tplan add"><input type="hidden" id="${id}" value=""><button type="button" class="tpbtn" data-act="dpick" data-for="${id}" data-ph="" title="Запланувати" aria-label="Запланувати «${esc(t.title)}»">${ICON.plan}</button></span>`;
   const n=diffDays(t.plan,today()), late=n<0, rel=n===0?"сьогодні":n===1?"завтра":n<0?`пропущено ${-n} ${pl(-n,"день","дні","днів")}`:`за ${n} ${pl(n,"день","дні","днів")}`;
-  return `<span class="tplan${late?" late":""}${n===0?" today":""}"><input type="hidden" id="${id}" value="${t.plan}"><button type="button" class="tpbtn has" data-act="dpick" data-for="${id}" data-ph="" title="Заплановано на ${fmtD(t.plan)}. Змінити" aria-label="Заплановано на ${fmtD(t.plan)}. Змінити"><small>${ICON.plan}робити</small><b>${fmtS(t.plan)}</b><span>${rel}</span></button></span>`;
+  return `<span class="tplan${late?" late":""}${n===0?" today":""}"><input type="hidden" id="${id}" value="${t.plan}"><button type="button" class="tpbtn has" data-act="dpick" data-for="${id}" data-ph="" title="Заплановано на ${fmtD(t.plan)}. Змінити" aria-label="Заплановано на ${fmtD(t.plan)}. Змінити">${ICON.plan}<b>${n===0?"Сьогодні":n===1?"Завтра":n<0?"Пропущено":fmtS(t.plan)}</b></button></span>`;
 }
 document.addEventListener("change",e=>{const el=e.target; if(!el||!el.id||!el.id.startsWith("tp-")) return; const t=S.tasks.find(x=>x.id===el.id.slice(3)); if(!t) return; t.plan=el.value||""; setTimeout(()=>{commit(); toast(t.plan?`«${t.title}» — ${t.plan===today()?"на сьогодні":fmtS(t.plan)}`:`План для «${t.title}» прибрано`)},0)});
 
@@ -4547,13 +4659,13 @@ function dayViewHTML(d){
 let tdCollapsed=new Set(); try{tdCollapsed=new Set(JSON.parse(localStorage.getItem("studyquest.tdcol")||"[]"))}catch(e){}
 function todayRow(t,showCourse){
   const c=course(t.courseId), ed=effDue(t), n=ed?diffDays(ed,today()):null, urg=!t.done&&n!=null?(n<7?" urg-r":n<=14?" urg-y":""):"";
-  const dueTxt=t.done?"виконано":ed?`${t.due?"дедлайн":"до модуля"} ${fmtS(ed)} · ${n<0?`прострочено ${-n} дн.`:n===0?"сьогодні":n===1?"завтра":`за ${n} дн.`}`:"";
+  const dueTxt=t.done?"виконано":t.due?`дедлайн ${fmtS(t.due)} · ${n<0?`прострочено ${-n} дн.`:n===0?"сьогодні":n===1?"завтра":`за ${n} дн.`}`:"";
   const ss=subsOf(t), sd=ss.filter(x=>x.done).length;
   return `<div data-tid="${t.id}" class="tdr${t.done?" done":""}${urg}${isActive("task",t.id)?" active":""}${ss.length?" hassubs":""} cansubs">
     <button type="button" class="check ${t.done?"on":""}" data-act="${t.done?"undone":"done"}" data-id="${t.id}" aria-label="${t.done?"Позначити невиконаним":"Позначити виконаним"}: ${esc(t.title)}">${t.done?ICON.check:""}</button>
     <span class="dmark d${t.diff||0}" title="Складність: ${t.diff?DIFF[t.diff]:"не вказано"}" aria-hidden="true"></span>
     <span class="tdrt">${esc(t.title)}</span>
-    <small class="tdrm">${ss.length?`<button type="button" class="subtog${expanded.has(t.id)?" on":""}" data-act="subs" data-id="${t.id}" aria-expanded="${expanded.has(t.id)}" aria-label="Підпункти ${sd} з ${ss.length}: відкрити">${spct(sd,ss.length)}</button>`:""}${showCourse&&c?esc(c.name)+" · ":""}${t.diff?DIFF[t.diff]:"без складності"} · ~${fmtMin(t.done?minsOf(t):remMinsOf(t))}${t.spent?` · <span class="tspent">${CLOCK}${fmtDur(t.spent)}</span>`:""}</small>
+    <small class="tdrm">${showCourse&&c?esc(c.name)+" · ":""}~${fmtMin(t.done?minsOf(t):remMinsOf(t))}${t.spent?`<span class="tspent2">${CLOCK}${fmtDur(t.spent)}</span>`:""}${ss.length?subBar(t,true):""}</small>
     <span class="tdrd">${dueTxt}</span>
     ${t.done?'<span class="tdrgo"></span>':startBtn("task",t,"tdrgo")}
     <button type="button" class="mini-btn" data-act="editTask" data-id="${t.id}" aria-label="Редагувати «${esc(t.title)}»">${ICON.edit}</button>
@@ -4652,7 +4764,7 @@ document.addEventListener("click",e=>{if(document.getElementById("fabmenu")&&!e.
 document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest("#fabmenu [data-act]")) setTimeout(closeFab,0)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("fabmenu")){closeFab(); const f=document.getElementById("fab"); if(f) f.focus()}});
 
-const LOCUS_BUILD="1.0.31";
+const LOCUS_BUILD="1.0.33";
 
 /* ---------- alive: entrance on view change, ring fill, count-up, completion burst ---------- */
 let aliveKey=null, aliveFirst=true;
@@ -4771,7 +4883,7 @@ function trkSave(){
 /* ---------- stats: mission block ---------- */
 const MS_RUN=["..XXX..",".XXXXX.","X.X.X.X","XXXXXXX",".XXXXX.",".X...X.","XX...XX"], MS_FLAG=["XXXXX..","XXXXXXX","XXXXXX.","X......","X......","X......","X......"];
 function missionB(M){
-  const cy=M.cy, nOpen=M.openC.length, nDone=M.doneC.length, all=nOpen+nDone, pct=all?Math.round(nDone/all*100):0;
+  const cy=M.cy, MP=modProgress(), nOpen=MP.n-MP.d, nDone=MP.d, all=MP.n, pct=Math.round(MP.f*100);
   const st=M.prob==null?"none":STATUS(M.prob)[0], perDay=cy.next&&M.D>0?Math.ceil(nOpen/M.D*10)/10:null;
   const msg=!cy.next?"Вкажи дату модульного тижня, і тут з'явиться твій план гри."
     :nOpen===0?"Усе до модуля зроблено. Можна видихнути, ти молодець."
@@ -4787,7 +4899,7 @@ function missionB(M){
     <div class="ms-head"><span class="ms-tag">Рівень</span><span class="ms-ttl">${cy.next?`Модульний тиждень · ${fmtL(cy.next)}`:"Модульний тиждень"}</span>${cy.next?`<span class="ms-time"><small>лишилось</small>${M.D} ${pl(M.D,"день","дні","днів")}</span>`:""}</div>
     <div class="ms-main">
       <div class="ms-num"><b>${pct}</b><i>%</i><span>пройдено</span></div>
-      <div class="ms-num ms-left"><b>${nOpen}</b><span>${pl(nOpen,"завдання","завдання","завдань")}<br>лишилось</span></div>
+      <div class="ms-num ms-left"><b>${nOpen}</b><span>${MP.bn?"завдань і книг":pl(nOpen,"завдання","завдання","завдань")}<br>лишилось</span></div>
       <div class="ms-msg"><p><i aria-hidden="true">▶</i>${msg}</p>${goal?`<small>${goal}</small>`:""}${!cy.next?`<button class="btn sm" data-act="settings">Вказати дату</button>`:""}</div>
     </div>
     <div class="ms-track" role="img" aria-label="Пройдено ${pct}%: ${nDone} з ${all}">
@@ -5034,10 +5146,85 @@ function flashTo(sel){
   return true;
 }
 
+
+/* ---------- progress to the next module: tasks + required books ---------- */
+function reqBooks(cid){return S.books.filter(b=>b.req&&b.courseId&&course(b.courseId)&&!course(b.courseId).archived&&(!cid||b.courseId===cid))}
+const bookFrac=b=>b.status==="done"?1:b.total?Math.min(.95,(b.page||0)/b.total):0;
+function modProgress(cid){
+  const ts=cycleTasks(cid).filter(x=>x.kind==="task"), bs=reqBooks(cid);
+  const d=ts.filter(x=>x.done).length+bs.filter(b=>b.status==="done").length, n=ts.length+bs.length;
+  const f=n?(ts.reduce((s,x)=>s+taskFrac(x),0)+bs.reduce((s,b)=>s+bookFrac(b),0))/n:0;
+  return {d,n,f,td:ts.filter(x=>x.done).length,tn:ts.length,bd:bs.filter(b=>b.status==="done").length,bn:bs.length};
+}
+function subBar(t,small){const ss=subsOf(t), d=ss.filter(x=>x.done).length, p=ss.length?Math.round(d/ss.length*100):0;
+  return `<button type="button" class="tprog${small?" sm":""}" data-act="subs" data-id="${t.id}" aria-label="Підпункти: ${d} з ${ss.length}. Відкрити" title="Підпункти: ${d} з ${ss.length}"><i style="width:${p}%"></i></button>`}
+function reqRow(c){
+  const bs=reqBooks(c.id), others=S.books.filter(b=>b.courseId===c.id&&!b.req);
+  return `<div class="reqrow card glass"><div class="reqhead"><h3>Книги до модуля</h3>${bs.length?`<span class="tbadge">${bs.filter(b=>b.status==="done").length} з ${bs.length}</span>`:""}<span class="grow"></span>
+    ${others.length?`<label class="sr" for="rq-add-${c.id}">Зробити книгу обов'язковою</label><select class="inp sm" id="rq-add-${c.id}" data-reqadd="1"><option value="">+ обов'язкова книга…</option>${others.map(b=>`<option value="${b.id}">${esc(b.title)}</option>`).join("")}</select>`:""}</div>
+    ${bs.length?`<div class="reqlist">${bs.map(b=>{const p=Math.round(bookFrac(b)*100);return `<div class="reqb${b.status==="done"?" done":""}${isActive("book",b.id)?" active":""}"><button type="button" class="reqcov" style="--bc:${bookColor(b)}" data-act="book" data-id="${b.id}" aria-label="${esc(b.title)}"></button><div class="reqtx"><b>${esc(b.title)}</b><span>${b.status==="done"?"прочитано":`${p}% · ${b.page||0} з ${b.total||"?"} стор.`}</span><i class="reqbar"><i style="width:${p}%"></i></i></div>${b.status==="done"?"":startBtn("book",b)}<button type="button" class="mini-btn" data-act="reqToggle" data-id="${b.id}" aria-label="Прибрати з обов'язкових" title="Прибрати з обов'язкових">${ICON.x}</button></div>`}).join("")}</div>`
+      :`<div class="reqempty">${others.length?"Обери книгу вище: її прогрес рахуватиметься у відсоток до модуля.":"Додай книгу в «Книги курсу» і познач її обов'язковою."}</div>`}</div>`;
+}
+document.addEventListener("change",e=>{const el=e.target; if(!el||!el.dataset||!el.dataset.reqadd||!el.value) return; const b=S.books.find(x=>x.id===el.value); if(b){b.req=true; commit(); toast(`«${b.title}» тепер обов'язкова до модуля`)}});
+
+
+/* ---------- supervisions are tasks ---------- */
+const supTask=d=>S.tasks.find(x=>x.sup===d);
+function supDrop(d){const t=supTask(d); if(!t) return; if(t.done&&t.xpGot) takeXP(t.xpGot,t.title); S.tasks=S.tasks.filter(x=>x!==t)}
+function uncompleteSup(t){t.done=false;t.doneAt=null;if(t.xpGot) takeXP(t.xpGot,t.title);t.xpGot=0;commit()}
+function ensureSup(){
+  if(!S||!Array.isArray(S.tueDates)) return; S.tue=S.tue||{};
+  const dates=[...new Set(S.tueDates)];
+  S.tasks=S.tasks.filter(x=>!x.sup||dates.includes(x.sup));
+  const cs=S.courses.filter(c=>!c.archived), def=(S.settings.supCourse&&cs.find(c=>c.id===S.settings.supCourse))||cs[0];
+  for(const d of dates){
+    const e=S.tue[d]||(S.tue[d]={s:"",note:""}), t=supTask(d);
+    if(e.s==="off") continue;
+    if(!t){
+      if(e.made){S.tueDates=S.tueDates.filter(x=>x!==d); delete S.tue[d]; continue}
+      if(!def) continue;
+      const done=e.s==="done";
+      S.tasks.push({id:"sup_"+d,sup:d,kind:"task",title:(S.settings.tueName||"Супервізія")+" · "+fmtS(d),courseId:def.id,due:d,plan:"",diff:0,ttype:"task",subs:[],done,doneAt:done?new Date(d+"T18:00:00").getTime():null,xpGot:done?XP.tue:0,createdAt:Date.now()});
+      e.made=true; continue}
+    if(!course(t.courseId)&&def) t.courseId=def.id;
+    t.due=d; e.made=true; e.s=t.done?"done":"";
+  }
+}
+function supStat(d){const e=S.tue[d]||{}, t=supTask(d), td=today(); return e.s==="off"?"off":t&&t.done?"done":d===td?"today":d<td?"miss":"future"}
+function supView(){
+  ensureSup(); const name=S.settings.tueName||"Супервізії", t0=today(), dates=[...new Set(S.tueDates)].sort();
+  const past=dates.filter(d=>d<=t0&&supStat(d)!=="off"), doneN=dates.filter(d=>supStat(d)==="done").length;
+  const next=dates.find(d=>d>=t0&&supStat(d)!=="off"&&supStat(d)!=="done");
+  const cs=activeCourses(), defc=S.settings.supCourse||((cs[0]||{}).id);
+  let nowPut=false;
+  const nodes=dates.map(d=>{const st=supStat(d), t=supTask(d), c=t&&course(t.courseId), e=S.tue[d]||{}, dt=parse(d), n=diffDays(d,t0);
+    let pre=""; if(!nowPut&&d>=t0){nowPut=true; pre=`<div class="sup-now"><span>сьогодні · ${fmtS(t0)}</span></div>`}
+    const ss=t?subsOf(t):[], sd=ss.filter(x=>x.done).length;
+    const rel=n===0?"сьогодні":n===1?"завтра":n>0?`через ${n} ${pl(n,"день","дні","днів")}`:st==="miss"?"не позначено":"";
+    return pre+`<div class="sup-n st-${st}${d===next?" nx":""}" data-d="${d}">
+      <div class="sup-d"><b>${dt.getDate()}</b><small>${dt.toLocaleDateString("uk-UA",{month:"short"})}</small><span>${dt.toLocaleDateString("uk-UA",{weekday:"short"})}</span></div>
+      <button type="button" class="sup-dot" ${t&&st!=="off"?`data-act="supDone" data-d="${d}" aria-label="${st==="done"?"Скасувати виконання":"Позначити виконаною"}"`:`data-act="tueDot" data-d="${d}" aria-label="Відкрити"`}>${st==="done"?ICON.check:st==="off"?"–":""}</button>
+      <div class="sup-c">
+        <button type="button" class="sup-main" data-act="tueDot" data-d="${d}"><b>${t?esc(t.title):esc(name)}</b>
+          <small>${st==="off"?"не відбулася":`${c?`<i class="dot" style="background:${CC(c.color)}"></i>${esc(c.name)}`:""}${rel?` · ${rel}`:""}${t&&t.plan&&!t.done?` · готуюсь ${t.plan===t0?"сьогодні":fmtS(t.plan)}`:""}${ss.length?` · ${sd}/${ss.length}`:""}${e.note?" · є нотатка":""}`}</small></button>
+        ${t&&ss.length&&st!=="off"?subBar(t,true):""}
+      </div>
+      ${t&&st!=="done"&&st!=="off"?startBtn("task",t):""}
+    </div>`}).join("")+(nowPut?"":`<div class="sup-now"><span>сьогодні · ${fmtS(t0)}</span></div>`);
+  return `<div class="pagehead glass suphead"><h1>${esc(name)}</h1><span class="muted" style="font-size:.88rem">виконано <b>${doneN}</b> з ${past.length+ (next&&next>t0?0:0)}${next?` · наступна ${next===t0?"сьогодні":fmtS(next)}`:""}</span></div>
+    <div class="supbar card glass">
+      <div class="supadd"><span class="tq-sec">Нова дата</span>${dateField("sup-new","","Обрати дату")}<button type="button" class="btn sm primary" data-act="supAdd">${ICON.plus}Додати</button></div>
+      ${cs.length?`<label class="supdef"><span class="tq-sec">Курс за замовчуванням</span><select class="inp sm" data-supcourse="1">${cs.map(c=>`<option value="${c.id}" ${c.id===defc?"selected":""}>${esc(c.name)}</option>`).join("")}</select></label>`:""}
+    </div>
+    ${dates.length?`<div class="sup-tl">${nodes}</div>`:`<div class="card glass empty" style="padding:24px">Додай першу дату супервізії вище. Кожна стане завданням: можна запланувати підготовку, додати підпункти й позначити виконаною.</div>`}`;
+}
+document.addEventListener("change",e=>{const el=e.target; if(el&&el.dataset&&el.dataset.supcourse){S.settings.supCourse=el.value; commit({norender:true}); toast("Нові супервізії будуть у цьому курсі")}});
+
 /* ---------- views ---------- */
 let view="home", openCourse=null, editing=false, showDone=false, showLater=false, libRoom="main", libQ="";
 function tabsHTML(){return TABS.map(([k,l])=>`<button class="tab" data-act="nav" data-v="${k}" title="${l}" ${view===k?'aria-current="page"':""}>${ICON[k]}<span>${l}</span></button>`).join("")}
 function render(){
+  try{ensureSup()}catch(e){}
   document.getElementById("tabsTop").innerHTML=tabsHTML();
   document.getElementById("tabsBottom").innerHTML=tabsHTML();
   {const g=document.getElementById("greet"); if(g) g.innerHTML=`${greeting()}, <b>${esc(S.settings.name||"Ігор-Еней")}</b>`;
@@ -5046,12 +5233,13 @@ function render(){
   LOCO_C=null; {const LS=locoState(), lv=document.getElementById("lvl"); lv.innerHTML=`<span class="lcmini">${locoSVG({form:LS.vform,health:LS.health,mood:LS.mood,mini:true})}</span><span class="lcml">Loco</span><i style="--p:${LS.health/100}"></i>${LS.justEvolved?'<b class="lcnew">!</b>':""}`; lv.classList.toggle("sick",LS.health<35);}
   {const LS=locoState(); document.getElementById("lvl").title=`Loco · здоров'я ${LS.health}% · рівень ${LS.L}`;}
   const v=document.getElementById("view");
-  v.innerHTML=view==="courses"?(openCourse&&course(openCourse)?courseDetail(course(openCourse)):coursesView()):view==="library"?libraryView():view==="plan"?planView():view==="today"?todayView():view==="stats"?statsView():view==="xp"?xpView():homeView();
+  v.innerHTML=view==="courses"?(openCourse&&course(openCourse)?courseDetail(course(openCourse)):coursesView()):view==="library"?libraryView():view==="plan"?planView():view==="today"?todayView():view==="stats"?statsView():view==="xp"?xpView():view==="sup"?supView():homeView();
   if(view==="library"){const sc=document.getElementById("libscene");if(sc)sc.scrollLeft=libScroll; if(libQ) runSearch()}
   appearId=null;
   if(view==="home") watchHome(); else if(wRO){wRO.disconnect();wRO=null}
   document.getElementById("btnLayout").classList.toggle("on",editing&&view==="home");
   setSync(); light(); renderNow(); aliveEnter(); afterRenderHelp(); if(subFocus) buildSubFocus(false);
+  {const ss=document.querySelector(".supsheet"); if(ss){const t=supTask(ss.dataset.d), box=document.getElementById("supSubs"); if(t&&box) box.innerHTML=supSubsHTML(t)}}
 }
 function exampleBanner(){
   const has=S.courses.some(c=>c.example)||S.books.some(b=>b.example);
@@ -5072,7 +5260,6 @@ function critHTML(t){
 function taskDue(t){
   if(t.done) return "";
   let d=t.due, lbl=t.kind==="review"?"повторити":"дедлайн", mod=false;
-  if(!d&&t.kind==="task"&&cycle().next){d=cycle().next;lbl="до модуля";mod=true}
   if(!d) return "";
   const n=diffDays(d,today()), cls=n<0?"over":n<=3?"soon":"", rel=n<0?`прострочено ${-n} ${pl(-n,"день","дні","днів")}`:n===0?"сьогодні":n===1?"завтра":`за ${n} ${pl(n,"день","дні","днів")}`;
   return `<span class="tdue ${cls}${mod?" mod":""}${!mod&&t.kind==="task"&&cycle().next&&d>cycle().next?" later":""}" title="${mod?"Без власного дедлайну, рахується до модульного тижня":lbl}: ${fmtD(d)}">${mod?`<small>до наступного модуля</small><b>${n<=0?rel:`${n} ${pl(n,"день","дні","днів")}`}</b><span>${fmtS(d)}</span>`:`<small>${lbl}</small><b>${fmtS(d)}</b><span>${rel}</span>`}</span>`;
@@ -5089,15 +5276,14 @@ function taskRow(t,opts={}){
       <div class="meta">
         ${opts.course&&c?`<span class="chip"><i class="dot" style="background:${CC(c.color)}"></i>${esc(c.name)}</span>`:""}
         ${t.kind==="task"&&t.ttype&&t.ttype!=="task"?`<span class="chip ttype">${TTYPE[t.ttype].ic} ${TTYPE[t.ttype].n.toLowerCase()}</span>`:""}
-        ${t.kind==="task"?`<button class="chip dch d${t.diff||0}" data-act="diff" data-id="${t.id}" title="Змінити складність" aria-label="Складність: ${t.diff?DIFF[t.diff]:"не вказано"}. Змінити">${t.diff?DIFF[t.diff]:"складність"}</button>`:""}
         ${rec?`<span class="chip">крок ${(t.stage||0)+1} з ${S.settings.intervals.length}</span>`:""}
-        ${subsOf(t).length?(()=>{const ss=subsOf(t),d=ss.filter(x=>x.done).length;return `<button type="button" class="chip subchip${expanded.has(t.id)?" on":""}" data-act="subs" data-id="${t.id}" aria-expanded="${expanded.has(t.id)}" title="Підпункти: ${d} з ${ss.length}. Відкрити">${spct(d,ss.length)}</button>`})():""}
         ${t.recall&&!t.done?`<span class="chip">з повтореннями</span>`:""}
-        ${t.spent?`<span class="chip tspent" title="Час роботи за таймером">${CLOCK}${fmtDur(t.spent)}</span>`:""}
+        ${t.spent?`<span class="tspent2" title="Час роботи над завданням">${CLOCK}${fmtDur(t.spent)}</span>`:""}
         ${t.example?'<span class="chip ex">Приклад</span>':""}
       </div>
+      ${subsOf(t).length?subBar(t):""}
     </div>
-    ${t.done?"":`${taskDue(t)||'<span class="tdue none"></span>'}<span class="tspc"></span>${t.kind==="task"?planHTML(t)+critHTML(t):""}`}
+    ${t.done?"":`${taskDue(t)||'<span class="tdue none"></span>'}<span class="tspc"></span>${t.kind==="task"?planHTML(t):""}`}
     ${rec?`<div class="row" style="gap:6px;flex:none"><button class="btn sm primary" data-act="done" data-id="${t.id}" data-q="good">Пам'ятаю</button><button class="btn sm ghost" data-act="done" data-id="${t.id}" data-q="shaky">Слабко</button></div>`:""}
     ${t.kind==="task"&&!t.done?startBtn("task",t):""}
     ${opts.tools===false?"":`${t.kind==="task"?`<button class="mini-btn ${expanded.has(t.id)?"on":""}" data-act="subs" data-id="${t.id}" aria-expanded="${expanded.has(t.id)}" aria-label="Підпункти">${ICON.list}</button><button class="mini-btn" data-act="editTask" data-id="${t.id}" aria-label="Редагувати">${ICON.edit}</button>`:""}<button class="mini-btn" data-act="delTask" data-id="${t.id}" aria-label="Видалити">${ICON.del}</button>`}
@@ -5120,7 +5306,7 @@ const sortOpen=l=>l.filter(t=>!t.done).sort((a,b)=>{const p=(a.pos??1e9)-(b.pos?
 
 /* --- home widgets --- */
 function wRing(){
-  const cy=cycle(), ts=cycleTasks(), P=progress(ts), done=P.d, total=P.n, left=total-done, pm=pctMode();
+  const cy=cycle(), P=modProgress(), done=P.d, total=P.n, left=total-done, pm=pctMode();
   const frac=pm?P.f:(total?done/total:0);
   let tf=null; if(cy.next&&cy.start){tf=clamp(diffDays(cy.t,cy.start)/Math.max(1,diffDays(cy.next,cy.start)),0,1)}
   const R=134,C=2*Math.PI*R,R2=158,C2=2*Math.PI*R2;
@@ -5144,7 +5330,7 @@ function wRing(){
         <circle class="ring-task" cx="170" cy="170" r="${R}" stroke-width="24" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-frac)}"/>
       </svg>
       <div class="ringcenter">
-        ${pm?`<div class="big">${Math.round(frac*100)}<small>%</small></div><div class="sub">виконано</div><div class="of">${left} з ${total} ${pl(total,"завдання","завдання","завдань")} ще відкриті</div>`
+        ${pm?`<div class="big">${Math.round(frac*100)}<small>%</small></div><div class="sub">виконано</div><div class="of">${left} з ${total} ${P.bn?"завдань і книг":pl(total,"завдання","завдання","завдань")} ще відкриті</div>`
         :`<div class="big">${left}</div><div class="sub">${pl(left,"завдання залишилось","завдання залишилось","завдань залишилось")}</div><div class="of">${done} з ${total} виконано</div>`}
         <div class="pace">${pace}</div>
       </div>
@@ -5155,7 +5341,7 @@ function wRing(){
 }
 function wCourses(){
   const cs=activeCourses();
-  const cards=cs.map(c=>{const ts=cycleTasks(c.id),R=ringData(ts),d=R.P.d,l=ts.length-d;
+  const cards=cs.map(c=>{const ts=cycleTasks(c.id),R=ringData(ts,c.id),d=R.P.d,l=R.P.n-d;
     return `<div class="cwrap" data-sid="${c.id}"><button class="cring" data-act="openCourse" data-id="${c.id}">${miniRing(R.f,CC(c.color),R.label)}<div style="min-width:0"><div class="nm">${esc(c.name)}</div><div class="st">${ts.length?(l?`${l} ${pl(l,"залишилось","залишилось","залишилось")}`:"готово"):"немає завдань"}</div></div></button><button type="button" class="dh dh-corner" aria-label="Перемістити курс «${esc(c.name)}» (стрілки)">${GRIP}</button></div>`}).join("");
   return `<div class="head"><h2>Курси</h2><span class="muted" style="font-size:.82rem">до модульного тижня</span></div>
     <div class="crings" data-sort="courses" data-axis="grid">${cards}<button class="cring add" data-act="addCourse">${ICON.plus.replace("<svg",'<svg width="18" height="18"')} Курс</button></div>`;
@@ -5258,7 +5444,7 @@ function coursesView(){
       ${arch.map(c=>`<div class="arow"><i class="dot" style="background:${CC(c.color)}"></i><b>${esc(c.name)}</b><button class="btn sm" data-act="unarchive" data-id="${c.id}">Повернути</button><button class="btn sm danger" data-act="delCourse" data-id="${c.id}">Видалити</button></div>`).join("")}</div>`:""}`;
 }
 function courseDetail(c){
-  const ts=S.tasks.filter(t=>t.courseId===c.id&&t.kind==="task"), cyc=cycleTasks(c.id), cd=cyc.filter(x=>x.done).length, CR=ringData(cyc);
+  const ts=S.tasks.filter(t=>t.courseId===c.id&&t.kind==="task"), cyc=cycleTasks(c.id), cd=cyc.filter(x=>x.done).length, CR=ringData(null,c.id), MP=modProgress(c.id);
   const ms=TSORT.some(x=>x[0]===S.settings.taskSort)?S.settings.taskSort:"manual", man=ms==="manual";
   const open=sortOpen(ts), done=ts.filter(t=>t.done).sort((a,b)=>b.doneAt-a.doneAt);
   const recs=S.tasks.filter(t=>t.courseId===c.id&&t.kind==="review"&&!t.done).sort((a,b)=>a.due<b.due?-1:1);
@@ -5266,17 +5452,22 @@ function courseDetail(c){
   return `<div class="coursehead glass" style="--c:${CC(c.color)}">
     <button class="iconbtn" data-act="closeCourse" aria-label="Усі курси">${ICON.back}</button>
     ${miniRing(CR.f,c.color,CR.label,72)}
-    <div class="info"><h1>${esc(c.name)}</h1><div class="muted" style="font-size:.84rem">${cd} з ${cyc.length} до модульного · бали ${gradeOf(c).got}/${gradeOf(c).total}${gradeOf(c).type?" · "+(gradeOf(c).type==="exam"?"екзамен":"залік"):""}</div></div>
+    <div class="info"><h1>${esc(c.name)}</h1><div class="muted" style="font-size:.84rem">${MP.d} з ${MP.n} до модульного${MP.bn?` (з них ${MP.bn} ${pl(MP.bn,"книга","книги","книг")})`:""} · бали ${gradeOf(c).got}/${gradeOf(c).total}${gradeOf(c).type?" · "+(gradeOf(c).type==="exam"?"екзамен":"залік"):""}</div></div>
     <button class="mini-btn" data-act="editCourse" data-id="${c.id}" aria-label="Редагувати курс">${ICON.edit}</button>
     <button class="btn sm" data-act="archive" data-id="${c.id}">${ICON.box}Архівувати</button>
   </div>
   <div class="cdpair">${gradeCard(c)}${courseBooksCard(c)}</div>
+  ${reqRow(c)}
   <div class="card glass taskcard" style="--c:${CC(c.color)}">
     <div class="head"><div class="thead"><h2>Завдання</h2><span class="tbadge">${open.length} ${pl(open.length,"відкрите","відкриті","відкритих")}</span></div>${open.length>1?`<label class="tsort"><span>Сортувати</span><select class="inp" data-tsort="1" aria-label="Сортування завдань">${TSORT.map(([k,l])=>`<option value="${k}" ${ms===k?"selected":""}>${l}</option>`).join("")}</select></label>`:""}</div>
     ${recs.length?`<div class="recallbox"><div class="ghead">Заплановані повторення · ${recs.length}</div>${recs.map(t=>taskRow(t,{tools:false})).join("")}</div>`:""}
-    <div class="tasklist" ${man?'data-sort="tasks"':""} data-course="${c.id}" data-axis="y">${open.length?sortTasks(open,ms).map(t=>taskRow(t,{nextMod:cycle().next,drag:man})).join(""):`<div class="empty">Відкритих завдань немає.</div>`}</div>
+    ${(()=>{const nx=cycle().next, mod=open.filter(t=>!nx||(t.due||nx)<=nx), lat=open.filter(t=>nx&&(t.due||nx)>nx);
+      return `<div class="tsec tsmod"><div class="tsech"><b>${nx?"До модуля":"Відкриті"}</b><span>${mod.length}</span>${nx?`<small>${fmtL(nx)}</small>`:""}</div>
+      <div class="tasklist" ${man?'data-sort="tasks"':""} data-course="${c.id}" data-axis="y">${mod.length?sortTasks(mod,ms).map(t=>taskRow(t,{nextMod:nx,drag:man})).join(""):`<div class="empty">${lat.length?"До модуля все зроблено.":"Відкритих завдань немає."}</div>`}</div></div>`;
+    })()}
     <form class="quick" data-form="quickc" data-course="${c.id}" style="margin:14px 0 4px"><label class="sr" for="qc-title">Нове завдання</label><input class="inp" id="qc-title" placeholder="Нове завдання… (Enter)" maxlength="140" autocomplete="off"><button class="btn sm primary">${ICON.plus}Додати</button><button type="button" class="btn sm ghost" data-act="addTask" data-course="${c.id}" title="Дедлайн, складність, підпункти">Детально</button></form>
     ${done.length?`<button class="disclose" data-act="toggleDone">${showDone?ICON.up:ICON.down}Виконано · ${done.length}</button>${showDone?`<div class="tasklist" style="margin-top:6px">${done.map(t=>taskRow(t)).join("")}</div>`:""}`:""}
+    ${(()=>{const nx=cycle().next, lat=nx?open.filter(t=>(t.due||nx)>nx):[]; return lat.length?`<div class="tsec tslater"><div class="tsech"><b>Пізніше</b><span>${lat.length}</span><small>після модульного тижня</small></div><div class="tasklist" ${man?'data-sort="tasks"':""} data-course="${c.id}" data-axis="y">${sortTasks(lat,ms).map(t=>taskRow(t,{drag:man})).join("")}</div></div>`:""})()}
   </div>`;
 }
 
@@ -5841,7 +6032,7 @@ function calToggle(d){
   const key=calMode==="mod"?"modules":null;
   if(key){const a=S.settings.modules; S.settings.modules=a.includes(d)?a.filter(x=>x!==d):[...a,d]}
   else{
-    if(S.tueDates.includes(d)){S.tueDates=S.tueDates.filter(x=>x!==d); const e=S.tue[d]; if(e&&e.s==="done") S.xp=Math.max(0,S.xp-XP.tue); delete S.tue[d]}
+    if(S.tueDates.includes(d)){S.tueDates=S.tueDates.filter(x=>x!==d); supDrop(d); delete S.tue[d]}
     else S.tueDates.push(d);
   }
   commit(); sheetSettings(true);
@@ -5861,7 +6052,7 @@ function wTue(){
     const fill=e.s==="done"&&prevDone; prevDone=e.s==="done";
     return `<li class="${d===focusD?"cur":""} ${fill?"fill":""}"><button class="tdot ${st} ${d===focusD?"now":""}" data-act="tueDot" data-d="${d}" aria-label="${fmtL(d)}${e.s==="done"?", виконано":e.s==="off"?", не було":isFut?", заплановано":", не позначено"}" title="${fmtL(d)}${e.note?" · "+esc(e.note):""}">${e.s==="done"?ICON.check:""}</button><span>${isToday?"сьогодні":fmtS(d)}</span></li>`}).join("");
   const le=last?S.tue[last]||{}:{};
-  return `<div class="head"><h2>${esc(name)}</h2><span class="muted" style="font-size:.85rem">виконано <b class="mono">${doneN}</b> з <span class="mono">${past.length-offN}</span></span></div>
+  return `<div class="head"><h2>${esc(name)}</h2><button class="btn sm ghost" data-act="nav" data-v="sup">Усі</button><span class="muted" style="font-size:.85rem">виконано <b class="mono">${doneN}</b> з <span class="mono">${past.length-offN}</span></span></div>
     <div class="tline"><ol>${dots}</ol></div>
     <div class="tact">
       ${last?`<b>Останнє: ${fmtS(last)}${last===t?" (сьогодні)":""}</b>${le.s==="done"?`<span class="chip good">виконано</span>`:le.s==="off"?`<span class="chip">не було</span>`:`<button class="btn sm primary" data-act="tue" data-d="${last}" data-s="done">${ICON.check}Позначити виконаним</button>`}`:`<b>Ще жодного не було</b>`}
@@ -5870,12 +6061,27 @@ function wTue(){
     </div>`;
 }
 function sheetTue(d){
-  const e=S.tue[d]||{}, fut=d>today();
-  openSheet(`<h2>${esc(S.settings.tueName)}</h2><div class="muted">${fmtL(d)}${fut?" · ще попереду":""}</div>
-  <div class="row" style="margin-top:14px"><button class="btn ${e.s==="done"?"primary":""}" data-act="tueSet" data-d="${d}" data-s="done" ${fut?"disabled":""}>${ICON.check}Виконано</button><button class="btn ${e.s==="off"?"primary":"ghost"}" data-act="tueSet" data-d="${d}" data-s="off">Не відбулося</button></div>
-  <form class="form" data-form="tueNote" data-d="${d}"><label class="field"><span>${fut?"Що підготувати":"Нотатка"}</span><textarea id="tue-note" rows="4">${esc(e.note||"")}</textarea></label>
-  <div class="row" style="justify-content:space-between"><button type="button" class="btn sm danger" data-act="tueRemove" data-d="${d}">Прибрати дату</button><div class="row"><button type="button" class="btn ghost" data-act="closeSheet">Закрити</button><button class="btn primary">Зберегти</button></div></div></form>`);
+  ensureSup(); const t=supTask(d), e=S.tue[d]||{}, n=diffDays(d,today()), off=e.s==="off", cs=activeCourses(), t0=today();
+  const rel=n===0?"сьогодні":n===1?"завтра":n>0?`через ${n} ${pl(n,"день","дні","днів")}`:`${-n} ${pl(-n,"день","дні","днів")} тому`;
+  openSheet(`<div class="supsheet tqsheet" data-mod="" data-d="${d}">
+    <div class="tq-top"><span class="tq-kicker">${esc(S.settings.tueName)}</span><button type="button" class="tq-close" data-act="closeSheet" aria-label="Закрити">×</button></div>
+    <div class="sup-when"><b>${fmtL(d)}</b><span>${rel}</span></div>
+    ${off||!t?`<div class="sup-off"><p>${off?"Позначено, що ця супервізія не відбулася.":"Спершу додай курс, щоб супервізія стала завданням."}</p>${off?`<button type="button" class="btn" data-act="tueSet" data-d="${d}" data-s="off">Повернути супервізію</button>`:""}</div>
+      <div class="tq-foot"><button type="button" class="btn sm danger" data-act="tueRemove" data-d="${d}">Прибрати дату</button><button type="button" class="btn ghost" data-act="closeSheet">Закрити</button></div>`
+    :`<label class="sr" for="sup-title">Назва</label><input id="sup-title" class="tq-title" maxlength="140" value="${esc(t.title)}">
+    <div class="tq-courses" role="radiogroup" aria-label="Курс">${cs.map(c=>`<label class="tq-course" style="--c:${CC(c.color)}"><input type="radio" name="sup-course" value="${c.id}" ${c.id===t.courseId?"checked":""}><span><i></i>${esc(c.name)}</span></label>`).join("")}</div>
+    <div class="tq-dates one"><div class="tq-tile tq-plan"><span class="tq-lbl">Коли готуюсь</span><b class="tq-big" data-for="t-plan"></b><input type="hidden" id="t-plan" value="${t.plan||""}">
+      <div class="tq-chips">${[["Сьогодні",t0],["Завтра",addDays(t0,1)],["За день до",addDays(d,-1)],["Без дня",""]].filter(([,v])=>!v||v<=d||v===t0).map(([l,v])=>`<button type="button" class="tq-chip" data-act="tqDate" data-f="t-plan" data-v="${v}">${l}</button>`).join("")}<button type="button" class="tq-chip pick" data-act="dpick" data-for="t-plan" data-ph="Інша дата">Інша дата</button></div></div></div>
+    <div class="tq-sec">Підготовка</div>
+    <div id="supSubs">${supSubsHTML(t)}</div>
+    <form class="sup-add" data-form="sub" data-id="${t.id}"><label class="sr" for="sub-${t.id}">Новий підпункт</label><input class="inp" id="sub-${t.id}" placeholder="Що підготувати…" maxlength="120" autocomplete="off"><button class="btn sm">Додати</button></form>
+    <label class="field"><span class="tq-sec">Нотатка</span><textarea id="tue-note" class="inp" rows="2" placeholder="Питання до супервізора, кейс, думки">${esc(e.note||"")}</textarea></label>
+    <div class="sup-acts"><button type="button" class="btn ${t.done?"":"primary"} sup-done" data-act="supDone" data-d="${d}">${ICON.check}${t.done?"Скасувати виконання":"Виконано"}</button>${t.done?"":startBtn("task",t)}<button type="button" class="btn ghost" data-act="tueSet" data-d="${d}" data-s="off">Не відбулося</button></div>
+    <div class="tq-foot"><button type="button" class="btn sm danger" data-act="tueRemove" data-d="${d}">Прибрати дату</button><div class="tq-btns"><button type="button" class="btn ghost" data-act="closeSheet">Закрити</button><button type="button" class="btn primary" data-act="supSave" data-d="${d}">Зберегти</button></div></div>`}
+  </div>`,true);
+  if(t&&!off) tqUpdate();
 }
+function supSubsHTML(t){const ss=subsOf(t); return ss.length?`<div class="sup-subs">${ss.map(x=>`<div class="sup-sub${x.done?" done":""}"><button type="button" class="sf-check${x.done?" on":""}" data-act="sub" data-id="${t.id}" data-s="${x.id}" aria-label="${x.done?"Зняти позначку":"Виконано"}: ${esc(x.t)}">${x.done?ICON.check:""}</button><span>${esc(x.t)}</span><button type="button" class="sf-del" data-act="delSub" data-id="${t.id}" data-s="${x.id}" aria-label="Видалити">${ICON.x}</button></div>`).join("")}</div>`:`<div class="reqempty">Розбий підготовку на кроки: прочитати, підготувати кейс, питання.</div>`}
 
 /* ---------- sheets ---------- */
 function openSheet(html,noFocus){document.getElementById("sheetRoot").innerHTML=`<div class="scrim" data-act="closeSheetBg"><div class="sheet" role="dialog" aria-modal="true">${html}</div></div>`;if(noFocus)return;const f=document.querySelector(".sheet input:not([type=hidden]),.sheet select,.sheet textarea");if(f)f.focus()}
@@ -5954,6 +6160,7 @@ function sheetBook(b){
     <div style="margin-top:16px"><div class="row" style="justify-content:space-between"><b>${pct}%</b><span class="mono muted">${b.page} / ${b.total}</span></div><div class="bar"><i style="width:${pct}%;--c:var(--sun)"></i></div></div>
     ${b.loan&&!b.loan.returned?`<div class="loanbox"><div><b>Позичена</b> · ${esc(b.loan.lib||"")}</div><div class="row" style="gap:6px;margin-top:6px">${loanChip(b)}<span class="grow" style="flex:1"></span><button class="btn sm primary" data-act="returnBook" data-id="${b.id}">Повернув</button></div></div>`:b.loan&&b.loan.returned?`<div class="muted" style="margin-top:12px;font-size:.85rem">Повернуто ${fmtS(d2s(new Date(b.loan.returned)))} · ${esc(b.loan.lib||"")}</div>`:""}
     <form class="pagelog" data-form="pages" data-id="${b.id}" data-close="1" style="margin-top:12px;font-size:.9rem"><label for="bp-${b.id}">Я на сторінці</label><input id="bp-${b.id}" type="number" inputmode="numeric" min="0" max="${b.total}" value="${b.page}"><button class="btn sm primary">Зберегти</button></form>
+    ${b.courseId?`<button type="button" class="reqtog${b.req?" on":""}" data-act="reqToggle" data-id="${b.id}" aria-pressed="${!!b.req}"><i aria-hidden="true">${b.req?ICON.check:""}</i><span><b>Обов'язкова до модуля</b><small>прогрес книги рахується у відсоток курсу до модульного тижня</small></span></button>`:""}
     <div class="field" style="margin-top:14px"><span>Статус</span><div class="seg" role="group" aria-label="Статус">${[["shelf","На полиці"],["reading","Читаю"],["done","Прочитано"]].map(([k,l])=>`<button data-act="bstatus" data-id="${b.id}" data-v="${k}" aria-pressed="${b.status===k}">${l}</button>`).join("")}</div></div>
     <div class="row" style="justify-content:space-between;margin-top:18px"><button class="btn sm danger" data-act="delBook" data-id="${b.id}">${ICON.del}Прибрати</button><div class="row"><button class="btn sm" data-act="editBook" data-id="${b.id}">${ICON.edit}Редагувати</button><button class="btn sm ghost" data-act="closeSheet">Закрити</button></div></div>`);
 }
@@ -6059,6 +6266,10 @@ document.addEventListener("click",e=>{
     case "nav": view=b.dataset.v; openCourse=null; libZoom=null; showDone=false; try{history.replaceState(null,"","#"+view)}catch(_){} render(); window.scrollTo(0,0); break;
     case "settings": sheetSettings(); break;
     case "locoPet": lcOpen(2); break;
+    case "supDone": {const d=b.dataset.d, inSheet=!!b.closest(".supsheet"); setTue(d,"done"); if(inSheet) sheetTue(d); break}
+    case "supAdd": {const v=(document.getElementById("sup-new")||{}).value; if(!v){toast("Обери дату");break} if(!S.tueDates.includes(v)) S.tueDates.push(v); if(S.tue[v]&&S.tue[v].s==="off") S.tue[v].s=""; commit(); toast(`Супервізія: ${fmtL(v)}`); break}
+    case "supSave": {const d=b.dataset.d, t=supTask(d), e=S.tue[d]||(S.tue[d]={s:"",note:""}); if(t){const ti=(document.getElementById("sup-title")||{}).value; if(ti&&ti.trim()) t.title=ti.trim(); const c=document.querySelector('input[name="sup-course"]:checked'); if(c) t.courseId=c.value; t.plan=(document.getElementById("t-plan")||{}).value||""} e.note=(document.getElementById("tue-note")||{}).value||""; closeSheet(); commit(); toast("Збережено"); break}
+    case "reqToggle": {const bk=S.books.find(x=>x.id===id); if(bk){bk.req=!bk.req; commit(); if(document.querySelector(".sheet .reqtog")) sheetBook(bk); toast(bk.req?`«${bk.title}» обов'язкова до модуля`:`«${bk.title}» більше не обов'язкова`)} break}
     case "tqDate": {const inp=document.getElementById(b.dataset.f); if(inp){inp.value=b.dataset.v; tqUpdate()} break}
     case "helpMenu": helpMenu(); break;
     case "hintsShow": {closeHelp(); S.settings.hintsOn=true; S.settings.hintsOff=[]; commit({norender:true}); renderHints(); toast("Підказки увімкнено"); break}
@@ -6165,7 +6376,7 @@ document.addEventListener("click",e=>{
     case "calMode": calMode=b.dataset.v; sheetSettings(true); break;
     case "calNav": {const d=parse(calMonth); d.setMonth(d.getMonth()+(+b.dataset.v)); calMonth=d2s(d).slice(0,8)+"01"; sheetSettings(true); break}
     case "calDay": calToggle(b.dataset.d); break;
-    case "tueRemove": {const d=b.dataset.d; snap(); S.tueDates=S.tueDates.filter(x=>x!==d); if(S.tue[d]&&S.tue[d].s==="done") S.xp=Math.max(0,S.xp-XP.tue); delete S.tue[d]; closeSheet(); commit(); undoToast("Дату прибрано"); break}
+    case "tueRemove": {const d=b.dataset.d; snap(); S.tueDates=S.tueDates.filter(x=>x!==d); supDrop(d); delete S.tue[d]; closeSheet(); commit(); undoToast("Дату прибрано"); break}
     case "addRoom": sheetRoom(); break;
     case "editRoom": sheetRoom(S.rooms.find(r=>r.id===id)); break;
     case "delRoom": {const r=S.rooms.find(x=>x.id===id); snap(); S.rooms=S.rooms.filter(x=>x.id!==id); S.courses.forEach(c=>{if(c.room===id)c.room="main"}); libRoom="main"; commit(); undoToast(`Кімнату «${r.name}» видалено, полиці в Головній залі`); break}
@@ -6223,7 +6434,7 @@ document.addEventListener("submit",e=>{
       break}
     case "sub":{
       const t=S.tasks.find(x=>x.id===f.dataset.id), inp=f.querySelector("input"), txt=inp.value.trim(); if(!t||!txt) return;
-      t.subs=[...subsOf(t),{id:uid(),t:txt,done:false}]; if(t.done) reopen(t);
+      t.subs=[...subsOf(t),{id:uid(),t:txt,done:false}]; inp.value=""; if(t.done) reopen(t);
       commit(); const el=document.getElementById("sub-"+t.id); if(el) el.focus(); break}
     case "event":{const d=evFormDraft(); if(!d.title.trim()) return; d.title=d.title.trim(); S.events=S.events||[];
       if(d.id){const ev=S.events.find(x=>x.id===d.id); if(ev) Object.assign(ev,d)} else {d.id=uid(); d.createdAt=Date.now(); S.events.push(d)}
