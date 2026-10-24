@@ -3203,6 +3203,29 @@ html{scrollbar-gutter:stable}
 .sup-addc{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .sup-tl{margin-top:4px}
 
+.tdinfo .tdbar{display:none!important}
+.calleg{display:none!important}
+/* course card points */
+.cpts{display:inline-flex;align-items:baseline;gap:8px;padding:6px 14px;border-radius:14px;background:rgba(255,255,255,.16)}
+.cpts b{font-family:var(--f-display);font-size:1.9rem;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.cpts small{font-size:.85rem;font-weight:800;opacity:.85}
+:root[data-skin="retro"] .cpts{background:var(--rx-cream);border:2px solid var(--hard);box-shadow:3px 3px 0 var(--hard);color:var(--rx-ink)}
+:root[data-skin="solar"] .cpts{background:rgba(255,255,255,.55)}
+:root[data-skin="loft"] .cpts{background:rgba(0,0,0,.18)}
+/* library: two shelves per row, tinted */
+.shelfgrid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+@media (max-width:760px){.shelfgrid{grid-template-columns:minmax(0,1fr)!important}}
+.shelfgrid > .shelfghost{grid-column:1/-1}
+.shelfcard{background-color:color-mix(in srgb,var(--sc) 12%,var(--card))!important;background-image:linear-gradient(color-mix(in srgb,var(--sc) 10%,transparent),transparent)!important}
+:root[data-skin="solar"] .shelfcard{background-color:color-mix(in srgb,var(--sc) 18%,var(--glass))!important}
+:root[data-skin="loft"] .shelfcard{background-color:color-mix(in srgb,var(--sc) 14%,var(--card))!important}
+/* supervisions: only the next one stands out */
+.sup-n:not(.nx) .sup-c{opacity:.55;background:transparent!important;box-shadow:none!important}
+.sup-n:not(.nx) .sup-dot{opacity:.65}
+.sup-n:not(.nx) .startbtn{opacity:.7}
+.sup-n.nx .sup-c{opacity:1}
+.sup-n:not(.nx):hover .sup-c{opacity:.85}
+
 .savebtn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border:0;border-radius:12px;background:linear-gradient(180deg,#F3C766,#D99A2B);color:#241606;font:inherit;font-weight:800;font-size:.95rem;cursor:pointer;box-shadow:0 8px 18px -8px rgba(217,154,43,.8),inset 0 1px 0 rgba(255,255,255,.45);transition:transform .15s,filter .15s}
 .savebtn svg{width:18px;height:18px}
 .savebtn:hover{filter:brightness(1.07);transform:translateY(-1px)}
@@ -4482,7 +4505,7 @@ function courseCard(c,i){
     <span class="cname">${esc(c.name)}</span>
     <span class="cbig">${all.length?`<b>${pct}<em>%</em></b><small>курсу<br>виконано</small>`:`<b>0<em>%</em></b><small>завдань<br>ще немає</small>`}</span>
     <span class="cbar"><i style="width:${pct}%"></i></span>
-    <span class="cfoot"><span class="pct">${done} з ${all.length} ${pl(all.length,"завдання","завдань","завдань")}</span>${next?`<span class="nxt">далі: ${esc(next.title)}</span>`:all.length?"<span>усе зроблено</span>":""}${next&&next.due?`<span class="chip">${fmtS(next.due)}</span>`:""}${G.parts.length||G.type?`<span class="chip">${fmtN(G.got)}/${G.total}${G.type?" · "+(G.type==="exam"?"екзамен":"залік"):""}</span>`:""}${c.example?'<span class="chip">приклад</span>':""}</span>
+    <span class="cfoot">${G.parts.length||G.type||G.got?`<span class="cpts"><b>${fmtN(G.got)}</b><small>/ ${G.total} балів${G.type?" · "+(G.type==="exam"?"екзамен":"залік"):""}</small></span>`:""}${c.example?'<span class="chip">приклад</span>':""}</span>
   </button><button type="button" class="dh dh-corner" aria-label="Перемістити курс «${esc(c.name)}» (стрілки)">${GRIP}</button></div>`;
 }
 
@@ -4846,7 +4869,7 @@ document.addEventListener("click",e=>{if(document.getElementById("fabmenu")&&!e.
 document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest("#fabmenu [data-act]")) setTimeout(closeFab,0)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("fabmenu")){closeFab(); const f=document.getElementById("fab"); if(f) f.focus()}});
 
-const LOCUS_BUILD="1.0.37";
+const LOCUS_BUILD="1.0.38";
 
 /* ---------- alive: entrance on view change, ring fill, count-up, completion burst ---------- */
 let aliveKey=null, aliveFirst=true;
@@ -5296,7 +5319,7 @@ function supView(){
       </div>
       <div class="sup-tools">${t&&st!=="done"&&st!=="off"?startBtn("task",t):""}<button type="button" class="mini-btn" data-act="tueDot" data-d="${d}" aria-label="Редагувати супервізію" title="Редагувати">${ICON.edit}</button></div>
     </div>`}).join("")+(nowPut?"":`<div class="sup-now"><span>сьогодні · ${fmtS(t0)}</span></div>`);
-  return `<div class="pagehead glass suphead"><h1>${esc(name)}</h1></div>
+  return `<div class="pagehead glass suphead"><h1>Супервізії</h1></div>
     </div>
     <div class="sup-tl">${nodes}${(()=>{const last=dates[dates.length-1], sug=last&&last>=t0?addDays(last,7):addDays(t0,7);
       return `<div class="sup-n sup-addn"><div class="sup-d"></div><span class="sup-dot add" aria-hidden="true">${ICON.plus}</span>
@@ -6006,7 +6029,7 @@ function shelfCard(sh,i,opts={}){
   const slots=shown.map(b=>`<span class="sslot">${spine(b)}</span>`).join("")
     +(more?`<span class="sslot more"><button type="button" data-act="zoom" data-id="${sh.id}" aria-label="Ще ${more} ${pl(more,"книга","книги","книг")} на полиці «${esc(sh.name)}»">+${more}</button></span>`:"")
     +(!books.length?`<span class="sslot emptyslot">${PLANTS[i%2]}<span>Порожня полиця</span></span>`:(books.length<30?`<span class="sslot">${PLANTS[(i+1)%2]}</span>`:""));
-  return `<article class="shelfcard glass${opts.dusty?" dusty":""}${sh.id===appearId?" appear":""}" ${opts.drag?`data-sid="${sh.id}"`:""} data-case="${sh.id}" aria-label="Полиця «${esc(sh.name)}»">
+  return `<article style="--sc:${CC(sh.color)||"transparent"}" class="shelfcard glass${opts.dusty?" dusty":""}${sh.id===appearId?" appear":""}" ${opts.drag?`data-sid="${sh.id}"`:""} data-case="${sh.id}" aria-label="Полиця «${esc(sh.name)}»">
     <header class="shead">${opts.drag?`<button type="button" class="dh dh-shelf" aria-label="Перемістити полицю «${esc(sh.name)}» (стрілки)" title="Тягни, щоб переставити">${GRIP}</button>`:""}
       ${sh.color?`<i class="dot" style="background:${CC(sh.color)}"></i>`:""}<h3 title="${esc(sh.name)}">${esc(sh.name)}</h3>
       ${opts.dusty?'<span class="chip">архів</span>':""}
