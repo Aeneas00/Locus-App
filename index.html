@@ -3668,6 +3668,26 @@ span.tdlbtn.has{cursor:default}
 .sup-n:not(.nx) .sup-dot{opacity:1!important}
 .sup-n:not(.nx):not(.st-done) .sup-dot{border-color:color-mix(in srgb,var(--ink-2) 50%,transparent)}
 
+/* ===== 1.0.50 finished courses step back ===== */
+.cwrap.cdone{opacity:.5;filter:saturate(.45);transition:opacity .25s,filter .25s}
+.cwrap.cdone:hover,.cwrap.cdone:focus-within{opacity:.9;filter:none}
+.ravatar.rdone{opacity:.45;filter:saturate(.4)}
+.ravatar.rdone:hover{opacity:1;filter:none}
+
+/* ===== 1.0.51 module weeks list, supervision ring in calendar ===== */
+.mruns{display:flex;flex-direction:column;gap:6px;margin:0 0 14px;max-height:240px;overflow:auto}
+.mruns.empty{color:var(--ink-2);font-size:.88rem}
+.mrun{display:flex;align-items:center;gap:10px;padding:6px 8px 6px 12px;border-radius:12px;background:var(--glass-2)}
+.mrun i{width:12px;height:12px;border-radius:4px;flex:none}
+.mrun-d{border:0;background:none;font:inherit;font-weight:800;color:var(--ink);cursor:pointer;padding:0;text-align:left}
+.mrun small{flex:1;color:var(--ink-2);font-size:.78rem;font-weight:700}
+.mrun.nx small{color:var(--accent)}
+.mrun.past{opacity:.5}
+.mrun.cur{box-shadow:inset 0 0 0 2px var(--accent)}
+:root[data-skin="retro"] .mrun{border:2px solid var(--hard);background:var(--card)}
+.mrun-new{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-2);margin:4px 0 8px}
+#view .kday.supday{outline:4px solid var(--supc)!important;outline-offset:-4px}
+
 .savebtn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border:0;border-radius:12px;background:linear-gradient(180deg,#F3C766,#D99A2B);color:#241606;font:inherit;font-weight:800;font-size:.95rem;cursor:pointer;box-shadow:0 8px 18px -8px rgba(217,154,43,.8),inset 0 1px 0 rgba(255,255,255,.45);transition:transform .15s,filter .15s}
 .savebtn svg{width:18px;height:18px}
 .savebtn:hover{filter:brightness(1.07);transform:translateY(-1px)}
@@ -4526,7 +4546,7 @@ const subsOf=t=>Array.isArray(t.subs)?t.subs:[];
 function taskFrac(t){if(t.done)return 1;const ss=subsOf(t);if(!ss.length)return 0;return Math.min(.95,ss.filter(x=>x.done).length/ss.length)}
 function progress(ts){const d=ts.filter(x=>x.done).length;return {d,n:ts.length,f:ts.length?ts.reduce((a,t)=>a+taskFrac(t),0)/ts.length:0}}
 const pctMode=()=>S.settings.ringMode==="pct";
-function ringData(ts,cid){const P=cid!==undefined?modProgress(cid):progress(ts),pm=pctMode();return {P,f:pm?P.f:(P.n?P.d/P.n:0),label:pm?Math.round(P.f*100)+"%":`${P.d}/${P.n}`}}
+function ringData(ts,cid){const P=cid!==undefined?modProgress(cid):progress(ts),pm=pctMode();return {P,f:pm?P.f:(P.n?P.d/P.n:(P.full?1:0)),label:pm?Math.round(P.f*100)+"%":P.full?"✓":`${P.d}/${P.n}`}}
 let expanded=new Set();
 function toggleSub(tid,sid){
   const t=S.tasks.find(x=>x.id===tid); if(!t) return; const sb=subsOf(t).find(x=>x.id===sid); if(!sb) return;
@@ -4819,7 +4839,7 @@ const initials=n=>{const w=String(n).trim().split(/\s+/).filter(Boolean);return 
 function railHTML(){
   const cs=activeCourses(), t=today();
   const nextTue=[...new Set(S.tueDates)].sort().find(d=>d>=t), loans=activeLoans(), lw=loans.some(b=>loanState(b)==="over")?"over":loans.some(b=>loanState(b)==="soon")?"soon":"";
-  const ring=c=>{const R=ringData(null,c.id), C=2*Math.PI*21;return `<button class="ravatar" data-act="openCourse" data-id="${c.id}" title="${esc(c.name)} · ${R.label}" aria-label="${esc(c.name)}, ${R.label}"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="none" stroke="var(--track)" stroke-width="4"/><circle cx="24" cy="24" r="21" fill="none" stroke="${CC(c.color)}" stroke-width="4" stroke-linecap="round" stroke-dasharray="${(C*R.f).toFixed(1)} ${C.toFixed(1)}"/></svg><span style="background:${CC(c.color)}">${esc(initials(c.name))}</span></button>`};
+  const ring=c=>{const R=ringData(null,c.id), C=2*Math.PI*21;return `<button class="ravatar${R.P.any&&R.P.f>=1?" rdone":""}" data-act="openCourse" data-id="${c.id}" title="${esc(c.name)} · ${R.label}" aria-label="${esc(c.name)}, ${R.label}"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="none" stroke="var(--track)" stroke-width="4"/><circle cx="24" cy="24" r="21" fill="none" stroke="${CC(c.color)}" stroke-width="4" stroke-linecap="round" stroke-dasharray="${(C*R.f).toFixed(1)} ${C.toFixed(1)}"/></svg><span style="background:${CC(c.color)}">${esc(initials(c.name))}</span></button>`};
   const RB={rings:`<div class="rblock">${cs.map(ring).join("")}<button class="ravatar add" data-act="addCourse" title="Новий курс" aria-label="Новий курс">${ICON.plus}</button></div>`,mini:`<div class="rblock">
       <button class="rmini" data-act="settingsTue" title="${nextTue?esc(S.settings.tueName)+": "+fmtL(nextTue):"Позначити вівторкові завдання"}" aria-label="${nextTue?esc(S.settings.tueName)+", наступне "+fmtL(nextTue):"Календар вівторкових завдань"}"><small>${nextTue?parse(nextTue).toLocaleDateString("uk-UA",{month:"short"}).replace(".",""):"вт"}</small><b>${nextTue?parse(nextTue).getDate():"—"}</b></button>
       <button class="rmini ${lw}" data-act="nav" data-v="library" title="Позичені книги: ${loans.length}" aria-label="Позичені книги: ${loans.length}">${ICON.library}${loans.length?`<i>${loans.length}</i>`:""}</button>
@@ -4937,10 +4957,10 @@ const PROPS=[
 function courseCard(c,i){
   const all=S.tasks.filter(t=>t.courseId===c.id&&t.kind==="task"), done=all.filter(t=>t.done).length, P=modProgress(c.id), pct=Math.round(P.f*100);
   const open=sortOpen(all), next=open[0], G=gradeOf(c), pi=[...S.courses].sort((a,b)=>(a.createdAt||0)-(b.createdAt||0)||(a.id<b.id?-1:1)).findIndex(x=>x.id===c.id), prop=PROPS[(pi<0?hash(c.id):pi)%PROPS.length];
-  return `<div class="cwrap" data-sid="${c.id}"><button class="ccard2 glass" style="--c:${CC(c.color)}" data-act="openCourse" data-id="${c.id}" aria-label="${esc(c.name)}: виконано ${done} з ${all.length}">
+  return `<div class="cwrap${P.any&&pct>=100?" cdone":""}" data-sid="${c.id}"><button class="ccard2 glass" style="--c:${CC(c.color)}" data-act="openCourse" data-id="${c.id}" aria-label="${esc(c.name)}: виконано ${done} з ${all.length}">
     <span class="cprop" style="--r:${(hash(c.id)%15)-6}deg">${prop}</span>
     <span class="cname">${esc(c.name)}</span>
-    <span class="cbig">${P.n?`<b>${pct}<em>%</em></b><small>курсу<br>виконано</small>`:`<b>0<em>%</em></b><small>завдань<br>ще немає</small>`}</span>
+    <span class="cbig">${P.any?`<b>${pct}<em>%</em></b><small>курсу<br>виконано</small>`:`<b>0<em>%</em></b><small>завдань<br>ще немає</small>`}</span>
     <span class="cbar"><i style="width:${pct}%"></i></span>
     <span class="cfoot">${G.parts.length||G.type||G.got?`<span class="cpts"><b>${fmtN(G.got)}</b><small>/ ${G.total} балів${G.type?" · "+(G.type==="exam"?"екзамен":"залік"):""}</small></span>`:""}${c.example?'<span class="chip">приклад</span>':""}</span>
   </button><button type="button" class="dh dh-corner" aria-label="Перемістити курс «${esc(c.name)}» (стрілки)">${GRIP}</button></div>`;
@@ -5306,7 +5326,7 @@ document.addEventListener("click",e=>{if(document.getElementById("fabmenu")&&!e.
 document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest("#fabmenu [data-act]")) setTimeout(closeFab,0)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("fabmenu")){closeFab(); const f=document.getElementById("fab"); if(f) f.focus()}});
 
-const LOCUS_BUILD="1.0.49";
+const LOCUS_BUILD="1.0.51";
 
 /* ---------- alive: entrance on view change, ring fill, count-up, completion burst ---------- */
 let aliveKey=null, aliveFirst=true;
@@ -5697,8 +5717,9 @@ const bookFrac=b=>b.status==="done"?1:b.total?Math.min(.95,(b.page||0)/b.total):
 function modProgress(cid){
   const ts=cycleTasks(cid).filter(x=>x.kind==="task"), bs=reqBooks(cid);
   const d=ts.filter(x=>x.done).length+bs.filter(b=>b.status==="done").length, n=ts.length+bs.length;
-  const f=n?(ts.reduce((s,x)=>s+taskFrac(x),0)+bs.reduce((s,b)=>s+bookFrac(b),0))/n:0;
-  return {d,n,f,td:ts.filter(x=>x.done).length,tn:ts.length,bd:bs.filter(b=>b.status==="done").length,bn:bs.length};
+  const any=S.tasks.some(x=>x.kind==="task"&&(!cid||x.courseId===cid)&&course(x.courseId)&&!course(x.courseId).archived), full=!n&&any;
+  const f=n?(ts.reduce((s,x)=>s+taskFrac(x),0)+bs.reduce((s,b)=>s+bookFrac(b),0))/n:(full?1:0);
+  return {d,n,f,full,any,td:ts.filter(x=>x.done).length,tn:ts.length,bd:bs.filter(b=>b.status==="done").length,bn:bs.length};
 }
 function subBar(t,small){const ss=subsOf(t), d=ss.filter(x=>x.done).length, p=ss.length?Math.round(d/ss.length*100):0;
   return `<button type="button" class="tprog${small?" sm":""}" data-act="subs" data-id="${t.id}" aria-label="Підпункти: ${d} з ${ss.length}. Відкрити" title="Підпункти: ${d} з ${ss.length}"><i style="width:${p}%"></i></button>`}
@@ -5821,7 +5842,7 @@ function dayFill(d){if(inModule(d)) return modColor(); const e=evOn(d).find(x=>x
 function dayCell(d,opts={}){
   const t=today(), pl=plannedOn(d), du=dueOn(d), MAX=opts.week?99:3, items=evOn(d).map(evChip).concat(pl.map(planChip),du.map(dueChipCal)), more=items.length-MAX;
   const tue=S.tueDates.includes(d), mod=inModule(d), fill=dayFill(d), run=mod?modRun(d):null, first=run&&(d===run[0]||(parse(d).getDay()===1));
-  return `<div class="kday${opts.out?" out":""}${d===t?" today":""}${d<t?" past":""}${mod?" mod":""}${fill?" filled":""}" data-day="${d}"${fill?` style="--dayfill:${fill};--dayink:${inkFor(fill)}"`:""}>
+  return `<div class="kday${opts.out?" out":""}${d===t?" today":""}${d<t?" past":""}${mod?" mod":""}${fill?" filled":""}${tue?" supday":""}" data-day="${d}" style="${fill?`--dayfill:${fill};--dayink:${inkFor(fill)};`:""}--supc:${supColor()}">
     <button type="button" class="cdnum" data-act="calDay" data-v="${d}" aria-label="${fmtL(d)}: ${pl.length} заплановано">${opts.week?`<small>${WD[(parse(d).getDay()+6)%7]}</small>`:""}<b>${+d.slice(8)}</b>${opts.week?`<small>${MONTHS_N[+d.slice(5,7)-1].slice(0,3)}</small>`:""}</button>
     ${first?`<button type="button" class="ctag mod" data-act="modEdit" data-d="${d}" title="Модульний тиждень ${fmtS(run[0])} – ${fmtS(run[1])}">${opts.week?"Модульний тиждень":"Модуль"}</button>`:""}${tue?`<span class="ctag tue">Супервізія</span>`:""}
     <div class="citems">${items.slice(0,MAX).join("")}${more>0?`<button type="button" class="cmore" data-act="calDay" data-v="${d}">ще ${more}</button>`:""}</div>
@@ -5852,7 +5873,7 @@ function sheetEvent(e,date,type){
     return;
   }
   if(ty==="mod"){
-    openSheet(`<h2>Модульний тиждень</h2>${seg}<form class="form evform" data-form="event">${hid}<input type="hidden" id="ev-id" value="">
+    openSheet(`<h2>Модульні тижні</h2>${seg}${modRunsHTML(e.of)}<div class="mrun-new">${e.of?"Змінити":"Додати новий"}</div><form class="form evform" data-form="event">${hid}<input type="hidden" id="ev-id" value="">
       <div class="two"><label class="field"><span>Від</span>${dateField("ev-date",e.date)}</label><label class="field"><span>До</span>${dateField("ev-end",e.end)}</label></div>
       <div class="field"><span>Колір у календарі</span>${swPick("ev-mcolor",e.mcolor||modColor())}</div>
       ${foot(e.of?`<button type="button" class="btn sm danger" data-act="modDel" data-a="${e.of}" data-b="${e.ot}">Видалити</button>`:"")}</form>`, editing);
@@ -6132,6 +6153,16 @@ const supColor=()=>S.settings.supColor||"#5BBF73";
 function dueMigrate(){const nx=cycle().next; if(!nx) return; let ch=false; S.tasks.forEach(t=>{if(t.kind==="task"&&!t.done&&!t.due&&!t.noDue&&!t.sup){t.due=nx; ch=true}}); if(ch) setTimeout(()=>commit({norender:true}),0)}
 function dayFill(d){if(inModule(d)) return modColor(); if(S.tueDates.includes(d)) return supColor(); const e=evOn(d).find(x=>x.allDay); return e?tagOf(e.tag).color:""}
 document.addEventListener("change",e=>{const s=e.target; if(!s||s.id!=="tq-csel") return; const o=s.selectedOptions[0]; if(o) s.closest(".tq-csel").style.setProperty("--c",o.dataset.c)});
+
+
+/* ---------- 1.0.51: module weeks list ---------- */
+function modRuns(){const mods=[...new Set(S.settings.modules)].filter(Boolean).sort(), runs=[]; for(const d of mods){const r=runs[runs.length-1]; if(r&&addDays(r[1],1)===d) r[1]=d; else runs.push([d,d])} return runs}
+function modRunsHTML(cur){
+  const t=today(), cy=cycle(), runs=modRuns(), shown=runs.filter(r=>r[1]>=addDays(t,-60));
+  if(!shown.length) return `<div class="mruns empty">Ще немає жодного модульного тижня.</div>`;
+  return `<div class="mruns">${shown.map(r=>{const st=r[0]<=t&&t<=r[1]?"зараз":r[0]===cy.next?"наступний":r[1]<t?"минув":`через ${diffDays(r[0],t)} ${pl(diffDays(r[0],t),"день","дні","днів")}`;
+    return `<div class="mrun${r[1]<t?" past":""}${r[0]===cur?" cur":""}${r[0]===cy.next?" nx":""}"><i style="background:${modColor()}"></i><button type="button" class="mrun-d" data-act="modEdit" data-d="${r[0]}">${fmtS(r[0])}${r[1]!==r[0]?" – "+fmtS(r[1]):""}</button><small>${st}</small><button type="button" class="mini-btn" data-act="modEdit" data-d="${r[0]}" aria-label="Змінити">${ICON.edit}</button><button type="button" class="mini-btn xbtn" data-act="modDel" data-a="${r[0]}" data-b="${r[1]}" aria-label="Видалити модульний тиждень ${fmtS(r[0])}">${ICON.x}</button></div>`}).join("")}</div>`;
+}
 
 /* ---------- views ---------- */
 let view="home", openCourse=null, editing=false, showDone=false, showLater=false, libRoom="main", libQ="";
@@ -7296,7 +7327,7 @@ document.addEventListener("click",e=>{
     case "unzoom": libZoom=null; render(); break;
     case "settingsMod": case "modNew": sheetEvent(null,null,"mod"); break;
     case "modEdit": {const r=modRun(b.dataset.d); if(r){evDraft={type:"mod",date:r[0],end:r[1],of:r[0],ot:r[1]}; sheetEvent(evDraft)} break}
-    case "modDel": {snap(); const a=b.dataset.a,z=b.dataset.b; S.settings.modules=S.settings.modules.filter(x=>x<a||x>z); closeSheet(); commit(); undoToast("Модульний тиждень видалено"); break}
+    case "modDel": {snap(); const a=b.dataset.a,z=b.dataset.b; S.settings.modules=S.settings.modules.filter(x=>x<a||x>z); commit(); sheetEvent(null,null,"mod"); undoToast("Модульний тиждень видалено"); break}
     case "swPick": {const inp=document.getElementById(b.dataset.for); if(inp){inp.value=b.dataset.v; b.parentElement.querySelectorAll(".swb").forEach(x=>{x.classList.toggle("on",x===b); x.setAttribute("aria-pressed",String(x===b))})} break}
     case "tagColor": {const t=S.tags.find(x=>x.id===id); if(t){t.color=b.dataset.v; commit({norender:true}); render(); tagRefresh()} break}
     case "saveDot": {if(ref){clearTimeout(timer); dirty=true; flush()} toast("Дані збережено"); break}
