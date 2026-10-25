@@ -3304,6 +3304,253 @@ html{scrollbar-gutter:stable}
 :root[data-skin="retro"] .mrow{background:var(--card);border:2px solid var(--hard)}
 :root[data-skin="retro"] .mtog{border:2px solid var(--hard)}
 
+/* ===== 1.0.41 mobile nav: all tabs ===== */
+@media (max-width:760px){
+  #tabsBottom .tab[data-v]{display:flex!important}
+  #tabsBottom{overflow-x:auto;scrollbar-width:none;justify-content:flex-start!important;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+  #tabsBottom::-webkit-scrollbar{display:none}
+  #tabsBottom .tab{flex:1 0 auto!important;min-width:60px;padding:6px 6px!important}
+  #tabsBottom .tab span{overflow:visible!important;text-overflow:clip!important;max-width:none!important}
+}
+/* ===== task rows: one equator ===== */
+.task{align-items:center!important}
+.task > *{align-self:center!important}
+.task > .subs{align-self:stretch!important}
+.task > .tdates{display:flex;align-items:center;gap:8px;flex:none;margin:0}
+.tdates > .tplan,.tdates > .tdl{width:120px;flex:none;display:flex;align-items:center;justify-content:flex-start;margin:0!important;min-width:0;padding:0}
+.tdates .tpbtn.has,.tdates .tdlbtn.has{width:100%;height:36px;box-sizing:border-box;display:flex!important;flex-direction:row!important;align-items:center;justify-content:flex-start;gap:7px;padding:0 11px!important;border-radius:11px;border:1.5px solid var(--line);background:rgba(255,255,255,.62);color:var(--ink);font:inherit;cursor:pointer}
+.tdates .tpbtn.has b,.tdates .tdlbtn.has b{font-size:.9rem;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:inherit}
+.tdates svg{width:16px;height:16px;flex:none}
+.tdates .tplan.add .tpbtn,.tdates .tdlbtn:not(.has){width:36px;height:36px;padding:0;display:grid;place-items:center;border:1.5px dashed var(--line);border-radius:11px;background:none;color:var(--ink-2);cursor:pointer}
+.tdates .tdlbtn:not(.has){border-color:color-mix(in srgb,var(--warn) 75%,transparent);color:var(--warn)}
+.tdates .tdlbtn:not(.has):hover{background:var(--warn-soft)}
+span.tdlbtn.has{cursor:default}
+.tdl{--flc:transparent}
+.tdl.uy{--flc:var(--sun)}.tdl.uy .tdlbtn.has b{color:var(--xp)}
+.tdl.ur{--flc:var(--warn)}.tdl.ur .tdlbtn.has b{color:var(--warn)}
+.tdates .tplan.today .tpbtn.has b{color:var(--accent)}.tdates .tplan.late .tpbtn.has b{color:var(--warn)}
+:root[data-tone="dark"] .tdates .tpbtn.has,:root[data-tone="dark"] .tdates .tdlbtn.has{background:rgba(0,0,0,.24)}
+:root[data-skin="retro"] .tdates .tpbtn.has,:root[data-skin="retro"] .tdates .tdlbtn.has{border:2px solid var(--hard);background:#fff;box-shadow:2px 2px 0 var(--hard);border-radius:10px}
+:root[data-skin="retro"][data-tone="dark"] .tdates .tpbtn.has,:root[data-skin="retro"][data-tone="dark"] .tdates .tdlbtn.has{background:#2A1B3D}
+:root[data-skin="retro"] .tdates .tplan.add .tpbtn{border:2px dashed var(--hard)}
+:root[data-skin="retro"] .tdates .tdlbtn:not(.has){border:2px dashed var(--warn)}
+:root[data-skin="retro"] .tdl.uy{--flc:#FFC21A}:root[data-skin="retro"] .tdl.ur{--flc:#FF5A4E}
+:root[data-skin="retro"] .tdl.uy .tdlbtn.has b{color:#8A5A00}:root[data-skin="retro"] .tdl.ur .tdlbtn.has b{color:#C8231B}
+@container (max-width:640px){.task > .tdates{margin:6px 0 0 34px!important}.tdates > .tplan,.tdates > .tdl{width:auto}}
+@media (max-width:760px){
+  .task > .tdates{margin:6px 0 0 34px!important}
+  .tdates > .tplan,.tdates > .tdl{width:auto}
+  .tdates .tpbtn.has,.tdates .tdlbtn.has{width:auto;height:32px;padding:0 9px!important}
+  .tdates .tplan.add .tpbtn,.tdates .tdlbtn:not(.has){width:32px;height:32px}
+}
+/* ===== main blocks stand out ===== */
+#view .tdhero{position:relative}
+:root[data-skin="retro"] #view .tdhero{background:#FFD23F!important;background-image:none!important;border:3px solid var(--hard)!important;box-shadow:10px 10px 0 var(--hard)!important}
+:root[data-skin="retro"] #view .tdhero .label,:root[data-skin="retro"] #view .tdhero h1,:root[data-skin="retro"] #view .tdhero .tdring b,:root[data-skin="retro"] #view .tdhero .tdring small,:root[data-skin="retro"] #view .tdhero .tdring span{color:#111!important}
+:root[data-skin="retro"] #view .tdhero .tr-track{stroke:rgba(17,17,17,.15)!important}
+:root[data-skin="retro"] #view .tdhero .tr-fill{stroke:#FF4FA3!important}
+:root[data-skin="retro"] #view .tdhero .tdring{background:#fff;border:3px solid var(--hard);border-radius:50%;box-shadow:4px 4px 0 var(--hard)}
+:root[data-skin="solar"] #view .tdhero,:root[data-skin="solar"] #view .herobig{background:linear-gradient(135deg,#34B074 0%,#1A8A55 55%,#0F6B3F 100%)!important;border:1px solid rgba(255,255,255,.4)!important;box-shadow:0 28px 54px -24px rgba(15,107,63,.8),inset 0 1px 0 rgba(255,255,255,.35)!important;backdrop-filter:none!important}
+:root[data-skin="solar"] #view .tdhero .label,:root[data-skin="solar"] #view .tdhero h1,:root[data-skin="solar"] #view .tdhero .tdring b,:root[data-skin="solar"] #view .tdhero .tdring small,:root[data-skin="solar"] #view .tdhero .tdring span,
+:root[data-skin="solar"] #view .herobig .htitle,:root[data-skin="solar"] #view .herobig .upnext > .label{color:#fff!important}
+:root[data-skin="solar"] #view .tdhero .tr-track{stroke:rgba(255,255,255,.22)!important}
+:root[data-skin="solar"] #view .tdhero .tr-fill{stroke:#F3C766!important}
+:root[data-skin="solar"] #view .herobig .hchip{background:rgba(255,255,255,.18)!important;color:#fff!important;border-color:rgba(255,255,255,.5)!important}
+:root[data-skin="solar"] #view .herobig .upcard{background:rgba(255,255,255,.94)!important}
+:root[data-skin="loft"] #view .tdhero,:root[data-skin="loft"] #view .herobig{background:linear-gradient(135deg,#3A5845 0%,#2A4033 55%,#1F3027 100%)!important;border:1.5px solid #C9A04E!important;box-shadow:0 28px 54px -26px rgba(20,30,24,.85)!important;backdrop-filter:none!important}
+:root[data-skin="loft"] #view .tdhero .label,:root[data-skin="loft"] #view .tdhero h1,:root[data-skin="loft"] #view .tdhero .tdring b,:root[data-skin="loft"] #view .tdhero .tdring small,:root[data-skin="loft"] #view .tdhero .tdring span,
+:root[data-skin="loft"] #view .herobig .htitle,:root[data-skin="loft"] #view .herobig .upnext > .label{color:#F4EBDD!important}
+:root[data-skin="loft"] #view .tdhero .tr-track{stroke:rgba(244,235,221,.18)!important}
+:root[data-skin="loft"] #view .tdhero .tr-fill{stroke:#E0B75E!important}
+:root[data-skin="loft"] #view .herobig .hchip{background:rgba(244,235,221,.12)!important;color:#F4EBDD!important;border-color:rgba(224,183,94,.6)!important}
+:root[data-skin="solar"] #view .s-mission{box-shadow:0 28px 54px -24px rgba(176,122,18,.55),0 0 0 2px rgba(240,166,42,.55)!important}
+/* ===== hero info ===== */
+.hinfo{display:flex;flex-wrap:wrap;gap:8px}
+.hstat{display:flex;flex-direction:column;gap:2px;padding:8px 12px;border-radius:14px;background:rgba(255,255,255,.55);min-width:76px}
+.hstat b{font-size:1.12rem;font-weight:800;line-height:1.1;white-space:nowrap}
+.hstat small{font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;opacity:.72}
+.htip{display:flex;gap:8px;align-items:flex-start;margin:0;font-size:.9rem;font-weight:600;line-height:1.35;max-width:46ch}
+.htip svg{flex:none;width:18px;height:18px;margin-top:1px}
+:root[data-skin="retro"] .hstat{background:#fff;border:2px solid var(--hard);box-shadow:3px 3px 0 var(--hard);border-radius:10px;color:#111}
+:root[data-skin="retro"] .htip{color:#111}
+:root[data-skin="solar"] #view .herobig .hstat{background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.3)}
+:root[data-skin="solar"] #view .herobig .htip{color:#fff}
+:root[data-skin="loft"] #view .herobig .hstat{background:rgba(244,235,221,.1);color:#F4EBDD;border:1px solid rgba(224,183,94,.35)}
+:root[data-skin="loft"] #view .herobig .htip{color:#F4EBDD}
+/* ===== calendar: all-day fill, module weeks ===== */
+.kday.filled{background:color-mix(in srgb,var(--dayfill) 42%,var(--glass-2))!important}
+:root[data-skin="retro"] .kday.filled{background:color-mix(in srgb,var(--dayfill) 62%,#fff)!important}
+:root[data-tone="dark"] .kday.filled,:root[data-skin="retro"][data-tone="dark"] .kday.filled{background:color-mix(in srgb,var(--dayfill) 45%,#1b1b22)!important}
+.kday.filled.today{box-shadow:inset 0 0 0 3px var(--ink)!important}
+.kday.filled.past{opacity:.75}
+.ctag.mod{background:var(--dayfill,var(--sun))!important;color:var(--dayink,#111)!important;border:0;cursor:pointer;font-family:inherit;box-shadow:0 0 0 1.5px color-mix(in srgb,var(--ink) 25%,transparent)}
+:root[data-skin="retro"] .ctag.mod{box-shadow:0 0 0 2px var(--hard)}
+.dayview.filled .dvhead{background:color-mix(in srgb,var(--dayfill) 40%,transparent);border-radius:16px;padding:10px 12px}
+.evtype{margin:0 0 14px;width:100%}.evtype button{flex:1}
+.evall{display:flex;align-items:center;gap:10px;cursor:pointer;margin:2px 0 12px;width:max-content}
+.evall input{position:absolute;opacity:0;pointer-events:none}
+.evsw{width:42px;height:24px;border-radius:999px;background:var(--track);position:relative;flex:none;transition:background .2s}
+.evsw::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:left .2s}
+.evall input:checked + .evsw{background:var(--accent)}.evall input:checked + .evsw::after{left:21px}
+.evall input:focus-visible + .evsw{outline:2px solid var(--accent);outline-offset:2px}
+:root[data-skin="retro"] .evsw{border:2px solid var(--hard)}
+.evform:has(#ev-allday:checked) .ev-timef{display:none}
+.evform:not(:has(#ev-allday:checked)) .ev-endf{display:none}
+.evcolor{display:flex;align-items:center;gap:10px;margin:4px 0 14px;font-weight:700;cursor:pointer}
+.evcolor input{width:44px;height:32px;border:0;padding:0;background:none;cursor:pointer}
+.tagman{margin-top:10px}.tagman summary{cursor:pointer;font-size:.84rem;font-weight:700;color:var(--ink-2)}
+.tagman h3,.tagman > small{display:none}
+.tdates .tplan.add .tpbtn,.tdates .tdlbtn{margin:0!important}
+.tdates > .tplan,.tdates > .tdl{flex-direction:row!important;align-items:center!important;justify-content:flex-start!important}
+.task.longt > .tdates{margin-left:auto!important}
+.task:hover{translate:none!important}
+:root[data-skin="loft"] #view .herobig .btn.sun{background:#E0B75E!important;color:#1F3027!important;border-color:#E0B75E!important;opacity:1!important}
+@media (max-width:760px){.lvl .lcmini.tamamini{width:40px!important;height:46px!important;margin:-10px 4px -10px -10px!important}}
+
+/* ===== 1.0.42 date pills: small, quiet, two tints ===== */
+.tdates{gap:6px!important}
+.tdates > .tplan,.tdates > .tdl{width:96px!important}
+.tdates .tpbtn.has,.tdates .tdlbtn.has{height:28px!important;padding:0 8px!important;gap:5px!important;border-radius:8px!important;box-shadow:none!important;color:var(--ink-2)!important;border:1px solid transparent!important}
+.tdates .tpbtn.has{background:rgba(91,141,239,.11)!important;border-color:rgba(91,141,239,.24)!important}
+.tdates .tdlbtn.has{background:rgba(214,96,64,.09)!important;border-color:rgba(214,96,64,.22)!important}
+.tdates .tpbtn.has b,.tdates .tdlbtn.has b{font-size:.76rem!important;font-weight:700!important}
+.tdates svg{width:13px!important;height:13px!important}
+.tdates .tplan.add .tpbtn,.tdates .tdlbtn:not(.has){width:28px!important;height:28px!important;border-radius:8px!important;border-width:1px!important;opacity:.45;transition:opacity .15s}
+.tdates .tplan.add .tpbtn:hover,.tdates .tdlbtn:not(.has):hover,.tdates .tplan.add .tpbtn:focus-visible,.tdates .tdlbtn:not(.has):focus-visible{opacity:1}
+.tdates .tplan.today .tpbtn.has b{color:var(--accent)!important}.tdates .tplan.late .tpbtn.has b{color:var(--warn)!important}
+.tdl.ur .tdlbtn.has b{color:var(--warn)!important}.tdl.uy .tdlbtn.has b{color:var(--xp)!important}
+:root[data-skin="retro"] .tdl.ur .tdlbtn.has b{color:#C8231B!important}:root[data-skin="retro"] .tdl.uy .tdlbtn.has b{color:#8A5A00!important}
+:root[data-skin="retro"] .tdates .tpbtn.has{background:rgba(61,150,235,.13)!important;border-color:rgba(43,27,46,.22)!important}
+:root[data-skin="retro"] .tdates .tdlbtn.has{background:rgba(255,111,80,.12)!important;border-color:rgba(43,27,46,.22)!important}
+@media (max-width:760px){.tdates > .tplan,.tdates > .tdl{width:auto!important}}
+/* ===== missed: first and loud ===== */
+#view .tdmissed{margin-bottom:14px}
+:root:not([data-skin="retro"]) #view .tdmissed{background:color-mix(in srgb,var(--warn) 13%,var(--card))!important;border:2px solid var(--warn)!important;box-shadow:0 20px 44px -22px color-mix(in srgb,var(--warn) 75%,transparent)!important;margin-bottom:14px}
+:root[data-skin="retro"] #view .tdmissed{--bar:#FF5A4E;background-color:#FFDCD5!important;border:3px solid var(--hard)!important;box-shadow:8px 8px 0 #E5534B!important}
+:root[data-skin="retro"][data-tone="dark"] #view .tdmissed{background-color:#5E2630!important}
+:root[data-skin="retro"] .tdmissed.glass{--bar:#FF5A4E}
+.tdmissed h3{color:var(--warn)!important;display:flex;align-items:center;gap:8px}
+.tdmissed h3::before{content:"!";width:24px;height:24px;border-radius:50%;background:var(--warn);color:#fff;display:grid;place-items:center;font:900 .9rem/1 var(--f-body,system-ui)}
+.tdsr.msr{position:relative;padding-left:34px!important}
+.msbang{position:absolute;left:4px;top:50%;translate:0 -50%;width:20px;height:20px;border-radius:6px;background:var(--warn);color:#fff;font-weight:900;font-size:.78rem;display:grid;place-items:center}
+:root[data-skin="retro"] .msbang{background:#FF5A4E;border:2px solid var(--hard);color:#111}
+.mslate{color:var(--warn);font-weight:800}
+.task.missed{position:relative}
+.task.missed::after{content:"";position:absolute;left:-7px;top:7px;bottom:7px;width:5px;border-radius:3px;background:var(--warn)}
+:root[data-skin="retro"] .task.missed::after{background:#FF5A4E;box-shadow:0 0 0 1.5px var(--hard)}
+/* ===== colour presets ===== */
+.swp{display:flex;flex-wrap:wrap;gap:7px;align-items:center}
+.swb{width:28px;height:28px;border-radius:50%;border:2px solid rgba(0,0,0,.12);background:var(--sw);cursor:pointer;padding:0;transition:transform .12s}
+.swb:hover{transform:scale(1.1)}
+.swb.on{box-shadow:0 0 0 2px var(--card,#fff),0 0 0 4px var(--ink)}
+.swp.sm .swb{width:20px;height:20px}
+:root[data-skin="retro"] .swb{border:2px solid var(--hard)}
+.tagrow2{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:6px 0;border-bottom:1px solid var(--line)}
+.tagrow2 .inp{flex:1 1 140px;min-width:0}
+.tagnew{flex-wrap:wrap}
+/* ===== top bar: controls on the search line ===== */
+@media (min-width:760px){.topbar{align-items:flex-end!important}.topbar > .lvl,.topbar > .iconbtn,.topbar > .sync,.topbar > .btn{margin-bottom:3px}}
+/* ===== hero cards fit at mid widths ===== */
+@media (max-width:1180px){.herobig .upnext{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))!important}}
+/* ===== therapist office background ===== */
+.obg{position:fixed;inset:0;z-index:0;pointer-events:none;display:none}
+.obg svg{width:100%;height:100%;display:block}
+:root[data-skin="loft"] .obg{display:block}
+:root[data-skin="loft"] body{background:#E3D5BC!important}
+:root[data-skin="loft"] .frame{background:rgba(247,240,227,.74)!important;-webkit-backdrop-filter:blur(14px) saturate(1.08);backdrop-filter:blur(14px) saturate(1.08)}
+:root[data-skin="loft"][data-tone="dark"] .frame{background:rgba(29,24,19,.8)!important}
+:root[data-skin="loft"] .heroscene::before{background:linear-gradient(180deg,#EFE5D2,#DCCBAE)!important}
+.obnight{display:none}
+:root[data-tone="dark"] .obnight{display:inline}
+:root[data-tone="dark"] .obday{display:none}
+.hwin{position:absolute;left:5%;top:9%;width:38%;max-width:170px;height:auto;z-index:0}
+:root[data-tone="dark"] .hwin .hwsky{fill:#24304C}:root[data-tone="dark"] .hwin .hwsun{fill:#F4EBC8}
+.obclouds{animation:obdrift 70s ease-in-out infinite alternate}
+@keyframes obdrift{from{transform:translateX(-50px)}to{transform:translateX(60px)}}
+.obbirds{animation:obbird 38s linear infinite}
+@keyframes obbird{from{transform:translateX(-260px)}to{transform:translateX(420px)}}
+.obtree,.obsway,.obcurt{transform-box:view-box}
+.obtree{animation:obtree 6s ease-in-out infinite alternate}
+.obtree.t2{animation-duration:4.8s;animation-delay:-1.5s}.obtree.t3{animation-duration:7.2s;animation-delay:-3s}
+@keyframes obtree{from{transform:rotate(-1.8deg)}to{transform:rotate(1.8deg)}}
+.obsway{animation:obsway 7s ease-in-out infinite alternate}
+.obsway.s1{animation-duration:9s}.obsway.s2{animation-duration:6s;animation-delay:-2s}.obsway.s3{animation-duration:5s;animation-delay:-1s}.obsway.s4{animation-duration:8.5s;animation-delay:-3s}.obsway.s5{animation-duration:10s;animation-delay:-4s}
+@keyframes obsway{from{transform:rotate(-1.3deg)}to{transform:rotate(1.3deg)}}
+.obcurt{animation:obcurt 9s ease-in-out infinite alternate}.obcurt.r{animation-delay:-4.5s}
+@keyframes obcurt{from{transform:skewX(-.9deg)}to{transform:skewX(.9deg)}}
+.obstars circle{animation:obtw 2.8s ease-in-out infinite alternate}.obstars circle:nth-child(2n){animation-delay:-1.2s}.obstars circle:nth-child(3n){animation-delay:-2s}
+@keyframes obtw{from{opacity:.35}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.obclouds,.obbirds,.obtree,.obsway,.obcurt,.obstars circle{animation:none!important}}
+
+/* ===== 1.0.43 top bar: one line, controls on the right ===== */
+#sync,.topbar > .sync{display:none!important}
+@media (min-width:761px){
+  .topbar{display:grid!important;grid-template-columns:minmax(0,1fr);grid-auto-flow:column;grid-auto-columns:auto;column-gap:10px;row-gap:12px;align-items:center!important}
+  .topbar > .hellocol{display:contents}
+  .topbar .brandrow{display:none}
+  .topbar .hello{grid-row:1;grid-column:1}
+  .topbar .gsearch{grid-row:2;grid-column:1;justify-self:start;width:100%;max-width:520px}
+  .topbar > :not(.hellocol){grid-row:2;margin:0!important;align-self:center}
+  .topbar > .lvl{margin-right:6px!important}
+}
+.topbar #btnLayout{background:var(--sun-2)!important;color:var(--sun-ink,#24170A)!important;border-color:transparent!important;box-shadow:0 4px 12px -4px color-mix(in srgb,var(--sun) 70%,transparent)!important}
+:root[data-skin="retro"] .topbar #btnLayout{background:#3DD9EB!important;color:#111!important;border:2px solid var(--hard)!important;box-shadow:3px 3px 0 var(--hard)!important}
+:root[data-skin="solar"] .topbar #btnLayout{background:#F3C766!important;color:#3A2A00!important}
+:root[data-skin="loft"] .topbar #btnLayout{background:#E0B75E!important;color:#1F3027!important}
+/* ===== flying Loco ===== */
+.lfly{position:fixed;left:0;top:0;width:50px;height:56px;z-index:90;pointer-events:none;display:none;will-change:transform;transform-origin:center}
+.lfly.on{display:block}
+.lfin{position:relative;width:100%;height:100%;pointer-events:auto;cursor:pointer}
+.lfbody{width:100%;height:100%;filter:drop-shadow(0 6px 8px rgba(0,0,0,.22))}
+.lfbody svg{width:100%;height:100%;display:block}
+.lfly.left .lfbody{transform:scaleX(-1)}
+.lfly.flying .lfbody{animation:lfbob .5s ease-in-out infinite alternate}
+@keyframes lfbob{from{translate:0 -2px}to{translate:0 3px}}
+.lfw{position:absolute;top:18px;width:16px;height:10px;border-radius:50%;background:#fff;border:1.5px solid rgba(0,0,0,.35);opacity:0;transition:opacity .2s}
+.lfw.l{left:-11px;transform-origin:right center}.lfw.r{right:-11px;transform-origin:left center}
+.lfly.flying .lfw,.lfly.wave .lfw{opacity:1}
+.lfly.flying .lfw.l{animation:lfwl .16s ease-in-out infinite alternate}.lfly.flying .lfw.r{animation:lfwr .16s ease-in-out infinite alternate}
+.lfly.wave .lfw.l{animation:lfwl .5s ease-in-out infinite alternate}.lfly.wave .lfw.r{animation:lfwr .5s ease-in-out infinite alternate}
+@keyframes lfwl{from{transform:rotate(25deg)}to{transform:rotate(-30deg)}}
+@keyframes lfwr{from{transform:rotate(-25deg)}to{transform:rotate(30deg)}}
+.lfly.wave .lfbody{animation:lfhop .7s ease-in-out infinite alternate}
+@keyframes lfhop{from{translate:0 0;rotate:-4deg}to{translate:0 -4px;rotate:4deg}}
+.lfly.peek .lfbody{animation:lfpeek 1.3s ease-in-out}
+@keyframes lfpeek{0%,100%{rotate:0deg}30%{rotate:-12deg;translate:0 4px}60%{rotate:10deg;translate:0 4px}}
+.lfsay{position:fixed;left:0;top:0;z-index:91;transform:translate(-50%,-100%) scale(.6);opacity:0;pointer-events:none;max-width:min(320px,80vw);padding:12px 16px;border-radius:18px;background:var(--card,#fff);color:var(--ink);font-weight:700;font-size:1rem;line-height:1.35;text-align:center;box-shadow:0 14px 34px -12px rgba(0,0,0,.35);transition:opacity .25s,transform .3s cubic-bezier(.3,1.6,.5,1)}
+.lfsay::after{content:"";position:absolute;left:50%;bottom:-8px;width:16px;height:16px;background:inherit;transform:translateX(-50%) rotate(45deg);border-radius:3px}
+.lfsay.on{opacity:1;transform:translate(-50%,-100%) scale(1)}
+.lfsay.small{padding:6px 11px;font-size:.84rem;border-radius:12px}
+:root[data-skin="retro"] .lfsay{background:#fff;color:#111;border:3px solid var(--hard);box-shadow:5px 5px 0 var(--hard);font-family:"Press Start 2P",monospace;font-size:.7rem;line-height:1.7}
+:root[data-skin="retro"] .lfsay.small{font-size:.6rem}
+:root[data-skin="retro"] .lfsay::after{border-right:3px solid var(--hard);border-bottom:3px solid var(--hard);bottom:-10px}
+:root[data-skin="loft"] .lfsay{font-family:var(--f-display);font-style:italic;border:1.5px solid #C9A04E}
+.lf-out .lvl .tamamini{visibility:hidden}
+.lf-peek{outline:2px dashed var(--sun)!important;outline-offset:4px;transition:outline-color .2s}
+@media (prefers-reduced-motion:reduce){.lfly,.lfsay{display:none!important}}
+
+/* ===== 1.0.44 round save button above "+" ===== */
+.savedot,#btnCloud.savebtn{position:fixed;z-index:92;right:calc(max(20px,env(safe-area-inset-right,0px)) + 8px);bottom:calc(max(22px,env(safe-area-inset-bottom,0px)) + 72px);width:44px!important;height:44px!important;padding:0!important;border-radius:50%!important;display:grid!important;place-items:center;border:0;cursor:pointer;box-shadow:0 8px 18px -8px rgba(0,0,0,.45);transition:opacity .2s,transform .2s,bottom .3s,background .3s}
+.savedot{background:linear-gradient(180deg,#9CCB7E,#5F9447);color:#0F2108}
+.savedot.busy{background:linear-gradient(180deg,#F3C766,#D99A2B);color:#241606}
+.savedot.busy svg,#btnCloud.savebtn.auto-busy svg{animation:sdpulse 1s ease-in-out infinite}
+@keyframes sdpulse{50%{opacity:.4;transform:scale(.88)}}
+.savedot svg,#btnCloud.savebtn svg{width:20px;height:20px}
+.savedot span,#btnCloud.savebtn span{display:block!important;position:absolute;right:54px;top:50%;transform:translateY(-50%);white-space:nowrap;padding:5px 10px;border-radius:10px;background:var(--toast,#2A2119);color:var(--toast-ink,#fff);font-size:.8rem;font-weight:700;opacity:0;pointer-events:none;transition:opacity .2s}
+.savedot:hover span,.savedot:focus-visible span,#btnCloud.savebtn:hover span,#btnCloud.savebtn:focus-visible span{opacity:1}
+.fab[aria-expanded="true"] ~ .savedot,.fab[aria-expanded="true"] ~ #btnCloud{opacity:0;pointer-events:none;transform:scale(.6)}
+:root[data-skin="retro"] .savedot,:root[data-skin="retro"] #btnCloud.savebtn{border:2.5px solid var(--hard);box-shadow:3px 3px 0 var(--hard)}
+@media (max-width:760px){
+  .savedot,#btnCloud.savebtn{bottom:calc(84px + env(safe-area-inset-bottom,0px) + 64px);right:calc(max(20px,env(safe-area-inset-right,0px)) + 7px);width:40px!important;height:40px!important}
+  body.tracking .savedot,body.tracking #btnCloud.savebtn{bottom:calc(150px + env(safe-area-inset-bottom,0px) + 64px)}
+}
+:root #btnCloud.savebtn.auto-ok,:root #btnCloud.savebtn.done{background:linear-gradient(180deg,#9CCB7E,#5F9447)!important;color:#0F2108!important}
+:root #btnCloud.savebtn.auto-busy,:root #btnCloud.savebtn.saving{background:linear-gradient(180deg,#F3C766,#D99A2B)!important;color:#241606!important}
+:root #btnCloud.savebtn.auto-bad,:root #btnCloud.savebtn.fail{background:linear-gradient(180deg,#E99A84,#B8503B)!important;color:#fff!important}
+.setlogout{margin-top:auto!important;display:flex!important;align-items:center;gap:8px;color:var(--warn)!important}
+.setlogout svg{width:18px;height:18px}
+@media (max-width:760px){.setlogout{margin:0 0 0 auto!important}}
+
 .savebtn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border:0;border-radius:12px;background:linear-gradient(180deg,#F3C766,#D99A2B);color:#241606;font:inherit;font-weight:800;font-size:.95rem;cursor:pointer;box-shadow:0 8px 18px -8px rgba(217,154,43,.8),inset 0 1px 0 rgba(255,255,255,.45);transition:transform .15s,filter .15s}
 .savebtn svg{width:18px;height:18px}
 .savebtn:hover{filter:brightness(1.07);transform:translateY(-1px)}
@@ -3703,6 +3950,7 @@ setup();
 <svg class="rs s8" viewBox="0 0 100 100"><path d="M50 0 C55 38 62 45 100 50 C62 55 55 62 50 100 C45 62 38 55 0 50 C38 45 45 38 50 0Z" fill="#FFD86B" stroke="#2B1B2E" stroke-width="3"/></svg>
 <svg class="rs s9" viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="#C9B8F2" stroke="#2B1B2E" stroke-width="4"/><circle cx="36" cy="42" r="6" fill="#2B1B2E"/><path d="M58 42 h14" stroke="#2B1B2E" stroke-width="5" stroke-linecap="round"/><path d="M30 62 Q50 78 70 62" fill="none" stroke="#2B1B2E" stroke-width="5" stroke-linecap="round"/></svg>
 </div>
+<div class="obg" aria-hidden="true"><svg class="obgsvg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="obWall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EFE5D2"/><stop offset="1" stop-color="#DCCBAE"/></linearGradient><pattern id="obStripe" width="44" height="44" patternUnits="userSpaceOnUse"><rect width="44" height="44" fill="none"/><rect width="2" height="44" fill="rgba(120,90,50,.06)"/><circle cx="22" cy="22" r="2.2" fill="rgba(120,90,50,.07)"/></pattern><linearGradient id="obSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FCBE6"/><stop offset=".7" stop-color="#D3EEEC"/><stop offset="1" stop-color="#EAF4E4"/></linearGradient><linearGradient id="obNight" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16213A"/><stop offset="1" stop-color="#3B4A68"/></linearGradient><radialGradient id="obSun" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FFF4C8"/><stop offset=".4" stop-color="#FFE29A" stop-opacity=".9"/><stop offset="1" stop-color="#FFE29A" stop-opacity="0"/></radialGradient><linearGradient id="obCurt" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8E4B37"/><stop offset=".3" stop-color="#B46A50"/><stop offset=".55" stop-color="#9A5540"/><stop offset=".8" stop-color="#B86E54"/><stop offset="1" stop-color="#8A4834"/></linearGradient><clipPath id="obGlass"><rect x="150" y="120" width="480" height="510"/></clipPath></defs><rect width="1600" height="1000" fill="url(#obWall)"/><rect width="1600" height="760" fill="url(#obStripe)"/><!-- window --><rect x="128" y="98" width="524" height="554" rx="8" fill="#6B4E36"/><g clip-path="url(#obGlass)">  <g class="obday">    <rect x="150" y="120" width="480" height="510" fill="url(#obSky)"/>    <circle cx="540" cy="210" r="90" fill="url(#obSun)"/><circle cx="540" cy="210" r="30" fill="#FFF1C2"/>    <g class="obclouds"><g transform="translate(250 200) scale(1)" fill="#fff" opacity=".92"><ellipse cx="0" cy="0" rx="46" ry="18"/><ellipse cx="-26" cy="-8" rx="22" ry="16"/><ellipse cx="14" cy="-16" rx="26" ry="20"/></g><g transform="translate(470 290) scale(0.75)" fill="#fff" opacity=".92"><ellipse cx="0" cy="0" rx="46" ry="18"/><ellipse cx="-26" cy="-8" rx="22" ry="16"/><ellipse cx="14" cy="-16" rx="26" ry="20"/></g><g transform="translate(700 170) scale(0.9)" fill="#fff" opacity=".92"><ellipse cx="0" cy="0" rx="46" ry="18"/><ellipse cx="-26" cy="-8" rx="22" ry="16"/><ellipse cx="14" cy="-16" rx="26" ry="20"/></g><g transform="translate(60 320) scale(0.7)" fill="#fff" opacity=".92"><ellipse cx="0" cy="0" rx="46" ry="18"/><ellipse cx="-26" cy="-8" rx="22" ry="16"/><ellipse cx="14" cy="-16" rx="26" ry="20"/></g></g>    <g class="obbirds" fill="none" stroke="#4A5A66" stroke-width="2.2" stroke-linecap="round"><path d="M300 250 q7 -7 14 0 q7 -7 14 0"/><path d="M340 230 q5 -5 10 0 q5 -5 10 0"/></g>  </g>  <g class="obnight">    <rect x="150" y="120" width="480" height="510" fill="url(#obNight)"/>    <circle cx="520" cy="200" r="26" fill="#F4EBC8"/><circle cx="510" cy="194" r="24" fill="#24304C"/>    <g fill="#FFF6D8" class="obstars"><circle cx="220" cy="170" r="2"/><circle cx="300" cy="220" r="1.6"/><circle cx="380" cy="160" r="2.2"/><circle cx="440" cy="260" r="1.5"/><circle cx="250" cy="290" r="1.7"/><circle cx="590" cy="300" r="1.6"/><circle cx="350" cy="320" r="1.3"/></g>  </g>  <path d="M150 470 C230 420 320 430 400 455 C480 480 560 430 630 445 V630 H150Z" fill="#A9CDA3" class="obhill1"/>  <path d="M150 520 C250 490 330 510 420 525 C510 540 570 505 630 515 V630 H150Z" fill="#7FAE7C"/>  <g class="obtree t1" style="transform-origin:220px 540px"><rect x="215.6" y="496.0" width="8.8" height="44.0" fill="#6E5338"/><circle cx="220" cy="476.2" r="33.0" fill="#5F9A5E"/><circle cx="200.2" cy="491.6" r="22.0" fill="#4E8650"/><circle cx="242.0" cy="489.4" r="24.200000000000003" fill="#5F9A5E"/></g><g class="obtree t2" style="transform-origin:330px 555px"><rect x="326.8" y="523.0" width="6.4" height="32.0" fill="#6E5338"/><circle cx="330" cy="508.6" r="24.0" fill="#6BA668"/><circle cx="315.6" cy="519.8" r="16.0" fill="#558F56"/><circle cx="346.0" cy="518.2" r="17.6" fill="#6BA668"/></g><g class="obtree t3" style="transform-origin:560px 545px"><rect x="555.0" y="495.0" width="10.0" height="50.0" fill="#6E5338"/><circle cx="560" cy="472.5" r="37.5" fill="#5A9459"/><circle cx="537.5" cy="490.0" r="25.0" fill="#4A7F4C"/><circle cx="585.0" cy="487.5" r="27.5" fill="#5A9459"/></g><g class="obtree t2" style="transform-origin:470px 575px"><rect x="467.2" y="547.0" width="5.6" height="28.0" fill="#6E5338"/><circle cx="470" cy="534.4" r="21.0" fill="#72AE6E"/><circle cx="457.4" cy="544.2" r="14.0" fill="#5A975A"/><circle cx="484.0" cy="542.8" r="15.399999999999999" fill="#72AE6E"/></g>  <path d="M150 585 C300 570 480 590 630 578 V630 H150Z" fill="#6A9A68"/></g><rect x="383" y="120" width="14" height="510" fill="#6B4E36"/><rect x="150" y="362" width="480" height="14" fill="#6B4E36"/><rect x="150" y="120" width="480" height="510" fill="none" stroke="#4E3826" stroke-width="4"/><rect x="104" y="648" width="572" height="22" rx="4" fill="#5E432D"/><rect x="104" y="648" width="572" height="5" fill="rgba(255,230,190,.25)"/><!-- small plant on sill --><g class="obsway s3" style="transform-origin:600px 648px"><path d="M600 648 C596 620 580 606 570 600 M600 648 C604 618 620 604 632 598 M600 648 C600 616 600 600 602 586" stroke="#4F6F48" stroke-width="3" fill="none"/><ellipse cx="568" cy="598" rx="12" ry="7" fill="#6E9A62" transform="rotate(-30 568 598)"/><ellipse cx="634" cy="596" rx="12" ry="7" fill="#6E9A62" transform="rotate(30 634 596)"/><ellipse cx="602" cy="584" rx="8" ry="12" fill="#7FAA70"/></g><path d="M580 626 h40 l-5 22 h-30z" fill="#C46A4E"/><!-- curtains --><rect x="40" y="64" width="700" height="10" rx="5" fill="#4A3524"/><circle cx="40" cy="69" r="10" fill="#B8903F"/><circle cx="740" cy="69" r="10" fill="#B8903F"/><g class="obcurt l" style="transform-origin:105px 74px"><path d="M56 74 H156 C150 250 172 420 142 700 H64 C50 460 72 260 56 74Z" fill="url(#obCurt)"/><path d="M86 80 C84 300 94 480 82 696 M118 80 C122 300 114 500 124 698" stroke="rgba(60,25,15,.25)" stroke-width="3" fill="none"/></g><g class="obcurt r" style="transform-origin:675px 74px"><path d="M624 74 H724 C708 260 730 460 716 700 H640 C604 420 630 250 624 74Z" fill="url(#obCurt)"/><path d="M656 80 C660 300 650 480 662 696 M690 80 C686 300 696 500 688 698" stroke="rgba(60,25,15,.25)" stroke-width="3" fill="none"/></g><!-- paintings --><g class="obpaint"><rect x="880" y="150" width="250" height="186" rx="4" fill="#B8903F"/><rect x="892" y="162" width="226" height="162" fill="#F4E9D4"/><circle cx="1060" cy="206" r="26" fill="#E2A65A"/><path d="M892 324 V270 C930 240 970 262 1000 280 C1040 300 1080 250 1118 262 V324Z" fill="#7E9B68"/><path d="M892 324 V296 C950 280 1010 310 1118 294 V324Z" fill="#5E7A50"/><path d="M930 300 C945 260 960 250 980 246" stroke="#3F5E3C" stroke-width="3" fill="none"/></g><line x1="1005" y1="120" x2="940" y2="150" stroke="#6B5846" stroke-width="1.6"/><line x1="1005" y1="120" x2="1070" y2="150" stroke="#6B5846" stroke-width="1.6"/><g><rect x="1180" y="150" width="140" height="180" rx="4" fill="#5C3E28"/><rect x="1192" y="162" width="116" height="156" fill="#EFE3CC"/><path d="M1250 300 C1250 250 1248 220 1250 180" stroke="#4F6447" stroke-width="3" fill="none"/><ellipse cx="1230" cy="214" rx="20" ry="9" fill="#7E9B68" transform="rotate(-35 1230 214)"/><ellipse cx="1272" cy="232" rx="20" ry="9" fill="#6F8D5B" transform="rotate(35 1272 232)"/><ellipse cx="1228" cy="256" rx="20" ry="9" fill="#7E9B68" transform="rotate(-30 1228 256)"/><ellipse cx="1272" cy="274" rx="18" ry="8" fill="#6F8D5B" transform="rotate(30 1272 274)"/><circle cx="1250" cy="178" r="7" fill="#C46A4E"/></g><g><rect x="1360" y="190" width="110" height="80" rx="3" fill="#B8903F"/><rect x="1368" y="198" width="94" height="64" fill="#F4E9D4"/><path d="M1380 250 C1400 216 1420 230 1430 214 C1440 230 1450 222 1452 250Z" fill="#9E6F69"/><circle cx="1400" cy="216" r="7" fill="#E4C07A"/></g><!-- bookshelf --><rect x="1176" y="470" width="336" height="290" rx="6" fill="#5A3F29"/><rect x="1188" y="482" width="312" height="270" fill="#3E2B1C"/><rect x="1196" y="496" width="16" height="64" rx="2" fill="#8E3B2F"/><rect x="1198" y="506" width="12" height="3" fill="rgba(255,240,210,.45)"/><rect x="1214" y="502" width="12" height="58" rx="2" fill="#8E3B2F"/><rect x="1216" y="512" width="8" height="3" fill="rgba(255,240,210,.45)"/><rect x="1258" y="502" width="18" height="58" rx="2" fill="#A65B43"/><rect x="1260" y="512" width="14" height="3" fill="rgba(255,240,210,.45)"/><rect x="1278" y="502" width="18" height="58" rx="2" fill="#4F6447"/><rect x="1280" y="512" width="14" height="3" fill="rgba(255,240,210,.45)"/><rect x="1298" y="502" width="14" height="58" rx="2" fill="#C79A6E"/><rect x="1300" y="512" width="10" height="3" fill="rgba(255,240,210,.45)"/><rect x="1334" y="484" width="16" height="76" rx="2" fill="#4F6447"/><rect x="1336" y="494" width="12" height="3" fill="rgba(255,240,210,.45)"/><rect x="1352" y="490" width="22" height="70" rx="2" fill="#B9873A"/><rect x="1354" y="500" width="18" height="3" fill="rgba(255,240,210,.45)"/><rect x="1376" y="496" width="12" height="64" rx="2" fill="#A65B43"/><rect x="1378" y="506" width="8" height="3" fill="rgba(255,240,210,.45)"/><rect x="1390" y="502" width="12" height="58" rx="2" fill="#3E4A5C"/><rect x="1392" y="512" width="8" height="3" fill="rgba(255,240,210,.45)"/><rect x="1404" y="484" width="22" height="76" rx="2" fill="#3E4A5C"/><rect x="1406" y="494" width="18" height="3" fill="rgba(255,240,210,.45)"/><rect x="1428" y="484" width="22" height="76" rx="2" fill="#5D7486"/><rect x="1430" y="494" width="18" height="3" fill="rgba(255,240,210,.45)"/><rect x="1482" y="484" width="22" height="76" rx="2" fill="#3E4A5C"/><rect x="1484" y="494" width="18" height="3" fill="rgba(255,240,210,.45)"/><rect x="1226" y="580" width="14" height="70" rx="2" fill="#3E4A5C"/><rect x="1228" y="590" width="10" height="3" fill="rgba(255,240,210,.45)"/><rect x="1242" y="592" width="18" height="58" rx="2" fill="#4F6447"/><rect x="1244" y="602" width="14" height="3" fill="rgba(255,240,210,.45)"/><rect x="1262" y="580" width="22" height="70" rx="2" fill="#6F7F62"/><rect x="1264" y="590" width="18" height="3" fill="rgba(255,240,210,.45)"/><rect x="1286" y="574" width="22" height="76" rx="2" fill="#3E4A5C"/><rect x="1288" y="584" width="18" height="3" fill="rgba(255,240,210,.45)"/><rect x="1310" y="592" width="12" height="58" rx="2" fill="#3E4A5C"/><rect x="1312" y="602" width="8" height="3" fill="rgba(255,240,210,.45)"/><rect x="1324" y="592" width="12" height="58" rx="2" fill="#9E6F69"/><rect x="1326" y="602" width="8" height="3" fill="rgba(255,240,210,.45)"/><rect x="1338" y="574" width="22" height="76" rx="2" fill="#C79A6E"/><rect x="1340" y="584" width="18" height="3" fill="rgba(255,240,210,.45)"/><rect x="1362" y="592" width="16" height="58" rx="2" fill="#6F7F62"/><rect x="1364" y="602" width="12" height="3" fill="rgba(255,240,210,.45)"/><rect x="1380" y="592" width="14" height="58" rx="2" fill="#5D7486"/><rect x="1382" y="602" width="10" height="3" fill="rgba(255,240,210,.45)"/><rect x="1396" y="586" width="16" height="64" rx="2" fill="#C79A6E"/><rect x="1398" y="596" width="12" height="3" fill="rgba(255,240,210,.45)"/><rect x="1444" y="580" width="18" height="70" rx="2" fill="#C79A6E"/><rect x="1446" y="590" width="14" height="3" fill="rgba(255,240,210,.45)"/><rect x="1464" y="580" width="22" height="70" rx="2" fill="#6F7F62"/><rect x="1466" y="590" width="18" height="3" fill="rgba(255,240,210,.45)"/><rect x="1488" y="586" width="18" height="64" rx="2" fill="#B9873A"/><rect x="1490" y="596" width="14" height="3" fill="rgba(255,240,210,.45)"/><rect x="1196" y="676" width="14" height="64" rx="2" fill="#8E3B2F"/><rect x="1198" y="686" width="10" height="3" fill="rgba(255,240,210,.45)"/><rect x="1212" y="676" width="18" height="64" rx="2" fill="#8E3B2F"/><rect x="1214" y="686" width="14" height="3" fill="rgba(255,240,210,.45)"/><rect x="1232" y="664" width="14" height="76" rx="2" fill="#6F7F62"/><rect x="1234" y="674" width="10" height="3" fill="rgba(255,240,210,.45)"/><rect x="1248" y="682" width="14" height="58" rx="2" fill="#A65B43"/><rect x="1250" y="692" width="10" height="3" fill="rgba(255,240,210,.45)"/><rect x="1264" y="664" width="18" height="76" rx="2" fill="#4F6447"/><rect x="1266" y="674" width="14" height="3" fill="rgba(255,240,210,.45)"/><rect x="1304" y="664" width="14" height="76" rx="2" fill="#6F7F62"/><rect x="1306" y="674" width="10" height="3" fill="rgba(255,240,210,.45)"/><rect x="1340" y="682" width="22" height="58" rx="2" fill="#8E3B2F"/><rect x="1342" y="692" width="18" height="3" fill="rgba(255,240,210,.45)"/><rect x="1364" y="676" width="12" height="64" rx="2" fill="#B9873A"/><rect x="1366" y="686" width="8" height="3" fill="rgba(255,240,210,.45)"/><rect x="1378" y="670" width="16" height="70" rx="2" fill="#3E4A5C"/><rect x="1380" y="680" width="12" height="3" fill="rgba(255,240,210,.45)"/><rect x="1396" y="682" width="12" height="58" rx="2" fill="#3E4A5C"/><rect x="1398" y="692" width="8" height="3" fill="rgba(255,240,210,.45)"/><rect x="1410" y="664" width="18" height="76" rx="2" fill="#B9873A"/><rect x="1412" y="674" width="14" height="3" fill="rgba(255,240,210,.45)"/><rect x="1430" y="670" width="12" height="70" rx="2" fill="#3E4A5C"/><rect x="1432" y="680" width="8" height="3" fill="rgba(255,240,210,.45)"/><rect x="1444" y="682" width="14" height="58" rx="2" fill="#A65B43"/><rect x="1446" y="692" width="10" height="3" fill="rgba(255,240,210,.45)"/><rect x="1460" y="676" width="16" height="64" rx="2" fill="#8E3B2F"/><rect x="1462" y="686" width="12" height="3" fill="rgba(255,240,210,.45)"/><rect x="1478" y="670" width="22" height="70" rx="2" fill="#4F6447"/><rect x="1480" y="680" width="18" height="3" fill="rgba(255,240,210,.45)"/><rect x="1188" y="560" width="312" height="10" fill="#6B4E36"/><rect x="1188" y="650" width="312" height="10" fill="#6B4E36"/><rect x="1188" y="740" width="312" height="12" fill="#6B4E36"/><g class="obsway s2" style="transform-origin:1460px 470px"><path d="M1460 470 C1440 440 1420 432 1410 420 M1460 470 C1470 436 1490 424 1504 420 M1460 470 C1458 438 1462 420 1466 404" stroke="#4F6F48" stroke-width="3" fill="none"/><ellipse cx="1408" cy="420" rx="16" ry="8" fill="#6E9A62" transform="rotate(-25 1408 420)"/><ellipse cx="1506" cy="418" rx="16" ry="8" fill="#6E9A62" transform="rotate(25 1506 418)"/><ellipse cx="1466" cy="402" rx="9" ry="16" fill="#7FAA70"/></g><path d="M1436 446 h48 l-6 24 h-36z" fill="#C79A6E"/><!-- wainscot --><rect x="0" y="752" width="1600" height="12" fill="#5E432D"/><rect x="0" y="764" width="1600" height="236" fill="#7A5A3E"/><g fill="none" stroke="rgba(40,24,12,.35)" stroke-width="3"><rect x="20" y="790" width="130" height="180" rx="6"/><rect x="180" y="790" width="130" height="180" rx="6"/><rect x="340" y="790" width="130" height="180" rx="6"/><rect x="500" y="790" width="130" height="180" rx="6"/><rect x="660" y="790" width="130" height="180" rx="6"/><rect x="820" y="790" width="130" height="180" rx="6"/><rect x="980" y="790" width="130" height="180" rx="6"/><rect x="1140" y="790" width="130" height="180" rx="6"/><rect x="1300" y="790" width="130" height="180" rx="6"/><rect x="1460" y="790" width="130" height="180" rx="6"/></g><g fill="none" stroke="rgba(255,225,180,.12)" stroke-width="2"><rect x="24" y="794" width="122" height="172" rx="5"/><rect x="184" y="794" width="122" height="172" rx="5"/><rect x="344" y="794" width="122" height="172" rx="5"/><rect x="504" y="794" width="122" height="172" rx="5"/><rect x="664" y="794" width="122" height="172" rx="5"/><rect x="824" y="794" width="122" height="172" rx="5"/><rect x="984" y="794" width="122" height="172" rx="5"/><rect x="1144" y="794" width="122" height="172" rx="5"/><rect x="1304" y="794" width="122" height="172" rx="5"/><rect x="1464" y="794" width="122" height="172" rx="5"/></g><!-- hanging pothos --><g class="obsway s1" style="transform-origin:800px 0px"><path d="M800 0 V150 M784 150 L800 0 L816 150" stroke="#C9B08A" stroke-width="2" fill="none"/><path d="M776 150 h48 l-6 28 h-36z" fill="#C79A6E"/><path d="M784 176 C770 240 790 300 772 360 M816 176 C832 230 812 290 830 340 M800 178 C800 230 806 260 798 300" stroke="#557047" stroke-width="2.4" fill="none"/><g fill="#6E8C5C"><ellipse cx="776" cy="206" rx="9" ry="6" transform="rotate(-40 776 206)"/><ellipse cx="786" cy="246" rx="9" ry="6" transform="rotate(30 786 246)"/><ellipse cx="776" cy="290" rx="9" ry="6" transform="rotate(-30 776 290)"/><ellipse cx="772" cy="336" rx="9" ry="6" transform="rotate(20 772 336)"/><ellipse cx="824" cy="200" rx="9" ry="6" transform="rotate(40 824 200)"/><ellipse cx="828" cy="240" rx="9" ry="6" transform="rotate(-20 828 240)"/><ellipse cx="816" cy="280" rx="9" ry="6" transform="rotate(30 816 280)"/><ellipse cx="828" cy="320" rx="9" ry="6" transform="rotate(-30 828 320)"/><ellipse cx="800" cy="214" rx="9" ry="6" transform="rotate(10 800 214)"/><ellipse cx="804" cy="256" rx="9" ry="6" transform="rotate(-10 804 256)"/><ellipse cx="798" cy="292" rx="9" ry="6" transform="rotate(15 798 292)"/></g></g><!-- monstera bottom-left --><g class="obsway s4" style="transform-origin:170px 880px"><path d="M0 0 C-38 -14 -62 -64 -40 -118 C-18 -146 22 -146 40 -118 C62 -64 38 -14 0 0Z M-8 -40 L-34 -56 M8 -60 L34 -74 M-6 -84 L-28 -100" transform="translate(170 880) rotate(-58) scale(1.25)" fill="#5E8F57" stroke="#3F5E3C" stroke-width="2.4" stroke-linejoin="round"/><path d="M0 0 C-38 -14 -62 -64 -40 -118 C-18 -146 22 -146 40 -118 C62 -64 38 -14 0 0Z M-8 -40 L-34 -56 M8 -60 L34 -74 M-6 -84 L-28 -100" transform="translate(170 880) rotate(-22) scale(1.45)" fill="#6E9E62" stroke="#3F5E3C" stroke-width="2.4" stroke-linejoin="round"/><path d="M0 0 C-38 -14 -62 -64 -40 -118 C-18 -146 22 -146 40 -118 C62 -64 38 -14 0 0Z M-8 -40 L-34 -56 M8 -60 L34 -74 M-6 -84 L-28 -100" transform="translate(170 880) rotate(14) scale(1.3)" fill="#5A8A52" stroke="#3F5E3C" stroke-width="2.4" stroke-linejoin="round"/><path d="M0 0 C-38 -14 -62 -64 -40 -118 C-18 -146 22 -146 40 -118 C62 -64 38 -14 0 0Z M-8 -40 L-34 -56 M8 -60 L34 -74 M-6 -84 L-28 -100" transform="translate(170 880) rotate(46) scale(1.15)" fill="#6E9E62" stroke="#3F5E3C" stroke-width="2.4" stroke-linejoin="round"/><path d="M0 0 C-38 -14 -62 -64 -40 -118 C-18 -146 22 -146 40 -118 C62 -64 38 -14 0 0Z M-8 -40 L-34 -56 M8 -60 L34 -74 M-6 -84 L-28 -100" transform="translate(170 880) rotate(-90) scale(1)" fill="#7FAA70" stroke="#3F5E3C" stroke-width="2.4" stroke-linejoin="round"/></g><path d="M98 870 h144 l-16 130 h-112z" fill="#B5845A"/><rect x="92" y="862" width="156" height="16" rx="6" fill="#9C6E48"/><!-- snake plant bottom-right --><g class="obsway s5" style="transform-origin:1500px 880px"><path d="M1460 880 C1454 800 1430 720 1412.0 640 C1442 720 1476 800 1474 880Z" fill="#5E8F57" stroke="#3F5E3C" stroke-width="2"/><path d="M1486 880 C1480 800 1478 720 1473.2 580 C1490 720 1502 800 1500 880Z" fill="#6E9E62" stroke="#3F5E3C" stroke-width="2"/><path d="M1508 880 C1502 800 1526 720 1536.8 620 C1538 720 1524 800 1522 880Z" fill="#4F7F4A" stroke="#3F5E3C" stroke-width="2"/><path d="M1528 880 C1522 800 1568 720 1592.0 670 C1580 720 1544 800 1542 880Z" fill="#6E9E62" stroke="#3F5E3C" stroke-width="2"/><path d="M1472 880 C1466 800 1422 720 1392.0 700 C1434 720 1488 800 1486 880Z" fill="#7FAA70" stroke="#3F5E3C" stroke-width="2"/></g><path d="M1440 870 h126 l-14 130 h-98z" fill="#E4D2B0"/><rect x="1434" y="862" width="138" height="14" rx="6" fill="#C9B08A"/></svg></div>
 <div class="wallshade" aria-hidden="true"></div>
 <div class="lampfix" id="lampFix"><svg viewBox="0 0 240 130" aria-hidden="true"><defs>
 <linearGradient id="domeG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#22362A"/><stop offset=".38" stop-color="#3E5C46"/><stop offset=".55" stop-color="#2F4636"/><stop offset="1" stop-color="#18261D"/></linearGradient>
@@ -3739,7 +3987,6 @@ setup();
         <span class="sync" id="sync"><b></b></span>
         <button class="iconbtn" data-act="customize" aria-label="Налаштувати головну" title="Налаштувати головну" id="btnLayout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="3" width="8" height="10" rx="2"></rect><rect x="13" y="3" width="8" height="6" rx="2"></rect><rect x="13" y="11" width="8" height="10" rx="2"></rect><rect x="3" y="15" width="8" height="6" rx="2"></rect></svg></button>
         <button class="iconbtn" data-act="settings" aria-label="Налаштування" title="Налаштування" id="btnSettings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></button>
-        <button class="savebtn" data-act="saveCloud" id="btnCloud" title="Зберегти все в хмару Supabase"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18a4.5 4.5 0 0 1-.5-9A6 6 0 0 1 18 8.5a4 4 0 0 1-.5 9.5H7z"/><path d="M12 16v-5M9.5 13.5L12 11l2.5 2.5"/></svg><span>Зберегти</span></button><button class="iconbtn" data-act="logout" aria-label="Вийти" title="Вийти" id="btnLogout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3"/><path d="M10 17l-5-5 5-5M5 12h11"/></svg></button>
       </header>
       <main id="view"></main>
     </div>
@@ -3752,6 +3999,7 @@ setup();
 <div class="toasts" id="toasts" aria-live="polite"></div>
 <button type="button" class="helpbtn" id="helpBtn" data-act="helpMenu" aria-label="Підказки та екскурс" aria-haspopup="menu">?</button>
 <button type="button" class="fab" id="fab" data-act="fab" aria-label="Створити нове" aria-haspopup="menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+<button class="savebtn" data-act="saveCloud" id="btnCloud" title="Зберегти все в хмару Supabase"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18a4.5 4.5 0 0 1-.5-9A6 6 0 0 1 18 8.5a4 4 0 0 1-.5 9.5H7z"/><path d="M12 16v-5M9.5 13.5L12 11l2.5 2.5"/></svg><span>Зберегти</span></button>
 <script>
 (function(){
 "use strict";
@@ -3900,13 +4148,13 @@ function addXP(n,quiet,why){const b=level(S.xp);S.xp=Math.max(0,S.xp+n);logXP(n,
 
 /* ---------- persistence ---------- */
 let ref=null, syncMode="loading", writing=false, dirty=false, timer=null;
-function setSync(){const el=document.getElementById("sync");if(!el)return;el.className="sync "+(syncMode==="cloud"?"ok":syncMode==="local"?"local":"");
+function setSync(){saveDotUI();const el=document.getElementById("sync");if(!el)return;el.className="sync "+(syncMode==="cloud"?"ok":syncMode==="local"?"local":"");
   el.title=syncMode==="cloud"?"Збережено в акаунті":syncMode==="local"?"Збережено лише на цьому пристрої":"Підключення…"}
 function commit(opts={}){
   try{ensureSup()}catch(e){}
   S.updatedAt=Date.now();
   try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}
-  if(ref){dirty=true;clearTimeout(timer);timer=setTimeout(flush,600)}
+  if(ref){dirty=true;clearTimeout(timer);timer=setTimeout(flush,600)} saveDotUI();
   if(!opts.norender) render();
   flushToasts();
 }
@@ -3927,7 +4175,7 @@ async function saveToCloud(manual){
     const {error}=await sb.from(DATA_TABLE).upsert(row,{onConflict:"user_id"});
     if(error) throw error;
     syncMode="cloud"; lastSaved=Date.now(); setSync(); cloudFailShown=false;
-    if(manual){toast("Дані збережено в хмарі!"); saveBtnState("done")}
+    if(manual){toast("Дані збережено"); saveBtnState("done")}
     return true;
   }catch(e){
     syncMode="local"; setSync(); console.error("Supabase save failed",e);
@@ -3956,7 +4204,7 @@ async function initCloud(){
   try{
     const raw=await pullRemote(); ref={};
     if(raw){const remote=normalize(JSON.parse(JSON.stringify(raw)));
-      if((remote.updatedAt||0)>=(S.updatedAt||0)){S=remote;try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}applyLook();render();syncMode="cloud";setSync();toast("Дані завантажено з хмари")}
+      if((remote.updatedAt||0)>=(S.updatedAt||0)){S=remote;try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}applyLook();render();syncMode="cloud";setSync();toast("Дані завантажено")}
       else{dirty=true;await flush()}}
     else{dirty=true;await flush()}
   }catch(e){ref={};dirty=true;syncMode="local";setSync();console.error("Supabase load failed",e);toast("Не вдалося завантажити з хмари: "+errText(e));setTimeout(flush,5000)}
@@ -4480,8 +4728,8 @@ function heroRow(){
   const planWhen=d=>{const n=diffDays(d,today());return n===0?"сьогодні":n===1?"завтра":n<0?`пропущено ${fmtS(d)}`:`${fmtL(d)}`};
   return `<div class="herorow one">
     <section class="hero herobig" aria-label="Сьогодні і найближчі дедлайни">
-      <div class="herotext"><span class="hchip">${chip}</span><h2 class="htitle">${title}</h2>${desc}<div class="row" style="gap:10px;margin-top:4px">${actions}</div></div>
-      <div class="heroscene" aria-hidden="true"><div class="heroart">${ART.office}</div></div>
+      <div class="herotext"><span class="hchip">${chip}</span><h2 class="htitle">${title}</h2>${desc}${heroInfo()}<div class="row" style="gap:10px;margin-top:4px">${actions}</div></div>
+      <div class="heroscene" aria-hidden="true"><svg class="hwin" viewBox="0 0 160 190" aria-hidden="true"><defs><linearGradient id="hwSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FCBE6"/><stop offset="1" stop-color="#E2F2EA"/></linearGradient><clipPath id="hwClip"><rect x="10" y="10" width="140" height="160"/></clipPath></defs><rect x="0" y="0" width="160" height="180" rx="4" fill="#6B4E36"/><g clip-path="url(#hwClip)"><rect x="10" y="10" width="140" height="160" fill="url(#hwSky)" class="hwsky"/><circle cx="118" cy="40" r="12" fill="#FFF1C2" class="hwsun"/><g class="obclouds"><g fill="#fff" opacity=".9"><ellipse cx="50" cy="44" rx="20" ry="8"/><ellipse cx="40" cy="40" rx="10" ry="7"/><ellipse cx="58" cy="37" rx="11" ry="8"/></g><g fill="#fff" opacity=".85"><ellipse cx="120" cy="72" rx="16" ry="6"/><ellipse cx="128" cy="67" rx="9" ry="6"/></g></g><path d="M10 120 C40 104 70 110 90 116 C112 122 130 108 150 112 V170 H10Z" fill="#A9CDA3"/><path d="M10 138 C50 128 90 142 150 132 V170 H10Z" fill="#7FAE7C"/><g class="obtree t1" style="transform-origin:40px 136px"><rect x="38" y="122" width="4" height="14" fill="#6E5338"/><circle cx="40" cy="116" r="11" fill="#5F9A5E"/></g><g class="obtree t3" style="transform-origin:118px 132px"><rect x="116" y="116" width="4" height="16" fill="#6E5338"/><circle cx="118" cy="110" r="13" fill="#5A9459"/></g></g><rect x="76" y="10" width="7" height="160" fill="#6B4E36"/><rect x="10" y="86" width="140" height="7" fill="#6B4E36"/><rect x="-6" y="176" width="172" height="10" rx="3" fill="#5E432D"/></svg><div class="heroart">${ART.office}</div></div>
     <div class="upnext" role="group" aria-label="Найближчі заплановані завдання">
       <div class="label" style="padding:0 4px">Заплановано</div>
       ${up.map(t=>{const c=course(t.courseId),n=t.plan?diffDays(t.plan,today()):null, L=lastT&&lastT.id===t.id, act=isActive("task",t.id);return `<div class="upcard${n!=null&&n<0?" late":n===0?" today":""}${L?" last":""}${act?" running":""}">${L?`<span class="uplast">${act?"зараз у роботі":"ти над цим працював"}</span>`:""}<button type="button" class="upmain" data-act="editTask" data-id="${t.id}" title="${t.plan?"Заплановано на "+fmtD(t.plan):"Відкрити"}"><span class="upic" style="background:${c?CC(c.color):"var(--ink-2)"}">${esc(initials(c?c.name:"?"))}</span><span class="uptxt"><b>${esc(t.title)}</b><small>${t.plan?`<em>${planWhen(t.plan)}</em>`:""}${c?(t.plan?" · ":"")+esc(c.name):""}${L&&t.spent?` · ${fmtDur(t.spent)} в роботі`:""}</small></span></button>${startBtn("task",t,"upgo")}</div>`}).join("")||`<div class="upempty"><span>Нічого не заплановано.</span><button class="btn sm" data-act="nav" data-v="plan">${ICON.plan}Запланувати в календарі</button></div>`}
@@ -4550,7 +4798,7 @@ document.addEventListener("dragstart",e=>{const el=e.target.closest&&e.target.cl
 document.addEventListener("dragend",e=>{document.querySelectorAll(".dragging-chip,.dropon").forEach(x=>x.classList.remove("dragging-chip","dropon"))});
 document.addEventListener("dragover",e=>{const z=e.target.closest&&e.target.closest("[data-day]"); if(!z||!document.querySelector(".calwrap,.todaywrap")) return; e.preventDefault(); document.querySelectorAll(".dropon").forEach(x=>x!==z&&x.classList.remove("dropon")); z.classList.add("dropon")});
 document.addEventListener("drop",e=>{const z=e.target.closest&&e.target.closest("[data-day]"); if(!z||!document.querySelector(".calwrap,.todaywrap")) return; e.preventDefault(); const id=e.dataTransfer.getData("text/plain");
-  if(id.startsWith("ev:")){const ev=(S.events||[]).find(x=>x.id===id.slice(3)), d=z.dataset.day; if(ev&&d&&ev.date!==d){ev.date=d; commit(); toast(`«${ev.title}» — ${fmtS(d)}`)} return}
+  if(id.startsWith("ev:")){const ev=(S.events||[]).find(x=>x.id===id.slice(3)), d=z.dataset.day; if(ev&&d&&ev.date!==d){if(ev.end) ev.end=addDays(ev.end,diffDays(d,ev.date)); ev.date=d; commit(); toast(`«${ev.title}» — ${fmtS(d)}`)} return}
   const t=S.tasks.find(x=>x.id===id); if(!t) return; const d=z.dataset.day; if((t.plan||"")===d) return; t.plan=d; commit(); if(d) toast(`«${t.title}» — ${fmtS(d)}`)});
 
 
@@ -4689,7 +4937,7 @@ function statsView(){
     <div class="ubar" role="img" aria-label="Обсяг роботи ${r1(M.rem)} одиниць"><span>Обсяг роботи</span><b>${r1(M.rem)} од.</b><small>${`легке = 1, середнє = ${W_DIFF[2]}, складне = ${W_DIFF[3]}, без складності = ${W_DIFF[0]} (з твоїх налаштувань часу); підпункти зменшують залишок`}</small></div>
   </section>`;
   let probB;
-  if(M.prob==null) probB=`<section class="sb s-prob arcade st-none" style="--sp:4"><div class="arc-top"><span class="arc-lbl">Місія</span><span class="arc-ttl">Встигнути до модуля</span></div><div class="arc-score"><b class="arc-blinkb">Insert coin</b></div><div class="arc-say"><i aria-hidden="true">▶</i>Потрібна дата модульного тижня.</div><div><button class="btn sm" data-act="settings">Вказати дату</button></div></section>`;
+  if(M.prob==null) probB=`<section class="sb s-prob arcade st-none" style="--sp:4"><div class="arc-top"><span class="arc-lbl">Місія</span><span class="arc-ttl">Встигнути до модуля</span></div><div class="arc-score"><b class="arc-blinkb">Insert coin</b></div><div class="arc-say"><i aria-hidden="true">▶</i>Потрібна дата модульного тижня.</div><div><button class="btn sm" data-act="modNew">Вказати дату</button></div></section>`;
   else{const [st,txt]=STATUS(M.prob);
     const pc=Math.round(M.prob*100), cells=Math.round(M.prob*20), pr=M.need?Math.min(100,Math.round(M.pace/M.need*100)):100;
     probB=`<section class="sb s-prob arcade st-${st}" style="--sp:4">
@@ -4811,14 +5059,14 @@ function planHTML(t){
   const id="tp-"+t.id;
   if(!t.plan) return `<span class="tplan add"><input type="hidden" id="${id}" value=""><button type="button" class="tpbtn" data-act="dpick" data-for="${id}" data-ph="" title="Запланувати" aria-label="Запланувати «${esc(t.title)}»">${ICON.plan}</button></span>`;
   const n=diffDays(t.plan,today()), late=n<0, rel=n===0?"сьогодні":n===1?"завтра":n<0?`пропущено ${-n} ${pl(-n,"день","дні","днів")}`:`за ${n} ${pl(n,"день","дні","днів")}`;
-  return `<span class="tplan${late?" late":""}${n===0?" today":""}"><input type="hidden" id="${id}" value="${t.plan}"><button type="button" class="tpbtn has" data-act="dpick" data-for="${id}" data-ph="" title="Заплановано на ${fmtD(t.plan)}. Змінити" aria-label="Заплановано на ${fmtD(t.plan)}. Змінити">${ICON.plan}<b>${n===0?"Сьогодні":n===1?"Завтра":n<0?"Пропущено":fmtS(t.plan)}</b></button></span>`;
+  return `<span class="tplan${late?" late":""}${n===0?" today":""}"><input type="hidden" id="${id}" value="${t.plan}"><button type="button" class="tpbtn has" data-act="dpick" data-for="${id}" data-ph="" title="Заплановано на ${fmtD(t.plan)}. Змінити" aria-label="Заплановано на ${fmtD(t.plan)}. Змінити">${ICON.plan}<b>${n===0?"Сьогодні":n===1?"Завтра":fmtS(t.plan)}</b></button></span>`;
 }
 document.addEventListener("change",e=>{const el=e.target; if(!el||!el.id||!el.id.startsWith("tp-")) return; const t=S.tasks.find(x=>x.id===el.id.slice(3)); if(!t) return; t.plan=el.value||""; setTimeout(()=>{commit(); toast(t.plan?`«${t.title}» — ${t.plan===today()?"на сьогодні":fmtS(t.plan)}`:`План для «${t.title}» прибрано`)},0)});
 
 /* ---------- calendar: day view ---------- */
 function dayViewHTML(d){
   const pl0=plannedOn(d), du=dueOn(d).filter(x=>x.plan!==d), open=pl0.filter(x=>!x.done), rem=open.reduce((s,x)=>s+remMinsOf(x),0);
-  return `<div class="dayview" data-day="${d}">
+  return `<div class="dayview${dayFill(d)?" filled":""}" data-day="${d}" style="--dayfill:${dayFill(d)||"transparent"}">
     <div class="dvhead"><div><div class="dvdate">${+d.slice(8)}</div><div class="dvwd">${fmtL(d).split(",")[0]}</div></div>
       <div class="dvnums"><span><b>${pl0.length}</b> заплановано</span><span><b>${pl0.length-open.length}</b> виконано</span>${open.length?`<span><b>~${fmtMin(rem)}</b> роботи</span>`:""}</div>
       <div class="row" style="gap:6px"><button class="btn sm" data-act="calDayAdd" data-v="${d}">${ICON.plus}Завдання</button><button class="btn sm" data-act="evNewOn" data-v="${d}">${ICON.plus}Подія</button></div></div>
@@ -4881,13 +5129,13 @@ function todayView(){
        <div class="tdsug">${openTasksAll().filter(x=>!x.plan||x.plan>tm).sort((a,b)=>critScore(b)-critScore(a)).slice(0,4).map(x=>{const c=course(x.courseId);return `<div class="tdsr"><i class="dot" style="background:${CC(c.color)}"></i><span>${esc(x.title)}</span><small>${esc(c.name)}</small><button class="btn sm" data-act="planToday" data-id="${x.id}">${ICON.plus}На сьогодні</button></div>`}).join("")||'<div class="muted">Відкритих завдань немає.</div>'}</div>
        <button class="btn sm ghost" data-act="nav" data-v="plan">${ICON.plan}Відкрити календар</button></section>`;
   const missedB=missed.length?`<section class="tdmissed glass"><header><h3>Пропущені</h3><span class="tdgc">${missed.length}</span><button class="btn sm" data-act="planAllMissed">Усі на сьогодні</button></header>
-      ${missed.map(x=>{const c=course(x.courseId);return `<div class="tdsr"><i class="dot" style="background:${CC(c.color)}"></i><span>${esc(x.title)}</span><small>${esc(c.name)} · ${fmtS(x.plan)}</small><button class="btn sm ghost" data-act="planToday" data-id="${x.id}">На сьогодні</button></div>`}).join("")}</section>`:"";
+      ${missed.map(x=>{const c=course(x.courseId);return `<div class="tdsr msr"><span class="msbang" aria-hidden="true">!</span><i class="dot" style="background:${CC(c.color)}"></i><span>${esc(x.title)}</span><small>${esc(c.name)} · <b class="mslate">пропущено ${fmtS(x.plan)}</b></small><button class="btn sm ghost" data-act="planToday" data-id="${x.id}">На сьогодні</button></div>`}).join("")}</section>`:"";
   const tmB=`<section class="tdtomorrow" data-day="${tm}"><header><h3>Завтра</h3><span class="tdgc">${tomorrow.length}</span><span class="muted" style="font-size:.8rem;font-weight:600">${tomorrow.length?"закінчив раніше? перетягни завдання вгору або натисни «На сьогодні»":"на завтра нічого не заплановано"}</span></header>
       ${tomorrow.map(x=>{const c=course(x.courseId);return `<div class="tdsr tmr" draggable="true" data-plan-task="${x.id}"><span class="fgrip" aria-hidden="true">${GRIP}</span><i class="dot" style="background:${CC(c.color)}"></i><span>${esc(x.title)}</span><small>${esc(c.name)}${x.diff?" · "+DIFF[x.diff]:""} · ~${fmtMin(minsOf(x))}</small><button class="btn sm" data-act="planToday" data-id="${x.id}">↑ На сьогодні</button></div>`}).join("")}</section>`;
   return `<div class="todaywrap">
     <div class="tdtop"><div class="seg" role="group" aria-label="Групувати"><button data-act="todayGroup" data-v="course" aria-pressed="${grp==="course"}">За предметами</button><button data-act="todayGroup" data-v="diff" aria-pressed="${grp==="diff"}">За складністю</button></div></div>
     <div class="tdtoprow${S.books.some(b=>b.status==="reading")?"":" solo"}">${hero}${S.books.some(b=>b.status==="reading")?`<section class="tdbooks glass">${wReading().replace("<h2>Зараз читаю</h2>","<h2>Читаю сьогодні</h2>")}</section>`:""}</div>${todayTimeB(rem)}${evOn(t).length?`<section class="tdevents glass"><header><h3>Події сьогодні</h3><span class="tdgc">${evOn(t).length}</span></header><div class="evlist">${evOn(t).map(evRow).join("")}</div></section>`:""}
-    <div class="tdlist" data-day="${t}">${body}</div>${missedB}
+    ${missedB}<div class="tdlist" data-day="${t}">${body}</div>
     ${tmB}</div>`;
 }
 
@@ -4895,7 +5143,7 @@ function todayView(){
 /* ---------- calendar events + tags ---------- */
 const tagOf=id=>(S.tags||[]).find(x=>x.id===id)||{id:"",name:"Без тегу",color:"#8A7F72"};
 const inkFor=hex=>{const m=/^#?([0-9a-f]{6})$/i.exec(hex||""); if(!m) return "#fff"; const n=parseInt(m[1],16), r=n>>16&255, g=n>>8&255, b=n&255; return (0.299*r+0.587*g+0.114*b)>165?"#1E1A16":"#FFFFFF"};
-const evOn=d=>(S.events||[]).filter(e=>e.date===d).sort((a,b)=>(a.time||"99")<(b.time||"99")?-1:1);
+const evOn=d=>(S.events||[]).filter(e=>e.date===d||(e.allDay&&e.end&&e.date<=d&&d<=e.end)).sort((a,b)=>(a.time||"99")<(b.time||"99")?-1:1);
 function evChip(e){const tg=tagOf(e.tag);return `<div role="button" tabindex="0" class="evchip" draggable="true" data-plan-ev="${e.id}" data-act="evEdit" data-id="${e.id}" style="--ec:${tg.color};--ei:${inkFor(tg.color)}" title="${esc(tg.name)}: ${esc(e.title)}${e.time?" · "+e.time:""}">${e.time?`<b>${e.time}</b>`:""}<span>${esc(e.title)}</span></div>`}
 function evRow(e){const tg=tagOf(e.tag);return `<button type="button" class="evrow" data-act="evEdit" data-id="${e.id}" style="--ec:${tg.color};--ei:${inkFor(tg.color)}"><span class="evtime">${e.time||"весь день"}</span><span class="evbody"><b>${esc(e.title)}</b>${e.note?`<small>${esc(e.note)}</small>`:""}</span><span class="evtag">${esc(tg.name)}</span></button>`}
 let evDraft=null;
@@ -4906,7 +5154,7 @@ function sheetEvent(e,date){
     <label class="field"><span>Назва</span><input id="ev-title" required maxlength="120" value="${esc(e.title)}" placeholder="Напр. Супервізія з Оксаною"></label>
     <div class="two"><label class="field"><span>Дата</span>${dateField("ev-date",e.date)}</label><label class="field"><span>Час <span style="font-weight:500">(можна без)</span></span><input id="ev-time" type="time" value="${e.time||""}"></label></div>
     <div class="field"><span>Тег</span><div class="tagpick">${S.tags.map(t=>`<label class="tagopt" style="--ec:${t.color};--ei:${inkFor(t.color)}"><input type="radio" name="ev-tag" value="${t.id}" ${e.tag===t.id?"checked":""}><span>${esc(t.name)}</span></label>`).join("")}</div>
-      <div class="tagnew"><input class="inp" id="ev-newtag" maxlength="30" placeholder="Новий тег"><input type="color" id="ev-newcolor" value="#8E5FB0" aria-label="Колір нового тегу"><button type="button" class="btn sm" data-act="evTagAdd">${ICON.plus}Додати тег</button></div></div>
+      <div class="tagnew"><input class="inp" id="ev-newtag" maxlength="30" placeholder="Новий тег">${swPick("ev-newcolor",EVC[6])}<button type="button" class="btn sm" data-act="evTagAdd">${ICON.plus}Додати тег</button></div></div>
     <label class="field"><span>Нотатка</span><textarea id="ev-note" rows="2" maxlength="400">${esc(e.note||"")}</textarea></label>
     <div class="row" style="justify-content:space-between">${e.id?`<button type="button" class="btn sm danger" data-act="evDel" data-id="${e.id}">Видалити</button>`:"<span></span>"}<div class="row"><button type="button" class="btn ghost" data-act="closeSheet">Скасувати</button><button class="btn primary">${e.id?"Зберегти":"Додати"}</button></div></div>
   </form>`, !isNew);
@@ -4938,7 +5186,7 @@ document.addEventListener("click",e=>{if(document.getElementById("fabmenu")&&!e.
 document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest("#fabmenu [data-act]")) setTimeout(closeFab,0)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("fabmenu")){closeFab(); const f=document.getElementById("fab"); if(f) f.focus()}});
 
-const LOCUS_BUILD="1.0.40";
+const LOCUS_BUILD="1.0.44";
 
 /* ---------- alive: entrance on view change, ring fill, count-up, completion burst ---------- */
 let aliveKey=null, aliveFirst=true;
@@ -5074,7 +5322,7 @@ function missionB(M){
     <div class="ms-main">
       <div class="ms-num"><b>${pct}</b><i>%</i><span>пройдено</span></div>
       <div class="ms-num ms-left"><b>${nOpen}</b><span>${MP.bn?"завдань і книг":pl(nOpen,"завдання","завдання","завдань")}<br>лишилось</span></div>
-      <div class="ms-msg"><p><i aria-hidden="true">▶</i>${msg}</p>${goal?`<small>${goal}</small>`:""}${!cy.next?`<button class="btn sm" data-act="settings">Вказати дату</button>`:""}</div>
+      <div class="ms-msg"><p><i aria-hidden="true">▶</i>${msg}</p>${goal?`<small>${goal}</small>`:""}${!cy.next?`<button class="btn sm" data-act="modNew">Вказати дату</button>`:""}</div>
     </div>
     <div class="ms-track" role="img" aria-label="Пройдено ${pct}%: ${nDone} з ${all}">
       <div class="ms-cells">${Array.from({length:cells},(_,i)=>`<i class="${i<on?"on":""}" style="--i:${i}"></i>`).join("")}</div>
@@ -5111,11 +5359,11 @@ setInterval(()=>{document.querySelectorAll(".tdtw-big[data-from]").forEach(el=>{
 
 /* ---------- hints & tour ---------- */
 const HINTS=[
-  {id:"g-fab",v:"*",sel:"#fab",x:"Кнопка «+» створює нове: завдання, подію, книгу, курс або фокус-таймер."},
+  {id:"g-fab",v:"*",sel:"#fab",x:"Кнопка «+» створює нове: завдання, подію, книгу або курс."},
   {id:"g-loco",v:"*",sel:"#lvl",x:"Це Loco. Він росте, коли ти закриваєш завдання. Натисни, щоб відвідати."},
   {id:"g-save",v:"*",sel:"#btnCloud",x:"Усе зберігається само. Зелена кнопка означає, що дані в хмарі."},
   {id:"g-sun",v:"*",sel:"#sunBtn",x:"Тут світла чи темна тема і стиль: ретро, соларпанк або кабінет терапевта."},
-  {id:"g-set",v:"*",sel:"#btnSettings",x:"У налаштуваннях вкажи дату модульного тижня: від неї рахуються дедлайни й статистика."},
+  {id:"g-set",v:"plan",sel:".addev",x:"Додай модульний тиждень: «Додати подію» → «Модульний тиждень». Від нього рахуються дедлайни."},
   {id:"h-lay",v:"home",sel:"#btnLayout",x:"Налаштуй головну: переставляй і ховай віджети."},
   {id:"t-ring",v:"today",sel:".tdring",x:"Скільки із запланованих на сьогодні завдань уже закрито."},
   {id:"t-time",v:"today",sel:".tdtime",x:"Скільки часу ти сьогодні вже працював і читав за таймером."},
@@ -5175,7 +5423,7 @@ document.addEventListener("click",e=>{if(document.getElementById("helpMenu")&&!e
 const TOUR=[
   {t:"Вітаю в Locus!",x:"Тут живуть твої курси, завдання, книги й модульні тижні. Покажу головне за хвилину. Можна пропустити будь-коли."},
   {sel:["#tabsTop","#tabsBottom"],t:"Розділи",x:"Головна, Сьогодні, Курси, Календар, Статистика, Бібліотека і Loco. Перемикайся тут."},
-  {sel:["#fab"],t:"Створити нове",x:"Кнопка «+» додає завдання, подію, книгу, курс або вмикає фокус-таймер."},
+  {sel:["#fab"],t:"Створити нове",x:"Кнопка «+» додає завдання, подію, книгу або курс."},
   {v:"today",sel:[".tdtoprow"],t:"Сьогодні",x:"План на день: скільки закрито, скільки лишилось і яку книгу читаєш."},
   {v:"today",sel:[".tdtime"],t:"Час у роботі",x:"Скільки годин і хвилин ти сьогодні вже працював і читав."},
   {v:"today",sel:[".tdr .startbtn",".tdlist"],t:"Таймер",x:"«Почати» вмикає таймер на завдання. Він висить унизу екрана. «Завершити» відкриє оцінку сесії."},
@@ -5429,13 +5677,205 @@ function miniTama(LS){
     <g fill="#FFF6E4" stroke="${K[3]}" stroke-width="1.2"><circle cx="14" cy="36" r="2.4"/><circle cx="20.5" cy="38" r="2.4"/><circle cx="27" cy="36" r="2.4"/></g></svg>`;
 }
 
+
+/* ---------- build 1.0.41: deadline pills, all-day events, module weeks in calendar, hero info ---------- */
+const FLAG2='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 21V3.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M5.5 4h12l-2.6 4.2 2.6 4.3h-12z" fill="var(--flc,none)" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>';
+function dlHTML(t){
+  const id="tdd-"+t.id;
+  if(!t.due) return `<span class="tdl add"><input type="hidden" id="${id}" value=""><button type="button" class="tdlbtn" data-act="dpick" data-for="${id}" data-ph="" title="Додати дедлайн" aria-label="Додати дедлайн для «${esc(t.title)}»">${FLAG2}</button></span>`;
+  const n=diffDays(t.due,today()), u=n<7?" ur":n<=14?" uy":"";
+  const txt=n===0?"Сьогодні":n===1?"Завтра":fmtS(t.due);
+  const rel=n<0?`прострочено ${-n} ${pl(-n,"день","дні","днів")}`:n===0?"сьогодні":n===1?"завтра":`за ${n} ${pl(n,"день","дні","днів")}`;
+  const inner=`${FLAG2}<b>${txt}</b>`;
+  if(t.sup) return `<span class="tdl${u}"><span class="tdlbtn has" title="Дедлайн ${fmtD(t.due)}, ${rel}">${inner}</span></span>`;
+  return `<span class="tdl${u}"><input type="hidden" id="${id}" value="${t.due}"><button type="button" class="tdlbtn has" data-act="dpick" data-for="${id}" data-ph="" title="Дедлайн ${fmtD(t.due)}, ${rel}. Змінити" aria-label="Дедлайн ${fmtD(t.due)}, ${rel}. Змінити">${inner}</button></span>`;
+}
+document.addEventListener("change",e=>{const el=e.target; if(!el||!el.id||!el.id.startsWith("tdd-")) return; const t=S.tasks.find(x=>x.id===el.id.slice(4)); if(!t) return; t.due=el.value||""; setTimeout(()=>{commit(); toast(t.due?`Дедлайн «${t.title}»: ${fmtS(t.due)}`:`Дедлайн для «${t.title}» прибрано`)},0)});
+
+function navScrollFix(){const n=document.getElementById("tabsBottom"); if(!n) return; requestAnimationFrame(()=>{const a=n.querySelector('[aria-current="page"]'); if(!a||n.scrollWidth<=n.clientWidth) return; n.scrollLeft=Math.max(0,a.offsetLeft-(n.clientWidth-a.offsetWidth)/2)})}
+
+/* module weeks + all-day fill */
+const modColor=()=>S.settings.modColor||"#A99BFF";
+function modRun(d){const M=new Set(S.settings.modules); if(!M.has(d)) return null; let a=d,b=d; while(M.has(addDays(a,-1))) a=addDays(a,-1); while(M.has(addDays(b,1))) b=addDays(b,1); return [a,b]}
+function dayFill(d){if(inModule(d)) return modColor(); const e=evOn(d).find(x=>x.allDay); return e?tagOf(e.tag).color:""}
+function dayCell(d,opts={}){
+  const t=today(), pl=plannedOn(d), du=dueOn(d), MAX=opts.week?99:3, items=evOn(d).map(evChip).concat(pl.map(planChip),du.map(dueChipCal)), more=items.length-MAX;
+  const tue=S.tueDates.includes(d), mod=inModule(d), fill=dayFill(d), run=mod?modRun(d):null, first=run&&(d===run[0]||(parse(d).getDay()===1));
+  return `<div class="kday${opts.out?" out":""}${d===t?" today":""}${d<t?" past":""}${mod?" mod":""}${fill?" filled":""}" data-day="${d}"${fill?` style="--dayfill:${fill};--dayink:${inkFor(fill)}"`:""}>
+    <button type="button" class="cdnum" data-act="calDay" data-v="${d}" aria-label="${fmtL(d)}: ${pl.length} заплановано">${opts.week?`<small>${WD[(parse(d).getDay()+6)%7]}</small>`:""}<b>${+d.slice(8)}</b>${opts.week?`<small>${MONTHS_N[+d.slice(5,7)-1].slice(0,3)}</small>`:""}</button>
+    ${first?`<button type="button" class="ctag mod" data-act="modEdit" data-d="${d}" title="Модульний тиждень ${fmtS(run[0])} – ${fmtS(run[1])}">${opts.week?"Модульний тиждень":"Модуль"}</button>`:""}${tue?`<span class="ctag tue">Супервізія</span>`:""}
+    <div class="citems">${items.slice(0,MAX).join("")}${more>0?`<button type="button" class="cmore" data-act="calDay" data-v="${d}">ще ${more}</button>`:""}</div>
+    <button type="button" class="cadd" data-act="calDay" data-v="${d}" aria-label="Запланувати на ${fmtD(d)}">${ICON.plus}</button>
+  </div>`;
+}
+function modSave(d){
+  let a=d.date, z=d.end||d.date; if(z<a) [a,z]=[z,a];
+  if(diffDays(z,a)>27){toast("Не довше 4 тижнів"); return}
+  const M=S.settings.modules.filter(x=>!(d.of&&x>=d.of&&x<=d.ot));
+  for(let x=a;x<=z;x=addDays(x,1)) if(!M.includes(x)) M.push(x);
+  S.settings.modules=M.sort(); if(d.mcolor) S.settings.modColor=d.mcolor;
+  closeSheet(); commit(); toast(`Модульний тиждень: ${fmtS(a)} – ${fmtS(z)}`);
+}
+function tagRefresh(){if(document.querySelector('[data-form="event"]')){const d=evFormDraft(); d._tags=true; evDraft=d; sheetEvent(d.id?d:null,d.date)} else sheetSettings(true)}
+function sheetEvent(e,date,type){
+  const isNew=!e; e=evDraft||e||{title:"",date:date||(view==="plan"&&calView==="day"?calDate:today()),time:"",tag:(S.tags[0]||{}).id||"",note:"",type:type||"ev"}; evDraft=null;
+  const ty=e.type||"ev", editing=!!(e.id||e.of);
+  if(ty==="mod"&&!e.end) e.end=addDays(e.date,4);
+  const seg=editing?"":`<div class="seg evtype" role="group" aria-label="Що додати"><button type="button" data-act="evType" data-v="ev" aria-pressed="${ty==="ev"}">Подія</button><button type="button" data-act="evType" data-v="mod" aria-pressed="${ty==="mod"}">Модульний тиждень</button></div>`;
+  const hid=`<input type="hidden" id="ev-type" value="${ty}"><input type="hidden" id="ev-of" value="${e.of||""}"><input type="hidden" id="ev-ot" value="${e.ot||""}">`;
+  const foot=del=>`<div class="row" style="justify-content:space-between">${del||"<span></span>"}<div class="row"><button type="button" class="btn ghost" data-act="closeSheet">Скасувати</button><button class="btn primary">${editing?"Зберегти":"Додати"}</button></div></div>`;
+  if(ty==="mod"){
+    openSheet(`<h2>Модульний тиждень</h2>${seg}<form class="form evform" data-form="event">${hid}<input type="hidden" id="ev-id" value="">
+      <div class="two"><label class="field"><span>Від</span>${dateField("ev-date",e.date)}</label><label class="field"><span>До</span>${dateField("ev-end",e.end)}</label></div>
+      <div class="field"><span>Колір у календарі</span>${swPick("ev-mcolor",e.mcolor||modColor())}</div>
+      ${foot(e.of?`<button type="button" class="btn sm danger" data-act="modDel" data-a="${e.of}" data-b="${e.ot}">Видалити</button>`:"")}</form>`, editing);
+    return;
+  }
+  openSheet(`<h2>${editing?"Подія":"Нова подія"}</h2>${seg}
+  <form class="form evform" data-form="event">${hid}<input type="hidden" id="ev-id" value="${e.id||""}">
+    <label class="field"><span>Назва</span><input id="ev-title" required maxlength="120" value="${esc(e.title||"")}" placeholder="Напр. Конференція"></label>
+    <label class="evall"><input type="checkbox" id="ev-allday" ${e.allDay?"checked":""}><i class="evsw"></i><b>Увесь день</b></label>
+    <div class="two"><label class="field"><span>Дата</span>${dateField("ev-date",e.date)}</label>
+      <label class="field ev-timef"><span>Час</span><input id="ev-time" type="time" value="${e.time||""}"></label>
+      <label class="field ev-endf"><span>До</span>${dateField("ev-end",e.end||"","не обов'язково")}</label></div>
+    <div class="field"><span>Тег</span><div class="tagpick">${S.tags.map(t=>`<label class="tagopt" style="--ec:${t.color};--ei:${inkFor(t.color)}"><input type="radio" name="ev-tag" value="${t.id}" ${e.tag===t.id?"checked":""}><span>${esc(t.name)}</span></label>`).join("")}</div>
+      <div class="tagnew"><input class="inp" id="ev-newtag" maxlength="30" placeholder="Новий тег">${swPick("ev-newcolor",EVC[6])}<button type="button" class="btn sm" data-act="evTagAdd">${ICON.plus}Додати тег</button></div>
+      <details class="tagman"${e._tags?" open":""}><summary>Керувати тегами</summary>${tagSettingsHTML()}</details></div>
+    <label class="field"><span>Нотатка</span><textarea id="ev-note" rows="2" maxlength="400">${esc(e.note||"")}</textarea></label>
+    ${foot(e.id?`<button type="button" class="btn sm danger" data-act="evDel" data-id="${e.id}">Видалити</button>`:"")}
+  </form>`, editing);
+}
+function evFormDraft(){const v=id=>((document.getElementById(id)||{}).value||""), r=document.querySelector('input[name="ev-tag"]:checked'), ad=!!(document.getElementById("ev-allday")||{}).checked;
+  return {id:v("ev-id"),type:v("ev-type")||"ev",of:v("ev-of"),ot:v("ev-ot"),mcolor:v("ev-mcolor"),title:v("ev-title"),date:v("ev-date")||today(),time:ad?"":v("ev-time"),allDay:ad,end:v("ev-end"),tag:r?r.value:"",note:v("ev-note")}}
+
+/* home hero info */
+const HTIPS=["Одне завдання за раз. «Почати» сам порахує час.","Велике завдання легше, якщо розбити його на підпункти.","Після 25 хвилин роботи зроби 5 хвилин перерви.","Найважче краще брати, поки є сили.","Рівний темп щодня краще за марафон в останній день.","Заплануй на завтра 1–2 завдання ще сьогодні ввечері."];
+const BULB='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.3 1.1 2.2h5c0-.9.4-1.6 1.1-2.2A6 6 0 0 0 12 3z"/></svg>';
+function heroInfo(){
+  const t=today(), cy=cycle(), open=openTasksAll(), all=S.tasks.filter(x=>x.kind==="task"&&course(x.courseId)&&!course(x.courseId).archived);
+  const tl=all.filter(x=>x.plan===t), tlo=tl.filter(x=>!x.done), rem=tlo.reduce((s,x)=>s+remMinsOf(x),0);
+  const dd=cy.next?diffDays(cy.next,t):null;
+  const missed=open.filter(x=>x.plan&&x.plan<t);
+  const soon=open.filter(x=>x.due&&diffDays(x.due,t)>=0&&diffDays(x.due,t)<=2).sort((a,b)=>a.due<b.due?-1:1)[0];
+  const quick=tlo.slice().sort((a,b)=>remMinsOf(a)-remMinsOf(b))[0];
+  const doy=Math.floor((parse(t)-new Date(parse(t).getFullYear(),0,0))/864e5);
+  let tip;
+  if(missed.length) tip=`Пропущено ${missed.length} ${pl(missed.length,"завдання","завдання","завдань")}. Перенеси їх у календарі.`;
+  else if(soon){const n=diffDays(soon.due,t); tip=`Дедлайн ${n===0?"сьогодні":n===1?"завтра":"післязавтра"}: «${esc(soon.title)}».`}
+  else if(!tl.length&&open.length) tip="На сьогодні нічого не заплановано. 1–2 завдання вже добре.";
+  else if(quick&&doy%2) tip=`Почни з найкоротшого: «${esc(quick.title)}», ~${fmtMin(remMinsOf(quick))}.`;
+  else tip=HTIPS[doy%HTIPS.length];
+  const st=(b,s)=>`<div class="hstat"><b>${b}</b><small>${s}</small></div>`;
+  return `<div class="hinfo">${st(`${tl.length-tlo.length}/${tl.length}`,"сьогодні")}${st(tlo.length?fmtMin(rem):"0 хв","у плані")}${dd!=null?st(`${dd} ${pl(dd,"день","дні","днів")}`,"до модуля"):""}</div><p class="htip">${BULB}<span>${tip}</span></p>`;
+}
+
+
+/* ---------- 1.0.42: colour presets ---------- */
+const EVC=["#E5534B","#F08A3E","#F4C542","#5BBF73","#3DB6C9","#5B8DEF","#A99BFF","#E46FB0","#8A7F72"];
+const same=(a,b)=>String(a||"").toLowerCase()===String(b||"").toLowerCase();
+function swPick(id,val){return `<span class="swp" role="group" aria-label="Колір"><input type="hidden" id="${id}" value="${val}">${EVC.map(c=>`<button type="button" class="swb${same(c,val)?" on":""}" style="--sw:${c}" data-act="swPick" data-for="${id}" data-v="${c}" aria-label="Колір ${c}" aria-pressed="${same(c,val)}"></button>`).join("")}</span>`}
+function tagSettingsHTML(){
+  return `<div class="taglist">${S.tags.map(t=>`<div class="tagrow2"><input class="inp" value="${esc(t.name)}" maxlength="30" data-tag-name="${t.id}" aria-label="Назва тегу"><span class="swp sm">${EVC.map(c=>`<button type="button" class="swb${same(c,t.color)?" on":""}" style="--sw:${c}" data-act="tagColor" data-id="${t.id}" data-v="${c}" aria-label="Колір ${c}" aria-pressed="${same(c,t.color)}"></button>`).join("")}</span><button type="button" class="mini-btn xs" data-act="tagDel" data-id="${t.id}" aria-label="Видалити тег ${esc(t.name)}">${ICON.x}</button></div>`).join("")}</div>`;
+}
+
+
+/* ---------- 1.0.43: Loco flies out of the top bar ---------- */
+const LF={busy:false,t:null,x:0,y:0,s:1,el:null,say:null,cancel:false,peek:null};
+const LF_EXPLORE=["Хм…","Цікаво!","Ого!","А це що?","Ммм…","?","!","Перевіряю…","Ого, скільки всього"];
+function lfPhrase(){
+  const LS=locoState(), T=LS.today||{p:0,dn:0}, left=Math.max(0,T.p-T.dn), C=[];
+  if(S.active) C.push("Працюємо! Я тихенько посиджу поруч.","Гарний темп. Не забудь про перерву.");
+  if(T.p&&T.dn>=T.p) C.push("Усе на сьогодні зроблено. Я тобою пишаюсь!","План виконано! Можна видихнути.");
+  else if(T.p&&T.dn) C.push(`Вже ${T.dn} з ${T.p}. Ще ${left}, і день твій.`,"Половина шляху позаду. Так тримати!");
+  else if(T.p) C.push(`На сьогодні ${T.p} ${pl(T.p,"завдання","завдання","завдань")}. Почнемо з найлегшого?`,"Одне маленьке завдання, і я вже щасливий.");
+  if(LS.health<45) C.push("Мені трохи сумно. Одне завдання, і мені полегшає.");
+  const G=["Я поруч. Крок за кроком.","Ти робиш більше, ніж здається.","Ковток води, і далі!","Випрями спину. Я теж спробую.","Мені подобається, як ти працюєш.","Маленькі кроки теж рахуються.","Дякую, що доглядаєш за мною.","Ти молодець, що повернувся до справ.","Зроби вдих. Усе встигнемо."];
+  const pool=C.length&&Math.random()<.65?C:G; return pool[Math.floor(Math.random()*pool.length)];
+}
+function lfHome(){const e=document.querySelector(".lvl .tamamini"); if(!e) return null; const r=e.getBoundingClientRect(); if(!r.width||r.bottom<0||r.top>innerHeight) return null; return {x:r.left+r.width/2,y:r.top+r.height/2,w:r.width,h:r.height}}
+function lfOK(){
+  if(S.settings.locoFly===false||LF.busy) return false;
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches||document.hidden) return false;
+  const g=document.getElementById("gate"); if(g&&!g.hidden&&getComputedStyle(g).display!=="none") return false;
+  if(document.documentElement.classList.contains("locked")||document.body.classList.contains("locked")) return false;
+  const sr=document.getElementById("sheetRoot"); if(sr&&sr.children.length) return false;
+  if((typeof tourOn!=="undefined"&&tourOn)||document.getElementById("tourLayer")||document.querySelector(".sf-lock")) return false;
+  const a=document.activeElement; if(a&&/INPUT|TEXTAREA|SELECT/.test(a.tagName)) return false;
+  if(view==="xp") return false;
+  const LS=locoState(); if(LS.mood==="sleep") return false;
+  return !!lfHome();
+}
+function lfEnsure(){
+  if(LF.el&&document.body.contains(LF.el)) return;
+  LF.el=document.createElement("div"); LF.el.className="lfly"; LF.el.setAttribute("aria-hidden","true");
+  LF.el.innerHTML=`<div class="lfin"><i class="lfw l"></i><i class="lfw r"></i><div class="lfbody"></div></div>`;
+  LF.el.addEventListener("click",()=>{LF.cancel=true});
+  LF.say=document.createElement("div"); LF.say.className="lfsay"; LF.say.setAttribute("role","status");
+  document.body.append(LF.el,LF.say);
+}
+function lfPlace(x,y,s,r){LF.x=x;LF.y=y;LF.s=s; LF.el.style.transform=`translate(${x-25}px,${y-28}px) scale(${s}) rotate(${r||0}deg)`}
+function lfFly(x,y,s,dur){
+  return new Promise(res=>{
+    const x0=LF.x,y0=LF.y,s0=LF.s, dx=x-x0, dy=y-y0, L=Math.hypot(dx,dy)||1, bend=(Math.random()<.5?-1:1)*Math.min(220,L*.45);
+    const cx=(x0+x)/2-dy/L*bend, cy=(y0+y)/2+dx/L*bend-60, N=28, K=[];
+    for(let i=0;i<=N;i++){const t=i/N, u=1-t, px=u*u*x0+2*u*t*cx+t*t*x, py=u*u*y0+2*u*t*cy+t*t*y, ps=s0+(s-s0)*t, tx=2*u*(cx-x0)+2*t*(x-cx), rot=Math.max(-14,Math.min(14,tx/40))*Math.sin(Math.PI*t);
+      K.push({transform:`translate(${px-25}px,${py-28}px) scale(${ps}) rotate(${rot}deg)`})}
+    LF.el.classList.add("flying"); LF.el.classList.toggle("left",dx<0);
+    const an=LF.el.animate(K,{duration:dur,easing:"cubic-bezier(.45,.05,.35,1)",fill:"forwards"});
+    an.onfinish=()=>{lfPlace(x,y,s); an.cancel(); LF.el.classList.remove("flying"); res()};
+  });
+}
+const lfWait=ms=>new Promise(r=>setTimeout(r,ms));
+function lfSay(txt,ms,small){
+  LF.say.textContent=txt; LF.say.classList.toggle("small",!!small);
+  const top=LF.y-28*LF.s-10; LF.say.style.left=Math.max(110,Math.min(innerWidth-110,LF.x))+"px"; LF.say.style.top=Math.max(10,top)+"px";
+  LF.say.classList.add("on"); return lfWait(ms).then(()=>LF.say.classList.remove("on"));
+}
+async function lfRun(kind){
+  if(!lfOK()) return; const H=lfHome(); if(!H) return;
+  LF.busy=true; LF.cancel=false; lfEnsure();
+  LF.el.querySelector(".lfbody").innerHTML=miniTama(locoState());
+  lfPlace(H.x,H.y,1); LF.el.classList.add("on"); document.documentElement.classList.add("lf-out");
+  try{
+    if(kind==="talk"){
+      const big=innerWidth<760?2:2.6;
+      await lfFly(innerWidth/2,innerHeight*.42,big,1500);
+      if(!LF.cancel){LF.el.classList.add("wave"); await lfSay(lfPhrase(),4200); LF.el.classList.remove("wave")}
+    } else {
+      const cand=[...document.querySelectorAll("#view .glass,#view .task,#view .tdr,#view .widget,#view .ccard2,#view .sb,#view .shelfcard,.rail-r .rblock")].filter(e=>{const r=e.getBoundingClientRect(); return r.width>80&&r.height>30&&r.top>90&&r.bottom<innerHeight-20});
+      const picks=[]; while(cand.length&&picks.length<3){picks.push(cand.splice(Math.floor(Math.random()*cand.length),1)[0])}
+      for(const e of picks){
+        if(LF.cancel) break;
+        const r=e.getBoundingClientRect(), tx=r.left+24+Math.random()*Math.max(10,r.width-48), ty=Math.max(60,r.top-6);
+        await lfFly(tx,ty,1.35,1100+Math.random()*500); if(LF.cancel) break;
+        e.classList.add("lf-peek"); LF.el.classList.add("peek");
+        await lfSay(LF_EXPLORE[Math.floor(Math.random()*LF_EXPLORE.length)],1300,true);
+        LF.el.classList.remove("peek"); e.classList.remove("lf-peek");
+      }
+    }
+    const H2=lfHome()||H; await lfFly(H2.x,H2.y,1,1300);
+  }catch(_){}
+  LF.el.classList.remove("on","wave","peek"); LF.say.classList.remove("on"); document.documentElement.classList.remove("lf-out"); LF.busy=false;
+}
+function lfSchedule(reset){
+  clearTimeout(LF.t); if(S.settings.locoFly===false) return;
+  const first=reset===undefined, ms=first?45000+Math.random()*30000:150000+Math.random()*150000;
+  LF.t=setTimeout(async()=>{ if(lfOK()) await lfRun(Math.random()<.5?"explore":"talk"); lfSchedule(false)},ms);
+}
+setTimeout(()=>lfSchedule(),0); window.__locoFly=lfRun; window.__lfOK=lfOK;
+
+
+/* ---------- 1.0.44: round save indicator ---------- */
+function saveDotUI(){const b=document.getElementById("saveDot"); if(!b) return; const busy=(typeof dirty!=="undefined"&&dirty)||(typeof writing!=="undefined"&&writing);
+  b.classList.toggle("busy",!!busy); const t=busy?"Зберігаю…":syncMode==="local"?"Збережено на цьому пристрої":"Збережено"; b.querySelector("span").textContent=t; b.setAttribute("aria-label",t)}
+
 /* ---------- views ---------- */
 let view="home", openCourse=null, editing=false, showDone=false, showLater=false, libRoom="main", libQ="";
 function tabsHTML(){return navTabs().map(([k,l])=>`<button class="tab" data-act="nav" data-v="${k}" title="${l}" ${view===k?'aria-current="page"':""}>${ICON[k]}<span>${l}</span></button>`).join("")}
 function render(){
   try{ensureSup()}catch(e){}
   document.getElementById("tabsTop").innerHTML=tabsHTML();
-  document.getElementById("tabsBottom").innerHTML=tabsHTML();
+  document.getElementById("tabsBottom").innerHTML=tabsHTML(); navScrollFix();
   {const g=document.getElementById("greet"); if(g) g.innerHTML=`${greeting()}, <b>${esc(S.settings.name||"Ігор-Еней")}</b>`;
    const rr=document.getElementById("railR"); if(rr) rr.innerHTML=railHTML();}
   const L=level(S.xp), p=(S.xp-xpFor(L))/(xpFor(L+1)-xpFor(L));
@@ -5478,7 +5918,7 @@ function taskRow(t,opts={}){
   const rec=t.kind==="review"&&!t.done;
   const later=!t.done&&t.kind==="task"&&t.due&&cycle().next&&t.due>cycle().next;
   const ued=t.kind==="task"&&!t.done?effDue(t):"", udl=ued?diffDays(ued,today()):99, urg=udl<7?" urg-r":udl<=14?" urg-y":"";
-  return `<div data-tid="${t.id}" class="task${t.title.length>46?" longt":""} ${t.done?"done":""}${isActive("task",t.id)?" active":""}${t.kind==="task"?" cansubs":""}${subsOf(t).length?" hassubs":""}${later?" later":""}${urg} dl${t.kind==="task"?t.diff||0:0}" ${opts.drag?`data-sid="${t.id}"`:""}>${opts.drag?`<button type="button" class="dh" aria-label="Перемістити «${esc(t.title)}» (стрілки)">${GRIP}</button>`:""}
+  return `<div data-tid="${t.id}" class="task${t.title.length>46?" longt":""} ${t.done?"done":""}${isActive("task",t.id)?" active":""}${t.kind==="task"?" cansubs":""}${subsOf(t).length?" hassubs":""}${later?" later":""}${!t.done&&t.plan&&t.plan<today()?" missed":""}${urg} dl${t.kind==="task"?t.diff||0:0}" ${opts.drag?`data-sid="${t.id}"`:""}>${opts.drag?`<button type="button" class="dh" aria-label="Перемістити «${esc(t.title)}» (стрілки)">${GRIP}</button>`:""}
     ${t.kind==="task"?`<span class="dmark d${t.diff||0}" title="Складність: ${t.diff?DIFF[t.diff]:"не вказано"}" aria-hidden="true"></span>`:""}${rec?"":`<button class="check ${t.done?"on":""} d${t.diff||0}" data-act="${t.done?"undone":"done"}" data-id="${t.id}" aria-label="${t.done?"Позначити невиконаним":"Позначити виконаним"}">${t.done?ICON.check:""}</button>`}
     <div class="body">
       <div class="title">${esc(t.title)}</div>
@@ -5492,7 +5932,7 @@ function taskRow(t,opts={}){
       </div>
       ${subsOf(t).length?subBar(t):""}
     </div>
-    ${t.done?"":`${taskDue(t)||'<span class="tdue none"></span>'}<span class="tspc"></span>${t.kind==="task"?planHTML(t):""}`}
+    ${t.done?"":t.kind==="task"?`<span class="tdates">${planHTML(t)}${dlHTML(t)}</span>`:(taskDue(t)||"")}
     ${rec?`<div class="row" style="gap:6px;flex:none"><button class="btn sm primary" data-act="done" data-id="${t.id}" data-q="good">Пам'ятаю</button><button class="btn sm ghost" data-act="done" data-id="${t.id}" data-q="shaky">Слабко</button></div>`:""}
     ${t.kind==="task"&&!t.done?startBtn("task",t):""}
     ${opts.tools===false?"":`${t.kind==="task"?`<button class="mini-btn ${expanded.has(t.id)?"on":""}" data-act="subs" data-id="${t.id}" aria-expanded="${expanded.has(t.id)}" aria-label="Підпункти">${ICON.list}</button><button class="mini-btn" data-act="editTask" data-id="${t.id}" aria-label="Редагувати">${ICON.edit}</button>`:""}<button class="mini-btn" data-act="delTask" data-id="${t.id}" aria-label="Видалити">${ICON.del}</button>`}
@@ -5611,7 +6051,7 @@ const WRENDER={ring:wRing,courses:wCourses,tasks:wTasks,tue:wTue,reading:wReadin
 const SPANS=[2,3,4,6], SPAN_LBL={2:"1/3",3:"1/2",4:"2/3",6:"на всю ширину"};
 const spanOf=w=>{const z=(S.settings.home.size||{})[w];return SPANS.includes(z)?z:(WIDGETS[w].full?6:3)};
 const SCENE_SW={theme:"linear-gradient(135deg,#F3E9D6 50%,#1F1A15 50%)",time:"conic-gradient(#F3E9D6,#D9C29C,#5C2A22,#1F1A15,#F3E9D6)",day:"radial-gradient(circle at 25% 25%,#FFE3AE,transparent 60%),linear-gradient(150deg,#F3E9D6,#D9C29C)",night:"radial-gradient(circle at 25% 25%,#F5B35A,transparent 55%),linear-gradient(150deg,#2C4634,#1F1A15 55%,#5C2222)"};
-const SKINS=[["loft","Лофт-кабінет","linear-gradient(135deg,#C99F66 0 25%,#E7D8BC 25% 30%,#BF935A 30% 55%,#2F4636 55%)"],["solar","Solarpunk","linear-gradient(#7FC8E2,#C4E8E4 55%,#79B06C 56%,#4C8D55)"],["retro","Ретро 80-х","conic-gradient(from 45deg,#FFB3C7 0 25%,#FFD86B 0 50%,#A7CBE0 0 75%,#D9483B 0)"]];
+const SKINS=[["loft","Кабінет терапевта","linear-gradient(135deg,#9FD3EA 0 32%,#7FAE7C 32% 52%,#E8DCC6 52% 78%,#6B4E36 78%)"],["solar","Solarpunk","linear-gradient(#7FC8E2,#C4E8E4 55%,#79B06C 56%,#4C8D55)"],["retro","Ретро 80-х","conic-gradient(from 45deg,#FFB3C7 0 25%,#FFD86B 0 50%,#A7CBE0 0 75%,#D9483B 0)"]];
 function sceneMenuHTML(){const sc={dawn:"day",sunset:"night"}[S.settings.scene]||S.settings.scene, sk=["loft","solar","retro"].includes(S.settings.skin)?S.settings.skin:"retro";return `<div class="label" style="padding:2px 10px 6px">Дизайн</div>${SKINS.map(([k,l,sw])=>`<button type="button" class="sceneopt" data-act="skin" data-v="${k}" aria-pressed="${sk===k}"><i style="background:${sw}"></i>${l}</button>`).join("")}<div style="height:1px;background:var(--line);margin:6px 8px"></div><div class="label" style="padding:2px 10px 6px">Режим</div>${SCENES.map(([k,l])=>`<button type="button" class="sceneopt" data-act="scene" data-v="${k}" aria-pressed="${sc===k}"><i style="background:${SCENE_SW[k]}"></i>${l}</button>`).join("")}<div style="height:1px;background:var(--line);margin:6px 8px"></div><button type="button" class="sceneopt${sk!=="loft"?" hide-solar":""}" data-act="lamp" aria-pressed="${!S.settings.lampOff}"><i style="background:${S.settings.lampOff?"radial-gradient(circle,#8C7A66 0 35%,#3B3129 40%)":"radial-gradient(circle,#FFF4C8 0 30%,#F5A647 55%,#3B2A1E 75%)"}"></i>Лампа ${S.settings.lampOff?"вимкнена":"світить"}</button>`}
 function homeView(){
   const h=S.settings.home, vis=h.order.filter(w=>!h.hidden.includes(w)&&WIDGETS[w]);
@@ -6202,7 +6642,7 @@ function calendarHTML(){
     ${pastN?`<small class="muted">Минулих дат: ${pastN}</small>`:""}</div>`;
 }
 let setTab="general";
-const SETTABS=[["general","Загальне"],["menu","Меню"],["calendar","Календар"],["time","Час на завдання"],["data","Дані"]];
+const SETTABS=[["general","Загальне"],["menu","Меню"],["time","Час на завдання"],["data","Дані"]];
 function sheetSettings(keep){
   const s=S.settings, sc=keep&&document.querySelector(".setbody")?document.querySelector(".setbody").scrollTop:0, mn=k=>minsOf({diff:k});
   let body="";
@@ -6210,6 +6650,7 @@ function sheetSettings(keep){
     <label class="field"><span>Як до тебе звертатися</span><input id="s-name" data-set="name" maxlength="30" value="${esc(s.name||"Ігор-Еней")}"></label>
     <label class="field"><span>Назва вівторкового завдання</span><input id="s-tname" data-set="tueName" maxlength="60" value="${esc(s.tueName)}"></label>
     <label class="field"><span>Інтервали повторень (дні)</span><input id="s-iv" data-set="intervals" value="${s.intervals.join(", ")}"><small>Через скільки днів нагадувати повторити матеріал після виконання.</small></label>
+    <label class="checkline"><input type="checkbox" id="s-lfly" data-set="locoFly" ${s.locoFly!==false?"checked":""}><span>Loco іноді вилітає з панелі й літає екраном</span></label>
     <label class="checkline"><input type="checkbox" id="s-fun" data-set="fun" ${s.fun!==false?"checked":""}><span>Смішні повідомлення і смайлики при виконанні</span></label>`;
   else if(setTab==="calendar") body=`<h3>Календар</h3>
     <div class="seg" role="group" aria-label="Що позначати"><button type="button" data-act="calMode" data-v="mod" aria-pressed="${calMode==="mod"}">Модульні тижні</button><button type="button" data-act="calMode" data-v="tue" aria-pressed="${calMode==="tue"}">${esc(s.tueName)}</button></div>
@@ -6226,7 +6667,7 @@ function sheetSettings(keep){
     <div class="field"><span>Небезпечна зона</span><div><button type="button" class="btn danger sm" data-act="resetAsk">Скинути все</button></div><div id="resetZone"></div></div>
     `;
   openSheet(`<div class="setwrap"><div class="sethead"><h2>Налаштування</h2><button type="button" class="iconbtn" data-act="closeSheet" aria-label="Закрити">${ICON.x}</button></div>
-    <nav class="setnav" aria-label="Розділи налаштувань">${SETTABS.map(([k,l])=>`<button type="button" data-act="setTab" data-v="${k}" aria-current="${setTab===k?"page":"false"}">${l}</button>`).join("")}</nav>
+    <nav class="setnav" aria-label="Розділи налаштувань">${SETTABS.map(([k,l])=>`<button type="button" data-act="setTab" data-v="${k}" aria-current="${setTab===k?"page":"false"}">${l}</button>`).join("")}<button type="button" class="setlogout" data-act="logout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3"/><path d="M15 7l5 5-5 5M20 12H9"/></svg>Вийти</button></nav>
     <div class="setbody form">${body}<div class="setfoot"><span class="muted">Зміни зберігаються одразу.</span><span class="buildno" title="Номер збірки">${LOCUS_BUILD}</span></div></div></div>`,true);
   if(keep){const el=document.querySelector(".setbody"); if(el) el.scrollTop=sc}
 }
@@ -6235,6 +6676,7 @@ document.addEventListener("change",e=>{const el=e.target, k=el&&el.dataset&&el.d
   else if(k==="tueName") s.tueName=el.value.trim()||"Вівторкове завдання";
   else if(k==="intervals"){const iv=el.value.split(/[,\s]+/).map(x=>parseInt(x,10)).filter(x=>x>0).slice(0,8); if(iv.length) s.intervals=iv; el.value=s.intervals.join(", ")}
   else if(k==="fun") s.fun=el.checked;
+  else if(k==="locoFly"){s.locoFly=el.checked; lfSchedule(true)}
   else if(k.startsWith("mins.")){const d=k.slice(5); s.mins=s.mins||{}; const v=clamp(parseInt(el.value,10)||DEF_MINS[d],1,1440); s.mins[d]=v; el.value=v}
   commit(); toast("Збережено");
 });
@@ -6549,7 +6991,7 @@ document.addEventListener("click",e=>{
     case "delCourse": {const c=course(id); snap(); S.courses=S.courses.filter(x=>x.id!==id); S.tasks=S.tasks.filter(t=>t.courseId!==id); S.books.forEach(x=>{if(x.courseId===id)x.courseId=""}); openCourse=null; closeSheet(); commit(); undoToast(`Курс «${c.name}» видалено`); break}
     case "customize": if(view!=="home"){view="home";openCourse=null;libZoom=null;editing=true}else editing=!editing; render(); window.scrollTo(0,0); break;
     case "lamp": toggleLamp(); break;
-    case "logout": logout(); break;
+    case "logout": closeSheet(); logout(); break;
     case "saveCloud": clearTimeout(timer); dirty=false; saveToCloud(true); break;
     case "fab": openFab(); break;
     case "fabTask": closeFab(); taskSheet(null,view==="courses"&&openCourse?openCourse:""); break;
@@ -6567,8 +7009,8 @@ document.addEventListener("click",e=>{
     case "evEdit": sheetEvent((S.events||[]).find(x=>x.id===id)); break;
     case "evDel": {snap(); S.events=S.events.filter(x=>x.id!==id); closeSheet(); commit(); undoToast("Подію видалено"); break}
     case "evTagAdd": {const n=(document.getElementById("ev-newtag")||{}).value.trim(); if(!n){toast("Впиши назву тегу");break} const tg={id:uid(),name:n,color:document.getElementById("ev-newcolor").value}; S.tags.push(tg); const d=evFormDraft(); d.tag=tg.id; evDraft=d; commit({norender:true}); sheetEvent(d.id?d:null,d.date); break}
-    case "tagAdd": {const n=(document.getElementById("tg-new")||{}).value.trim(); if(!n){toast("Впиши назву тегу");break} S.tags.push({id:uid(),name:n,color:document.getElementById("tg-color").value}); commit(); sheetSettings(true); break}
-    case "tagDel": {if(S.tags.length<=1){toast("Має лишитися хоча б один тег");break} snap(); S.tags=S.tags.filter(x=>x.id!==id); const f=S.tags[0].id; (S.events||[]).forEach(e=>{if(e.tag===id) e.tag=f}); commit(); sheetSettings(true); undoToast("Тег видалено"); break}
+    case "tagAdd": {const n=(document.getElementById("tg-new")||{}).value.trim(); if(!n){toast("Впиши назву тегу");break} S.tags.push({id:uid(),name:n,color:document.getElementById("tg-color").value}); commit({norender:true}); render(); tagRefresh(); break}
+    case "tagDel": {if(S.tags.length<=1){toast("Має лишитися хоча б один тег");break} snap(); S.tags=S.tags.filter(x=>x.id!==id); const f=S.tags[0].id; (S.events||[]).forEach(e=>{if(e.tag===id) e.tag=f}); commit({norender:true}); render(); tagRefresh(); undoToast("Тег видалено"); break}
     case "kalNav": {const n=+b.dataset.d; if(calView==="day") calDate=addDays(calDate,n); else if(calView==="week") calWeek=addDays(calWeek,7*n); else {const [y,m]=calMon.split("-").map(Number), d=new Date(y,m-1+n,1); calMon=d.getFullYear()+"-"+pad(d.getMonth()+1)} render(); break}
     case "kalToday": calDate=today(); calWeek=mondayOf(today()); calMon=today().slice(0,7); render(); break;
     case "calDay": if(view==="plan"&&b.classList.contains("cdnum")){calDate=b.dataset.v; calView="day"; render()} else sheetDay(b.dataset.v); break;
@@ -6587,8 +7029,14 @@ document.addEventListener("click",e=>{
     case "room": libRoom=b.dataset.v; libZoom=null; libScroll=0; render(); break;
     case "zoom": libZoom=id; render(); window.scrollTo(0,0); break;
     case "unzoom": libZoom=null; render(); break;
-    case "settingsMod": setTab="calendar"; calMode="mod"; {const n=cycle().next; calMonth=(n||today()).slice(0,8)+"01"} sheetSettings(); break;
-    case "settingsTue": setTab="calendar"; calMode="tue"; calMonth=today().slice(0,8)+"01"; sheetSettings(); break;
+    case "settingsMod": case "modNew": sheetEvent(null,null,"mod"); break;
+    case "modEdit": {const r=modRun(b.dataset.d); if(r){evDraft={type:"mod",date:r[0],end:r[1],of:r[0],ot:r[1]}; sheetEvent(evDraft)} break}
+    case "modDel": {snap(); const a=b.dataset.a,z=b.dataset.b; S.settings.modules=S.settings.modules.filter(x=>x<a||x>z); closeSheet(); commit(); undoToast("Модульний тиждень видалено"); break}
+    case "swPick": {const inp=document.getElementById(b.dataset.for); if(inp){inp.value=b.dataset.v; b.parentElement.querySelectorAll(".swb").forEach(x=>{x.classList.toggle("on",x===b); x.setAttribute("aria-pressed",String(x===b))})} break}
+    case "tagColor": {const t=S.tags.find(x=>x.id===id); if(t){t.color=b.dataset.v; commit({norender:true}); render(); tagRefresh()} break}
+    case "saveDot": {if(ref){clearTimeout(timer); dirty=true; flush()} toast("Дані збережено"); break}
+    case "evType": {const d=evFormDraft(); d.type=b.dataset.v; if(d.type==="mod"&&!d.end) d.end=addDays(d.date,4); evDraft=d; sheetEvent(null,d.date); break}
+    case "settingsTue": view="sup"; try{history.replaceState(null,"","#sup")}catch(_){} render(); window.scrollTo(0,0); break;
     case "calMode": calMode=b.dataset.v; sheetSettings(true); break;
     case "calNav": {const d=parse(calMonth); d.setMonth(d.getMonth()+(+b.dataset.v)); calMonth=d2s(d).slice(0,8)+"01"; sheetSettings(true); break}
     case "calDay": calToggle(b.dataset.d); break;
@@ -6652,7 +7100,7 @@ document.addEventListener("submit",e=>{
       const t=S.tasks.find(x=>x.id===f.dataset.id), inp=f.querySelector("input"), txt=inp.value.trim(); if(!t||!txt) return;
       t.subs=[...subsOf(t),{id:uid(),t:txt,done:false}]; inp.value=""; if(t.done) reopen(t);
       commit(); const el=document.getElementById("sub-"+t.id); if(el) el.focus(); break}
-    case "event":{const d=evFormDraft(); if(!d.title.trim()) return; d.title=d.title.trim(); S.events=S.events||[];
+    case "event":{const d=evFormDraft(); if(d.type==="mod"){modSave(d); return} delete d.type; delete d.of; delete d.ot; delete d.mcolor; if(!d.allDay||!d.end||d.end<=d.date) d.end=""; if(!d.title.trim()) return; d.title=d.title.trim(); S.events=S.events||[];
       if(d.id){const ev=S.events.find(x=>x.id===d.id); if(ev) Object.assign(ev,d)} else {d.id=uid(); d.createdAt=Date.now(); S.events.push(d)}
       closeSheet(); commit(); toast(`Подія: ${d.title} · ${fmtS(d.date)}${d.time?" "+d.time:""}`); break}
     case "planday":{const t=S.tasks.find(x=>x.id===v("pd-task")), d=f.dataset.day; if(!t) return; t.plan=d; commit(); sheetDay(d); break}
