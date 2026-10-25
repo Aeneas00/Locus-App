@@ -3584,6 +3584,11 @@ span.tdlbtn.has{cursor:default}
 @keyframes lfemo{0%{opacity:0;transform:translate(-50%,-50%) scale(.4)}15%{opacity:1;transform:translate(-50%,-80%) scale(1.1)}100%{opacity:0;transform:translate(calc(-50% + var(--dx,0px)),-260%) scale(.9) rotate(12deg)}}
 @media (prefers-reduced-motion:reduce){.lfemo{display:none}}
 
+/* ===== 1.0.47 Loco eats ===== */
+.lfly.eat .lfbody{animation:lfeat .9s ease-in-out}
+@keyframes lfeat{0%,100%{rotate:0deg;translate:0 0}20%{rotate:14deg;translate:0 6px}40%{rotate:-6deg;translate:0 2px}60%{rotate:14deg;translate:0 6px}80%{rotate:-4deg;translate:0 0}}
+.lfsay{display:none!important}
+
 .savebtn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border:0;border-radius:12px;background:linear-gradient(180deg,#F3C766,#D99A2B);color:#241606;font:inherit;font-weight:800;font-size:.95rem;cursor:pointer;box-shadow:0 8px 18px -8px rgba(217,154,43,.8),inset 0 1px 0 rgba(255,255,255,.45);transition:transform .15s,filter .15s}
 .savebtn svg{width:18px;height:18px}
 .savebtn:hover{filter:brightness(1.07);transform:translateY(-1px)}
@@ -5219,7 +5224,7 @@ document.addEventListener("click",e=>{if(document.getElementById("fabmenu")&&!e.
 document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest("#fabmenu [data-act]")) setTimeout(closeFab,0)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("fabmenu")){closeFab(); const f=document.getElementById("fab"); if(f) f.focus()}});
 
-const LOCUS_BUILD="1.0.46";
+const LOCUS_BUILD="1.0.47";
 
 /* ---------- alive: entrance on view change, ring fill, count-up, completion burst ---------- */
 let aliveKey=null, aliveFirst=true;
@@ -5904,7 +5909,7 @@ function saveDotUI(){const b=document.getElementById("saveDot"); if(!b) return; 
 
 
 /* ---------- 1.0.45: Loco behaviour ---------- */
-const LF_ACT=[{n:"Спокійний",d:"Вилітає приблизно раз на 10 хвилин.",first:[120,180],every:[480,720],talk:.6},{n:"Активний",d:"Вилітає приблизно раз на 5 хвилин.",first:[45,75],every:[240,360],talk:.5},{n:"Дуже активний",d:"Вилітає приблизно раз на 2 хвилини.",first:[20,40],every:[90,150],talk:.4}];
+const LF_ACT=[{n:"Спокійний",d:"Майже весь час сидить на панелі. Раз на 10 хвилин вилазить на пів хвилини щось пошукати.",first:[180,300],every:[540,660],sess:[30,30],food:.3},{n:"Активний",d:"Раз на кілька хвилин вилітає й хвилину-півтори досліджує сторінку.",first:[30,60],every:[180,240],sess:[60,90],food:.4},{n:"Дуже активний",d:"Майже весь час літає екраном: роздивляється все й шукає «поїсти», тобто сьогоднішні завдання.",first:[5,10],every:[15,30],sess:[240,360],food:.5}];
 const lfAct=()=>LF_ACT[clamp(S.settings.locoAct==null?1:+S.settings.locoAct,0,2)];
 function lfSchedule(reset){
   clearTimeout(LF.t); if(S.settings.locoFly===false) return;
@@ -5961,11 +5966,62 @@ function lfFly(x,y,s,dur){
     LF.el.classList.add("flying"); LF.el.classList.toggle("left",dx<0);
     const kind=LF.kind||"talk", tm=[];
     if(L>140&&Math.random()<.55){tm.push(setTimeout(()=>lfTurn(true),dur*(.18+Math.random()*.15))); tm.push(setTimeout(()=>lfTurn(false),dur*(.62+Math.random()*.12)))}
-    const iv=setInterval(()=>{if(Math.random()<.5) lfEmoji(kind)},360);
+    const iv=setInterval(()=>{if(Math.random()<.16) lfEmoji(kind)},420);
     const an=LF.el.animate(K,{duration:dur,easing:"cubic-bezier(.45,.05,.35,1)",fill:"forwards"});
     an.onfinish=()=>{clearInterval(iv); tm.forEach(clearTimeout); lfTurn(false); lfPlace(x,y,s); an.cancel(); LF.el.classList.remove("flying"); res()};
   });
 }
+
+
+/* ---------- 1.0.47: Loco roams and looks for food, no talking ---------- */
+const lfRnd=r=>r[0]+Math.random()*(r[1]-r[0]);
+function lfStill(){
+  if(document.hidden||view==="xp") return false;
+  const sr=document.getElementById("sheetRoot"); if(sr&&sr.children.length) return false;
+  if((typeof tourOn!=="undefined"&&tourOn)||document.getElementById("tourLayer")||document.querySelector(".sf-lock")) return false;
+  const a=document.activeElement; if(a&&/INPUT|TEXTAREA|SELECT/.test(a.tagName)) return false;
+  return true;
+}
+const lfVis=e=>{const r=e.getBoundingClientRect(); return r.width>60&&r.height>24&&r.top>90&&r.bottom<innerHeight-30&&r.left>0&&r.right<innerWidth};
+function lfFood(){const t=today(); return [...document.querySelectorAll("#view [data-tid]")].filter(e=>{const x=S.tasks.find(y=>y.id===e.dataset.tid); return x&&x.plan===t&&lfVis(e)}).concat([...document.querySelectorAll("#view .upcard.today")].filter(lfVis))}
+function lfBlocks(){return [...document.querySelectorAll("#view .glass,#view .task,#view .tdr,#view .widget,#view .ccard2,#view .sb,#view .shelfcard,#view .upcard,.rail-r .rblock,.rail-l .tab")].filter(lfVis)}
+function lfPuff(set,n){for(let i=0;i<n;i++) setTimeout(()=>{if(!LF.el) return; const r=LF.el.getBoundingClientRect(), e=document.createElement("span"); e.className="lfemo"; e.textContent=set[Math.floor(Math.random()*set.length)];
+  e.style.left=(r.left+r.width*(.25+Math.random()*.5))+"px"; e.style.top=(r.top+r.height*.2)+"px"; e.style.setProperty("--dx",(Math.random()*60-30)+"px"); document.body.appendChild(e); setTimeout(()=>e.remove(),1500)},i*260)}
+async function lfRoam(ms){
+  const end=Date.now()+ms, A=lfAct(); let last=null;
+  while(Date.now()<end&&!LF.cancel&&lfStill()){
+    const food=Math.random()<A.food?lfFood().filter(e=>e!==last):[];
+    let tgt=null, isFood=false;
+    if(food.length){tgt=food[Math.floor(Math.random()*food.length)]; isFood=true}
+    else if(Math.random()<.82){const c=lfBlocks().filter(e=>e!==last); if(c.length) tgt=c[Math.floor(Math.random()*c.length)]}
+    if(tgt){
+      last=tgt; const r=tgt.getBoundingClientRect(), tx=r.left+20+Math.random()*Math.max(10,r.width-40), ty=Math.max(70,isFood?r.top+r.height/2:r.top-6);
+      await lfFly(tx,ty,1.2,900+Math.random()*700); if(LF.cancel||!lfStill()) break;
+      tgt.classList.add("lf-peek"); LF.el.classList.add(isFood?"eat":"peek");
+      if(isFood){const x=S.tasks.find(y=>y.id===tgt.dataset.tid); lfPuff(x&&x.done?["😋","🍽️","💛"]:["🍎","👀","🤤","🍪"],2)}
+      else if(Math.random()<.45) lfPuff(["👀","❓","🤔","✨"],1);
+      await lfWait(1100+Math.random()*1000);
+      LF.el.classList.remove("peek","eat"); tgt.classList.remove("lf-peek");
+    } else {
+      await lfFly(80+Math.random()*(innerWidth-160),130+Math.random()*(innerHeight-240),1.1,1200+Math.random()*800);
+      await lfWait(500+Math.random()*1200);
+    }
+  }
+}
+async function lfRun(kind,ms){
+  if(!lfOK()) return; const H=lfHome(); if(!H) return;
+  LF.busy=true; LF.cancel=false; LF.kind="explore"; lfEnsure();
+  {const LS0=locoState(); LF.el.querySelector(".lfbody").innerHTML=`<div class="lfflip"><div class="lff">${miniTama(LS0)}</div><div class="lfb">${miniTamaBack()}</div></div>`; LF.el.classList.remove("back")}
+  lfPlace(H.x,H.y,1); LF.el.classList.add("on"); document.documentElement.classList.add("lf-out");
+  try{ await lfRoam(ms||20000); const H2=lfHome()||H; await lfFly(H2.x,H2.y,1,1300) }catch(_){}
+  LF.el.classList.remove("on","wave","peek","eat"); document.querySelectorAll(".lf-peek").forEach(e=>e.classList.remove("lf-peek")); document.documentElement.classList.remove("lf-out"); LF.busy=false;
+}
+function lfSchedule(reset){
+  clearTimeout(LF.t); if(S.settings.locoFly===false) return;
+  const A=lfAct(), ms=lfRnd(reset===undefined||reset===true?A.first:A.every)*1000;
+  LF.t=setTimeout(async()=>{ if(lfOK()) await lfRun("roam",lfRnd(A.sess)*1000); lfSchedule(false)},ms);
+}
+window.__locoFly=lfRun;
 
 /* ---------- views ---------- */
 let view="home", openCourse=null, editing=false, showDone=false, showLater=false, libRoom="main", libQ="";
