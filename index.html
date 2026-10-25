@@ -3551,6 +3551,39 @@ span.tdlbtn.has{cursor:default}
 .setlogout svg{width:18px;height:18px}
 @media (max-width:760px){.setlogout{margin:0 0 0 auto!important}}
 
+/* ===== 1.0.45 Loco behaviour settings ===== */
+.tamamini2 svg{transform-origin:50% 90%;animation:mtwig2 3.2s ease-in-out infinite}
+@keyframes mtwig2{0%,70%,100%{transform:rotate(0)}76%{transform:rotate(-8deg)}84%{transform:rotate(7deg)}92%{transform:rotate(-3deg)}}
+.tq-reward .tq-loco{width:44px;height:50px}
+.lcbhead{display:flex;align-items:center;gap:14px;margin:4px 0 18px}
+.lcbhead .tq-loco{width:46px;height:52px;flex:none}
+.lcbeh{padding:18px 18px 12px;border-radius:16px;background:var(--glass-2);margin-bottom:14px}
+.lcbeh.off{opacity:.45}
+.lcrange{-webkit-appearance:none;appearance:none;width:100%;height:10px;border-radius:999px;background:linear-gradient(90deg,var(--accent) calc(var(--v,.5)*100%),var(--track) 0);outline:none;margin:6px 0 12px;cursor:pointer}
+.lcrange::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:#fff;border:3px solid var(--accent);box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.lcrange::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;border:3px solid var(--accent);box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.lcrange:focus-visible::-webkit-slider-thumb{outline:3px solid color-mix(in srgb,var(--accent) 40%,transparent)}
+.lcbl{display:flex;justify-content:space-between;font-size:.84rem;font-weight:700;color:var(--ink-2)}
+.lcbl span{flex:1;text-align:center}.lcbl span:first-child{text-align:left}.lcbl span:last-child{text-align:right}
+.lcbl span.on{color:var(--ink);font-weight:800}
+.lcbd{margin:12px 0 0;font-size:.88rem;color:var(--ink-2)}
+:root[data-skin="retro"] .lcbeh{background:var(--card);border:2px solid var(--hard);box-shadow:4px 4px 0 var(--hard)}
+:root[data-skin="retro"] .lcrange{border:2px solid var(--hard);height:14px;background:linear-gradient(90deg,#FF6FB5 calc(var(--v,.5)*100%),#fff 0)}
+:root[data-skin="retro"] .lcrange::-webkit-slider-thumb{border:3px solid var(--hard);background:#FFD23F;border-radius:6px;box-shadow:2px 2px 0 var(--hard)}
+:root[data-skin="retro"] .lcrange::-moz-range-thumb{border:3px solid var(--hard);background:#FFD23F;border-radius:6px}
+
+/* ===== 1.0.46 flying Loco: no wings, back side, emoji ===== */
+.lfw{display:none!important}
+.lfflip{width:100%;height:100%;position:relative;transition:transform .14s ease-in}
+.lfflip.turning{transform:scaleX(0)}
+.lff,.lfb{position:absolute;inset:0}
+.lff svg,.lfb svg{width:100%;height:100%;display:block}
+.lfb{display:none}
+.lfly.back .lfb{display:block}.lfly.back .lff{display:none}
+.lfemo{position:fixed;z-index:91;pointer-events:none;font-size:22px;line-height:1;transform:translate(-50%,-50%);animation:lfemo 1.4s ease-out forwards}
+@keyframes lfemo{0%{opacity:0;transform:translate(-50%,-50%) scale(.4)}15%{opacity:1;transform:translate(-50%,-80%) scale(1.1)}100%{opacity:0;transform:translate(calc(-50% + var(--dx,0px)),-260%) scale(.9) rotate(12deg)}}
+@media (prefers-reduced-motion:reduce){.lfemo{display:none}}
+
 .savebtn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border:0;border-radius:12px;background:linear-gradient(180deg,#F3C766,#D99A2B);color:#241606;font:inherit;font-weight:800;font-size:.95rem;cursor:pointer;box-shadow:0 8px 18px -8px rgba(217,154,43,.8),inset 0 1px 0 rgba(255,255,255,.45);transition:transform .15s,filter .15s}
 .savebtn svg{width:18px;height:18px}
 .savebtn:hover{filter:brightness(1.07);transform:translateY(-1px)}
@@ -5186,7 +5219,7 @@ document.addEventListener("click",e=>{if(document.getElementById("fabmenu")&&!e.
 document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest("#fabmenu [data-act]")) setTimeout(closeFab,0)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("fabmenu")){closeFab(); const f=document.getElementById("fab"); if(f) f.focus()}});
 
-const LOCUS_BUILD="1.0.44";
+const LOCUS_BUILD="1.0.46";
 
 /* ---------- alive: entrance on view change, ring fill, count-up, completion burst ---------- */
 let aliveKey=null, aliveFirst=true;
@@ -5833,8 +5866,8 @@ function lfSay(txt,ms,small){
 }
 async function lfRun(kind){
   if(!lfOK()) return; const H=lfHome(); if(!H) return;
-  LF.busy=true; LF.cancel=false; lfEnsure();
-  LF.el.querySelector(".lfbody").innerHTML=miniTama(locoState());
+  LF.busy=true; LF.cancel=false; LF.kind=kind; lfEnsure();
+  {const LS0=locoState(); LF.el.querySelector(".lfbody").innerHTML=`<div class="lfflip"><div class="lff">${miniTama(LS0)}</div><div class="lfb">${miniTamaBack()}</div></div>`; LF.el.classList.remove("back")}
   lfPlace(H.x,H.y,1); LF.el.classList.add("on"); document.documentElement.classList.add("lf-out");
   try{
     if(kind==="talk"){
@@ -5868,6 +5901,71 @@ setTimeout(()=>lfSchedule(),0); window.__locoFly=lfRun; window.__lfOK=lfOK;
 /* ---------- 1.0.44: round save indicator ---------- */
 function saveDotUI(){const b=document.getElementById("saveDot"); if(!b) return; const busy=(typeof dirty!=="undefined"&&dirty)||(typeof writing!=="undefined"&&writing);
   b.classList.toggle("busy",!!busy); const t=busy?"Зберігаю…":syncMode==="local"?"Збережено на цьому пристрої":"Збережено"; b.querySelector("span").textContent=t; b.setAttribute("aria-label",t)}
+
+
+/* ---------- 1.0.45: Loco behaviour ---------- */
+const LF_ACT=[{n:"Спокійний",d:"Вилітає приблизно раз на 10 хвилин.",first:[120,180],every:[480,720],talk:.6},{n:"Активний",d:"Вилітає приблизно раз на 5 хвилин.",first:[45,75],every:[240,360],talk:.5},{n:"Дуже активний",d:"Вилітає приблизно раз на 2 хвилини.",first:[20,40],every:[90,150],talk:.4}];
+const lfAct=()=>LF_ACT[clamp(S.settings.locoAct==null?1:+S.settings.locoAct,0,2)];
+function lfSchedule(reset){
+  clearTimeout(LF.t); if(S.settings.locoFly===false) return;
+  const A=lfAct(), r=reset===undefined||reset===true?A.first:A.every, ms=(r[0]+Math.random()*(r[1]-r[0]))*1000;
+  LF.t=setTimeout(async()=>{ if(lfOK()) await lfRun(Math.random()<A.talk?"talk":"explore"); lfSchedule(false)},ms);
+}
+function locoSettingsHTML(){
+  const s=S.settings, on=s.locoFly!==false, v=s.locoAct==null?1:+s.locoAct;
+  return `<h3>Поведінка Loco</h3>
+    <div class="lcbhead"><span class="tq-loco tamamini2">${miniTama(locoState())}</span><label class="checkline" style="margin:0"><input type="checkbox" id="s-lfly" data-set="locoFly" ${on?"checked":""}><span>Loco вилітає з панелі й літає екраном</span></label></div>
+    <div class="lcbeh${on?"":" off"}">
+      <input type="range" class="lcrange" id="s-lact" min="0" max="2" step="1" value="${v}" data-set="locoAct" aria-label="Наскільки активний Loco" aria-valuetext="${LF_ACT[v].n}" ${on?"":"disabled"} style="--v:${v/2}">
+      <div class="lcbl">${LF_ACT.map((a,i)=>`<span class="${i===v?"on":""}">${a.n}</span>`).join("")}</div>
+      <p class="lcbd" id="lact-desc">${LF_ACT[v].d}</p>
+    </div>
+    <button type="button" class="btn sm" data-act="locoTry" ${on?"":"disabled"}>Покликати Loco зараз</button>`;
+}
+document.addEventListener("input",e=>{const el=e.target; if(!el||el.id!=="s-lact") return; const v=clamp(+el.value,0,2); el.style.setProperty("--v",v/2); el.setAttribute("aria-valuetext",LF_ACT[v].n);
+  const d=document.getElementById("lact-desc"); if(d) d.textContent=LF_ACT[v].d; document.querySelectorAll(".lcbl span").forEach((x,i)=>x.classList.toggle("on",i===v))});
+
+
+/* ---------- 1.0.46: no wings, turns around, emoji ---------- */
+function miniTamaBack(){
+  const K={retro:["#FF9BD0","#A98BF0","#FFD23F","#2B1B2E"],solar:["#A9E8B4","#3FA36E","#FFFFFF","#1E4D36"],loft:["#B08560","#5A3E28","#E3B861","#2A1C10"]}[curSkin()]||["#FF9BD0","#A98BF0","#FFD23F","#2B1B2E"];
+  return `<svg viewBox="0 0 41 46" aria-hidden="true"><defs><linearGradient id="mtgb" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${K[0]}"/><stop offset="1" stop-color="${K[1]}"/></linearGradient></defs>
+    <circle cx="20.5" cy="3" r="2.4" fill="none" stroke="${K[3]}" stroke-width="1.6"/>
+    <path d="M20.5 5C31 5 38.5 15 38.5 27C38.5 37 30.5 44 20.5 44C10.5 44 2.5 37 2.5 27C2.5 15 10 5 20.5 5Z" fill="url(#mtgb)" stroke="${K[3]}" stroke-width="1.8"/>
+    <rect x="12" y="18" width="17" height="15" rx="3" fill="none" stroke="${K[3]}" stroke-width="1.3" opacity=".7"/>
+    <path d="M17 22h7M17 25h7M17 28h7" stroke="${K[3]}" stroke-width="1.2" stroke-linecap="round" opacity=".55"/>
+    <circle cx="20.5" cy="38" r="1.6" fill="${K[3]}" opacity=".5"/><g fill="${K[3]}" opacity=".45"><circle cx="14" cy="12" r=".9"/><circle cx="17" cy="11" r=".9"/><circle cx="24" cy="11" r=".9"/><circle cx="27" cy="12" r=".9"/></g></svg>`;
+}
+function lfEnsure(){
+  if(LF.el&&document.body.contains(LF.el)) return;
+  LF.el=document.createElement("div"); LF.el.className="lfly"; LF.el.setAttribute("aria-hidden","true");
+  LF.el.innerHTML=`<div class="lfin"><div class="lfbody"></div></div>`;
+  LF.el.addEventListener("click",()=>{LF.cancel=true});
+  LF.say=document.createElement("div"); LF.say.className="lfsay"; LF.say.setAttribute("role","status");
+  document.body.append(LF.el,LF.say);
+}
+function lfTurn(back){if(!LF.el||LF.el.classList.contains("back")===back) return; const f=LF.el.querySelector(".lfflip"); if(!f) return; f.classList.add("turning"); setTimeout(()=>{LF.el.classList.toggle("back",back); f.classList.remove("turning")},140)}
+const LF_EMO={joy:["✨","💛","🎉","⭐","😊"],happy:["✨","💛","🎵","😊","🌿"],sad:["💧","🥺","☁️"],sick:["🤒","💧","☁️"],explore:["👀","❓","🤔","✨"]};
+function lfEmoji(kind){
+  if(!LF.el) return; const r=LF.el.getBoundingClientRect(), md=locoState().mood, set=kind==="explore"&&Math.random()<.6?LF_EMO.explore:(LF_EMO[md]||LF_EMO.happy);
+  const e=document.createElement("span"); e.className="lfemo"; e.textContent=set[Math.floor(Math.random()*set.length)];
+  e.style.left=(r.left+r.width*(.25+Math.random()*.5))+"px"; e.style.top=(r.top+r.height*.2)+"px"; e.style.setProperty("--dx",(Math.random()*60-30)+"px");
+  document.body.appendChild(e); setTimeout(()=>e.remove(),1500);
+}
+function lfFly(x,y,s,dur){
+  return new Promise(res=>{
+    const x0=LF.x,y0=LF.y,s0=LF.s, dx=x-x0, dy=y-y0, L=Math.hypot(dx,dy)||1, bend=(Math.random()<.5?-1:1)*Math.min(220,L*.45);
+    const cx=(x0+x)/2-dy/L*bend, cy=(y0+y)/2+dx/L*bend-60, N=28, K=[];
+    for(let i=0;i<=N;i++){const t=i/N, u=1-t, px=u*u*x0+2*u*t*cx+t*t*x, py=u*u*y0+2*u*t*cy+t*t*y, ps=s0+(s-s0)*t, tx=2*u*(cx-x0)+2*t*(x-cx), rot=Math.max(-14,Math.min(14,tx/40))*Math.sin(Math.PI*t);
+      K.push({transform:`translate(${px-25}px,${py-28}px) scale(${ps}) rotate(${rot}deg)`})}
+    LF.el.classList.add("flying"); LF.el.classList.toggle("left",dx<0);
+    const kind=LF.kind||"talk", tm=[];
+    if(L>140&&Math.random()<.55){tm.push(setTimeout(()=>lfTurn(true),dur*(.18+Math.random()*.15))); tm.push(setTimeout(()=>lfTurn(false),dur*(.62+Math.random()*.12)))}
+    const iv=setInterval(()=>{if(Math.random()<.5) lfEmoji(kind)},360);
+    const an=LF.el.animate(K,{duration:dur,easing:"cubic-bezier(.45,.05,.35,1)",fill:"forwards"});
+    an.onfinish=()=>{clearInterval(iv); tm.forEach(clearTimeout); lfTurn(false); lfPlace(x,y,s); an.cancel(); LF.el.classList.remove("flying"); res()};
+  });
+}
 
 /* ---------- views ---------- */
 let view="home", openCourse=null, editing=false, showDone=false, showLater=false, libRoom="main", libQ="";
@@ -6642,7 +6740,7 @@ function calendarHTML(){
     ${pastN?`<small class="muted">Минулих дат: ${pastN}</small>`:""}</div>`;
 }
 let setTab="general";
-const SETTABS=[["general","Загальне"],["menu","Меню"],["time","Час на завдання"],["data","Дані"]];
+const SETTABS=[["general","Загальне"],["menu","Меню"],["loco","Поведінка Loco"],["time","Час на завдання"],["data","Дані"]];
 function sheetSettings(keep){
   const s=S.settings, sc=keep&&document.querySelector(".setbody")?document.querySelector(".setbody").scrollTop:0, mn=k=>minsOf({diff:k});
   let body="";
@@ -6650,7 +6748,6 @@ function sheetSettings(keep){
     <label class="field"><span>Як до тебе звертатися</span><input id="s-name" data-set="name" maxlength="30" value="${esc(s.name||"Ігор-Еней")}"></label>
     <label class="field"><span>Назва вівторкового завдання</span><input id="s-tname" data-set="tueName" maxlength="60" value="${esc(s.tueName)}"></label>
     <label class="field"><span>Інтервали повторень (дні)</span><input id="s-iv" data-set="intervals" value="${s.intervals.join(", ")}"><small>Через скільки днів нагадувати повторити матеріал після виконання.</small></label>
-    <label class="checkline"><input type="checkbox" id="s-lfly" data-set="locoFly" ${s.locoFly!==false?"checked":""}><span>Loco іноді вилітає з панелі й літає екраном</span></label>
     <label class="checkline"><input type="checkbox" id="s-fun" data-set="fun" ${s.fun!==false?"checked":""}><span>Смішні повідомлення і смайлики при виконанні</span></label>`;
   else if(setTab==="calendar") body=`<h3>Календар</h3>
     <div class="seg" role="group" aria-label="Що позначати"><button type="button" data-act="calMode" data-v="mod" aria-pressed="${calMode==="mod"}">Модульні тижні</button><button type="button" data-act="calMode" data-v="tue" aria-pressed="${calMode==="tue"}">${esc(s.tueName)}</button></div>
@@ -6658,6 +6755,7 @@ function sheetSettings(keep){
     ${calendarHTML()}
     ${tagSettingsHTML()}`;
   else if(setTab==="menu") body=menuSettingsHTML();
+  else if(setTab==="loco") body=locoSettingsHTML();
   else if(setTab==="time") body=`<h3>Час на завдання</h3>
     <p class="muted" style="margin:0">Скільки часу в тебе зазвичай іде на завдання кожної складності. З цього рахуються статистика, сторінка «Сьогодні» і «Закінчиш приблизно».</p>
     <div class="minsgrid">${[[1,"Легке"],[2,"Середнє"],[3,"Складне"],[0,"Без складності"]].map(([k,l])=>`<label class="minsrow"><i class="sw d${k}"></i><span>${l}</span><input class="inp" type="number" min="5" max="1440" step="5" inputmode="numeric" data-set="mins.${k}" value="${mn(k)}"><small>хв</small></label>`).join("")}</div>
@@ -6676,7 +6774,8 @@ document.addEventListener("change",e=>{const el=e.target, k=el&&el.dataset&&el.d
   else if(k==="tueName") s.tueName=el.value.trim()||"Вівторкове завдання";
   else if(k==="intervals"){const iv=el.value.split(/[,\s]+/).map(x=>parseInt(x,10)).filter(x=>x>0).slice(0,8); if(iv.length) s.intervals=iv; el.value=s.intervals.join(", ")}
   else if(k==="fun") s.fun=el.checked;
-  else if(k==="locoFly"){s.locoFly=el.checked; lfSchedule(true)}
+  else if(k==="locoFly"){s.locoFly=el.checked; lfSchedule(true); setTimeout(()=>sheetSettings(true),0)}
+  else if(k==="locoAct"){s.locoAct=clamp(+el.value,0,2); lfSchedule(true)}
   else if(k.startsWith("mins.")){const d=k.slice(5); s.mins=s.mins||{}; const v=clamp(parseInt(el.value,10)||DEF_MINS[d],1,1440); s.mins[d]=v; el.value=v}
   commit(); toast("Збережено");
 });
@@ -6761,7 +6860,7 @@ function taskSheet(t,cid){
     <div class="tq-sec">Складність</div>
     <div class="tq-diff" role="radiogroup" aria-label="Складність">${D.map(([k,l,s])=>`<label class="tq-d d${k}"><input type="radio" name="tq-diff" value="${k}" ${(t.diff||0)===k?"checked":""}><span class="tq-dc"><i class="tq-stars" aria-hidden="true">${s}</i><b>${l}</b><small>${k?`~${fmtMin(minsOf({diff:k}))} · `:""}+${k===3?XP.d3:k===2?XP.d2:k===1?XP.d1:XP.none} XP</small></span></label>`).join("")}</div>
     <div class="tq-types" role="radiogroup" aria-label="Тип завдання"><span class="tq-sec in">Тип</span>${Object.entries(TTYPE).map(([k,o])=>`<label class="tq-type"><input type="radio" name="tq-type" value="${k}" ${(t.ttype||"task")===k?"checked":""}><span>${o.n}${k==="task"?"":` · ${XP[k]} XP`}</span></label>`).join("")}</div>
-    <div class="tq-foot"><div class="tq-reward"><span class="tq-loco">${locoSVG({form:st.vform,health:st.health,mood:"happy",mini:true})}</span><span><small>Нагорода для Loco</small><b id="tq-xp">+0 XP</b></span></div>
+    <div class="tq-foot"><div class="tq-reward"><span class="tq-loco tamamini2">${miniTama(st)}</span><span><small>Нагорода для Loco</small><b id="tq-xp">+0 XP</b></span></div>
       <div class="tq-btns"><button type="button" class="btn ghost" data-act="closeSheet">Скасувати</button><button class="btn primary tq-go">${isNew?"Додати квест":"Зберегти"}</button></div></div>
   </form></div>`);
   tqUpdate();
@@ -7035,6 +7134,7 @@ document.addEventListener("click",e=>{
     case "swPick": {const inp=document.getElementById(b.dataset.for); if(inp){inp.value=b.dataset.v; b.parentElement.querySelectorAll(".swb").forEach(x=>{x.classList.toggle("on",x===b); x.setAttribute("aria-pressed",String(x===b))})} break}
     case "tagColor": {const t=S.tags.find(x=>x.id===id); if(t){t.color=b.dataset.v; commit({norender:true}); render(); tagRefresh()} break}
     case "saveDot": {if(ref){clearTimeout(timer); dirty=true; flush()} toast("Дані збережено"); break}
+    case "locoTry": closeSheet(); setTimeout(()=>lfRun("talk"),650); break;
     case "evType": {const d=evFormDraft(); d.type=b.dataset.v; if(d.type==="mod"&&!d.end) d.end=addDays(d.date,4); evDraft=d; sheetEvent(null,d.date); break}
     case "settingsTue": view="sup"; try{history.replaceState(null,"","#sup")}catch(_){} render(); window.scrollTo(0,0); break;
     case "calMode": calMode=b.dataset.v; sheetSettings(true); break;
