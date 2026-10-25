@@ -3608,6 +3608,66 @@ span.tdlbtn.has{cursor:default}
 .trbody small{color:var(--ink-2);font-size:.8rem}
 :root[data-skin="retro"] .tric{border:2px solid var(--hard)}
 
+/* ===== 1.0.49 ===== */
+/* even smaller date pills */
+.tdates{gap:5px!important}
+.tdates > .tplan,.tdates > .tdl{width:80px!important}
+.tdates .tpbtn.has,.tdates .tdlbtn.has{height:24px!important;padding:0 7px!important;gap:4px!important;border-radius:7px!important}
+.tdates .tpbtn.has b,.tdates .tdlbtn.has b{font-size:.7rem!important}
+.tdates svg{width:11px!important;height:11px!important}
+.tdates .tplan.add .tpbtn,.tdates .tdlbtn:not(.has){width:24px!important;height:24px!important;border-radius:7px!important}
+.tsnodue .task{opacity:.75}
+.tsnodue .tsech b{color:var(--ink-2)}
+/* calendar: colour only, no words */
+.kday .ctag{display:none!important}
+.dvtag{border:0;cursor:pointer;font:inherit;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:3px 9px;border-radius:7px;background:var(--dayfill);color:var(--dayink,#111);margin-right:6px}
+/* save cloud left of + */
+.savedot,#btnCloud.savebtn{right:calc(max(20px,env(safe-area-inset-right,0px)) + 72px)!important;bottom:calc(max(22px,env(safe-area-inset-bottom,0px)) + 8px)!important}
+.savedot span,#btnCloud.savebtn span{right:auto!important;left:50%;top:auto!important;bottom:52px;transform:translateX(-50%)!important}
+@media (max-width:760px){
+  .savedot,#btnCloud.savebtn{right:calc(max(20px,env(safe-area-inset-right,0px)) + 64px)!important;bottom:calc(84px + env(safe-area-inset-bottom,0px) + 7px)!important}
+  body.tracking .savedot,body.tracking #btnCloud.savebtn{bottom:calc(150px + env(safe-area-inset-bottom,0px) + 7px)!important}
+}
+/* task sheet: compact */
+.tq-row2{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 12px}
+.tq-sel{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:var(--glass-2);border:1px solid var(--line);font-size:.85rem;font-weight:700;max-width:100%}
+.tq-sel > span{color:var(--ink-2);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em}
+.tq-sel select{border:0;background:transparent;font:inherit;font-weight:800;color:var(--ink);cursor:pointer;max-width:260px;padding:0 2px;outline:none}
+.tq-csel i{width:10px;height:10px;border-radius:50%;background:var(--c);flex:none}
+.tq-csel{background:color-mix(in srgb,var(--c) 16%,var(--glass-2))}
+:root[data-skin="retro"] .tq-sel{border:2px solid var(--hard);background:#fff}
+:root[data-skin="retro"] .tq-csel{background:color-mix(in srgb,var(--c) 30%,#fff)}
+.tq .tq-tile{padding:12px 14px!important}
+.tq .tq-big{font-size:1.25rem!important}
+.tq .tq-chips{margin-top:8px!important}
+.tq .tq-d small{display:none}
+.tq .tq-dc{padding:10px 8px!important;min-height:0!important;gap:2px!important}
+.tq .tq-stars{font-size:.9rem}
+.tq-reward.mini{display:flex!important;flex-direction:row!important;align-items:center;gap:6px}
+.tq-reward.mini b{white-space:nowrap;font-size:1.05rem!important;margin:0!important;padding:4px 10px;border-radius:999px;background:var(--glass-2);text-shadow:none!important}
+.tq-reward.mini small{display:none!important}
+/* randomizer per theme */
+.randbig .re{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);font-size:0;margin:0 auto 6px}
+.randbig .re svg{width:28px;height:28px}
+:root[data-skin="retro"] .randbig{background:#fff!important;border:3px solid var(--hard)!important;box-shadow:5px 5px 0 var(--hard)!important;border-radius:16px!important;transition:translate .15s}
+:root[data-skin="retro"] .randbig:hover{translate:-2px -2px}
+:root[data-skin="retro"] .randbig[data-k="task"] .re{background:#FF6FB5;color:#111;border:2.5px solid var(--hard)}
+:root[data-skin="retro"] .randbig[data-k="book"] .re{background:#3DD9EB;color:#111;border:2.5px solid var(--hard)}
+:root[data-skin="retro"] .randbig b{font-family:var(--f-display);font-style:italic}
+:root[data-skin="solar"] .randbig{background:rgba(255,255,255,.72)!important;border:1px solid rgba(255,255,255,.95)!important;box-shadow:0 14px 30px -18px rgba(15,107,63,.6)!important}
+:root[data-skin="solar"] .randbig .re{background:linear-gradient(180deg,#3FB57A,#1E8656);color:#fff}
+:root[data-skin="solar"] .randbig[data-k="book"] .re{background:linear-gradient(180deg,#F3C766,#D99A2B);color:#3A2A00}
+:root[data-skin="loft"] .randbig{background:#FFFBF3!important;border:1.5px solid #C9A04E!important}
+:root[data-skin="loft"] .randbig .re{background:#2F4636;color:#E0B75E}
+:root[data-skin="loft"] .randbig[data-k="book"] .re{background:#8E3B2F;color:#F4EBDD}
+/* supervision timeline: dots on the line, line hidden behind dots */
+.sup-tl::before{left:97.5px!important}
+@media (max-width:640px){.sup-tl::before{left:71.5px!important}}
+.sup-n:not(.st-done) .sup-dot{background:linear-gradient(var(--card),var(--card)) #FFFDF8!important}
+:root[data-tone="dark"] .sup-n:not(.st-done) .sup-dot{background:linear-gradient(var(--card),var(--card)) #1E1A16!important}
+.sup-n:not(.nx) .sup-dot{opacity:1!important}
+.sup-n:not(.nx):not(.st-done) .sup-dot{border-color:color-mix(in srgb,var(--ink-2) 50%,transparent)}
+
 .savebtn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border:0;border-radius:12px;background:linear-gradient(180deg,#F3C766,#D99A2B);color:#241606;font:inherit;font-weight:800;font-size:.95rem;cursor:pointer;box-shadow:0 8px 18px -8px rgba(217,154,43,.8),inset 0 1px 0 rgba(255,255,255,.45);transition:transform .15s,filter .15s}
 .savebtn svg{width:18px;height:18px}
 .savebtn:hover{filter:brightness(1.07);transform:translateY(-1px)}
@@ -4419,7 +4479,7 @@ function renderDP(){
   const cur=(document.getElementById(dp.id)||{}).value||"", t=today(), [y,m]=dp.m.split("-").map(Number);
   el.innerHTML=`<div class="dphead"><button type="button" class="iconbtn" data-act="dpnav" data-d="-1" aria-label="Попередній місяць">${ICON.back}</button><b>${MONTHS_N[m-1]} ${y}</b><button type="button" class="iconbtn" data-act="dpnav" data-d="1" aria-label="Наступний місяць" style="transform:scaleX(-1)">${ICON.back}</button></div>
     <div class="dpgrid">${WD.map(w=>`<span class="dpw">${w}</span>`).join("")}${monthCells(dp.m).map(d=>`<button type="button" class="dpd${d.slice(0,7)!==dp.m?" out":""}${d===t?" today":""}${d===cur?" on":""}" data-act="dpset" data-v="${d}" aria-label="${fmtD(d)}">${+d.slice(8)}</button>`).join("")}</div>
-    <div class="dpfoot"><button type="button" class="btn sm ghost" data-act="dpset" data-v="">Очистити</button><button type="button" class="btn sm" data-act="dpset" data-v="${t}">Сьогодні</button></div>`;
+    ${/^(tdd-|t-due$)/.test(dp.id)?`<div class="dpfoot"><button type="button" class="btn sm ghost" data-act="dpset" data-v="none">Без дедлайну</button>${cycle().next?`<button type="button" class="btn sm" data-act="dpset" data-v="${cycle().next}">До наступного модуля</button>`:""}</div>`:`<div class="dpfoot"><button type="button" class="btn sm ghost" data-act="dpset" data-v="">Очистити</button><button type="button" class="btn sm" data-act="dpset" data-v="${t}">Сьогодні</button></div>`}`;
   posDP();
 }
 function posDP(){const el=document.getElementById("dpop"); if(!dp||!el) return; if(!document.body.contains(dp.btn)){closeDP();return}
@@ -4429,7 +4489,7 @@ function posDP(){const el=document.getElementById("dpop"); if(!dp||!el) return; 
 }
 function openDP(btn){const id=btn.dataset.for, v=(document.getElementById(id)||{}).value||today(); if(dp&&dp.id===id){closeDP();return} dp={id,btn,m:v.slice(0,7)}; renderDP()}
 function closeDP(){dp=null; const el=document.getElementById("dpop"); if(el) el.remove()}
-function setDP(v){if(!dp) return; const inp=document.getElementById(dp.id); if(inp){inp.value=v; inp.dispatchEvent(new Event("change",{bubbles:true}))} dp.btn.textContent=v?fmtD(v):dp.btn.dataset.ph; dp.btn.classList.toggle("empty",!v); const b=dp.btn; closeDP(); b.focus()}
+function setDP(v){if(!dp) return; const inp=document.getElementById(dp.id); if(inp){inp.value=v; inp.dispatchEvent(new Event("change",{bubbles:true}))} dp.btn.textContent=v&&v!=="none"?fmtD(v):dp.btn.dataset.ph; dp.btn.classList.toggle("empty",!v); const b=dp.btn; closeDP(); b.focus()}
 addEventListener("resize",()=>{if(dp) closeDP()});
 document.addEventListener("scroll",()=>{if(dp) posDP()},true);
 
@@ -4438,9 +4498,10 @@ const course=id=>S.courses.find(c=>c.id===id);
 const activeCourses=()=>S.courses.filter(c=>!c.archived).sort((a,b)=>((a.ord??1e6)-(b.ord??1e6))||((a.createdAt||0)-(b.createdAt||0)));
 function cycle(){
   const t=today(), mods=[...new Set(S.settings.modules)].filter(Boolean).sort();
-  let inMod=null; for(const d of mods) if(d<=t&&t<=addDays(d,6)) inMod=d;
-  const next=mods.find(d=>d>t)||null;
-  const prev=[...mods].reverse().find(d=>d<=t)||null;
+  const runs=[]; for(const d of mods){const r=runs[runs.length-1]; if(r&&addDays(r[1],1)===d) r[1]=d; else runs.push([d,d])}
+  let inMod=null; for(const r of runs){const e=r[0]===r[1]?addDays(r[0],6):r[1]; if(r[0]<=t&&t<=e) inMod=r[0]}
+  const nr=runs.find(r=>r[0]>t), next=nr?nr[0]:null;
+  const pr=[...runs].reverse().find(r=>r[0]<=t), prev=pr?pr[0]:null;
   const start=prev||(next?addDays(next,-28):null);
   return {t,next,prev,start,inMod,mods};
 }
@@ -4450,6 +4511,7 @@ function cycleTasks(cid){
     if(x.kind==="review") return false;
     const c=course(x.courseId); if(!c||c.archived) return false;
     if(cid&&x.courseId!==cid) return false;
+    if(x.noDue) return false;
     if(!next) return true;
     const eff=x.due||next;
     if(eff>next) return false;
@@ -4589,9 +4651,9 @@ function todayCard(){
 }
 function sheetRand(){
   const nt=randPool("task").length, nb=randPool("book").length;
-  openSheet(`<h2>Що сьогодні?</h2><div class="muted" style="margin-top:4px">Обери категорію, а конкретне витягну навмання. Завдання з ближчим дедлайном випадають частіше, книги, які читаєш або маєш скоро повернути, теж.</div>
-    <div class="randpick"><button class="randbig" data-act="randGo" data-k="task" ${nt?"":"disabled"}><span class="re">📝</span><b>Завдання</b><small>${nt} ${pl(nt,"відкрите","відкриті","відкритих")}</small></button>
-    <button class="randbig" data-act="randGo" data-k="book" ${nb?"":"disabled"}><span class="re">📚</span><b>Книга</b><small>${nb} ${pl(nb,"книга","книги","книг")} не дочитано</small></button></div>`,true);
+  openSheet(`<h2>Що сьогодні?</h2><div class="muted" style="margin-top:4px">Обери, а конкретне витягну навмання.</div>
+    <div class="randpick"><button class="randbig" data-act="randGo" data-k="task" ${nt?"":"disabled"}><span class="re">${ICON.check}</span><b>Завдання</b><small>${nt} ${pl(nt,"відкрите","відкриті","відкритих")}</small></button>
+    <button class="randbig" data-act="randGo" data-k="book" ${nb?"":"disabled"}><span class="re">${ICON.library}</span><b>Книга</b><small>${nb} ${pl(nb,"книга","книги","книг")} не дочитано</small></button></div>`,true);
 }
 const randLabel=(k,x)=>x.title;
 function randWeight(k,x){
@@ -4790,7 +4852,7 @@ function heroRow(){
       <div class="heroscene" aria-hidden="true"><svg class="hwin" viewBox="0 0 160 190" aria-hidden="true"><defs><linearGradient id="hwSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FCBE6"/><stop offset="1" stop-color="#E2F2EA"/></linearGradient><clipPath id="hwClip"><rect x="10" y="10" width="140" height="160"/></clipPath></defs><rect x="0" y="0" width="160" height="180" rx="4" fill="#6B4E36"/><g clip-path="url(#hwClip)"><rect x="10" y="10" width="140" height="160" fill="url(#hwSky)" class="hwsky"/><circle cx="118" cy="40" r="12" fill="#FFF1C2" class="hwsun"/><g class="obclouds"><g fill="#fff" opacity=".9"><ellipse cx="50" cy="44" rx="20" ry="8"/><ellipse cx="40" cy="40" rx="10" ry="7"/><ellipse cx="58" cy="37" rx="11" ry="8"/></g><g fill="#fff" opacity=".85"><ellipse cx="120" cy="72" rx="16" ry="6"/><ellipse cx="128" cy="67" rx="9" ry="6"/></g></g><path d="M10 120 C40 104 70 110 90 116 C112 122 130 108 150 112 V170 H10Z" fill="#A9CDA3"/><path d="M10 138 C50 128 90 142 150 132 V170 H10Z" fill="#7FAE7C"/><g class="obtree t1" style="transform-origin:40px 136px"><rect x="38" y="122" width="4" height="14" fill="#6E5338"/><circle cx="40" cy="116" r="11" fill="#5F9A5E"/></g><g class="obtree t3" style="transform-origin:118px 132px"><rect x="116" y="116" width="4" height="16" fill="#6E5338"/><circle cx="118" cy="110" r="13" fill="#5A9459"/></g></g><rect x="76" y="10" width="7" height="160" fill="#6B4E36"/><rect x="10" y="86" width="140" height="7" fill="#6B4E36"/><rect x="-6" y="176" width="172" height="10" rx="3" fill="#5E432D"/></svg><div class="heroart">${ART.office}</div></div>
     <div class="upnext" role="group" aria-label="Найближчі заплановані завдання">
       <div class="label" style="padding:0 4px">Заплановано</div>
-      ${up.map(t=>{const c=course(t.courseId),n=t.plan?diffDays(t.plan,today()):null, L=lastT&&lastT.id===t.id, act=isActive("task",t.id);return `<div class="upcard${n!=null&&n<0?" late":n===0?" today":""}${L?" last":""}${act?" running":""}">${L?`<span class="uplast">${act?"зараз у роботі":"ти над цим працював"}</span>`:""}<button type="button" class="upmain" data-act="editTask" data-id="${t.id}" title="${t.plan?"Заплановано на "+fmtD(t.plan):"Відкрити"}"><span class="upic" style="background:${c?CC(c.color):"var(--ink-2)"}">${esc(initials(c?c.name:"?"))}</span><span class="uptxt"><b>${esc(t.title)}</b><small>${t.plan?`<em>${planWhen(t.plan)}</em>`:""}${c?(t.plan?" · ":"")+esc(c.name):""}${L&&t.spent?` · ${fmtDur(t.spent)} в роботі`:""}</small></span></button>${startBtn("task",t,"upgo")}</div>`}).join("")||`<div class="upempty"><span>Нічого не заплановано.</span><button class="btn sm" data-act="nav" data-v="plan">${ICON.plan}Запланувати в календарі</button></div>`}
+      ${up.map(t=>{const c=course(t.courseId),n=t.plan?diffDays(t.plan,today()):null, L=lastT&&lastT.id===t.id, act=isActive("task",t.id);return `<div class="upcard${n!=null&&n<0?" late":n===0?" today":""}${L?" last":""}${act?" running":""}">${L?`<span class="uplast">${act?"зараз у роботі":"ти над цим працював"}</span>`:""}<button type="button" class="upmain" data-act="goTask" data-id="${t.id}" title="${t.plan?"Заплановано на "+fmtD(t.plan):"Відкрити"}"><span class="upic" style="background:${c?CC(c.color):"var(--ink-2)"}">${esc(initials(c?c.name:"?"))}</span><span class="uptxt"><b>${esc(t.title)}</b><small>${t.plan?`<em>${planWhen(t.plan)}</em>`:""}${c?(t.plan?" · ":"")+esc(c.name):""}${L&&t.spent?` · ${fmtDur(t.spent)} в роботі`:""}</small></span></button>${startBtn("task",t,"upgo")}</div>`}).join("")||`<div class="upempty"><span>Нічого не заплановано.</span><button class="btn sm" data-act="nav" data-v="plan">${ICON.plan}Запланувати в календарі</button></div>`}
     </div></section>
   </div>`;
 }
@@ -4811,8 +4873,8 @@ let trayOpen=false, calView="week", calMon=today().slice(0,7), calWeek=mondayOf(
 const plannedOn=d=>S.tasks.filter(t=>t.kind==="task"&&t.plan===d&&course(t.courseId)&&!course(t.courseId).archived).sort((a,b)=>(a.done-b.done)||((a.createdAt||0)-(b.createdAt||0)));
 const dueOn=d=>openTasksAll().filter(t=>t.due===d);
 function inModule(d){return S.settings.modules.includes(d)}
-function planChip(t){const c=course(t.courseId);return `<div role="button" tabindex="0" class="pchip${t.done?" done":""}" draggable="${t.done?"false":"true"}" data-plan-task="${t.id}" data-act="editTask" data-id="${t.id}" style="--cc:${c?CC(c.color):"var(--ink-2)"}" title="${esc(t.title)}${c?" · "+esc(c.name):""}"><i></i><span>${esc(t.title)}</span></div>`}
-function dueChipCal(t){return `<button type="button" class="dchip" data-act="editTask" data-id="${t.id}" title="Дедлайн: ${esc(t.title)}">${ICON.flag}<span>${esc(t.title)}</span></button>`}
+function planChip(t){const c=course(t.courseId);return `<div role="button" tabindex="0" class="pchip${t.done?" done":""}" draggable="${t.done?"false":"true"}" data-plan-task="${t.id}" data-act="goTask" data-id="${t.id}" style="--cc:${c?CC(c.color):"var(--ink-2)"}" title="${esc(t.title)}${c?" · "+esc(c.name):""}"><i></i><span>${esc(t.title)}</span></div>`}
+function dueChipCal(t){return `<button type="button" class="dchip" data-act="goTask" data-id="${t.id}" title="Дедлайн: ${esc(t.title)}">${ICON.flag}<span>${esc(t.title)}</span></button>`}
 function dayCell(d,opts={}){
   const t=today(), pl=plannedOn(d), du=dueOn(d), MAX=opts.week?99:3, items=evOn(d).map(evChip).concat(pl.map(planChip),du.map(dueChipCal)), more=items.length-MAX;
   const tue=S.tueDates.includes(d), mod=inModule(d);
@@ -4844,8 +4906,8 @@ function sheetDay(d){
   openSheet(`<h2 style="text-transform:none">${fmtL(d)}</h2><div class="muted" style="font-size:.86rem;margin:-4px 0 12px">${fmtD(d)}${inModule(d)?" · модульний тиждень":""}${S.tueDates.includes(d)?" · "+esc(S.settings.tueName):""}</div>
     ${evOn(d).length?`<div class="label" style="margin-bottom:6px">Події</div><div class="evlist" style="margin-bottom:14px">${evOn(d).map(evRow).join("")}</div>`:""}
     <div class="label" style="margin-bottom:6px">Завдання</div>
-    <div class="dlist">${pl.map(x=>{const c=course(x.courseId);return `<div class="drow${x.done?" done":""}"><i class="dot" style="background:${CC(c.color)}"></i><button type="button" class="dtitle" data-act="editTask" data-id="${x.id}">${esc(x.title)}</button><small class="muted">${esc(c.name)}</small><button type="button" class="mini-btn xs" data-act="unplan" data-id="${x.id}" data-day="${d}" aria-label="Прибрати з цього дня">${ICON.x}</button></div>`}).join("")||'<div class="muted" style="font-size:.88rem;padding:6px 0">Нічого не заплановано.</div>'}</div>
-    ${du.length?`<div class="label" style="margin:14px 0 6px">Дедлайни цього дня</div><div class="dlist">${du.map(x=>`<div class="drow"><span class="flagic">${ICON.flag}</span><button type="button" class="dtitle" data-act="editTask" data-id="${x.id}">${esc(x.title)}</button><small class="muted">${esc(course(x.courseId).name)}</small></div>`).join("")}</div>`:""}
+    <div class="dlist">${pl.map(x=>{const c=course(x.courseId);return `<div class="drow${x.done?" done":""}"><i class="dot" style="background:${CC(c.color)}"></i><button type="button" class="dtitle" data-act="goTask" data-id="${x.id}">${esc(x.title)}</button><small class="muted">${esc(c.name)}</small><button type="button" class="mini-btn xs" data-act="unplan" data-id="${x.id}" data-day="${d}" aria-label="Прибрати з цього дня">${ICON.x}</button></div>`}).join("")||'<div class="muted" style="font-size:.88rem;padding:6px 0">Нічого не заплановано.</div>'}</div>
+    ${du.length?`<div class="label" style="margin:14px 0 6px">Дедлайни цього дня</div><div class="dlist">${du.map(x=>`<div class="drow"><span class="flagic">${ICON.flag}</span><button type="button" class="dtitle" data-act="goTask" data-id="${x.id}">${esc(x.title)}</button><small class="muted">${esc(course(x.courseId).name)}</small></div>`).join("")}</div>`:""}
     <form class="form" data-form="planday" data-day="${d}" style="margin-top:16px">
       ${pool.length?`<label class="field"><span>Запланувати на цей день</span><select id="pd-task">${pool.map(x=>`<option value="${x.id}">${esc(x.title)} · ${esc(course(x.courseId).name)}${x.plan?` (зараз ${fmtD(x.plan)})`:""}</option>`).join("")}</select></label>`:""}
       <div class="row" style="justify-content:space-between"><div class="row" style="gap:6px"><button type="button" class="btn ghost" data-act="newTaskOn" data-v="${d}">${ICON.plus}Завдання</button><button type="button" class="btn ghost" data-act="evNewOn" data-v="${d}">${ICON.plus}Подія</button></div><div class="row">${pool.length?`<button class="btn primary">Запланувати</button>`:""}<button type="button" class="btn ghost" data-act="closeSheet">Готово</button></div></div>
@@ -4873,12 +4935,12 @@ const PROPS=[
 /* paper plane */ `<svg viewBox="0 0 110 110" aria-hidden="true"><path d="M8 92 c20 -4 30 -18 46 -30" fill="none" stroke="#F4E9D8" stroke-width="3" stroke-dasharray="4 6" stroke-linecap="round" opacity=".8"/><path d="M50 58 L102 14 L80 86 L64 66 Z" fill="#FFFBF3"/><path d="M50 58 L102 14 L64 66 Z" fill="#E9DCC6"/><path d="M64 66 L68 84 L74 72 Z" fill="#CDBB9E"/>${FACE(80,48,.7)}</svg>`
 ];
 function courseCard(c,i){
-  const all=S.tasks.filter(t=>t.courseId===c.id&&t.kind==="task"), done=all.filter(t=>t.done).length, P=progress(all), pct=Math.round(P.f*100);
+  const all=S.tasks.filter(t=>t.courseId===c.id&&t.kind==="task"), done=all.filter(t=>t.done).length, P=modProgress(c.id), pct=Math.round(P.f*100);
   const open=sortOpen(all), next=open[0], G=gradeOf(c), pi=[...S.courses].sort((a,b)=>(a.createdAt||0)-(b.createdAt||0)||(a.id<b.id?-1:1)).findIndex(x=>x.id===c.id), prop=PROPS[(pi<0?hash(c.id):pi)%PROPS.length];
   return `<div class="cwrap" data-sid="${c.id}"><button class="ccard2 glass" style="--c:${CC(c.color)}" data-act="openCourse" data-id="${c.id}" aria-label="${esc(c.name)}: виконано ${done} з ${all.length}">
     <span class="cprop" style="--r:${(hash(c.id)%15)-6}deg">${prop}</span>
     <span class="cname">${esc(c.name)}</span>
-    <span class="cbig">${all.length?`<b>${pct}<em>%</em></b><small>курсу<br>виконано</small>`:`<b>0<em>%</em></b><small>завдань<br>ще немає</small>`}</span>
+    <span class="cbig">${P.n?`<b>${pct}<em>%</em></b><small>курсу<br>виконано</small>`:`<b>0<em>%</em></b><small>завдань<br>ще немає</small>`}</span>
     <span class="cbar"><i style="width:${pct}%"></i></span>
     <span class="cfoot">${G.parts.length||G.type||G.got?`<span class="cpts"><b>${fmtN(G.got)}</b><small>/ ${G.total} балів${G.type?" · "+(G.type==="exam"?"екзамен":"залік"):""}</small></span>`:""}${c.example?'<span class="chip">приклад</span>':""}</span>
   </button><button type="button" class="dh dh-corner" aria-label="Перемістити курс «${esc(c.name)}» (стрілки)">${GRIP}</button></div>`;
@@ -5128,7 +5190,7 @@ function dayViewHTML(d){
     <div class="dvhead"><div><div class="dvdate">${+d.slice(8)}</div><div class="dvwd">${fmtL(d).split(",")[0]}</div></div>
       <div class="dvnums"><span><b>${pl0.length}</b> заплановано</span><span><b>${pl0.length-open.length}</b> виконано</span>${open.length?`<span><b>~${fmtMin(rem)}</b> роботи</span>`:""}</div>
       <div class="row" style="gap:6px"><button class="btn sm" data-act="calDayAdd" data-v="${d}">${ICON.plus}Завдання</button><button class="btn sm" data-act="evNewOn" data-v="${d}">${ICON.plus}Подія</button></div></div>
-    ${inModule(d)?'<span class="ctag mod">модульний тиждень</span>':""}${S.tueDates.includes(d)?`<span class="ctag tue">Супервізія</span>`:""}
+    ${inModule(d)?`<button type="button" class="dvtag" data-act="modEdit" data-d="${d}" style="--dayfill:${modColor()};--dayink:${inkFor(modColor())}">Модульний тиждень</button>`:""}${S.tueDates.includes(d)?`<button type="button" class="dvtag" data-act="supColorEdit" style="--dayfill:${supColor()};--dayink:${inkFor(supColor())}">Супервізія</button>`:""}
     ${evOn(d).length?`<div class="label" style="margin:4px 0 2px">Події</div><div class="evlist">${evOn(d).map(evRow).join("")}</div><div class="label" style="margin:8px 0 2px">Завдання</div>`:""}
     <div class="tdrows dvrows">${pl0.map(t=>todayRow(t,true)).join("")||`<div class="empty">Нічого не заплановано.</div>`}</div>
     ${du.length?`<div class="label" style="margin:16px 0 6px">Дедлайни цього дня</div><div class="tdrows dvrows">${du.map(t=>todayRow(t,true)).join("")}</div>`:""}
@@ -5244,7 +5306,7 @@ document.addEventListener("click",e=>{if(document.getElementById("fabmenu")&&!e.
 document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest("#fabmenu [data-act]")) setTimeout(closeFab,0)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("fabmenu")){closeFab(); const f=document.getElementById("fab"); if(f) f.focus()}});
 
-const LOCUS_BUILD="1.0.48";
+const LOCUS_BUILD="1.0.49";
 
 /* ---------- alive: entrance on view change, ring fill, count-up, completion burst ---------- */
 let aliveKey=null, aliveFirst=true;
@@ -5748,7 +5810,7 @@ function dlHTML(t){
   if(t.sup) return `<span class="tdl${u}"><span class="tdlbtn has" title="Дедлайн ${fmtD(t.due)}, ${rel}">${inner}</span></span>`;
   return `<span class="tdl${u}"><input type="hidden" id="${id}" value="${t.due}"><button type="button" class="tdlbtn has" data-act="dpick" data-for="${id}" data-ph="" title="Дедлайн ${fmtD(t.due)}, ${rel}. Змінити" aria-label="Дедлайн ${fmtD(t.due)}, ${rel}. Змінити">${inner}</button></span>`;
 }
-document.addEventListener("change",e=>{const el=e.target; if(!el||!el.id||!el.id.startsWith("tdd-")) return; const t=S.tasks.find(x=>x.id===el.id.slice(4)); if(!t) return; t.due=el.value||""; setTimeout(()=>{commit(); toast(t.due?`Дедлайн «${t.title}»: ${fmtS(t.due)}`:`Дедлайн для «${t.title}» прибрано`)},0)});
+document.addEventListener("change",e=>{const el=e.target; if(!el||!el.id||!el.id.startsWith("tdd-")) return; const t=S.tasks.find(x=>x.id===el.id.slice(4)); if(!t) return; if(el.value==="none"){t.due="";t.noDue=true}else{t.due=el.value||"";t.noDue=false} setTimeout(()=>{commit(); toast(t.noDue?"Без дедлайну":t.due?`Дедлайн «${t.title}»: ${fmtS(t.due)}`:`Дедлайн для «${t.title}» прибрано`)},0)});
 
 function navScrollFix(){const n=document.getElementById("tabsBottom"); if(!n) return; requestAnimationFrame(()=>{const a=n.querySelector('[aria-current="page"]'); if(!a||n.scrollWidth<=n.clientWidth) return; n.scrollLeft=Math.max(0,a.offsetLeft-(n.clientWidth-a.offsetWidth)/2)})}
 
@@ -5779,9 +5841,16 @@ function sheetEvent(e,date,type){
   const isNew=!e; e=evDraft||e||{title:"",date:date||(view==="plan"&&calView==="day"?calDate:today()),time:"",tag:(S.tags[0]||{}).id||"",note:"",type:type||"ev"}; evDraft=null;
   const ty=e.type||"ev", editing=!!(e.id||e.of);
   if(ty==="mod"&&!e.end) e.end=addDays(e.date,4);
-  const seg=editing?"":`<div class="seg evtype" role="group" aria-label="Що додати"><button type="button" data-act="evType" data-v="ev" aria-pressed="${ty==="ev"}">Подія</button><button type="button" data-act="evType" data-v="mod" aria-pressed="${ty==="mod"}">Модульний тиждень</button></div>`;
+  const seg=editing?"":`<div class="seg evtype" role="group" aria-label="Що додати"><button type="button" data-act="evType" data-v="ev" aria-pressed="${ty==="ev"}">Подія</button><button type="button" data-act="evType" data-v="mod" aria-pressed="${ty==="mod"}">Модульний тиждень</button><button type="button" data-act="evType" data-v="sup" aria-pressed="${ty==="sup"}">Супервізії</button></div>`;
   const hid=`<input type="hidden" id="ev-type" value="${ty}"><input type="hidden" id="ev-of" value="${e.of||""}"><input type="hidden" id="ev-ot" value="${e.ot||""}">`;
   const foot=del=>`<div class="row" style="justify-content:space-between">${del||"<span></span>"}<div class="row"><button type="button" class="btn ghost" data-act="closeSheet">Скасувати</button><button class="btn primary">${editing?"Зберегти":"Додати"}</button></div></div>`;
+  if(ty==="sup"){
+    openSheet(`<h2>Супервізії</h2>${seg}<form class="form evform" data-form="event">${hid}<input type="hidden" id="ev-id" value="">
+      <div class="field"><span>Колір у календарі</span>${swPick("ev-scolor",supColor())}</div>
+      <p class="muted" style="margin:0 0 14px;font-size:.86rem">Дати додаються в розділі «Супервізії».</p>
+      <div class="row" style="justify-content:flex-end"><button type="button" class="btn ghost" data-act="closeSheet">Скасувати</button><button class="btn primary">Зберегти</button></div></form>`, editing);
+    return;
+  }
   if(ty==="mod"){
     openSheet(`<h2>Модульний тиждень</h2>${seg}<form class="form evform" data-form="event">${hid}<input type="hidden" id="ev-id" value="">
       <div class="two"><label class="field"><span>Від</span>${dateField("ev-date",e.date)}</label><label class="field"><span>До</span>${dateField("ev-end",e.end)}</label></div>
@@ -6057,10 +6126,17 @@ function trashView(){
     <section class="glass trlist">${T.length?T.map(row).join(""):`<div class="empty">Тут порожньо.</div>`}</section>`;
 }
 
+
+/* ---------- 1.0.49: module deadlines by default, supervision colour ---------- */
+const supColor=()=>S.settings.supColor||"#5BBF73";
+function dueMigrate(){const nx=cycle().next; if(!nx) return; let ch=false; S.tasks.forEach(t=>{if(t.kind==="task"&&!t.done&&!t.due&&!t.noDue&&!t.sup){t.due=nx; ch=true}}); if(ch) setTimeout(()=>commit({norender:true}),0)}
+function dayFill(d){if(inModule(d)) return modColor(); if(S.tueDates.includes(d)) return supColor(); const e=evOn(d).find(x=>x.allDay); return e?tagOf(e.tag).color:""}
+document.addEventListener("change",e=>{const s=e.target; if(!s||s.id!=="tq-csel") return; const o=s.selectedOptions[0]; if(o) s.closest(".tq-csel").style.setProperty("--c",o.dataset.c)});
+
 /* ---------- views ---------- */
 let view="home", openCourse=null, editing=false, showDone=false, showLater=false, libRoom="main", libQ="";
 function tabsHTML(){return navTabs().map(([k,l])=>`<button class="tab" data-act="nav" data-v="${k}" title="${l}" ${view===k?'aria-current="page"':""}>${ICON[k]}<span>${l}</span></button>`).join("")}
-function render(){
+function render(){dueMigrate();
   try{ensureSup()}catch(e){}
   document.getElementById("tabsTop").innerHTML=tabsHTML();
   document.getElementById("tabsBottom").innerHTML=tabsHTML(); navScrollFix();
@@ -6123,7 +6199,7 @@ function taskRow(t,opts={}){
     ${t.done?"":t.kind==="task"?`<span class="tdates">${planHTML(t)}${dlHTML(t)}</span>`:(taskDue(t)||"")}
     ${rec?`<div class="row" style="gap:6px;flex:none"><button class="btn sm primary" data-act="done" data-id="${t.id}" data-q="good">Пам'ятаю</button><button class="btn sm ghost" data-act="done" data-id="${t.id}" data-q="shaky">Слабко</button></div>`:""}
     ${t.kind==="task"&&!t.done?startBtn("task",t):""}
-    ${opts.tools===false?"":`${t.kind==="task"?`<button class="mini-btn ${expanded.has(t.id)?"on":""}" data-act="subs" data-id="${t.id}" aria-expanded="${expanded.has(t.id)}" aria-label="Підпункти">${ICON.list}</button><button class="mini-btn" data-act="editTask" data-id="${t.id}" aria-label="Редагувати">${ICON.edit}</button>`:""}<button class="mini-btn xbtn" data-act="delTask" data-id="${t.id}" aria-label="Видалити «${esc(t.title)}»" title="Видалити">${ICON.x}</button>`}
+    ${opts.tools===false?"":`${t.kind==="task"?`<button class="mini-btn" data-act="editTask" data-id="${t.id}" aria-label="Редагувати">${ICON.edit}</button>`:""}<button class="mini-btn xbtn" data-act="delTask" data-id="${t.id}" aria-label="Видалити «${esc(t.title)}»" title="Видалити">${ICON.x}</button>`}
     
   </div>`;
 }
@@ -6184,7 +6260,7 @@ function wCourses(){
     <div class="crings" data-sort="courses" data-axis="grid">${cards}<button class="cring add" data-act="addCourse">${ICON.plus.replace("<svg",'<svg width="18" height="18"')} Курс</button></div>`;
 }
 function openTasksAll(){return S.tasks.filter(x=>x.kind==="task"&&!x.done&&course(x.courseId)&&!course(x.courseId).archived)}
-function effDue(t){return t.due||cycle().next||""}
+function effDue(t){return t.noDue?"":(t.due||cycle().next||"")}
 function wTasks(){
   const cy=cycle(), mode=S.settings.taskView==="deadline"?"deadline":"course", rec=dueRecalls();
   const seg=`<div class="seg tiny" role="group" aria-label="Вигляд"><button data-act="taskView" data-v="course" aria-pressed="${mode==="course"}">Курси</button><button data-act="taskView" data-v="deadline" aria-pressed="${mode==="deadline"}">Дедлайни</button></div>`;
@@ -6298,13 +6374,13 @@ function courseDetail(c){
   <div class="card glass taskcard" style="--c:${CC(c.color)}">
     <div class="head"><div class="thead"><h2>Завдання</h2><span class="tbadge">${open.length} ${pl(open.length,"відкрите","відкриті","відкритих")}</span></div>${open.length>1?`<label class="tsort"><span>Сортувати</span><select class="inp" data-tsort="1" aria-label="Сортування завдань">${TSORT.map(([k,l])=>`<option value="${k}" ${ms===k?"selected":""}>${l}</option>`).join("")}</select></label>`:""}</div>
     ${recs.length?`<div class="recallbox"><div class="ghead">Заплановані повторення · ${recs.length}</div>${recs.map(t=>taskRow(t,{tools:false})).join("")}</div>`:""}
-    ${(()=>{const nx=cycle().next, mod=open.filter(t=>!nx||(t.due||nx)<=nx), lat=open.filter(t=>nx&&(t.due||nx)>nx);
+    ${(()=>{const nx=cycle().next, mod=open.filter(t=>!t.noDue&&(!nx||(t.due||nx)<=nx)), lat=open.filter(t=>!t.noDue&&nx&&(t.due||nx)>nx);
       return `<div class="tsec tsmod"><div class="tsech"><b>${nx?"До модуля":"Відкриті"}</b><span>${mod.length}</span>${nx?`<small>${fmtL(nx)}</small>`:""}</div>
       <div class="tasklist" ${man?'data-sort="tasks"':""} data-course="${c.id}" data-axis="y">${mod.length?sortTasks(mod,ms).map(t=>taskRow(t,{nextMod:nx,drag:man})).join(""):`<div class="empty">${lat.length?"До модуля все зроблено.":"Відкритих завдань немає."}</div>`}</div></div>`;
     })()}
     <form class="quick" data-form="quickc" data-course="${c.id}" style="margin:14px 0 4px"><label class="sr" for="qc-title">Нове завдання</label><input class="inp" id="qc-title" placeholder="Нове завдання… (Enter)" maxlength="140" autocomplete="off"><button class="btn sm primary">${ICON.plus}Додати</button><button type="button" class="btn sm ghost" data-act="addTask" data-course="${c.id}" title="Дедлайн, складність, підпункти">Детально</button></form>
     ${done.length?`<button class="disclose" data-act="toggleDone">${showDone?ICON.up:ICON.down}Виконано · ${done.length}</button>${showDone?`<div class="tasklist" style="margin-top:6px">${done.map(t=>taskRow(t)).join("")}</div>`:""}`:""}
-    ${(()=>{const nx=cycle().next, lat=nx?open.filter(t=>(t.due||nx)>nx):[]; return lat.length?`<div class="tsec tslater"><div class="tsech"><b>Пізніше</b><span>${lat.length}</span><small>після модульного тижня</small></div><div class="tasklist" ${man?'data-sort="tasks"':""} data-course="${c.id}" data-axis="y">${sortTasks(lat,ms).map(t=>taskRow(t,{drag:man})).join("")}</div></div>`:""})()}
+    ${(()=>{const nx=cycle().next, lat=nx?open.filter(t=>!t.noDue&&(t.due||nx)>nx):[], nd=open.filter(t=>t.noDue); return (lat.length?`<div class="tsec tslater"><div class="tsech"><b>Пізніше</b><span>${lat.length}</span><small>після модульного тижня</small></div><div class="tasklist" ${man?'data-sort="tasks"':""} data-course="${c.id}" data-axis="y">${sortTasks(lat,ms).map(t=>taskRow(t,{drag:man})).join("")}</div></div>`:"")+(nd.length?`<div class="tsec tsnodue"><div class="tsech"><b>Без дедлайну</b><span>${nd.length}</span></div><div class="tasklist">${sortTasks(nd,ms).map(t=>taskRow(t)).join("")}</div></div>`:"")})()}
   </div>`;
 }
 
@@ -6938,19 +7014,19 @@ function taskSheet(t,cid){
     <div class="tq-top"><span class="tq-kicker">${isNew?"Новий квест":"Квест"}</span><button type="button" class="tq-close" data-act="closeSheet" aria-label="Закрити">×</button></div>
     <label class="sr" for="t-title">Що треба зробити</label>
     <input id="t-title" class="tq-title" required maxlength="140" placeholder="Що треба зробити?" value="${esc(t.title||"")}">
-    <div class="tq-courses" role="radiogroup" aria-label="Курс">${cs.map(c=>`<label class="tq-course" style="--c:${CC(c.color)}"><input type="radio" name="tq-course" value="${c.id}" ${c.id===t.courseId?"checked":""}><span><i></i>${esc(c.name)}</span></label>`).join("")}</div>
+    <div class="tq-row2"><label class="tq-sel tq-csel" style="--c:${CC((course(t.courseId)||cs[0]).color)}"><i></i><select id="tq-csel" aria-label="Курс">${cs.map(c=>`<option value="${c.id}" data-c="${CC(c.color)}" ${c.id===t.courseId?"selected":""}>${esc(c.name)}</option>`).join("")}</select></label><label class="tq-sel"><span>Тип</span><select id="tq-tsel" aria-label="Тип завдання">${Object.entries(TTYPE).map(([k,o])=>`<option value="${k}" ${(t.ttype||"task")===k?"selected":""}>${o.n}${k==="task"?"":` · ${XP[k]} XP`}</option>`).join("")}</select></label></div>
     <div class="tq-dates">
       <div class="tq-tile tq-plan"><span class="tq-lbl">Коли роблю</span><b class="tq-big" data-for="t-plan"></b>
         <input type="hidden" id="t-plan" value="${t.plan||""}">
-        <div class="tq-chips">${[["Сьогодні",t0],["Завтра",addDays(t0,1)],["Післязавтра",addDays(t0,2)],["Без дня",""]].map(([l,v])=>`<button type="button" class="tq-chip" data-act="tqDate" data-f="t-plan" data-v="${v}">${l}</button>`).join("")}<button type="button" class="tq-chip pick" data-act="dpick" data-for="t-plan" data-ph="Інша дата">Інша дата</button></div></div>
+        <div class="tq-chips">${[["Сьогодні",t0],["Завтра",addDays(t0,1)],["Без дня",""]].map(([l,v])=>`<button type="button" class="tq-chip" data-act="tqDate" data-f="t-plan" data-v="${v}">${l}</button>`).join("")}<button type="button" class="tq-chip pick" data-act="dpick" data-for="t-plan" data-ph="Інша дата">Інша дата</button></div></div>
       <div class="tq-tile tq-due"><span class="tq-lbl">Дедлайн</span><b class="tq-big" data-for="t-due"></b>
-        <input type="hidden" id="t-due" value="${t.due||""}">
-        <div class="tq-chips">${[[cy.next?"До модуля":"Без дедлайну",""],["Через 3 дні",addDays(t0,3)],["Через тиждень",addDays(t0,7)]].map(([l,v])=>`<button type="button" class="tq-chip" data-act="tqDate" data-f="t-due" data-v="${v}">${l}</button>`).join("")}<button type="button" class="tq-chip pick" data-act="dpick" data-for="t-due" data-ph="Інша дата">Інша дата</button></div></div>
+        <input type="hidden" id="t-due" value="${t.noDue?"none":(t.due||cy.next||"")}">
+        <div class="tq-chips">${[...(cy.next?[["До модуля",cy.next]]:[]),["Через тиждень",addDays(t0,7)],["Без дедлайну","none"]].map(([l,v])=>`<button type="button" class="tq-chip" data-act="tqDate" data-f="t-due" data-v="${v}">${l}</button>`).join("")}<button type="button" class="tq-chip pick" data-act="dpick" data-for="t-due" data-ph="Інша дата">Інша дата</button></div></div>
     </div>
     <div class="tq-sec">Складність</div>
     <div class="tq-diff" role="radiogroup" aria-label="Складність">${D.map(([k,l,s])=>`<label class="tq-d d${k}"><input type="radio" name="tq-diff" value="${k}" ${(t.diff||0)===k?"checked":""}><span class="tq-dc"><i class="tq-stars" aria-hidden="true">${s}</i><b>${l}</b><small>${k?`~${fmtMin(minsOf({diff:k}))} · `:""}+${k===3?XP.d3:k===2?XP.d2:k===1?XP.d1:XP.none} XP</small></span></label>`).join("")}</div>
-    <div class="tq-types" role="radiogroup" aria-label="Тип завдання"><span class="tq-sec in">Тип</span>${Object.entries(TTYPE).map(([k,o])=>`<label class="tq-type"><input type="radio" name="tq-type" value="${k}" ${(t.ttype||"task")===k?"checked":""}><span>${o.n}${k==="task"?"":` · ${XP[k]} XP`}</span></label>`).join("")}</div>
-    <div class="tq-foot"><div class="tq-reward"><span class="tq-loco tamamini2">${miniTama(st)}</span><span><small>Нагорода для Loco</small><b id="tq-xp">+0 XP</b></span></div>
+    
+    <div class="tq-foot"><div class="tq-reward mini"><b id="tq-xp">+0 XP</b><small>для Loco</small></div>
       <div class="tq-btns"><button type="button" class="btn ghost" data-act="closeSheet">Скасувати</button><button class="btn primary tq-go">${isNew?"Додати квест":"Зберегти"}</button></div></div>
   </form></div>`);
   tqUpdate();
@@ -6960,10 +7036,10 @@ function tqUpdate(){
   const sh=document.querySelector(".tqsheet"); if(!sh) return; const mod=sh.dataset.mod;
   sh.querySelectorAll(".tq-big").forEach(b=>{const v=(document.getElementById(b.dataset.for)||{}).value||"";
     if(b.dataset.for==="t-plan") b.innerHTML=v?`${tqRel(v)}<small>${fmtL(v)}</small>`:`Без дня<small>можна вирішити пізніше</small>`;
-    else {const n=v?diffDays(v,today()):null; b.innerHTML=v?`${fmtS(v)}<small>${tqRel(v)}${n!=null&&n<7&&n>=0?" · скоро":""}</small>`:mod?`До модуля<small>${fmtL(mod)}</small>`:`Без дедлайну<small>можна додати пізніше</small>`;
+    else if(v==="none"){b.innerHTML=`Без дедлайну<small>не рахується до модуля</small>`; b.closest(".tq-tile").classList.remove("hot")} else {const n=v?diffDays(v,today()):null; b.innerHTML=v&&v===mod?`До модуля<small>${fmtL(mod)}</small>`:v?`${fmtS(v)}<small>${tqRel(v)}${n!=null&&n<7&&n>=0?" · скоро":""}</small>`:mod?`До модуля<small>${fmtL(mod)}</small>`:`Без дедлайну<small>можна додати пізніше</small>`;
       b.closest(".tq-tile").classList.toggle("hot",!!v&&n!=null&&n<7)}
     b.closest(".tq-tile").querySelectorAll('[data-act="tqDate"]').forEach(c=>c.classList.toggle("on",c.dataset.v===v))});
-  const d=+((sh.querySelector('input[name="tq-diff"]:checked')||{}).value||0), ty=(sh.querySelector('input[name="tq-type"]:checked')||{}).value||"task";
+  const d=+((sh.querySelector('input[name="tq-diff"]:checked')||{}).value||0), ty=((document.getElementById("tq-tsel")||{}).value)||(sh.querySelector('input[name="tq-type"]:checked')||{}).value||"task";
   const xp=taskXP({ttype:ty==="task"?"":ty,diff:d}), el=document.getElementById("tq-xp"); if(el) el.textContent=`+${xp} XP`;
 }
 document.addEventListener("change",e=>{if(e.target.closest&&e.target.closest(".tqsheet")) tqUpdate()});
@@ -7230,6 +7306,8 @@ document.addEventListener("click",e=>{
       S.trash=T.filter(y=>y.id!==id); commit(); toast(`Відновлено: «${d.title}»`); break}
     case "trKill": {snap(); S.trash=(S.trash||[]).filter(y=>y.id!==id); commit(); undoToast("Видалено назавжди"); break}
     case "trEmpty": {snap(); S.trash=[]; commit(); undoToast("Усе видалено назавжди"); break}
+    case "goTask": {const t=S.tasks.find(x=>x.id===id); if(t){closeSheet(); view="courses";openCourse=t.courseId;libZoom=null;editing=false;showDone=!!t.done;try{history.replaceState(null,"","#courses")}catch(_){} render();window.scrollTo(0,0);flashTo(`#view [data-tid="${t.id}"]`)} break}
+    case "supColorEdit": sheetEvent(null,null,"sup"); break;
     case "evType": {const d=evFormDraft(); d.type=b.dataset.v; if(d.type==="mod"&&!d.end) d.end=addDays(d.date,4); evDraft=d; sheetEvent(null,d.date); break}
     case "settingsTue": view="sup"; try{history.replaceState(null,"","#sup")}catch(_){} render(); window.scrollTo(0,0); break;
     case "calMode": calMode=b.dataset.v; sheetSettings(true); break;
@@ -7295,7 +7373,7 @@ document.addEventListener("submit",e=>{
       const t=S.tasks.find(x=>x.id===f.dataset.id), inp=f.querySelector("input"), txt=inp.value.trim(); if(!t||!txt) return;
       t.subs=[...subsOf(t),{id:uid(),t:txt,done:false}]; inp.value=""; if(t.done) reopen(t);
       commit(); const el=document.getElementById("sub-"+t.id); if(el) el.focus(); break}
-    case "event":{const d=evFormDraft(); if(d.type==="mod"){modSave(d); return} delete d.type; delete d.of; delete d.ot; delete d.mcolor; if(!d.allDay||!d.end||d.end<=d.date) d.end=""; if(!d.title.trim()) return; d.title=d.title.trim(); S.events=S.events||[];
+    case "event":{const d=evFormDraft(); if(d.type==="sup"){S.settings.supColor=(document.getElementById("ev-scolor")||{}).value||supColor(); closeSheet(); commit(); toast("Колір супервізій збережено"); return} if(d.type==="mod"){modSave(d); return} delete d.type; delete d.of; delete d.ot; delete d.mcolor; if(!d.allDay||!d.end||d.end<=d.date) d.end=""; if(!d.title.trim()) return; d.title=d.title.trim(); S.events=S.events||[];
       if(d.id){const ev=S.events.find(x=>x.id===d.id); if(ev) Object.assign(ev,d)} else {d.id=uid(); d.createdAt=Date.now(); S.events.push(d)}
       closeSheet(); commit(); toast(`Подія: ${d.title} · ${fmtS(d.date)}${d.time?" "+d.time:""}`); break}
     case "planday":{const t=S.tasks.find(x=>x.id===v("pd-task")), d=f.dataset.day; if(!t) return; t.plan=d; commit(); sheetDay(d); break}
@@ -7318,7 +7396,7 @@ document.addEventListener("submit",e=>{
     case "task":{
       const id=v("t-id"), title=v("t-title").trim(); if(!title) return;
       const rq=n=>(document.querySelector(`input[name="${n}"]:checked`)||{}).value, prevT=id?S.tasks.find(x=>x.id===id):null;
-      const data={title,courseId:rq("tq-course")||(prevT?prevT.courseId:activeCourses()[0].id),due:v("t-due"),plan:v("t-plan"),recall:prevT?!!prevT.recall:false,diff:+(rq("tq-diff")||0),ttype:rq("tq-type")||"task"};
+      const data={title,courseId:v("tq-csel")||rq("tq-course")||(prevT?prevT.courseId:activeCourses()[0].id),due:v("t-due")==="none"?"":v("t-due"),noDue:v("t-due")==="none",plan:v("t-plan"),recall:prevT?!!prevT.recall:false,diff:+(rq("tq-diff")||0),ttype:v("tq-tsel")||rq("tq-type")||"task"};
       const subsEl=document.getElementById("t-subs"), lines=subsEl?subsEl.value.split("\n").map(x=>x.trim()).filter(Boolean).slice(0,40):(prevT?subsOf(prevT).map(x=>x.t):[]);
       if(id){const t=S.tasks.find(x=>x.id===id); if(t){const prev=subsOf(t); Object.assign(t,data); t.example=false;
           t.subs=lines.map(l=>{const pv=prev.find(x=>x.t===l);return pv?{...pv}:{id:uid(),t:l,done:false}});
