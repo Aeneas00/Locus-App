@@ -3833,7 +3833,7 @@ body.locked #gate{display:block;position:fixed;inset:0;z-index:200;overflow-x:hi
 }
 @media (max-width:880px) and (prefers-color-scheme:dark){#gate .gcard{box-shadow:8px 8px 0 #FF6FB5}}
 @media (prefers-reduced-motion:reduce){#gate *,#gate *::before,#gate *::after{animation:none!important;transition:none!important}}
-</style>
+.bklist{display:flex;flex-direction:column;gap:6px;margin:4px 0}.bkrow{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:12px;background:var(--glass-2)}.bkrow > div{flex:1;display:flex;flex-direction:column}.bkrow small{color:var(--ink-2)}</style>
 <style>[hidden]{display:none!important}</style>
 </head>
 <body class="locked">
@@ -4300,6 +4300,46 @@ let sb=null, sbUser=null, cloudFailShown=false;
 const errText=e=>(e&&(e.message||e.error_description||e.hint))||"невідома помилка";
 /* writes the whole app state into user_data.content for the logged-in user */
 let manualSt=false, lastSaved=0;
+/* ---- safe sync: base copy + 3-way merge, so a stale device never overwrites newer cloud data ---- */
+const BASE_KEY="studyquest.base", BK_KEY="studyquest.backups";
+const JS_=x=>JSON.stringify(x), CL_=x=>JSON.parse(JSON.stringify(x));
+const sameData=(a,b)=>JS_(Object.assign({},a,{updatedAt:0}))===JS_(Object.assign({},b,{updatedAt:0}));
+function getBase(){try{const b=JSON.parse(localStorage.getItem(BASE_KEY)||"null"); return b&&sbUser&&b.uid===sbUser.id?b.data:null}catch(e){return null}}
+function setBase(d){try{localStorage.setItem(BASE_KEY,JSON.stringify({uid:sbUser&&sbUser.id,data:d}))}catch(e){}}
+function getBackups(){try{return JSON.parse(localStorage.getItem(BK_KEY)||"[]").filter(x=>sbUser&&x.uid===sbUser.id)}catch(e){return []}}
+function addBackup(d,label){try{let L=getBackups(); L.unshift({uid:sbUser&&sbUser.id,at:Date.now(),label,data:d}); L=L.slice(0,5);
+  for(;;){try{localStorage.setItem(BK_KEY,JSON.stringify(L)); break}catch(e){if(L.length<=1) break; L.pop()}}}catch(e){}}
+function merge3(b,l,r){
+  if(JS_(l)===JS_(r)) return l; if(b!==undefined&&JS_(l)===JS_(b)) return r; if(b!==undefined&&JS_(r)===JS_(b)) return l;
+  if(Array.isArray(l)&&Array.isArray(r)){
+    const isId=a=>a.length===0||a.every(x=>x&&typeof x==="object"&&!Array.isArray(x)&&"id" in x);
+    if(isId(l)&&isId(r)&&(l.length||r.length)){
+      const B=new Map((Array.isArray(b)&&isId(b)?b:[]).map(x=>[x.id,x])), L=new Map(l.map(x=>[x.id,x])), Rm=new Map(r.map(x=>[x.id,x])), out=[], seen=new Set();
+      for(const id of [...l.map(x=>x.id),...r.map(x=>x.id)]){ if(seen.has(id)) continue; seen.add(id);
+        const bi=B.get(id), li=L.get(id), ri=Rm.get(id);
+        if(li&&ri) out.push(merge3(bi,li,ri));
+        else if(li){ if(bi&&JS_(bi)===JS_(li)) continue; out.push(li) }
+        else { if(bi&&JS_(bi)===JS_(ri)) continue; out.push(ri) } }
+      return out;
+    }
+    if(l.every(x=>typeof x!=="object")&&r.every(x=>typeof x!=="object")){
+      const bb=Array.isArray(b)?b:[], add=[...l.filter(x=>!bb.includes(x)),...r.filter(x=>!bb.includes(x))], del=bb.filter(x=>!l.includes(x)||!r.includes(x));
+      return [...new Set([...bb,...add])].filter(x=>!del.includes(x)||add.includes(x));
+    }
+    return l;
+  }
+  if(l&&r&&typeof l==="object"&&typeof r==="object"&&!Array.isArray(l)&&!Array.isArray(r)){
+    const o={}, bo=b&&typeof b==="object"&&!Array.isArray(b)?b:undefined;
+    for(const k of new Set([...Object.keys(l),...Object.keys(r)])){
+      if(!(k in l)){ if(bo&&k in bo&&JS_(bo[k])===JS_(r[k])) continue; o[k]=r[k]; continue }
+      if(!(k in r)){ if(bo&&k in bo&&JS_(bo[k])===JS_(l[k])) continue; o[k]=l[k]; continue }
+      o[k]=merge3(bo?bo[k]:undefined,l[k],r[k]) }
+    return o;
+  }
+  return l;
+}
+function localSave(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function takeMerged(m){const keepView=view; S=normalize(m); localSave(); applyLook(); view=keepView; render()}
 function autoSaveUI(){if(manualSt) return; const b=document.getElementById("btnCloud"); if(!b) return; const busy=dirty||writing, bad=!busy&&syncMode==="local"; b.classList.remove("saving","done","fail","auto-ok","auto-busy","auto-bad"); b.classList.add(busy?"auto-busy":bad?"auto-bad":"auto-ok"); const t=b.querySelector("span"); if(t) t.textContent=busy?"Зберігаю…":bad?"Не збережено":"Збережено"; b.title=busy?"Зміни зберігаються в хмару":bad?"Немає зв'язку з хмарою. Натисни, щоб спробувати ще раз":"Усе збережено автоматично"+(lastSaved?" о "+new Date(lastSaved).toLocaleTimeString("uk-UA",{hour:"2-digit",minute:"2-digit"}):"")}
 function saveBtnState(st){const b=document.getElementById("btnCloud"); if(!b) return; manualSt=!!st; b.classList.remove("saving","done","fail"); if(st) b.classList.add(st); const t=b.querySelector("span"); if(t) t.textContent=st==="saving"?"Зберігаю…":st==="done"?"Збережено":st==="fail"?"Помилка":"Зберегти"; if(st==="done"||st==="fail") setTimeout(()=>{manualSt=false;autoSaveUI()},2200); if(!st) autoSaveUI()}
 async function saveToCloud(manual){
@@ -4309,9 +4349,14 @@ async function saveToCloud(manual){
     const {data:{user},error:ue}=await sb.auth.getUser();
     if(ue) throw ue; if(!user) throw new Error("ти не увійшов в акаунт");
     sbUser=user;
+    {const raw=await pullRemote(), base=getBase();
+     if(raw){const remote=normalize(CL_(raw));
+       if(!base){ if(!sameData(S,remote)) addBackup(CL_(S),"Зміни з цього пристрою до синхронізації"); takeMerged(remote); setBase(CL_(remote)); syncMode="cloud"; setSync(); if(manual){toast("Дані збережено"); saveBtnState("done")} return true }
+       if(!sameData(remote,base)){ const m=merge3(base,CL_(S),remote); m.updatedAt=Math.max(S.updatedAt||0,remote.updatedAt||0); takeMerged(m) } }}
     const row={user_id:user.id,updated_at:new Date().toISOString()}; row[DATA_COLUMN]=JSON.parse(JSON.stringify(S));
     const {error}=await sb.from(DATA_TABLE).upsert(row,{onConflict:"user_id"});
     if(error) throw error;
+    setBase(CL_(row[DATA_COLUMN]));
     syncMode="cloud"; lastSaved=Date.now(); setSync(); cloudFailShown=false;
     if(manual){toast("Дані збережено"); saveBtnState("done")}
     return true;
@@ -4340,17 +4385,27 @@ async function pullRemote(){
 async function initCloud(){
   if(!sb||!sbUser){syncMode="local";setSync();return}
   try{
-    const raw=await pullRemote(); ref={};
-    if(raw){const remote=normalize(JSON.parse(JSON.stringify(raw)));
-      if((remote.updatedAt||0)>=(S.updatedAt||0)){S=remote;try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}applyLook();render();syncMode="cloud";setSync();toast("Дані завантажено")}
-      else{dirty=true;await flush()}}
-    else{dirty=true;await flush()}
-  }catch(e){ref={};dirty=true;syncMode="local";setSync();console.error("Supabase load failed",e);toast("Не вдалося завантажити з хмари: "+errText(e));setTimeout(flush,5000)}
+    const raw=await pullRemote();
+    if(raw){const remote=normalize(CL_(raw)), base=getBase();
+      if(!base){ if((S.updatedAt||0)>0&&!sameData(S,remote)) addBackup(CL_(S),"Копія з цього пристрою"); takeMerged(remote); setBase(CL_(remote)); ref={}; syncMode="cloud"; setSync(); toast("Дані завантажено") }
+      else { const m=merge3(base,CL_(S),remote); takeMerged(m); setBase(CL_(remote)); ref={}; syncMode="cloud"; setSync();
+        if(!sameData(S,remote)){dirty=true; await flush()} else toast("Дані завантажено") }}
+    else{ref={};dirty=true;await flush()}
+  }catch(e){syncMode="local";setSync();console.error("Supabase load failed",e);toast("Не вдалося завантажити з хмари: "+errText(e)+". Пробую ще раз…");setTimeout(initCloud,8000)}
 }
-document.addEventListener("visibilitychange",async()=>{
-  if(document.visibilityState!=="visible"||!ref||!sbUser||dirty||writing) return;
-  try{const raw=await pullRemote(); if(raw&&(raw.updatedAt||0)>(S.updatedAt||0)){S=normalize(JSON.parse(JSON.stringify(raw)));try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}applyLook();render()}}catch(e){}
-});
+async function pullMerge(){
+  if(!ref||!sbUser||dirty||writing||document.visibilityState!=="visible") return;
+  try{const raw=await pullRemote(); if(!raw||dirty||writing) return; const remote=normalize(CL_(raw)), base=getBase();
+    if(base&&sameData(remote,base)) return;
+    const m=base?merge3(base,CL_(S),remote):remote; if(!base&&!sameData(S,remote)) addBackup(CL_(S),"Копія з цього пристрою");
+    takeMerged(m); setBase(CL_(remote)); if(!sameData(S,remote)){dirty=true; flush()}
+  }catch(e){}
+}
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible") pullMerge()});
+setInterval(pullMerge,60000);
+function backupsHTML(){const L=getBackups(); if(!L.length) return "";
+  return `<div class="field"><span>Локальні копії</span><div class="bklist">${L.map((x,i)=>{const d=x.data||{}, ts=(d.tasks||[]).filter(t=>t.kind==="task"), n=ts.filter(t=>t.done).length;
+    return `<div class="bkrow"><div><b>${new Date(x.at).toLocaleString("uk-UA",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"})}</b><small>${esc(x.label)} · ${ts.length} завд., ${n} виконано</small></div><button type="button" class="btn sm" data-act="bkRestore" data-i="${i}">Відновити</button></div>`}).join("")}</div><small>Якщо після входу дані виглядають старими, тут лежить версія з цього пристрою.</small></div>`}
 
 /* ---------- autosave guards ---------- */
 {const _ss=setSync; setSync=function(){_ss(); autoSaveUI()}}
@@ -4391,7 +4446,7 @@ function unlock(){
 async function logout(){
   try{if(dirty||writing){clearTimeout(timer); dirty=true; writing=false; await saveToCloud(false); dirty=false}}catch(e){}
   if(syncMode!=="cloud"&&!confirm("Останні зміни ще не збереглись у хмару (немає зв'язку). Якщо вийти зараз, вони залишаться лише на цьому пристрої. Все одно вийти?")) return;
-  try{sessionStorage.removeItem(UNLOCK_KEY);localStorage.removeItem(KEY);localStorage.removeItem(OWNER_KEY)}catch(e){}
+  try{sessionStorage.removeItem(UNLOCK_KEY);localStorage.removeItem(KEY);localStorage.removeItem(OWNER_KEY);localStorage.removeItem(BASE_KEY)}catch(e){}
   try{if(sb) await sb.auth.signOut()}catch(e){}
   location.reload();
 }
@@ -5326,7 +5381,7 @@ document.addEventListener("click",e=>{if(document.getElementById("fabmenu")&&!e.
 document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest("#fabmenu [data-act]")) setTimeout(closeFab,0)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("fabmenu")){closeFab(); const f=document.getElementById("fab"); if(f) f.focus()}});
 
-const LOCUS_BUILD="1.0.51";
+const LOCUS_BUILD="1.0.52";
 
 /* ---------- alive: entrance on view change, ring fill, count-up, completion burst ---------- */
 let aliveKey=null, aliveFirst=true;
@@ -6150,7 +6205,7 @@ function trashView(){
 
 /* ---------- 1.0.49: module deadlines by default, supervision colour ---------- */
 const supColor=()=>S.settings.supColor||"#5BBF73";
-function dueMigrate(){const nx=cycle().next; if(!nx) return; let ch=false; S.tasks.forEach(t=>{if(t.kind==="task"&&!t.done&&!t.due&&!t.noDue&&!t.sup){t.due=nx; ch=true}}); if(ch) setTimeout(()=>commit({norender:true}),0)}
+function dueMigrate(){const nx=cycle().next; if(!nx) return; let ch=false; S.tasks.forEach(t=>{if(t.kind==="task"&&!t.done&&!t.due&&!t.noDue&&!t.sup){t.due=nx; ch=true}}); }
 function dayFill(d){if(inModule(d)) return modColor(); if(S.tueDates.includes(d)) return supColor(); const e=evOn(d).find(x=>x.allDay); return e?tagOf(e.tag).color:""}
 document.addEventListener("change",e=>{const s=e.target; if(!s||s.id!=="tq-csel") return; const o=s.selectedOptions[0]; if(o) s.closest(".tq-csel").style.setProperty("--c",o.dataset.c)});
 
@@ -6959,7 +7014,7 @@ function sheetSettings(keep){
     <small class="muted">Підпункти зменшують час пропорційно: якщо виконано половину підпунктів, лишається половина часу.</small>`;
   else body=`<h3>Дані</h3>
     <div class="field"><span>Резервна копія</span><div class="row" style="gap:8px;flex-wrap:wrap"><button type="button" class="btn sm primary" data-act="saveCloud">Зберегти в хмару</button><button type="button" class="btn sm" data-act="exportData">Експорт даних (.json)</button><label class="btn sm" for="importFile" style="cursor:pointer">Імпорт даних (.json)</label><input type="file" id="importFile" accept=".json,application/json" hidden></div><small>Імпорт замінює поточні дані. Одразу після нього можна натиснути «Повернути».</small></div>
-    <div class="field"><span>Небезпечна зона</span><div><button type="button" class="btn danger sm" data-act="resetAsk">Скинути все</button></div><div id="resetZone"></div></div>
+    ${typeof backupsHTML==="function"?backupsHTML():""}<div class="field"><span>Небезпечна зона</span><div><button type="button" class="btn danger sm" data-act="resetAsk">Скинути все</button></div><div id="resetZone"></div></div>
     `;
   openSheet(`<div class="setwrap"><div class="sethead"><h2>Налаштування</h2><button type="button" class="iconbtn" data-act="closeSheet" aria-label="Закрити">${ICON.x}</button></div>
     <nav class="setnav" aria-label="Розділи налаштувань">${SETTABS.map(([k,l])=>`<button type="button" data-act="setTab" data-v="${k}" aria-current="${setTab===k?"page":"false"}">${l}</button>`).join("")}<button type="button" class="setlogout" data-act="logout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3"/><path d="M15 7l5 5-5 5M20 12H9"/></svg>Вийти</button></nav>
@@ -7288,6 +7343,7 @@ document.addEventListener("click",e=>{
     case "customize": if(view!=="home"){view="home";openCourse=null;libZoom=null;editing=true}else editing=!editing; render(); window.scrollTo(0,0); break;
     case "lamp": toggleLamp(); break;
     case "logout": closeSheet(); logout(); break;
+    case "bkRestore": {const L=getBackups(), x=L[+b.dataset.i]; if(!x) break; addBackup(CL_(S),"Перед відновленням копії"); S=normalize(CL_(x.data)); S.updatedAt=Date.now(); applyLook(); closeSheet(); commit(); toast("Копію відновлено"); break}
     case "saveCloud": clearTimeout(timer); dirty=false; saveToCloud(true); break;
     case "fab": openFab(); break;
     case "fabTask": closeFab(); taskSheet(null,view==="courses"&&openCourse?openCourse:""); break;
