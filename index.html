@@ -3821,6 +3821,362 @@ button.dk-pill{cursor:pointer}
 }
 @media (prefers-reduced-motion:reduce){.dk-c,.dk-in,.dk-slot{transition:none}.dk-t-foil .dk-front,.dk-shine,.dk-rays,.dk-rv.ready .dk-c,.dk-pt{animation:none}}
 
+/* ===== 1.0.54 Альбом ===== */
+.al-root,.al-ov{--desk:#1C1820; --leather:#4A2B4F; --leather2:#2C1830; --stitch:rgba(255,210,63,.42);
+  --gold:#E8B923; --gold-hi:#FFF1B8; --gold-lo:#8C5E00;
+  --page:#F4F5F9; --page-edge:#CDD1DB; --ink:#2B1B2E; --ink2:#5F5869; --line:rgba(43,27,46,.14);
+  --red:#D6383E; --amber:#C46F00; --green:#3E9B5C;
+  --f-display:"Fraunces",Georgia,serif; --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif; --f-mono:"Space Mono",ui-monospace,Menlo,monospace;}
+.al-root{font-family:var(--f-body);color:var(--ink);font-size:15px;container:al/inline-size}
+.al-root *,.al-ov *{box-sizing:border-box}
+button:where(.al-root *,.al-ov *){font:inherit;color:inherit;cursor:pointer}
+.al-root [hidden],.al-ov [hidden]{display:none!important}
+.al-root :focus-visible,.al-ov :focus-visible{outline:3px solid #3DD9EB;outline-offset:2px}
+/* ---------- binder cover ---------- */
+.al-binder{max-width:1280px;margin:0 auto;position:relative;border-radius:26px;padding:16px 16px 22px;
+  background:radial-gradient(140% 90% at 30% 0%,#6A3F70 0%,var(--leather) 40%,var(--leather2) 100%);
+  box-shadow:0 30px 70px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.07),inset 0 -6px 18px rgba(0,0,0,.35)}
+.al-binder::before{content:"";position:absolute;inset:8px;border:2px dashed var(--stitch);border-radius:19px;pointer-events:none}
+.al-cover{display:flex;flex-wrap:wrap;align-items:center;gap:12px 14px;padding:8px 12px 16px;position:relative;color:#F2E6D6}
+.al-emb{display:flex;flex-direction:column;gap:3px;min-width:0}
+.al-emb .al-ht{margin:0;font-family:var(--f-display);font-style:italic;font-weight:900;font-size:2.1rem;line-height:1;
+  background:linear-gradient(180deg,var(--gold-hi),var(--gold) 55%,#A9790C);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 1px 0 rgba(0,0,0,.6))}
+.al-emb small{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(242,230,214,.72)}
+.al-dev{font-family:var(--f-mono);font-size:.64rem;font-weight:700;letter-spacing:.1em;background:#FFD23F;color:var(--ink);border-radius:6px;padding:2px 7px}
+.al-grow{flex:1}
+.al-vols{display:inline-flex;gap:3px;padding:3px;border-radius:999px;background:rgba(0,0,0,.28);box-shadow:inset 0 1px 3px rgba(0,0,0,.4)}
+.al-vols button{border:0;background:none;border-radius:999px;padding:6px 13px;font-weight:800;font-size:.82rem;color:rgba(242,230,214,.75)}
+.al-vols button[aria-pressed="true"]{background:linear-gradient(180deg,var(--gold-hi),var(--gold));color:var(--ink)}
+.al-xpchip{font-family:var(--f-mono);font-weight:700;font-size:.8rem;border:1.5px solid rgba(255,210,63,.55);color:var(--gold-hi);border-radius:999px;padding:4px 11px}
+.al-cbtn{border:1.5px solid rgba(242,230,214,.35);background:none;border-radius:999px;padding:5px 12px;font-weight:700;font-size:.78rem;color:rgba(242,230,214,.85)}
+
+/* ---------- spread ---------- */
+.al-spread{display:grid;grid-template-columns:minmax(0,1fr) 30px minmax(0,1.3fr) 58px;align-items:stretch;position:relative}
+.al-page{background:var(--page);position:relative;min-width:0;padding:26px 26px 30px;display:flex;flex-direction:column;gap:18px;
+  background-image:linear-gradient(90deg,rgba(43,27,46,.035) 1px,transparent 1px),linear-gradient(rgba(43,27,46,.035) 1px,transparent 1px);background-size:22px 22px;
+  box-shadow:0 2px 0 var(--page-edge),0 4px 0 #B7BCC8,0 6px 0 #A9AEBB,0 14px 24px rgba(0,0,0,.4)}
+.al-page.al-l{border-radius:12px 3px 3px 12px}
+.al-page.al-r{border-radius:3px 12px 12px 3px}
+.al-page.al-r.al-turn{animation:al-turn .5s cubic-bezier(.2,.9,.3,1)}
+@keyframes al-turn{from{transform:perspective(1600px) rotateY(-12deg);transform-origin:left center;opacity:.35}}
+.al-rings{position:relative;background:linear-gradient(90deg,rgba(0,0,0,.45),rgba(0,0,0,.12) 50%,rgba(0,0,0,.45))}
+.al-ring{position:absolute;left:-9px;right:-9px;height:15px;border-radius:9px;background:linear-gradient(180deg,#FAFAFC,#A3A9B4 48%,#7D8390 55%,#E8E9EE);box-shadow:0 3px 4px rgba(0,0,0,.45);z-index:2}
+.al-ring:nth-child(1){top:14%}.al-ring:nth-child(2){top:49%}.al-ring:nth-child(3){top:84%}
+.al-page.al-gold{box-shadow:0 0 0 4px var(--gold),0 0 0 6px var(--gold-lo),0 6px 0 #A9AEBB,0 14px 24px rgba(0,0,0,.4)}
+
+/* index tabs */
+.al-itabs{display:flex;flex-direction:column;gap:7px;padding-top:22px}
+.al-itab{--cc:#999;width:58px;min-height:50px;margin-left:-4px;border:0;border-radius:0 11px 11px 0;padding:6px 4px 6px 8px;
+  background:color-mix(in srgb,var(--cc) 72%,#fff);color:var(--ink);box-shadow:2px 3px 0 rgba(0,0,0,.4);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;font-family:var(--f-mono);font-weight:700;position:relative;transition:transform .15s}
+.al-itab:hover{transform:translateX(3px)}
+.al-itab b{font-size:.8rem;letter-spacing:.04em}
+.al-itab small{font-size:.6rem;opacity:.75;font-variant-numeric:tabular-nums}
+.al-itab[aria-current="page"]{background:var(--page);margin-left:-8px;width:64px;box-shadow:2px 3px 0 rgba(0,0,0,.4),inset 5px 0 0 var(--cc)}
+.al-itab.al-full::after{content:"";position:absolute;top:5px;right:6px;width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 1.5px var(--gold-lo)}
+
+/* ---------- left page parts ---------- */
+.al-eyebrow{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);font-weight:700}
+.al-pgh{margin:0;font-family:var(--f-display);font-style:italic;font-weight:900;font-size:2rem;line-height:1.05;text-wrap:balance;overflow-wrap:anywhere}
+.al-pgh .al-dot{display:inline-block;width:.45em;height:.45em;border-radius:50%;background:var(--cc);border:2px solid var(--ink);margin-right:.25em;vertical-align:.12em}
+.al-frac{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.al-frac b{font-family:var(--f-display);font-weight:700;font-size:3.4rem;line-height:.9;font-variant-numeric:tabular-nums}
+.al-frac span{font-family:var(--f-display);font-size:1.6rem;color:var(--ink2)}
+.al-frac em{font-style:normal;font-size:.85rem;font-weight:700;color:var(--ink2)}
+.al-strip{display:flex;flex-wrap:wrap;gap:4px}
+.al-ms{width:15px;height:21px;border-radius:3px;border:1.5px solid var(--ink);background:#fff}
+.al-ms.al-e{border-style:dashed;border-color:rgba(43,27,46,.4);background:transparent}
+.al-ms.al-e.al-od{border-color:var(--red);border-style:solid;background:rgba(214,56,62,.1)}
+.al-ms.al-sealed{background:#2B1B2E}
+.al-ms.al-base{background:color-mix(in srgb,var(--cc,#9AA7C7) 55%,#fff)}
+.al-ms.al-rare{background:linear-gradient(135deg,#C2185B,#FF8AC4)}
+.al-ms.al-foil{background:linear-gradient(135deg,#FFD23F,#FF6FB5,#3DD9EB,#B8F28B)}
+.al-ms.al-legend{background:linear-gradient(135deg,#9A6A00,#FFD23F,#FFF4B8);border-color:var(--gold-lo)}
+.al-reward{border:2px dashed rgba(43,27,46,.35);border-radius:14px;padding:12px 14px;display:flex;gap:12px;align-items:center;font-size:.9rem;line-height:1.4}
+.al-reward svg{width:34px;height:34px;flex:none}
+.al-reward b{display:block;font-size:.95rem}
+.al-reward.al-done{border:2px solid var(--gold-lo);background:linear-gradient(135deg,#FFF6CF,#FFE48A)}
+.al-tiers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.al-tc{border:1.5px solid var(--line);border-radius:10px;padding:8px 8px 7px;background:#fff;display:flex;flex-direction:column;gap:3px;min-width:0}
+.al-tc i{height:6px;border-radius:3px}
+.al-tc b{font-family:var(--f-display);font-weight:700;font-size:1.35rem;line-height:1}
+.al-tc small{font-family:var(--f-mono);font-size:.62rem;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.al-sw-base{background:#B9C4DD}.al-sw-rare{background:linear-gradient(90deg,#C2185B,#FF8AC4)}.al-sw-foil{background:linear-gradient(90deg,#FFD23F,#FF6FB5,#3DD9EB,#B8F28B)}.al-sw-legend{background:linear-gradient(90deg,#9A6A00,#FFD23F,#FFF4B8)}
+.al-sub-h{margin:0;font-size:.8rem;font-family:var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
+.al-next{display:flex;flex-direction:column;gap:6px}
+.al-nrow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 8px 8px 10px;border-radius:10px;background:#fff;border:1.5px solid var(--line)}
+.al-nrow .al-no{font-family:var(--f-mono);font-weight:700;font-size:.75rem;color:var(--ink2)}
+.al-nrow .al-tt[role="button"]{cursor:pointer}
+.al-nrow .al-tt{font-weight:700;font-size:.88rem;line-height:1.25;overflow-wrap:anywhere}
+.al-nrow .al-tt small{display:block;font-family:var(--f-mono);font-size:.68rem;font-weight:700;color:var(--ink2)}
+.al-nrow .al-tt small.al-od{color:var(--red)}.al-nrow .al-tt small.al-td{color:var(--amber)}
+.al-ck{width:32px;height:32px;border-radius:50%;border:2px solid var(--ink);background:#fff;font-weight:900;display:grid;place-items:center}
+.al-ck:hover{background:#FFD23F}
+.al-note{font-size:.85rem;line-height:1.5;color:var(--ink2);margin:0}
+.al-muted{color:var(--ink2)}
+
+/* table of contents */
+.al-toc{display:flex;flex-direction:column;gap:8px}
+.al-trow{--cc:#999;display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:12px;align-items:center;text-align:left;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px}
+.al-trow:hover{border-color:var(--ink)}
+.al-trow .al-code{height:44px;border-radius:9px;background:color-mix(in srgb,var(--cc) 72%,#fff);display:grid;place-items:center;font-family:var(--f-mono);font-weight:700;font-size:.78rem;border:1.5px solid var(--ink)}
+.al-trow .al-nm{display:flex;flex-direction:column;gap:6px;min-width:0}
+.al-trow .al-nm b{font-weight:800;font-size:.95rem;overflow-wrap:anywhere}
+.al-trow .al-fr{font-family:var(--f-mono);font-weight:700;font-size:.85rem;text-align:right;font-variant-numeric:tabular-nums}
+.al-trow .al-fr small{display:block;font-size:.62rem;color:var(--ink2);letter-spacing:.06em}
+.al-trow.al-full{background:linear-gradient(135deg,#FFFBEA,#FFF1BF);border-color:var(--gold-lo)}
+.al-trow.al-full .al-fr small{color:var(--gold-lo)}
+
+/* ---------- pockets ---------- */
+.al-sheethead{display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:space-between}
+.al-pager{display:flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:.75rem;font-weight:700}
+.al-pager button{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--ink);background:#fff;font-weight:800}
+.al-pager button:disabled{opacity:.3;cursor:default}
+.al-sheet{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;width:100%;max-width:540px;margin:0 auto}
+.al-pocket{position:relative;aspect-ratio:2/3;border-radius:10px;border:1px solid rgba(43,27,46,.18);padding:0;
+  background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(214,219,231,.55));box-shadow:inset 0 2px 0 rgba(255,255,255,.95),0 1px 0 rgba(43,27,46,.08);container-type:inline-size}
+.al-pocket::before{content:"";position:absolute;left:6px;right:6px;top:7%;height:2px;border-radius:2px;background:rgba(43,27,46,.1);z-index:4;pointer-events:none}
+.al-pocket::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:5;background:linear-gradient(125deg,transparent 38%,rgba(255,255,255,.5) 47%,transparent 56%)}
+.al-pocket.al-vac{background:linear-gradient(180deg,rgba(255,255,255,.4),rgba(214,219,231,.3))}
+.al-pocket{cursor:pointer}
+.al-pocket .al-pc,.al-pocket .al-pe,.al-pocket .al-pf{transition:transform .18s}
+.al-pocket:hover .al-pc,.al-pocket:hover .al-pe,.al-pocket:hover .al-pf{transform:translateY(-3px)}
+.al-pocket.al-just{animation:al-glow 1.8s ease-out}
+.al-pocket.al-just .al-pc{animation:al-slotin .85s cubic-bezier(.2,1.3,.4,1)}
+@keyframes al-slotin{0%{transform:translateY(-70%) scale(1.25) rotate(-9deg);opacity:0}55%{opacity:1}100%{transform:none}}
+@keyframes al-glow{0%,40%{box-shadow:0 0 0 0 rgba(232,185,35,.9)}100%{box-shadow:0 0 0 18px rgba(232,185,35,0)}}
+
+/* filled pocket card */
+.al-pc{--cc:#7C9CF0;position:absolute;inset:5px;border-radius:7%/4.7%;font-size:clamp(6px,6.1cqi,15px);background:var(--frame-bg);padding:.45em;display:flex;
+  box-shadow:0 0 0 1.5px var(--ink),2px 3px 0 rgba(43,27,46,.45);overflow:hidden}
+.al-pcf{flex:1;min-width:0;border-radius:.6em;border:.13em solid var(--ink);background:var(--face);color:var(--ink-c);padding:.55em;display:flex;flex-direction:column;gap:.45em;min-height:0}
+.al-pctop{display:flex;justify-content:space-between;gap:.4em;font-family:var(--f-mono);font-size:max(7.5px,.85em);font-weight:700}
+.al-pcwin{flex:1;min-height:0;border:.15em solid currentColor;border-radius:.55em;background-color:var(--win);background-image:radial-gradient(circle,var(--dot) 1px,transparent 1.5px);background-size:.9em .9em;display:grid;place-items:center}
+.al-pcwin svg{width:62%;height:62%}
+.al-pcwin path{stroke:var(--art);fill:var(--art-fill)}
+.al-pctt{font-weight:800;font-size:max(9.5px,1.2em);line-height:1.15;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
+.al-pcband{font-family:var(--f-mono);font-weight:700;font-size:max(7px,.82em);letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:.25em 0;border-radius:.35em;border:.1em solid var(--ink);background:var(--band);color:var(--band-ink)}
+.al-t-base{--frame-bg:var(--cc);--face:#FFFDF6;--ink-c:#2B1B2E;--win:color-mix(in srgb,var(--cc) 22%,#fff);--dot:rgba(43,27,46,.22);--art:#2B1B2E;--art-fill:none;--band:color-mix(in srgb,var(--cc) 55%,#fff);--band-ink:#2B1B2E}
+.al-t-rare{--frame-bg:linear-gradient(135deg,#8E1450 0%,#FF6FB5 30%,#FFC2DE 50%,#FF6FB5 70%,#9B1B55 100%);--face:#FFF8FB;--ink-c:#2B1B2E;--win:#FFDDEB;--dot:rgba(214,40,120,.35);--art:#D81B78;--art-fill:none;--band:linear-gradient(90deg,#C2185B,#FF8AC4 50%,#C2185B);--band-ink:#fff}
+.al-t-foil{--frame-bg:linear-gradient(120deg,#FFD23F,#FF6FB5,#3DD9EB,#B8F28B,#FFD23F);--face:#FFFCF0;--ink-c:#2B1B2E;--win:#FFF3BF;--dot:rgba(43,27,46,.2);--art:#2B1B2E;--art-fill:#FFD23F;--band:linear-gradient(90deg,#FFD23F,#FF6FB5,#3DD9EB,#B8F28B);--band-ink:#2B1B2E}
+.al-t-foil.al-pc{background-size:300% 300%;animation:al-holo 6s linear infinite}
+@keyframes al-holo{to{background-position:300% 0}}
+.al-t-legend{--frame-bg:linear-gradient(135deg,#9A6A00,#FFD23F 35%,#FFF4B8 50%,#F2B705 65%,#8C5E00);--face:#2B1B2E;--ink-c:#FFF1D0;--win:#3E2848;--dot:rgba(255,241,208,.22);--art:#FFD23F;--art-fill:#FFD23F;--band:#FFD23F;--band-ink:#2B1B2E}
+.al-shine{position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.55) 45%,transparent 60%);background-size:250% 100%;animation:al-shine 3.4s ease-in-out infinite;mix-blend-mode:overlay}
+@keyframes al-shine{0%{background-position:150% 0}60%,100%{background-position:-60% 0}}
+
+/* empty pocket: printed silhouette */
+.al-pe{--cc:#7C9CF0;position:absolute;inset:5px;border-radius:7%/4.7%;font-size:clamp(6px,6.1cqi,15px);border:2px dashed color-mix(in srgb,var(--cc) 60%,#8A8F9C);
+  background:color-mix(in srgb,var(--cc) 8%,#fff);display:flex;flex-direction:column;padding:.75em .7em .7em;gap:.3em;color:var(--ink2);text-align:left}
+.al-pocket:hover .al-pe{border-style:solid;background:color-mix(in srgb,var(--cc) 14%,#fff)}
+.al-peno{font-family:var(--f-mono);font-weight:700;font-size:max(8px,.95em)}
+.al-pecode{flex:1;min-height:0;display:grid;place-items:center;font-family:var(--f-display);font-style:italic;font-weight:900;font-size:3.6em;line-height:1;color:transparent;-webkit-text-stroke:1.5px color-mix(in srgb,var(--cc) 70%,#2B1B2E);opacity:.55}
+.al-pett{font-weight:800;color:var(--ink);font-size:max(9.5px,1.15em);line-height:1.15;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
+.al-pedue{font-family:var(--f-mono);font-size:max(8px,.85em);font-weight:700}
+.al-pebar{height:.45em;min-height:4px;border-radius:1em;background:rgba(43,27,46,.1);overflow:hidden}
+.al-pebar i{display:block;height:100%;background:color-mix(in srgb,var(--cc) 80%,#2B1B2E)}
+.al-petag{position:absolute;top:.9em;right:-.5em;font-family:var(--f-mono);font-weight:700;font-size:max(7.5px,.78em);text-transform:uppercase;letter-spacing:.06em;padding:.2em .55em;border-radius:.3em;color:#fff;background:var(--red);transform:rotate(5deg);box-shadow:1px 2px 0 rgba(43,27,46,.4);z-index:6}
+.al-petag.al-nd{background:#8A8F9C}
+.al-pe.al-nd{border-color:#A6ABB6;background:#fff}
+.al-petag.al-td{background:var(--amber)}.al-petag.al-tm{background:var(--gold);color:var(--ink)}
+.al-pe.al-od{border-color:var(--red)}
+.al-setstamp{position:absolute;top:16px;right:18px;transform:rotate(8deg);font-family:var(--f-mono);font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-lo);border:3px double var(--gold-lo);border-radius:8px;padding:4px 10px;background:rgba(255,241,184,.8);z-index:7}
+.al-pgh.al-mob{display:none}
+.al-addp{background:none;border:2px dashed rgba(43,27,46,.22);box-shadow:none;color:var(--ink2)}
+.al-addp::before,.al-addp::after{display:none}
+.al-addin{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-weight:800;font-size:.8rem;text-align:center;padding:6px}
+.al-addin b{font-family:var(--f-display);font-size:2.2rem;line-height:1;font-weight:700}
+.al-addp:hover{border-color:var(--ink);color:var(--ink);background:rgba(255,255,255,.5)}
+.al-blank{border:2px dashed var(--line);border-radius:14px;padding:26px;text-align:center;color:var(--ink2);font-weight:700}
+
+/* ---------- overlays ---------- */
+.al-ov{position:fixed;inset:0;z-index:9000;display:grid;place-items:center;overflow:auto;background:rgba(20,14,24,.68);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.al-ovbox{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:28px;max-width:100%}
+.al-cq{position:relative;width:min(250px,62vw);aspect-ratio:2/3;container-type:inline-size;flex:none}
+.al-cq .al-pc,.al-cq .al-pe{inset:0}
+.al-panel{background:var(--page);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:12px;width:min(340px,100%);box-shadow:0 20px 40px rgba(0,0,0,.4)}
+.al-panel h3{margin:0;font-family:var(--f-display);font-style:italic;font-weight:900;font-size:1.5rem;line-height:1.1;text-wrap:balance;overflow-wrap:anywhere}
+.al-panel dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:5px 12px;font-size:.9rem}
+.al-panel dt{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);align-self:center}
+.al-panel dd{margin:0;font-weight:700}
+.al-subs{display:flex;flex-direction:column;gap:4px}
+.al-sub{display:flex;align-items:center;gap:8px;border:0;background:none;text-align:left;padding:3px 0;font-weight:600;font-size:.9rem}
+.al-sub i{width:18px;height:18px;border:2px solid var(--ink);border-radius:5px;flex:none;display:grid;place-items:center;font-style:normal;font-size:.75rem}
+.al-sub.al-on span{text-decoration:line-through;opacity:.55}
+.al-btns{display:flex;flex-wrap:wrap;gap:8px}
+.al-btn{border:2px solid var(--ink);background:#fff;color:var(--ink);border-radius:11px;padding:9px 14px;font-weight:800;font-size:.88rem;box-shadow:2px 2px 0 var(--ink)}
+.al-btn.al-main{background:#FFD23F}
+.al-btn:active{translate:1px 1px;box-shadow:1px 1px 0 var(--ink)}
+.al-pbar{height:10px;border-radius:6px;background:rgba(43,27,46,.1);overflow:hidden;border:1.5px solid var(--ink)}
+.al-pbar i{display:block;height:100%;background:#B58CE0}
+.al-ovhint{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:#FFF8EC;text-align:center}
+.al-rvside{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;max-width:420px;color:#FFF8EC}
+.al-rvside .al-big{font-family:var(--f-display);font-style:italic;font-weight:900;font-size:1.7rem;line-height:1.1;text-wrap:balance}
+.al-rvside p{margin:0;font-size:.92rem;color:#EDE3F5}
+.al-xp{font-family:var(--f-mono);font-weight:700;color:#FFD23F;font-size:.95rem}
+.al-packback{position:absolute;inset:0;border-radius:7%/4.7%;font-size:6.1cqi;background:#2B1B2E;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:1.4em 1.4em;display:grid;place-items:center;box-shadow:0 0 0 2px #FFF8EC,4px 5px 0 rgba(0,0,0,.5);overflow:hidden;cursor:pointer;border:0;padding:0;width:100%}
+.al-packback::before{content:"";position:absolute;inset:.8em;border:.15em solid rgba(255,210,63,.6);border-radius:.8em}
+.al-packback .al-pl{display:flex;flex-direction:column;align-items:center;gap:.8em}
+.al-packback .al-pl svg{width:7em;height:7em}
+.al-packback .al-pl b{font-family:var(--f-mono);letter-spacing:.5em;color:#FFD23F;font-size:1.2em;padding-left:.5em}
+.al-packback .al-pl small{font-family:var(--f-mono);letter-spacing:.2em;color:rgba(255,241,208,.7);font-size:.8em}
+.al-rv{position:relative;display:grid;place-items:center}
+.al-rv.al-ready .al-cq{animation:al-wob 1.6s ease-in-out infinite}
+@keyframes al-wob{0%,100%{transform:rotate(-2deg) scale(1)}50%{transform:rotate(2deg) scale(1.03)}}
+.al-rays{position:absolute;left:50%;top:50%;width:700px;height:700px;margin:-350px 0 0 -350px;border-radius:50%;pointer-events:none;opacity:0;background:repeating-conic-gradient(from 0deg,var(--rc,rgba(255,210,63,.35)) 0 8deg,transparent 8deg 22deg);-webkit-mask:radial-gradient(circle,#000 20%,transparent 65%);mask:radial-gradient(circle,#000 20%,transparent 65%);animation:al-spin 12s linear infinite;transition:opacity .6s}
+.al-rays.al-on{opacity:1}
+@keyframes al-spin{to{transform:rotate(360deg)}}
+.al-pt{position:absolute;left:50%;top:50%;width:var(--sz);height:var(--sz);border-radius:var(--br);background:var(--c);pointer-events:none;animation:al-burst 1.1s cubic-bezier(.15,.8,.3,1) forwards;z-index:3}
+@keyframes al-burst{from{transform:translate(-50%,-50%) scale(1);opacity:1}to{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.3) rotate(var(--rot));opacity:0}}
+.al-setcel{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;color:#FFF8EC;position:relative}
+.al-setcel .al-medal{width:120px;height:120px}
+.al-setcel .al-ht{margin:0;font-family:var(--f-display);font-style:italic;font-weight:900;font-size:2rem;line-height:1.1;text-wrap:balance;background:linear-gradient(180deg,var(--gold-hi),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.al-toast{position:fixed;left:50%;bottom:max(18px,env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#FFF8EC;color:var(--ink);border-radius:12px;padding:10px 16px;font-weight:700;font-size:.9rem;z-index:80;max-width:calc(100% - 32px);box-shadow:0 8px 20px rgba(0,0,0,.4)}
+
+
+/* ---------- today ---------- */
+.al-itab.al-today b{font-size:.56rem;letter-spacing:0}
+.al-daygrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.al-dg{border:1.5px solid var(--line);border-radius:12px;background:#fff;padding:10px;display:flex;flex-direction:column;gap:2px}
+.al-dg b{font-family:var(--f-display);font-weight:700;font-size:1.9rem;line-height:1}
+.al-dg small{font-family:var(--f-mono);font-size:.62rem;color:var(--ink2);text-transform:uppercase;letter-spacing:.06em}
+.al-dg.al-od b{color:var(--red)}.al-dg.al-ok b{color:var(--green)}
+.al-shelf{display:flex;flex-direction:column;gap:12px}
+.al-shelf+.al-shelf{padding-top:18px;border-top:2px dashed var(--line)}
+.al-shelf-h{display:flex;align-items:baseline;gap:10px}
+.al-shelf-h .al-ht{margin:0;font-family:var(--f-display);font-style:italic;font-weight:900;font-size:1.25rem}
+.al-shelf-h span{font-family:var(--f-mono);font-weight:700;font-size:.75rem;border:1.5px solid var(--ink);border-radius:999px;padding:1px 8px;background:#fff}
+.al-shelf.al-over .al-shelf-h .al-ht{color:var(--red)}
+.al-shelf.al-over .al-shelf-h span{background:#FFD5D2}
+.al-shelf.al-tod .al-shelf-h span{background:#FFF0B3}
+.al-shelf-e{margin:0;color:var(--ink2);font-size:.88rem;font-weight:600}
+.al-pslot{display:flex;flex-direction:column;gap:6px;min-width:0}
+.al-pchip{align-self:center;border:1.5px solid var(--ink);background:#fff;border-radius:999px;padding:3px 10px;font-size:.72rem;font-weight:800;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis;color:var(--ink)}
+button.al-pchip:hover{background:#FFD23F}
+span.al-pchip{border-style:dashed;color:var(--ink2);font-weight:700}
+.al-pchip.al-ok{border-color:var(--green);color:var(--green)}
+.al-pchip.al-warn{border-color:var(--amber);color:var(--amber)}
+.al-morebtn{align-self:center}
+@container al (max-width:860px){.al-pchip{font-size:.64rem;padding:3px 7px}}
+
+/* ---------- foil wrap with stamp ---------- */
+.al-pf{--cc:#7C9CF0;position:absolute;inset:5px;border-radius:7%/4.7%;font-size:clamp(6px,6.1cqi,15px);color:var(--ink)}
+.al-pfw{position:absolute;inset:0;border-radius:inherit;transition:transform .62s cubic-bezier(.4,.05,.3,1),opacity .5s .12s}
+.al-fwrap{position:absolute;inset:0;border-radius:inherit;overflow:hidden;
+  background:linear-gradient(115deg,transparent 16%,rgba(255,255,255,.6) 28%,transparent 40%,rgba(255,255,255,.32) 58%,transparent 68%),
+    repeating-linear-gradient(58deg,rgba(0,0,0,.07) 0 2px,transparent 2px 8px),
+    repeating-linear-gradient(-32deg,rgba(255,255,255,.16) 0 1.5px,transparent 1.5px 10px),
+    linear-gradient(165deg,color-mix(in srgb,var(--cc) 40%,#fff) 0%,var(--cc) 34%,color-mix(in srgb,var(--cc) 68%,#1a0f1c) 62%,color-mix(in srgb,var(--cc) 65%,#fff) 100%);
+  background-size:260% 100%,auto,auto,auto;background-position:100% 0,0 0,0 0,0 0;transition:background-position .9s ease;
+  box-shadow:0 0 0 1.5px rgba(43,27,46,.8),2px 3px 0 rgba(43,27,46,.4),inset 0 0 0 .35em rgba(255,255,255,.13)}
+.al-fwrap::before,.al-fwrap::after{content:"";position:absolute;left:0;right:0;height:.8em;background:repeating-linear-gradient(90deg,rgba(0,0,0,.24) 0 .2em,rgba(255,255,255,.32) .2em .4em)}
+.al-fwrap::before{top:0}.al-fwrap::after{bottom:0}
+.al-pocket:hover .al-fwrap,.al-ffront:hover .al-fwrap{background-position:0 0,0 0,0 0,0 0}
+.al-pfl{position:absolute;left:9%;right:9%;top:12%;background:#FFFDF6;border:.13em solid var(--ink);border-radius:.55em;padding:.55em .6em .6em;display:flex;flex-direction:column;gap:.3em;box-shadow:.15em .2em 0 rgba(43,27,46,.35);transform:rotate(-1.2deg);text-align:left}
+.al-pftop{display:flex;justify-content:space-between;font-family:var(--f-mono);font-weight:700;font-size:max(7.5px,.85em);color:var(--ink2)}
+.al-pedue.al-od{color:var(--red)}.al-pedue.al-td{color:var(--amber)}
+.al-pf .al-pebar i{background:var(--cc)}
+.al-stampb{--sz:max(34px,5.4em);position:absolute;left:50%;bottom:8%;width:var(--sz);height:var(--sz);margin-left:calc(var(--sz) / -2);border-radius:50%;border:.26em double rgba(255,255,255,.95);
+  background:radial-gradient(circle,rgba(255,255,255,.3),rgba(255,255,255,.08));color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.05em;
+  font-family:var(--f-mono);font-weight:700;padding:0;transform:rotate(-8deg);text-shadow:0 1px 0 rgba(0,0,0,.4);box-shadow:0 0 0 .15em rgba(43,27,46,.3);transition:transform .15s,background .15s;z-index:3}
+.al-stampb i{font-style:normal;font-size:1.9em;line-height:1}
+.al-stampb small{font-size:max(6.5px,.6em);letter-spacing:.14em}
+.al-stampb:not(.al-inked):hover{transform:rotate(-8deg) scale(1.1);background:rgba(255,255,255,.4)}
+.al-stampb.al-inked{--sz:max(44px,7.4em);height:max(28px,3.6em);border-radius:.5em;border-color:#C8231B;color:#C8231B;background:rgba(255,253,246,.93);text-shadow:none;transform:rotate(-12deg);box-shadow:none}
+.al-stampb.al-inked b{font-size:max(7.5px,.95em);letter-spacing:.12em}
+.al-stampb.al-inked small{color:#C8231B;opacity:.8;letter-spacing:.06em}
+.al-stampb.al-thud{animation:al-thud .45s cubic-bezier(.2,1.6,.4,1)}
+@keyframes al-thud{0%{transform:rotate(-12deg) scale(2.4);opacity:0}55%{transform:rotate(-12deg) scale(.88);opacity:1}100%{transform:rotate(-12deg) scale(1)}}
+.al-ffront.al-torn .al-ha{transform:translate(-5%,-58%) rotate(-11deg);opacity:0}
+.al-ffront.al-torn .al-hb{transform:translate(6%,62%) rotate(9deg);opacity:0}
+
+/* ---------- flip card with editable back ---------- */
+.al-ovbox.al-col{flex-direction:column;gap:16px}
+.al-flip{--cc:#7C9CF0;position:relative;flex:none;height:min(600px,calc(100vh - 150px));height:min(600px,calc(100dvh - 150px));aspect-ratio:2/3;max-width:calc(100vw - 32px);perspective:1800px}
+.al-fin{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.3,1.25,.4,1)}
+.al-flip.al-on .al-fin{transform:rotateY(180deg)}
+.al-ff{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:4.5%/3%}
+.al-ffront{container-type:inline-size;cursor:pointer;outline-offset:6px}
+.al-ffront .al-pc,.al-ffront .al-pe,.al-ffront .al-pf{inset:0;font-size:5.2cqi}
+.al-ffront .al-pecode{-webkit-text-stroke-width:2.5px}
+.al-ffront .al-pe{border-width:3px;background:color-mix(in srgb,var(--cc) 10%,#fff)}
+.al-ffront:hover .al-pc,.al-ffront:hover .al-pe{transform:translateY(-4px)}
+.al-ffront .al-pc,.al-ffront .al-pe{transition:transform .2s}
+.al-fback{transform:rotateY(180deg);background:var(--cc);padding:9px;box-shadow:0 0 0 2px var(--ink),5px 6px 0 rgba(0,0,0,.45)}
+.al-bk{height:100%;overflow:auto;overscroll-behavior:contain;background:#FFFDF6;border-radius:12px;border:2px solid var(--ink);padding:14px 16px 16px;display:flex;flex-direction:column;gap:13px;color:var(--ink)}
+.al-bkh{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.al-bkflip{width:32px;height:32px;flex:none;border-radius:50%;border:1.5px solid var(--ink);background:#fff;font-weight:800;font-size:1rem;color:var(--ink)}
+.al-bkt{font-family:var(--f-display);font-style:italic;font-weight:900;font-size:1.35rem;line-height:1.15;border:0;border-bottom:2px dashed var(--line);background:none;resize:none;color:var(--ink);padding:2px 0 6px;width:100%;field-sizing:content;min-height:2.6em}
+.al-bkt:focus{outline:none;border-bottom-color:var(--cc)}
+.al-bk2{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:8px}
+.al-bsel{display:flex;align-items:center;gap:7px;border:1.5px solid var(--line);border-radius:10px;padding:0 9px;background:#fff;min-width:0}
+.al-bsel:focus-within{border-color:var(--ink)}
+.al-bsel select,.al-bsel input{border:0;background:none;font:inherit;font-weight:700;font-size:.85rem;padding:8px 0;min-width:0;width:100%;color:var(--ink);color-scheme:light}
+.al-bsel select:focus,.al-bsel input:focus{outline:none}
+.al-bsel i{width:11px;height:11px;border-radius:50%;flex:none;border:1.5px solid var(--ink)}
+.al-bsel span{font-family:var(--f-mono);font-size:.6rem;text-transform:uppercase;color:var(--ink2);letter-spacing:.06em;flex:none}
+.al-bkf{display:flex;flex-direction:column;gap:7px}
+.al-bl{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);font-weight:700;display:flex;justify-content:space-between;gap:8px}
+.al-chips{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.al-chip{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:5px 10px;font-size:.78rem;font-weight:700;color:var(--ink)}
+.al-chip:hover{border-color:var(--ink)}
+.al-chip.al-on{background:var(--ink);color:#FFF8EC;border-color:var(--ink)}
+.al-dinp{border:1.5px solid var(--line);border-radius:999px;padding:4px 8px;font:inherit;font-size:.76rem;font-weight:700;background:#fff;color:var(--ink);color-scheme:light;max-width:100%}
+.al-seg4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}
+.al-seg4 label{position:relative;min-width:0}
+.al-seg4 input{position:absolute;opacity:0;pointer-events:none}
+.al-seg4 span{display:flex;flex-direction:column;align-items:center;gap:1px;border:1.5px solid var(--line);border-radius:10px;padding:6px 2px;background:#fff;font-size:.7rem;font-weight:700;cursor:pointer;text-align:center}
+.al-seg4 b{font-size:.78rem;letter-spacing:-.05em}
+.al-seg4 input:checked+span{background:#FFD23F;border-color:var(--ink)}
+.al-seg4 input:focus-visible+span{outline:3px solid #3DD9EB}
+.al-subl{display:flex;flex-direction:column;gap:3px}
+.al-srow,.al-subadd{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:7px;align-items:center}
+.al-subadd{grid-template-columns:minmax(0,1fr) auto}
+.al-sck{width:24px;height:24px;border-radius:7px;border:2px solid var(--ink);background:#fff;display:grid;place-items:center;font-size:.8rem;font-weight:900;padding:0;color:var(--ink)}
+.al-sck.al-on{background:var(--green);color:#fff;border-color:var(--green)}
+.al-srow input,.al-subadd input{border:0;border-bottom:1px dashed var(--line);background:none;font:inherit;font-size:.88rem;font-weight:600;padding:5px 0;color:var(--ink);min-width:0}
+.al-srow input:focus,.al-subadd input:focus{outline:none;border-bottom-color:var(--ink)}
+.al-srow.al-on input{text-decoration:line-through;opacity:.55}
+.al-sx{border:0;background:none;width:26px;height:26px;color:var(--ink2);font-size:1.1rem;border-radius:6px}
+.al-sx:hover{background:rgba(214,56,62,.12);color:var(--red)}
+.al-lined{border:0;resize:vertical;font:inherit;font-size:.9rem;line-height:24px;color:var(--ink);background:repeating-linear-gradient(transparent 0 23px,rgba(43,27,46,.14) 23px 24px);padding:0 2px;min-height:98px;width:100%}
+.al-lined:focus{outline:none}
+.al-chkl{display:flex;align-items:center;gap:8px;font-weight:700;font-size:.85rem}
+.al-chkl input{width:18px;height:18px;accent-color:#2B1B2E}
+.al-bkfoot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto;padding-top:10px;border-top:2px dashed var(--line)}
+.al-xpb{font-family:var(--f-mono);font-weight:700;font-size:.75rem;background:#FFF0B3;border:1.5px solid var(--ink);border-radius:999px;padding:3px 10px}
+.al-lnk{border:0;background:none;font-weight:800;font-size:.82rem;color:var(--red);padding:6px 4px}
+.al-acts{display:flex;flex-direction:column;align-items:center;gap:10px}
+.al-toast button{margin-left:12px;border:0;background:none;color:inherit;font-weight:800;text-decoration:underline;padding:0}
+
+/* ---------- narrow ---------- */
+@container al (max-width:860px){
+  .al-emb .al-ht{font-size:1.7rem}
+  .al-spread{grid-template-columns:minmax(0,1fr);gap:0}
+  .al-rings{display:none}
+  .al-itabs{order:-1;flex-direction:row;overflow-x:auto;gap:5px;padding:0 4px;scrollbar-width:none}
+  .al-itab{width:auto;min-width:52px;min-height:46px;margin:0 0 -2px;border-radius:11px 11px 0 0;padding:6px 8px 8px;box-shadow:0 -1px 0 rgba(0,0,0,.25);flex:none}
+  .al-itab:hover{transform:none}
+  .al-itab[aria-current="page"]{margin:0 0 -2px;width:auto;box-shadow:inset 0 4px 0 var(--cc)}
+  .al-page{padding:20px 14px 22px}
+  .al-page.al-r{order:1;border-radius:6px 6px 0 0;box-shadow:none;border-bottom:2px dashed var(--line)}
+  .al-page.al-r.al-gold{box-shadow:inset 0 0 0 4px var(--gold)}
+  .al-page.al-l{order:2;border-radius:0 0 12px 12px}
+  .al-pgh.al-mob{display:block;font-size:1.6rem}
+  .al-setstamp{position:static;align-self:flex-start;transform:rotate(-3deg);font-size:.68rem}
+  .al-sheet{gap:8px}
+  .al-pocket{border-radius:8px}
+  .al-pc,.al-pe,.al-pf{inset:3px}
+  .al-tiers{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (prefers-reduced-motion:reduce){
+  .al-fin,.al-pfw{transition:none}
+  .al-stampb.al-thud{animation:none}
+  .al-page.al-r.al-turn,.al-pocket.al-just,.al-pocket.al-just .al-pc,.al-t-foil.al-pc,.al-shine,.al-rays,.al-rv.al-ready .al-cq,.al-pt{animation:none}
+}
+
+
 .savebtn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border:0;border-radius:12px;background:linear-gradient(180deg,#F3C766,#D99A2B);color:#241606;font:inherit;font-weight:800;font-size:.95rem;cursor:pointer;box-shadow:0 8px 18px -8px rgba(217,154,43,.8),inset 0 1px 0 rgba(255,255,255,.45);transition:transform .15s,filter .15s}
 .savebtn svg{width:18px;height:18px}
 .savebtn:hover{filter:brightness(1.07);transform:translateY(-1px)}
@@ -4284,8 +4640,9 @@ function taskXP(t){if(t.kind==="review")return XP.review;if(t.ttype&&XP[t.ttype]
 const WIDGETS={ring:{n:"Модульне коло",full:false},courses:{n:"Кільця курсів",full:true},tasks:{n:"Завдання до модуля",full:false},tue:{n:"Вівторки",full:true},reading:{n:"Зараз читаю",full:false},loans:{n:"Позичені книги",full:false}};
 const SCENES=[["theme","Як у системі"],["time","За часом доби"],["day","Світлий"],["night","Темний"]];
 const FROST=[["clear","Прозоре"],["mid","Звичайне"],["matte","Матове"]];
-const TABS=[["home","Головна"],["today","Сьогодні"],["courses","Курси"],["plan","Календар"],["stats","Статистика"],["library","Бібліотека"],["sup","Супервізії"],["xp","Loco"],["deck","Колода"],["trash","Недавно видалені"]];
+const TABS=[["home","Головна"],["today","Сьогодні"],["courses","Курси"],["plan","Календар"],["stats","Статистика"],["library","Бібліотека"],["sup","Супервізії"],["xp","Loco"],["album","Альбом"],["deck","Колода"],["trash","Недавно видалені"]];
 const ICON={
+  album:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 3v18"/><rect x="11" y="7" width="5" height="7" rx="1"/></svg>',
   deck:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="4" width="12" height="16" rx="2" transform="rotate(8 13 12)"/><rect x="4" y="5" width="12" height="16" rx="2" transform="rotate(-6 10 13)"/></svg>',
   trash:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V4.5h6V7M6.5 7l1 13h9l1-13"/><path d="M10 11v5M14 11v5"/></svg>',
   today:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
@@ -4549,7 +4906,7 @@ window.addEventListener("pagehide",flushNow);
 window.addEventListener("beforeunload",e=>{if(sbUser&&(dirty||writing)){flushNow(); e.preventDefault(); e.returnValue=""}});
 setInterval(()=>{if(sbUser&&dirty&&!writing) flush()},15000);
 /* ---------- gate: Supabase login, then access code ---------- */
-const OWNER_KEY="studyquest.owner", UNLOCK_KEY="studyquest.unlocked";
+const OWNER_KEY="studyquest.owner", UNLOCK_KEY="studyquest.unlocked", UNLOCK_MS=24*3600*1000;
 const $g=id=>document.getElementById(id);
 let gMode="in";
 function gShow(which){["gateLoad","gateAuth","gateCode"].forEach(id=>{$g(id).hidden=id!==which}); const f=which==="gateAuth"?$g("gEmail"):which==="gateCode"?$g("gCode"):null; if(f) setTimeout(()=>f.focus(),30)}
@@ -4568,19 +4925,19 @@ function setGMode(m){gMode=m; document.querySelectorAll("[data-gmode]").forEach(
 function gHeadSet(a){const h=$g("gHead"),l=$g("gLead"),t=$g("gBarT"); if(h) h.textContent=a[0]; if(l) l.textContent=a[1]; if(t) t.textContent=a[2]}
 function toCode(){
   $g("gWho").textContent="Ти увійшов як "+(sbUser.email||"користувач")+".";
-  let ok=false; try{ok=sessionStorage.getItem(UNLOCK_KEY)===sbUser.id}catch(e){}
+  let ok=false; try{ok=sessionStorage.getItem(UNLOCK_KEY)===sbUser.id; const u=JSON.parse(localStorage.getItem(UNLOCK_KEY)||"null"); if(u&&u.uid===sbUser.id&&Date.now()-u.at<UNLOCK_MS) ok=true}catch(e){}
   if(ok) unlock(); else {gMsg("gCodeMsg",""); $g("gCode").value=""; gHeadSet(["Майже готово","Останній крок: код доступу.","locus / код"]); gShow("gateCode")}
 }
-function unlock(){
+function unlock(byCode){
   let own=null; try{own=localStorage.getItem(OWNER_KEY)}catch(e){}
   if(own!==sbUser.id){S=seed(fresh()); S.updatedAt=0; try{localStorage.setItem(KEY,JSON.stringify(S));localStorage.setItem(OWNER_KEY,sbUser.id)}catch(e){}}
-  try{sessionStorage.setItem(UNLOCK_KEY,sbUser.id)}catch(e){}
+  try{sessionStorage.setItem(UNLOCK_KEY,sbUser.id); if(byCode) localStorage.setItem(UNLOCK_KEY,JSON.stringify({uid:sbUser.id,at:Date.now()}))}catch(e){}
   document.body.classList.remove("locked"); applyLook(); render(); if(getFocus()) showFocus(); initCloud();
 }
 async function logout(){
   try{if(dirty||writing){clearTimeout(timer); dirty=true; writing=false; await saveToCloud(false); dirty=false}}catch(e){}
   if(syncMode!=="cloud"&&!confirm("Останні зміни ще не збереглись у хмару (немає зв'язку). Якщо вийти зараз, вони залишаться лише на цьому пристрої. Все одно вийти?")) return;
-  try{sessionStorage.removeItem(UNLOCK_KEY);localStorage.removeItem(KEY);localStorage.removeItem(OWNER_KEY);localStorage.removeItem(BASE_KEY)}catch(e){}
+  try{sessionStorage.removeItem(UNLOCK_KEY);localStorage.removeItem(UNLOCK_KEY);localStorage.removeItem(KEY);localStorage.removeItem(OWNER_KEY);localStorage.removeItem(BASE_KEY)}catch(e){}
   try{if(sb) await sb.auth.signOut()}catch(e){}
   location.reload();
 }
@@ -4603,7 +4960,7 @@ async function gateBoot(){
   });
   $g("gateCode").addEventListener("submit",ev=>{
     ev.preventDefault(); const v=$g("gCode").value.trim();
-    if(v===ACCESS_CODE){if(window.gBurst) gBurst(); unlock()} else {gMsg("gCodeMsg","Неправильний код.","err"); const c=document.querySelector(".gcard"); c.classList.remove("shake"); void c.offsetWidth; c.classList.add("shake"); $g("gCode").select()}
+    if(v===ACCESS_CODE){if(window.gBurst) gBurst(); unlock(true)} else {gMsg("gCodeMsg","Неправильний код.","err"); const c=document.querySelector(".gcard"); c.classList.remove("shake"); void c.offsetWidth; c.classList.add("shake"); $g("gCode").select()}
   });
   try{
     const {data}=await sb.auth.getSession();
@@ -5516,7 +5873,7 @@ document.addEventListener("click",e=>{if(document.getElementById("fabmenu")&&!e.
 document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest("#fabmenu [data-act]")) setTimeout(closeFab,0)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("fabmenu")){closeFab(); const f=document.getElementById("fab"); if(f) f.focus()}});
 
-const LOCUS_BUILD="1.0.53";
+const LOCUS_BUILD="1.0.55";
 
 /* ---------- alive: entrance on view change, ring fill, count-up, completion burst ---------- */
 let aliveKey=null, aliveFirst=true;
@@ -6493,6 +6850,396 @@ document.addEventListener("pointermove",e=>{
   c.classList.add("dk-tilt"); c.style.setProperty("--ry",((px-.5)*16).toFixed(1)+"deg"); c.style.setProperty("--rx",((.5-py)*14).toFixed(1)+"deg"); c.style.setProperty("--gx",(px*100).toFixed(0)+"%"); c.style.setProperty("--gy",(py*100).toFixed(0)+"%");
 });
 
+/* ---------- 1.0.54: Альбом — tasks as cards in a binder ---------- */
+const AL_SETXP=5;
+const AL_DIFF=[[1,"Легке","★"],[2,"Середнє","★★"],[3,"Складне","★★★"],[0,"Не знаю","?"]];
+const AL_BTYPES=["книга","стаття","розділ","підручник"];
+const AL_WD=["неділя","понеділок","вівторок","середа","четвер","пʼятниця","субота"];
+const AL_MONG=["січня","лютого","березня","квітня","травня","червня","липня","серпня","вересня","жовтня","листопада","грудня"];
+const AL_LIBC="#B58CE0";
+let alTab="today", alVolSel=null, alSheet={}, alMore=false, alTurn=false, alJust=null, alNewId="", alOpen="";
+const alXP=t=>taskXP({kind:t.kind,ttype:t.ttype==="task"?"":t.ttype,diff:t.diff});
+const alIsB=x=>!!x&&x.kind!=="task";
+const alTasks=()=>S.tasks.filter(t=>t.kind==="task"&&course(t.courseId)&&!course(t.courseId).archived);
+const alItem=id=>S.tasks.find(t=>t.id===id)||S.books.find(b=>b.id===id);
+const alDone=x=>alIsB(x)?x.status==="done":!!x.done;
+const alDoneDay=x=>x.doneAt?d2s(new Date(x.doneAt)):"";
+const alDue=x=>alIsB(x)?"":(x.noDue?"":(x.due||""));
+const alCid=x=>alIsB(x)?"lib":x.courseId;
+const alCol=cid=>{if(cid==="lib") return AL_LIBC; const c=course(cid); return c?CC(c.color):"#999"};
+const alCName=cid=>cid==="lib"?"Література":((course(cid)||{}).name||"—");
+const alSealed=x=>alDone(x)&&x.fx&&!x.fx.seen;
+const alMonth=s=>{const d=parse(s); return d.getDate()+" "+AL_MONG[d.getMonth()]};
+const alDays=n=>{const a=Math.abs(n)%100,b=a%10; return n+" "+(a>10&&a<20?"днів":b===1?"день":b>1&&b<5?"дні":"днів")};
+let alCodeMap={};
+function alCodes(){const m={lib:"КН"}, used={КН:1}; activeCourses().forEach(c=>{const w=String(c.name).replace(/[^\p{L}\p{N}\s]/gu," ").split(/\s+/).filter(x=>x.length>1);
+  let s=(w.slice(0,3).map(x=>x[0]).join("")||"?").toUpperCase(); if(used[s]&&w[1]) s=(w[0][0]+w[1].slice(0,2)).toUpperCase(); let k=s,i=2; while(used[k]) k=s+i++; used[k]=1; m[c.id]=k}); alCodeMap=m}
+const alCode=cid=>alCodeMap[cid]||"?";
+function alEnsure(){let ch=false;
+  S.tasks.forEach(t=>{if(t.kind==="task"&&t.done&&!t.fx){t.fx=dkDrawFx(true); ch=true}});
+  S.books.forEach(b=>{if(b.status==="done"&&!b.fx){b.fx=dkDrawFx(true); ch=true}});
+  if(ch) setTimeout(()=>commit({norender:true}),0)}
+
+/* volumes: one per period between module weeks */
+function alVols(){
+  const B=modRuns().map(r=>r[0]), nx=cycle().next, T=alTasks(), out=[];
+  for(let k=0;k<=B.length;k++){
+    const from=k?B[k-1]:"0000", to=k<B.length?B[k]:"9999", cur=nx?to===nx:k===B.length;
+    if(cur||T.some(t=>{const d=alDue(t); return d&&d>from&&d<=to})) out.push({n:k+1,from,to,cur});
+  }
+  return out;
+}
+let alV=[];
+const alCurV=()=>alV.find(v=>v.cur)||alV[alV.length-1];
+const alVol=()=>alV.find(v=>v.to===alVolSel)||alCurV();
+const alVolOf=x=>{const d=alDue(x); if(!d) return alCurV(); return alV.find(v=>d>v.from&&d<=v.to)||alCurV()};
+const alVLabel=v=>v.to==="9999"?(v.from==="0000"?"усі завдання":"після "+fmtS(v.from)):"до "+fmtS(v.to);
+const alByDue=(a,b)=>{const x=alDue(a)||"9999",y=alDue(b)||"9999"; return x<y?-1:x>y?1:(a.createdAt||0)-(b.createdAt||0)};
+function alSlots(cid,v,all){v=v||alVol(); if(cid==="lib") return S.books.slice();
+  return alTasks().filter(t=>{if(t.courseId!==cid) return false; const d=alDue(t); return d?d>v.from&&d<=v.to:!!(all&&v.cur)}).sort(alByDue)}
+const alNo=x=>pad(alSlots(alCid(x),alVolOf(x),true).indexOf(x)+1);
+const alFull=(cid,v)=>{const L=alSlots(cid,v); return L.length>0&&L.every(alDone)};
+const alSetKey=(v,cid)=>v.to+":"+cid;
+
+/* ---------- pocket markup ---------- */
+function alDueInfo(x){
+  if(alIsB(x)) return {cls:"",txt:x.page?`${x.page} з ${x.total} стор.`:`${x.total||"?"} стор.`,tag:""};
+  const due=alDue(x);
+  if(!due) return {cls:"al-nd",txt:"без дедлайну",tag:`<span class="al-petag al-nd">поза сетом</span>`};
+  const n=diffDays(due,today());
+  if(n<0) return {cls:"al-od",txt:"до "+fmtS(due),tag:`<span class="al-petag">прострочено</span>`};
+  if(n===0) return {cls:"al-td",txt:"сьогодні",tag:`<span class="al-petag al-td">сьогодні</span>`};
+  if(n===1) return {cls:"al-tm",txt:"завтра",tag:`<span class="al-petag al-tm">завтра</span>`};
+  return {cls:"",txt:"до "+fmtS(due),tag:""};
+}
+function alPc(x){
+  const cid=alCid(x), t=DK_T[x.fx.tier];
+  return `<span class="al-pc al-t-${x.fx.tier}" style="--cc:${alCol(cid)}"><span class="al-pcf"><span class="al-pctop"><span>№${alNo(x)}</span><span>${esc(alCode(cid))}</span></span>
+    <span class="al-pcwin"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="${DK_ART[x.fx.art]||DK_ART.book}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill-rule="evenodd"/></svg></span>
+    <span class="al-pctt">${esc(x.title)}</span><span class="al-pcband">${t.n}</span></span>${x.fx.tier==="foil"||x.fx.tier==="legend"?'<span class="al-shine"></span>':""}</span>`;
+}
+const AL_ZZ=Array.from({length:21},(_,i)=>[i*5,i%2?57:52]);
+const AL_CA="polygon(0% 0%,100% 0%,"+AL_ZZ.slice().reverse().map(([x,y])=>x+"% "+y+"%").join(",")+")";
+const AL_CB="polygon("+AL_ZZ.map(([x,y])=>x+"% "+y+"%").join(",")+",100% 100%,0% 100%)";
+function alFoilIn(x){
+  const cid=alCid(x), d=alDueInfo(x), ink=alDone(x), ss=alIsB(x)?[]:subsOf(x);
+  const prog=alIsB(x)?(x.page&&x.total?x.page/x.total:-1):(ss.length?ss.filter(s=>s.done).length/ss.length:-1);
+  return `<span class="al-fwrap"></span><span class="al-pfl"><span class="al-pftop"><span>№${alNo(x)}</span><span>${esc(alCode(cid))}</span></span><span class="al-pett">${esc(x.title)||"Без назви"}</span>${alIsB(x)&&x.author?`<span class="al-pedue">${esc(x.author)}</span>`:""}<span class="al-pedue ${d.cls}">${d.txt}</span>${prog>=0?`<span class="al-pebar"><i style="width:${Math.round(prog*100)}%"></i></span>`:""}</span>${ink?"":d.tag}
+    <button type="button" class="al-stampb${ink?" al-inked":""}" data-act="alStamp" data-id="${x.id}" aria-label="${ink?"Розірвати фольгу":"Поставити штамп «Виконано»"}: ${esc(x.title)}">${ink?`<b>ВИКОНАНО</b><small>${x.doneAt?fmtS(alDoneDay(x)):""}</small>`:`<i>✓</i><small>ШТАМП</small>`}</button>`;
+}
+const alPf=x=>`<span class="al-pf" style="--cc:${alCol(alCid(x))}">${alFoilIn(x)}</span>`;
+const alPfSplit=x=>`<span class="al-pf" style="--cc:${alCol(alCid(x))}"><span class="al-pfw al-ha" inert style="clip-path:${AL_CA}">${alFoilIn(x)}</span><span class="al-pfw al-hb" style="clip-path:${AL_CB}">${alFoilIn(x)}</span></span>`;
+function alPocket(x){
+  const wrapped=!alDone(x)||alSealed(x)||!x.fx;
+  return `<div class="al-pocket${wrapped?" al-vac":""}${alJust===x.id?" al-just":""}" role="button" tabindex="0" data-act="alPocket" data-id="${x.id}" aria-label="№${alNo(x)} ${esc(x.title)}${alSealed(x)?", виконано, фольга ще ціла":alDone(x)&&x.fx?", "+DK_T[x.fx.tier].n:", у фользі"}">${wrapped?alPf(x):alPc(x)}</div>`;
+}
+const alStrip=(L,cc)=>`<span class="al-strip" aria-hidden="true">${L.map(x=>`<i class="al-ms ${alSealed(x)?"al-sealed":alDone(x)&&x.fx?"al-"+x.fx.tier:"al-e"+(!alDone(x)&&alDue(x)&&alDue(x)<today()?" al-od":"")}" style="--cc:${cc}"></i>`).join("")}</span>`;
+const AL_MEDAL=`<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="22" r="14" fill="#FFD23F" stroke="#2B1B2E" stroke-width="2.5"/><path d="M20 14l2.6 5.3 5.8.8-4.2 4.1 1 5.8L20 27.3 14.8 30l1-5.8-4.2-4.1 5.8-.8z" fill="#fff" stroke="#2B1B2E" stroke-width="1.8" stroke-linejoin="round"/></svg>`;
+const alRings=()=>`<div class="al-rings" aria-hidden="true"><i class="al-ring"></i><i class="al-ring"></i><i class="al-ring"></i></div>`;
+function alTiers(L){return `<div class="al-tiers">${DK_ORDER.map(k=>`<div class="al-tc"><i class="al-sw-${k}"></i><b>${L.filter(x=>alDone(x)&&x.fx&&!alSealed(x)&&x.fx.tier===k).length}</b><small>${DK_T[k].n}</small></div>`).join("")}</div>`}
+function alGrid(L,key,cid,canAdd){
+  const per=9, n=L.length+(canAdd?1:0), pages=Math.max(1,Math.ceil(n/per)), p=Math.min(alSheet[key]||0,pages-1), part=L.slice(p*per,p*per+per);
+  const add=canAdd&&p===pages-1?`<button type="button" class="al-pocket al-addp" data-act="alAdd" data-c="${cid}"><span class="al-addin"><b>+</b>${cid==="lib"?"Нова книга":"Нове завдання"}</span></button>`:"";
+  return {html:`<div class="al-sheet">${part.map(alPocket).join("")}${add}</div>`,pager:pages>1?`<span class="al-pager"><button type="button" data-act="alSheet" data-k="${key}" data-d="-1" ${p===0?"disabled":""} aria-label="Попередній аркуш">‹</button>Аркуш ${p+1} з ${pages}<button type="button" data-act="alSheet" data-k="${key}" data-d="1" ${p===pages-1?"disabled":""} aria-label="Наступний аркуш">›</button></span>`:""};
+}
+
+/* ---------- spreads ---------- */
+function alTodaySets(){
+  const t0=today(), T=alTasks(), open=T.filter(t=>!t.done);
+  const over=open.filter(t=>alDue(t)&&alDue(t)<t0).sort(alByDue);
+  const td=T.filter(t=>t.done?alDoneDay(t)===t0:(t.plan===t0||alDue(t)===t0)&&!(alDue(t)&&alDue(t)<t0)).sort((a,b)=>(a.done-b.done)||alByDue(a,b));
+  const ids=new Set(over.concat(td).map(t=>t.id));
+  return {over,today:td,later:open.filter(t=>!ids.has(t.id)).sort(alByDue)};
+}
+function alSlotW(x,chip){return `<div class="al-pslot">${alPocket(x)}${chip||""}</div>`}
+function alTodaySpread(){
+  const {over,today:td,later}=alTodaySets(), t0=today(), d=parse(t0), nx=cycle().next;
+  const all=over.concat(td), done=td.filter(t=>t.done), left=all.filter(t=>!t.done), mins=left.reduce((a,t)=>a+remMinsOf(t),0), shown=alMore?later:later.slice(0,6);
+  const Lp=`<section class="al-page al-l" style="--cc:#FFD23F"><span class="al-eyebrow">${AL_WD[d.getDay()]}${nx?" · до модуля "+alDays(diffDays(nx,t0)):""}</span><div class="al-pgh" role="heading" aria-level="2">${alMonth(t0)}</div>
+    <div class="al-frac"><b>${done.length}</b><span>/ ${all.length}</span><em>карток на сьогодні виконано</em></div>${alStrip(all,"#9AA7C7")}
+    <div class="al-daygrid"><div class="al-dg al-od"><b>${over.length}</b><small>прострочено</small></div><div class="al-dg"><b>${td.filter(t=>!t.done).length}</b><small>на сьогодні</small></div><div class="al-dg al-ok"><b>${done.length}</b><small>виконано</small></div></div>
+    <div class="al-reward${left.length?"":" al-done"}">${AL_MEDAL}<span>${left.length?`<b>Лишилось ~${fmtMin(mins)}</b>Постав штамп на всі картки дня, і можна брати наступні знизу.`:`<b>День закрито</b>Хочеш більше: візьми картку з «Можна взяти наперед».`}</span></div>
+    <div class="al-sub-h" role="heading" aria-level="3">Розкрито сьогодні</div>${alTiers(done)}</section>`;
+  const sec=(cls,title,count,body,empty)=>`<div class="al-shelf ${cls}"><div class="al-shelf-h"><div class="al-ht" role="heading" aria-level="3">${title}</div><span>${count}</span></div>${body||`<p class="al-shelf-e">${empty}</p>`}</div>`;
+  const take=t=>`<button type="button" class="al-pchip" data-act="alPlan" data-id="${t.id}" data-v="${t0}">+ Сьогодні</button>`;
+  const Rp=`<section class="al-page al-r${alTurn?" al-turn":""}"><div class="al-pgh al-mob" role="heading" aria-level="2">${alMonth(t0)}</div>
+    ${sec("al-over","Прострочені",over.length,over.length?`<div class="al-sheet">${over.map(t=>alSlotW(t,t.plan===t0?`<span class="al-pchip">у плані</span>`:take(t))).join("")}</div>`:"","Прострочених немає.")}
+    ${sec("al-tod","Сьогодні",td.length,td.length?`<div class="al-sheet">${td.map(t=>alSlotW(t,t.done?`<span class="al-pchip al-ok">виконано</span>`:alDue(t)===t0?`<span class="al-pchip al-warn">дедлайн</span>`:`<button type="button" class="al-pchip" data-act="alPlan" data-id="${t.id}" data-v="">Відкласти</button>`)).join("")}</div>`:"","На сьогодні нічого не заплановано. Візьми картку нижче.")}
+    ${sec("al-later","Можна взяти наперед",later.length,later.length?`<div class="al-sheet">${shown.map(t=>alSlotW(t,take(t))).join("")}</div>${later.length>6?`<button type="button" class="al-btn al-morebtn" data-act="alMore">${alMore?"Згорнути":"Показати всі "+later.length}</button>`:""}`:"","Усі відкриті картки вже в роботі.")}
+  </section>`;
+  return Lp+alRings()+Rp;
+}
+function alTocSpread(){
+  const v=alVol(), cs=activeCourses(), all=cs.flatMap(c=>alSlots(c.id)).sort(alByDue), got=all.filter(alDone).length, sets=cs.filter(c=>alSlots(c.id).length).length, fullN=cs.filter(c=>alFull(c.id,v)).length;
+  const Lp=`<section class="al-page al-l"><span class="al-eyebrow">Том ${v.n} · ${alVLabel(v)}</span><div class="al-pgh" role="heading" aria-level="2">Зміст</div>
+    <div class="al-frac"><b>${got}</b><span>/ ${all.length}</span><em>карток вклеєно</em></div>${alStrip(all,"#9AA7C7")}
+    <div class="al-reward${fullN===sets&&sets?" al-done":""}">${AL_MEDAL}<span><b>${fullN} з ${sets} сетів зібрано</b>Повна сторінка курсу дає +${AL_SETXP} XP за кожну картку сету і золотий кант.</span></div>
+    <div class="al-sub-h" role="heading" aria-level="3">Рідкісність у цьому томі</div>${alTiers(all)}
+    <p class="al-note">Кожне завдання модуля має своє пронумероване місце. Постав штамп на фольгу, і під нею буде картка з випадковою рідкісністю: 60 / 25 / 12 / 3 %.</p></section>`;
+  const Rp=`<section class="al-page al-r${alTurn?" al-turn":""}"><div class="al-pgh al-mob" role="heading" aria-level="2">Зміст</div><div class="al-sheethead"><span class="al-eyebrow">Сторінки курсів</span></div><div class="al-toc">
+    ${cs.map(c=>{const L=alSlots(c.id); if(!L.length) return ""; const g=L.filter(alDone).length, f=g===L.length, cc=alCol(c.id);
+      return `<button type="button" class="al-trow${f?" al-full":""}" style="--cc:${cc}" data-act="alTab" data-v="${c.id}"><span class="al-code">${esc(alCode(c.id))}</span><span class="al-nm"><b>${esc(c.name)}</b>${alStrip(L,cc)}</span><span class="al-fr">${g}/${L.length}<small>${f?"сет ✓":"ще "+(L.length-g)}</small></span></button>`}).join("")||`<p class="al-shelf-e">У цьому томі завдань немає.</p>`}
+    <button type="button" class="al-trow" style="--cc:${AL_LIBC}" data-act="alTab" data-v="lib"><span class="al-code">КН</span><span class="al-nm"><b>Література</b>${alStrip(S.books,AL_LIBC)}</span><span class="al-fr">${S.books.filter(alDone).length}/${S.books.length}<small>без тому</small></span></button>
+  </div></section>`;
+  return Lp+alRings()+Rp;
+}
+function alCourseSpread(c){
+  const v=alVol(), L=alSlots(c.id), g=L.filter(alDone).length, f=L.length&&g===L.length, cs=activeCourses(), idx=cs.indexOf(c)+1, cc=alCol(c.id), paid=(S.albumSets||{})[alSetKey(v,c.id)];
+  const rest=L.length-g;
+  const reward=f?`<div class="al-reward al-done">${AL_MEDAL}<span><b>Сет зібрано${paid?` · +${L.length*AL_SETXP} XP отримано`:""}</b>Сторінка отримала золотий кант.</span></div>`
+    :`<div class="al-reward">${AL_MEDAL}<span><b>Нагорода за сет: +${L.length*AL_SETXP} XP</b>${L.length?`Лишилось ${rest} ${rest===1?"картка":rest<5?"картки":"карток"} до золотого канту.`:"У цьому томі завдань курсу з дедлайном немає."}</span></div>`;
+  const Lp=`<section class="al-page al-l" style="--cc:${cc}"><span class="al-eyebrow">Том ${v.n} · сторінка ${idx} з ${cs.length}</span><div class="al-pgh" role="heading" aria-level="2"><i class="al-dot"></i>${esc(c.name)}</div>
+    <div class="al-frac"><b>${g}</b><span>/ ${L.length}</span><em>карток у сеті</em></div>${alStrip(L,cc)}${reward}${alTiers(L)}</section>`;
+  const sg=alGrid(alSlots(c.id,v,true),alSetKey(v,c.id),c.id,true);
+  const Rp=`<section class="al-page al-r${f?" al-gold":""}${alTurn?" al-turn":""}" style="--cc:${cc}">${f?`<span class="al-setstamp">Сет зібрано</span>`:""}<div class="al-pgh al-mob" role="heading" aria-level="2">${esc(c.name)}</div><div class="al-sheethead"><span class="al-eyebrow">Кишені · ${g} з ${L.length} · за дедлайном</span>${sg.pager}</div>${sg.html}</section>`;
+  return Lp+alRings()+Rp;
+}
+function alLibSpread(){
+  const B=S.books, g=B.filter(alDone).length, pages=B.reduce((s,b)=>s+(b.page||0),0), reading=B.filter(b=>b.status==="reading");
+  const Lp=`<section class="al-page al-l" style="--cc:${AL_LIBC}"><span class="al-eyebrow">Окремий розділ · без томів</span><div class="al-pgh" role="heading" aria-level="2"><i class="al-dot"></i>Література</div>
+    <div class="al-frac"><b>${g}</b><span>/ ${B.length}</span><em>книжок дочитано</em></div>${alStrip(B,AL_LIBC)}
+    <div class="al-reward">${AL_MEDAL}<span><b>${pages.toLocaleString("uk-UA")} сторінок прочитано</b>Штамп на фользі означає, що книжку дочитано.</span></div>
+    ${alTiers(B)}
+    ${reading.length?`<div class="al-sub-h" role="heading" aria-level="3">Читаю зараз</div><div class="al-next">${reading.map(b=>`<div class="al-nrow"><span class="al-no">№${alNo(b)}</span><span class="al-tt" role="button" tabindex="0" data-act="alPocket" data-id="${b.id}">${esc(b.title)}<small>${b.page||0} з ${b.total} стор. · ${Math.round((b.page||0)/(b.total||1)*100)}%</small></span><button type="button" class="al-ck" data-act="alPocket" data-id="${b.id}" aria-label="Відкрити: ${esc(b.title)}">→</button></div>`).join("")}</div>`:""}</section>`;
+  const sg=alGrid(B,"lib","lib",true);
+  return Lp+alRings()+`<section class="al-page al-r${alTurn?" al-turn":""}" style="--cc:${AL_LIBC}"><div class="al-pgh al-mob" role="heading" aria-level="2">Література</div><div class="al-sheethead"><span class="al-eyebrow">Кишені · у порядку додавання</span>${sg.pager}</div>${sg.html}</section>`;
+}
+function alTabs(){
+  const td=alTodaySets(), n=td.today.length+td.over.length, cs=activeCourses(), v=alVol();
+  const T=[{k:"today",s:"Сьогодні",c:"#FFD23F",sub:td.today.filter(t=>t.done).length+"/"+n,n:"Сьогодні",cls:" al-today"},{k:"toc",s:"Зміст",c:"#C9C2D6",sub:"",n:"Зміст"}]
+    .concat(cs.map(c=>{const L=alSlots(c.id); return {k:c.id,s:alCode(c.id),c:alCol(c.id),sub:L.length?L.filter(alDone).length+"/"+L.length:"—",full:alFull(c.id,v),n:c.name}}),
+      [{k:"lib",s:"КН",c:AL_LIBC,sub:S.books.filter(alDone).length+"/"+S.books.length,n:"Література"}]);
+  return `<nav class="al-itabs" aria-label="Розділи альбому">${T.map(t=>`<button type="button" class="al-itab${t.full?" al-full":""}${t.cls||""}" style="--cc:${t.c}" data-act="alTab" data-v="${t.k}" ${alTab===t.k?'aria-current="page"':""} title="${esc(t.n)}"><b>${esc(t.s)}</b>${t.sub?`<small>${t.sub}</small>`:""}</button>`).join("")+"</"+"nav>"}`;
+}
+function albumView(){
+  alEnsure(); alCodes(); alV=alVols();
+  if(alVolSel&&!alV.some(v=>v.to===alVolSel)) alVolSel=null;
+  const cs=activeCourses(), c=cs.find(x=>x.id===alTab); if(alTab!=="today"&&alTab!=="toc"&&alTab!=="lib"&&!c) alTab="toc";
+  const v=alVol(), cur=alCurV(), nx=cycle().next, sealedN=alTasks().concat(S.books).filter(alSealed).length;
+  const sub=alTab==="today"||alTab==="lib"?`Locus · ${nx?"до модуля "+alDays(diffDays(nx,today())):"модулі не задані"}`:`Locus · Том ${v.n} · ${alVLabel(v)}${v===cur?"":" · завершений"}`;
+  const vols=alTab==="today"||alTab==="lib"||alV.length<2?"":`<div class="al-vols" role="group" aria-label="Том альбому">${alV.map(x=>`<button type="button" data-act="alVol" data-v="${x.to}" aria-pressed="${x===v}">Том ${x.n}</button>`).join("")}</div>`;
+  const html=`<div class="al-root"><div class="al-binder"><header class="al-cover"><div class="al-emb"><div class="al-ht" role="heading" aria-level="1">Альбом</div><small>${sub}</small></div><span class="al-grow"></span>${vols}${sealedN?`<button type="button" class="al-cbtn" data-act="alRevealAll">Розкрити всі · ${sealedN}</button>`:""}</header>
+    <div class="al-spread">${(alTab==="today"?alTodaySpread():alTab==="lib"?alLibSpread():c?alCourseSpread(c):alTocSpread())+alTabs()}</div></div></div>`;
+  alTurn=false;
+  if(alJust){const j=alJust; setTimeout(()=>{const el=document.querySelector(`.al-pocket[data-id="${j}"]`); if(el) el.scrollIntoView({block:"center",behavior:RMQ.matches?"auto":"smooth"})},30); setTimeout(()=>{if(alJust===j) alJust=null},1900)}
+  return html;
+}
+function alRefresh(){if(view==="album") render()}
+
+/* ---------- overlay: flip card, editable back ---------- */
+function alOvEl(){let el=document.getElementById("alOv"); if(!el){el=document.createElement("div"); el.id="alOv"; el.className="al-ov"; el.hidden=true;
+  el.addEventListener("click",e=>{if(!e.target.closest(".al-keep")) alClose()}); document.body.appendChild(el)} return el}
+function alClose(){
+  const ov=document.getElementById("alOv"); if(!ov||ov.hidden) return; ov.hidden=true; ov.innerHTML="";
+  const nid=alNewId; alNewId=""; alOpen="";
+  if(nid){const x=alItem(nid); if(x&&!String(x.title||"").trim()){S.tasks=S.tasks.filter(t=>t.id!==nid); S.books=S.books.filter(b=>b.id!==nid)}}
+  clearTimeout(alLaterT); commit();
+}
+const alFace=x=>alDone(x)&&x.fx&&!alSealed(x)?alPc(x):alPfSplit(x);
+function alActs(x){
+  if(alSealed(x)||alDone(x)&&!x.fx) return `<span class="al-ovhint">Натисни на штамп, щоб розірвати фольгу</span>`;
+  if(!alDone(x)) return `<span class="al-ovhint">Штамп = виконано · клік по картці перевертає</span>`;
+  return `<span class="al-ovhint">Натисни на картку, щоб перевернути</span><div class="al-btns"><button type="button" class="al-btn" data-act="alUndo" data-id="${x.id}">${alIsB(x)?"Повернути в «Читаю»":"Повернути в роботу"}</button></div>`;
+}
+function alOpenItem(id,flip){
+  const x=alItem(id); if(!x) return; const ov=alOvEl(); alOpen=id;
+  ov.innerHTML=`<div class="al-ovbox al-col"><div class="al-rv" id="alRv"><div class="al-rays" id="alRays"></div><div class="al-flip al-keep${flip?" al-on":""}" id="alFlip" style="--cc:${alCol(alCid(x))}"><div class="al-fin">
+      <div class="al-ff al-ffront" data-act="alFlip" role="button" tabindex="0" aria-label="Перевернути картку: ${esc(x.title)}">${alFace(x)}</div>
+      <div class="al-ff al-fback">${alIsB(x)?alBookBack(x):alTaskBack(x)}</div></div></div></div>
+    <div class="al-acts al-keep" id="alActs">${alActs(x)}</div></div>`;
+  ov.hidden=false;
+  if(flip) setTimeout(()=>{const f=document.getElementById("al-f-title"); if(f) f.focus()},350); else ov.querySelector(".al-ffront").focus();
+}
+function alFlipCard(){
+  const f=document.getElementById("alFlip"); if(!f) return; const x=alItem(alOpen); if(!x) return;
+  if(f.classList.contains("al-on")){const fr=f.querySelector(".al-ffront"); fr.classList.remove("al-torn"); fr.innerHTML=alFace(x); document.getElementById("alActs").innerHTML=alActs(x)}
+  else {const bk=f.querySelector(".al-fback"); bk.innerHTML=alIsB(x)?alBookBack(x):alTaskBack(x)}
+  f.classList.toggle("al-on");
+}
+const alChip=(f,v,l,cur)=>`<button type="button" class="al-chip${cur===v?" al-on":""}" data-act="alSetF" data-f="${f}" data-v="${v}">${l}</button>`;
+const alSubsHTML=t=>subsOf(t).map(x=>`<div class="al-srow${x.done?" al-on":""}"><button type="button" class="al-sck${x.done?" al-on":""}" data-act="alSubT" data-s="${x.id}" aria-label="${x.done?"Зняти позначку":"Позначити"}: ${esc(x.t)}">${x.done?"✓":""}</button><input class="al-subtx" data-s="${x.id}" value="${esc(x.t)}" maxlength="140" aria-label="Підпункт"><button type="button" class="al-sx" data-act="alSubDel" data-s="${x.id}" aria-label="Видалити підпункт">×</button></div>`).join("");
+function alBkHead(x){
+  const v=alVolOf(x);
+  return `<div class="al-bkh"><span class="al-eyebrow">№${alNo(x)}${alIsB(x)?" · Література":" · Том "+v.n}${alDone(x)&&x.fx&&!alSealed(x)?" · "+DK_T[x.fx.tier].n:""}</span><button type="button" class="al-bkflip" data-act="alFlip" aria-label="Перевернути на лице">↺</button></div>`;
+}
+function alTaskBack(t){
+  const ss=subsOf(t), sd=ss.filter(x=>x.done).length, t0=today(), nx=cycle().next, due=alDue(t);
+  return `<div class="al-bk">${alBkHead(t)}
+    <textarea id="al-f-title" class="al-bkt" rows="2" maxlength="140" placeholder="Що треба зробити?" aria-label="Назва">${esc(t.title||"")}</textarea>
+    <div class="al-bk2"><label class="al-bsel"><i id="al-f-cdot" style="background:${alCol(t.courseId)}"></i><select id="al-f-course" aria-label="Курс">${activeCourses().map(c=>`<option value="${c.id}" ${c.id===t.courseId?"selected":""}>${esc(c.name)}</option>`).join("")}</select></label>
+      <label class="al-bsel"><span>Тип</span><select id="al-f-type" aria-label="Тип завдання">${Object.entries(TTYPE).map(([k,o])=>`<option value="${k}" ${(t.ttype||"task")===k?"selected":""}>${o.n}${k==="task"?"":" · "+XP[k]+" XP"}</option>`).join("")}</select></label></div>
+    <div class="al-bkf"><span class="al-bl">Коли роблю</span><div class="al-chips" id="al-f-planc">${alChip("plan",t0,"Сьогодні",t.plan||"")}${alChip("plan",addDays(t0,1),"Завтра",t.plan||"")}${alChip("plan","","Без дня",t.plan||"")}<input type="date" class="al-dinp" id="al-f-plan" value="${t.plan||""}" aria-label="Інша дата"></div></div>
+    <div class="al-bkf"><span class="al-bl">Дедлайн</span><div class="al-chips" id="al-f-duec">${nx?alChip("due",nx,"До модуля",due):""}${alChip("due",addDays(t0,7),"Через тиждень",due)}${alChip("due","","Без дедлайну",due)}<input type="date" class="al-dinp" id="al-f-due" value="${due}" aria-label="Інша дата дедлайну"></div></div>
+    <div class="al-bkf"><span class="al-bl">Складність</span><div class="al-seg4" role="radiogroup" aria-label="Складність">${AL_DIFF.map(([k,l,st])=>`<label><input type="radio" name="al-f-diff" value="${k}" ${(t.diff||0)===k?"checked":""}><span><b>${st}</b>${l}</span></label>`).join("")}</div></div>
+    <div class="al-bkf"><span class="al-bl"><span>Підпункти</span><span id="al-f-subn">${ss.length?sd+"/"+ss.length:""}</span></span><div class="al-subl" id="al-f-subs">${alSubsHTML(t)}</div>
+      <div class="al-subadd"><input id="al-f-subnew" maxlength="140" placeholder="Новий підпункт і Enter" aria-label="Новий підпункт"><button type="button" class="al-sck" data-act="alSubAdd" aria-label="Додати підпункт">+</button></div></div>
+    <div class="al-bkf"><span class="al-bl">Нотатки</span><textarea id="al-f-note" class="al-lined" rows="4" maxlength="4000" placeholder="Деталі, посилання, думки…" aria-label="Нотатки">${esc(t.note||"")}</textarea></div>
+    <div class="al-bkfoot"><span class="al-xpb" id="al-f-xp">+${alXP(t)} XP для Loco</span>${t.sup?"":`<button type="button" class="al-lnk" data-act="alDel">Видалити</button>`}</div></div>`;
+}
+function alBookBack(b){
+  const tot=b.total||1, pg=b.page||0, ln=b.loan&&!b.loan.returned?b.loan:null;
+  return `<div class="al-bk">${alBkHead(b)}
+    <textarea id="al-f-title" class="al-bkt" rows="2" maxlength="160" placeholder="Назва" aria-label="Назва">${esc(b.title||"")}</textarea>
+    <label class="al-bsel"><span>Автор</span><input id="al-f-author" maxlength="120" value="${esc(b.author||"")}"></label>
+    <div class="al-bk2"><label class="al-bsel"><span>Тип</span><select id="al-f-btype">${AL_BTYPES.map(x=>`<option ${b.type===x?"selected":""}>${x}</option>`).join("")}</select></label><label class="al-bsel"><span>Сторінок</span><input id="al-f-total" type="number" min="1" value="${tot}"></label></div>
+    <div class="al-bkf"><span class="al-bl"><span>Прочитано</span><span id="al-f-pct">${Math.round(pg/tot*100)}%</span></span><div class="al-chips"><label class="al-bsel" style="flex:1"><input id="al-f-page" type="number" min="0" max="${tot}" value="${pg}" aria-label="Прочитано сторінок"><span>з ${tot}</span></label><button type="button" class="al-chip" data-act="alRead" data-n="10">+10</button><button type="button" class="al-chip" data-act="alRead" data-n="50">+50</button></div><div class="al-pbar"><i id="al-f-rbar" style="width:${pg/tot*100}%"></i></div></div>
+    <div class="al-bk2"><label class="al-bsel"><span>Полиця</span><select id="al-f-shelf"><option value="">Без курсу</option>${activeCourses().map(c=>`<option value="${c.id}" ${b.courseId===c.id?"selected":""}>${esc(c.name)}</option>`).join("")}</select></label>
+      <label class="al-bsel"><span>Статус</span><select id="al-f-status">${[["shelf","На полиці"],["reading","Читаю"],["done","Прочитано"]].map(([k,l])=>`<option value="${k}" ${(b.status||"shelf")===k?"selected":""}>${l}</option>`).join("")}</select></label></div>
+    <div class="al-bkf"><label class="al-chkl"><input type="checkbox" id="al-f-loan" ${ln?"checked":""}> Позичена книга, треба повернути</label>
+      <div class="al-bk2" id="al-f-loanf" ${ln?"":"hidden"}><label class="al-bsel"><span>Звідки</span><input id="al-f-lib" maxlength="60" value="${esc((ln&&ln.lib)||"Бібліотека УКУ")}"></label><label class="al-bsel"><span>До</span><input type="date" id="al-f-ldue" value="${(ln&&ln.due)||""}"></label></div></div>
+    <div class="al-bkf"><span class="al-bl">Нотатки</span><textarea id="al-f-note" class="al-lined" rows="4" maxlength="4000" placeholder="Цитати, думки, сторінки…" aria-label="Нотатки">${esc(b.note||"")}</textarea></div>
+    <div class="al-bkfoot"><span class="al-xpb">+${XP.book} XP для Loco</span><button type="button" class="al-lnk" data-act="alDel">Видалити</button></div></div>`;
+}
+let alLaterT=null; const alLater=()=>{clearTimeout(alLaterT); alLaterT=setTimeout(()=>commit(),400)};
+function alChipSync(f,v){const box=document.getElementById("al-f-"+f+"c"); if(box) box.querySelectorAll(".al-chip").forEach(c=>c.classList.toggle("al-on",c.dataset.v===v)); const d=document.getElementById("al-f-"+f); if(d) d.value=v}
+function alBookSync(b){const tot=b.total||1, pg=b.page||0; const r=document.getElementById("al-f-page"); if(r&&+r.value!==pg) r.value=pg; const bar=document.getElementById("al-f-rbar"); if(bar) bar.style.width=(pg/tot*100)+"%"; const pc=document.getElementById("al-f-pct"); if(pc) pc.textContent=Math.round(pg/tot*100)+"%"; const st=document.getElementById("al-f-status"); if(st) st.value=b.status||"shelf"}
+function alSubRefresh(t){const box=document.getElementById("al-f-subs"); if(!box) return; box.innerHTML=alSubsHTML(t); const ss=subsOf(t), sd=ss.filter(x=>x.done).length; document.getElementById("al-f-subn").textContent=ss.length?sd+"/"+ss.length:""}
+function alField(e){
+  const el=e.target, x=alItem(alOpen); if(!x||!el.closest||!el.closest("#alOv .al-fback")) return;
+  const v=el.value;
+  if(el.classList.contains("al-subtx")){const s=subsOf(x).find(y=>y.id===el.dataset.s); if(s) s.t=v; return alLater()}
+  if(el.name==="al-f-diff"){x.diff=+v; const xp=document.getElementById("al-f-xp"); if(xp) xp.textContent=`+${alXP(x)} XP для Loco`; return alLater()}
+  switch(el.id){
+    case "al-f-title": x.title=v; break;
+    case "al-f-note": x.note=v; break;
+    case "al-f-course": x.courseId=v; document.getElementById("al-f-cdot").style.background=alCol(v); document.getElementById("alFlip").style.setProperty("--cc",alCol(v)); break;
+    case "al-f-type": x.ttype=v; {const xp=document.getElementById("al-f-xp"); if(xp) xp.textContent=`+${alXP(x)} XP для Loco`} break;
+    case "al-f-plan": if(e.type!=="change") return; x.plan=v; alChipSync("plan",v); break;
+    case "al-f-due": if(e.type!=="change") return; x.due=v; x.noDue=!v; alChipSync("due",v); break;
+    case "al-f-author": x.author=v; break;
+    case "al-f-btype": x.type=v; break;
+    case "al-f-total": {if(e.type!=="change") return; x.total=Math.max(1,parseInt(v,10)||1); if((x.page||0)>x.total) x.page=x.total; alBookSync(x); break}
+    case "al-f-page": {if(e.type!=="change") return; const was=alDone(x); logPages(x.id,v); alBookSync(x); if(!was&&alDone(x)) alComplete(x.id); return}
+    case "al-f-shelf": x.courseId=v; break;
+    case "al-f-status": if(e.type!=="change") return;
+      if(v==="done"){if(!alDone(x)) alComplete(x.id); return}
+      if(alDone(x)){x.status=v; if((x.page||0)>=(x.total||1)) x.page=Math.max(0,(x.total||1)-1); delete x.doneAt; bookFinishCheck(x)} else x.status=v;
+      alBookSync(x); break;
+    case "al-f-loan": x.loan=el.checked?{lib:(document.getElementById("al-f-lib")||{}).value||"Бібліотека УКУ",due:(document.getElementById("al-f-ldue")||{}).value||"",returned:null,since:today()}:null; document.getElementById("al-f-loanf").hidden=!el.checked; break;
+    case "al-f-lib": if(x.loan) x.loan.lib=v; break;
+    case "al-f-ldue": if(x.loan) x.loan.due=v; break;
+    default: return;
+  }
+  alLater();
+}
+function alSubAdd(){const t=alItem(alOpen), inp=document.getElementById("al-f-subnew"); if(!t||alIsB(t)||!inp||!inp.value.trim()) return; t.subs=subsOf(t).concat([{id:uid(),t:inp.value.trim(),done:false}]); inp.value=""; alSubRefresh(t); inp.focus(); alLater()}
+
+/* ---------- stamp → foil tears → card ---------- */
+function alComplete(id){
+  const x=alItem(id); if(!x||(alDone(x)&&x.fx&&!alSealed(x))) return;
+  const ov=document.getElementById("alOv"), f=document.getElementById("alFlip");
+  if(ov&&!ov.hidden&&alOpen===id&&f){if(f.classList.contains("al-on")){alFlipCard(); setTimeout(()=>alStamp(id),700)} else alStamp(id); return}
+  alOpenItem(id); setTimeout(()=>alStamp(id),380);
+}
+function alStamp(id){
+  const x=alItem(id), ov=document.getElementById("alOv"), fr=ov&&ov.querySelector(".al-ffront"); if(!x||!fr||fr.classList.contains("al-torn")) return;
+  if(!String(x.title||"").trim()){toast("Спершу дай назву"); const f=document.getElementById("alFlip"); if(f&&!f.classList.contains("al-on")) alFlipCard(); setTimeout(()=>{const t=document.getElementById("al-f-title"); if(t) t.focus()},400); return}
+  clearTimeout(alLaterT);
+  const was=alDone(x);
+  if(!was){
+    if(alIsB(x)){x.status="done"; x.page=x.total||x.page; x.doneAt=Date.now(); if(!x.fx) x.fx=dkDrawFx(false); bookFinishCheck(x); commit()}
+    else completeTask(id);
+    if(!alDone(x)) return;
+    fr.querySelectorAll(".al-stampb").forEach(b=>{b.classList.add("al-inked","al-thud"); b.innerHTML=`<b>ВИКОНАНО</b><small>${fmtS(today())}</small>`});
+    fr.querySelectorAll(".al-petag").forEach(t=>t.remove());
+  } else {if(!x.fx) x.fx=dkDrawFx(false); if(!x.doneAt) x.doneAt=Date.now()}
+  alNewId="";
+  const ac=document.getElementById("alActs"); if(ac) ac.innerHTML=`<span class="al-ovhint">${was?"Розриваю фольгу":"Виконано"}</span>`;
+  const r=RMQ.matches, xx=x;
+  setTimeout(()=>{
+    fr.insertAdjacentHTML("afterbegin",alPc(xx)); fr.classList.add("al-torn");
+    setTimeout(()=>{const pf=fr.querySelector(".al-pf"); if(pf) pf.remove(); alReveal(xx,was)}, r?0:620);
+  }, was||r?60:520);
+}
+function alBurst(host,cols,n,spread){
+  if(RMQ.matches||!host) return;
+  for(let i=0;i<n;i++){const p=document.createElement("i"), a=Math.random()*Math.PI*2, r=110+Math.random()*spread;
+    p.className="al-pt"; p.style.setProperty("--dx",Math.cos(a)*r+"px"); p.style.setProperty("--dy",Math.sin(a)*r+"px"); p.style.setProperty("--c",cols[i%cols.length]); p.style.setProperty("--sz",(6+Math.random()*10)+"px"); p.style.setProperty("--br",Math.random()<.5?"50%":"2px"); p.style.setProperty("--rot",(Math.random()*540)+"deg"); host.appendChild(p); setTimeout(()=>p.remove(),1200)}
+}
+function alReveal(x,was){
+  const k=x.fx.tier, tx=DK_T[k];
+  alBurst(document.getElementById("alRv"),{base:["#C9D3E8","#FFF8EC","#7C9CF0"],rare:["#FF6FB5","#FFC2DE","#C2185B"],foil:["#FFD23F","#FF6FB5","#3DD9EB","#B8F28B"],legend:["#FFD23F","#FFF4B8","#F2B705","#fff"]}[k],{base:14,rare:28,foil:44,legend:70}[k],k==="legend"?320:200);
+  const rays=document.getElementById("alRays"); if(rays&&(k==="legend"||k==="foil")){rays.style.setProperty("--rc",k==="legend"?"rgba(255,210,63,.4)":"rgba(255,111,181,.3)"); rays.classList.add("al-on")}
+  const bonus=!x.fx.old&&!x.fx.bonus&&tx.xp?tx.xp:0; x.fx.seen=true; if(bonus){x.fx.bonus=true; addXP(bonus,true,`Картка «${tx.n}»: ${x.title}`)}
+  const base=alIsB(x)?XP.book:(x.xpGot||alXP(x));
+  const note=(was?"XP за виконання вже нараховано":`+${base} XP за ${alIsB(x)?"книжку":"завдання"}`)+(bonus?` · +${bonus} XP за «${tx.n}»`:"");
+  commit();
+  const fr=document.querySelector("#alOv .al-ffront"); if(fr) fr.setAttribute("aria-label","Перевернути картку: "+x.title);
+  const ac=document.getElementById("alActs"); if(ac){ac.innerHTML=`<div class="al-rvside"><div class="al-big">${tx.n} картка</div><span class="al-xp">${note}</span><div class="al-btns" style="justify-content:center"><button type="button" class="al-btn al-main" data-act="alStick" data-id="${x.id}">Вклеїти в альбом</button></div></div>`; ac.querySelector(".al-btn").focus()}
+}
+function alStick(id){
+  const x=alItem(id); if(!x) return; alClose();
+  const cid=alCid(x), v=alVolOf(x);
+  if(alTab==="today"&&!alIsB(x)){alJust=id; alRefresh(); alSetCheck(cid,v); return}
+  if(!alIsB(x)) alVolSel=v.to;
+  if(alTab!==cid){alTab=cid; alTurn=true}
+  const L=alSlots(cid,v,true); alSheet[cid==="lib"?"lib":alSetKey(v,cid)]=Math.max(0,Math.floor(L.indexOf(x)/9));
+  alJust=id; alRefresh(); if(!alIsB(x)) alSetCheck(cid,v);
+}
+function alSetCheck(cid,v){S.albumSets=S.albumSets||{}; if(alFull(cid,v)&&!S.albumSets[alSetKey(v,cid)]) setTimeout(()=>alCelebrate(cid,v),950)}
+function alCelebrate(cid,v){
+  const L=alSlots(cid,v), gain=L.length*AL_SETXP, nm=alCName(cid); S.albumSets=S.albumSets||{}; if(S.albumSets[alSetKey(v,cid)]) return;
+  S.albumSets[alSetKey(v,cid)]=Date.now(); addXP(gain,true,`Сет «${nm}» зібрано`); commit();
+  const ov=alOvEl();
+  ov.innerHTML=`<div class="al-ovbox"><div class="al-setcel" id="alSc"><div class="al-rays al-on" style="--rc:rgba(255,210,63,.35)"></div><svg class="al-medal" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="22" r="14" fill="#FFD23F" stroke="#FFF8EC" stroke-width="2"/><path d="M20 14l2.6 5.3 5.8.8-4.2 4.1 1 5.8L20 27.3 14.8 30l1-5.8-4.2-4.1 5.8-.8z" fill="#fff" stroke="#8C5E00" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    <div class="al-ht" role="heading" aria-level="2">Сет «${esc(nm)}» зібрано</div><p style="margin:0">${L.length} з ${L.length} карток у томі ${v.n}. Сторінка отримала золотий кант.</p><span class="al-xp">+${gain} XP · ${AL_SETXP} XP за кожну картку</span>
+    <div class="al-btns al-keep" style="justify-content:center"><button type="button" class="al-btn al-main" data-act="alClose">Закрити</button></div></div></div>`;
+  ov.hidden=false; alBurst(document.getElementById("alSc"),["#FFD23F","#FFF4B8","#F2B705","#fff"],60,300); ov.querySelector(".al-btn").focus();
+}
+function alRevealAll(){
+  const L=alTasks().concat(S.books).filter(alSealed); if(!L.length) return; let xp=0; const c={};
+  L.forEach(x=>{const t=DK_T[x.fx.tier]; x.fx.seen=true; c[x.fx.tier]=(c[x.fx.tier]||0)+1; if(!x.fx.old&&!x.fx.bonus&&t.xp){x.fx.bonus=true; xp+=t.xp}});
+  if(xp) addXP(xp,true,"Бонуси карток");
+  commit(); toast(`Розкрито ${L.length}: `+DK_ORDER.filter(k=>c[k]).map(k=>`${DK_T[k].n.toLowerCase()} ${c[k]}`).join(", ")+(xp?` · +${xp} XP`:""));
+}
+function alAddNew(cid){
+  const v=alVol(), id=uid();
+  if(cid==="lib") S.books.push({id,title:"",author:"",type:"книга",total:200,page:0,courseId:"",status:"shelf",loan:null,note:"",createdAt:Date.now()});
+  else {const nx=cycle().next; S.tasks.push({id,kind:"task",title:"",courseId:cid,due:v.cur?(nx||""):(v.to==="9999"?"":v.to),noDue:false,plan:"",diff:0,ttype:"task",subs:[],note:"",recall:false,done:false,createdAt:Date.now()})}
+  alRefresh(); alOpenItem(id,true); alNewId=id;
+}
+function alDelete(){
+  const x=alItem(alOpen); if(!x) return; const b=alIsB(x); snap();
+  trashPut(b?"book":"task",x); if(isActive(b?"book":"task",x.id)) S.active=null;
+  if(b) S.books=S.books.filter(y=>y.id!==x.id); else S.tasks=S.tasks.filter(y=>y.id!==x.id);
+  alNewId=""; const ov=document.getElementById("alOv"); if(ov){ov.hidden=true; ov.innerHTML=""} alOpen="";
+  commit(); undoToast(b?"Книга в «Недавно видалених»":"Завдання в «Недавно видалених»");
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest&&e.target.closest("[data-act]"); if(!b) return; const a=b.dataset.act; if(!a||a.slice(0,2)!=="al") return;
+  const id=b.dataset.id||alOpen;
+  switch(a){
+    case "alTab": if(alTab!==b.dataset.v){alTab=b.dataset.v; alTurn=true; alRefresh(); const r=document.querySelector(".al-root"); if(r&&r.getBoundingClientRect().top<0) r.scrollIntoView({block:"start"})} break;
+    case "alVol": alVolSel=b.dataset.v; alTurn=true; alRefresh(); break;
+    case "alPocket": alOpenItem(b.dataset.id); break;
+    case "alAdd": alAddNew(b.dataset.c); break;
+    case "alFlip": {const x=alItem(alOpen); if(x&&(alSealed(x)||alDone(x)&&!x.fx)){alStamp(x.id); break} if(document.querySelector("#alOv .al-ffront.al-torn .al-pf")) break; alFlipCard(); break}
+    case "alStamp": {const ov=document.getElementById("alOv"); if(ov&&!ov.hidden&&alOpen===b.dataset.id) alStamp(b.dataset.id); else alComplete(b.dataset.id); break}
+    case "alStick": alStick(b.dataset.id); break;
+    case "alClose": alClose(); break;
+    case "alSetF": {const x=alItem(alOpen); if(!x) break; const f=b.dataset.f, v=b.dataset.v; if(f==="due"){x.due=v; x.noDue=!v} else x.plan=v; alChipSync(f,v); alLater(); break}
+    case "alSubT": {const x=alItem(alOpen); if(!x) break; clearTimeout(alLaterT); toggleSub(x.id,b.dataset.s); if(x.done){alComplete(x.id)} else alSubRefresh(x); break}
+    case "alSubDel": {const x=alItem(alOpen); if(!x) break; x.subs=subsOf(x).filter(s=>s.id!==b.dataset.s); alSubRefresh(x); alLater(); break}
+    case "alSubAdd": alSubAdd(); break;
+    case "alRead": {const x=alItem(alOpen); if(!x) break; clearTimeout(alLaterT); const was=alDone(x); logPages(x.id,(x.page||0)+(+b.dataset.n)); alBookSync(x); if(!was&&alDone(x)) alComplete(x.id); break}
+    case "alDel": alDelete(); break;
+    case "alUndo": {const x=alItem(id); if(!x) break; const ov=document.getElementById("alOv"); if(ov){ov.hidden=true; ov.innerHTML=""} alOpen="";
+      if(alIsB(x)){x.status="reading"; if((x.page||0)>=(x.total||1)) x.page=Math.max(0,(x.total||1)-1); delete x.doneAt; bookFinishCheck(x); commit()} else uncompleteTask(x.id);
+      toast("Повернуто в роботу. Рідкісність картки лишилась"); break}
+    case "alSheet": {const k=b.dataset.k; alSheet[k]=Math.max(0,(alSheet[k]||0)+(+b.dataset.d)); alTurn=true; alRefresh(); break}
+    case "alPlan": {const x=alItem(b.dataset.id); if(!x) break; x.plan=b.dataset.v; if(b.dataset.v) alJust=x.id; commit(); toast(b.dataset.v?`«${x.title}» на сьогодні`:`«${x.title}» відкладено`); break}
+    case "alMore": alMore=!alMore; alRefresh(); break;
+    case "alRevealAll": alRevealAll(); break;
+  }
+});
+document.addEventListener("input",alField);
+document.addEventListener("change",alField);
+document.addEventListener("keydown",e=>{
+  const ov=document.getElementById("alOv"); if(!ov||ov.hidden) return;
+  if(e.key==="Escape"){e.stopPropagation(); e.preventDefault(); alClose(); return}
+  if(e.target.id==="al-f-subnew"&&e.key==="Enter"){e.preventDefault(); alSubAdd()}
+},true);
+
 /* ---------- views ---------- */
 let view="home", openCourse=null, editing=false, showDone=false, showLater=false, libRoom="main", libQ="";
 function tabsHTML(){return navTabs().map(([k,l])=>`<button class="tab" data-act="nav" data-v="${k}" title="${l}" ${view===k?'aria-current="page"':""}>${ICON[k]}<span>${l}</span></button>`).join("")}
@@ -6506,7 +7253,7 @@ function render(){dueMigrate();
   LOCO_C=null; {const LS=locoState(), lv=document.getElementById("lvl"); lv.innerHTML=`<span class="lcmini tamamini">${miniTama(LS)}</span><span class="lcml">Loco</span><i style="--p:${LS.health/100}"></i>${LS.justEvolved?'<b class="lcnew">!</b>':""}`; lv.classList.toggle("sick",LS.health<35);}
   {const LS=locoState(); document.getElementById("lvl").title=`Loco · здоров'я ${LS.health}% · рівень ${LS.L}`;}
   const v=document.getElementById("view");
-  v.innerHTML=view==="courses"?(openCourse&&course(openCourse)?courseDetail(course(openCourse)):coursesView()):view==="library"?libraryView():view==="plan"?planView():view==="today"?todayView():view==="stats"?statsView():view==="xp"?xpView():view==="sup"?supView():view==="trash"?trashView():view==="deck"?deckView():homeView();
+  v.innerHTML=view==="courses"?(openCourse&&course(openCourse)?courseDetail(course(openCourse)):coursesView()):view==="library"?libraryView():view==="plan"?planView():view==="today"?todayView():view==="stats"?statsView():view==="xp"?xpView():view==="sup"?supView():view==="trash"?trashView():view==="deck"?deckView():view==="album"?albumView():homeView();
   if(view==="library"){const sc=document.getElementById("libscene");if(sc)sc.scrollLeft=libScroll; if(libQ) runSearch()}
   appearId=null;
   if(view==="home") watchHome(); else if(wRO){wRO.disconnect();wRO=null}
